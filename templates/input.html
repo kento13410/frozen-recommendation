@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input 画面</title>
+</head>
+<body>
+    <h1>必須情報の入力する画面</h1>
+    <div class="grid">
+        <form action="/input" method="POST">
+            <div class="grid1">
+                <h2>一人当たりの必要摂取カロリー</h2>
+                <input type="text" name="age" placeholder="年齢">
+                <input type="text" name="weight" placeholder="体重[kg]">
+                <input type="text" name="height" placeholder="身長[cm]">
+                <input type="text" name="budget" placeholder="予算[円]">
+                <h4>性別<br>
+                    <input type="radio" name="sex" value="男"> 男
+                    <input type="radio" name="sex" value="女"> 女
+                    <input type="radio" name="sex" value="その他"> その他
+                </h4>
+                <h4>活動量<br>
+                    <input type="radio" name="activity" value="増量"> 増量
+                    <input type="radio" name="activity" value="減量"> 減量
+                    <input type="radio" name="activity" value="現状維持"> 現状維持
+                </h4>
+            </div>
+            <div class="grid2">
+                <h2>朝で摂取したエネルギー</h2>
+                <input type="text" name="breakfast">
+
+            </div>
+            <div class="grid3">
+                <h2>昼で摂取したエネルギー</h2>
+                <input type="text" name="lunch">
+
+            </div>
+            <input type="submit" value="登録">
+        </form>
+    </div>
+
+</body>
+</html>
