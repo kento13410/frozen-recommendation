@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>"Webアプリの名前"</title>
+    </head>
+    <body>
+        <h1>冷凍食品提案画面</h1>
+        <h2>オススメの冷凍食品</h2>
+        <p>テスト</p>
+        <img src="{{url}}" width="300px" height="300px">
+        <table>
+            <thead>
+                <th>食品名</th>
+                <th>カロリー</th>
+                <th>タンパク質</th>
+                <th>脂質</th>
+                <th>値段</th>
+                <th>公式HPのURL</th>
+            </thead>
+            <tbody>
+                {% for row in date %}
+                <tr>
+                    <td> {{ meal["name"]}}</td>
+                    <td> {{ meal["calory"]}}</td>
+                    <td> {{ meal["protain"]}}</td>
+                    <td> {{ meal["fat"]}}</td>
+                    <td> {{ meal["price"]}}</td>
+                    <td> {{ meal["url"]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
+
+
+
+
+    <!-- 冷凍食品の画像(大きめに)
+    食品名, カロリー、タンパク質、脂質、炭水化物、 値段 、url -->
