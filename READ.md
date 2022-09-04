@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 編集3
 安東
 # 編集4
@@ -9,4 +10,9 @@ INSERT INTO foodnames values(10, "5種野菜とひじきの豆腐ハンバーグ
 
 image.png
 image.png
+=======
+# test1
+# test3
+# test4
+>>>>>>> 6677eab9deaf6bb338d1d88e1d026de9b6897d89
 
