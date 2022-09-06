@@ -34,9 +34,12 @@
                 </h4>
             </div>
             <div class="grid2">
-                <h2>朝で摂取したエネルギー</h2>
-                <input type="text" name="breakfast">
+                <div>
+                    {% for i in range(foods| length) %}
+                        <input type="radio" id="breakfast{{i}}">{{foods[i]}}</input>
+                    {% endfor %}
 
+                </div>
             </div>
             <div class="grid3">
                 <h2>昼で摂取したエネルギー</h2>
@@ -45,6 +48,13 @@
             </div>
             <input type="submit" value="登録">
         </form>
+        <form action="/search_item" method="get">
+                朝食
+                <br>
+                <input type="text" name="breakfast" id="breakfast">
+                <input type="submit" value="検索">
+        </form>
+
     </div>
 
 </body>
