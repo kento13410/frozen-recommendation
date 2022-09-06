@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
+from cs50 import SQL
 
 app = Flask("__name__")
+db = SQL("sqlite:///foodname.db")
 
 # ---------------------------------------input route start----------------------------------------
 @app.route("/", methods=["GET","POST"])
@@ -100,7 +102,15 @@ def index():
 
 # --------------------------------------------------------------------
 
-        return render_template("test.html", D=D)
+        # return render_template("test.html", D=D)
+        data = db.execute("SELECT * FROM foodnames WHERE カロリー < ?", D)
+
+        return render_template("output.html", data = data)
+
+
+
+
+
 
 
 
