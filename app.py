@@ -4,8 +4,15 @@ from cs50 import SQL
 app = Flask("__name__")
 db = SQL("sqlite:///foodname.db")
 
+<<<<<<< HEAD
 # ---------------------------------------input route start----------------------------------------
 @app.route("/",methods=["GET","POST"])
+=======
+url = db.execute("SELECT * FROM foodnames")[11]["画像"]
+print(url)
+
+@app.route("/")
+>>>>>>> a217356d7c7efec5fbcc44181b143866fdcee281
 def index():
     if (request.method == "GET"):
         return render_template("input.html")
