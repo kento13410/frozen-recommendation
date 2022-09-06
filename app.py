@@ -5,6 +5,7 @@ from time import sleep
 from selenium.webdriver.chrome.options import Options
 import re
 import chromedriver_binary
+from webdriver_manager.chrome import ChromeDriverManager
 
 app = Flask("__name__")
 
@@ -19,7 +20,7 @@ def search_item():
     option = Options()
     option.add_argument('--headless')
 
-    browser = webdriver.Chrome(executable_path=r"C:\Users\kento\Downloads\chromedriver_win32\chromedriver.exe", options=option)
+    browser = webdriver.Chrome(ChromeDriverManager().install(), options=option)
 
     try:
         url = 'https://fooddb.mext.go.jp/freeword/fword_top.pl'
