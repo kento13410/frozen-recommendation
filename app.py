@@ -19,7 +19,7 @@ def search_item():
     option = Options()
     option.add_argument('--headless')
 
-    browser = webdriver.Chrome(options=option)
+    browser = webdriver.Chrome(executable_path=r"C:\Users\kento\Downloads\chromedriver_win32\chromedriver.exe", options=option)
 
     try:
         url = 'https://fooddb.mext.go.jp/freeword/fword_top.pl'
