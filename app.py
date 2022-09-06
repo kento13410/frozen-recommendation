@@ -1,36 +1,34 @@
 from flask import Flask, render_template, request
-from cs50 import SQL
 
 app = Flask("__name__")
-db = SQL("sqlite:///foodname.db")
 
 # ---------------------------------------input route start----------------------------------------
-@app.route("/",methods=["GET","POST"])
+@app.route("/", methods=["GET","POST"])
 def index():
     if (request.method == "GET"):
         return render_template("input.html")
     else:
         # 一人当たりの必要摂取カロリー
-        age = request.method("age")
+        age = request.form.get("age")
         intAge = int(age)
-        weight = request.method("weight")
+        weight = request.form.get("weight")
         intWeight = int(weight)
-        height = request.method("height")
+        height = request.form.get("height")
         intHeight = int(height)
-        budget = request.method("budget")
+        budget = request.form.get("budget")
         intBudget = int(budget)
         # 性別
-        sex = request.method("sex")
+        sex = request.form.get("sex")
         # 活動レベル
-        level = request.method("level")
+        level = request.form.get("level")
         # 目的
-        activity = request.method("activity")
+        activity = request.form.get("activity")
+
 
     #とりあえず、仮で決める。
         # 朝で摂取したエネルギー + 昼で摂取したエネルギー
         # 男性:1800 (kcal)
         # 女性:1350 (kcal)
-
 
 # --------------------------------------------------------------------
 # 一人当たりの必要摂取カロリー
@@ -101,7 +99,30 @@ def index():
             D = act - 1350
 
 # --------------------------------------------------------------------
-        return render_template("output.html")
+
+        return render_template("test.html", D=D)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
