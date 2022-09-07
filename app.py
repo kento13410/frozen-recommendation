@@ -11,12 +11,13 @@ import random
 app = Flask("__name__")
 db = SQL("sqlite:///foodname.db")
 
+
 @app.route("/search_item")
 def search_item():
     breakfast = request.form.get("breakfast")
     lunch = request.form.get("lunch")
     snack = request.form.get("snack")
-    brName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", breakfast)
+    brName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like ?", breakfast)
     luName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", lunch)
     snName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", snack)
     return render_template("select.html", breakfast=brName, lunch=luName, snack=snName)
