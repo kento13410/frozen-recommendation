@@ -11,6 +11,8 @@ from cs50 import SQL
 app = Flask("__name__")
 db = SQL("sqlite:///foodname.db")
 
+
+
 # @app.route("/search_item")
 # def search_item():
 #     breakfast = request.form.get("breakfast")
@@ -141,7 +143,7 @@ def home():
         return render_template("home.html")
     else:
         pass
-    
+
 
 
 # @app.route("/search_item")
