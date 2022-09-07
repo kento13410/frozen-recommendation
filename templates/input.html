@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="test1.css">
+    <link rel="stylesheet" href="../static/ando.css">
     <title>input 画面</title>
 </head>
 <body>
-
+    <a href="./home">HOME</a>
     <h1>必須情報の入力する画面</h1>
     <div class="grid">
         <form action="/" method="POST">
@@ -19,6 +19,7 @@
                 <input type="number" name="weight" placeholder="体重[kg]">
                 <input type="number" name="height" placeholder="身長[cm]">
                 <input type="number" name="budget" placeholder="予算[円]">
+
                 <h4>性別<br>
                     <input type="radio" name="sex" value="男"> 男
                     <input type="radio" name="sex" value="女"> 女
@@ -34,16 +35,23 @@
                     <input type="radio" name="activity" value="現状維持"> 現状維持
                 </h4>
             </div>
-            <div class="grid2">
-                <h2>朝で摂取したエネルギー</h2>
-                <input type="text" name="breakfast">
-            </div>
-            <div class="grid3">
-                <h2>昼で摂取したエネルギー</h2>
-                <input type="text" name="lunch">
-            </div>
+            <!-- <div class="grid2">
+                <div>
+                    {% for i in range(foods| length) %}
+                        <input type="radio" id="breakfast{{i}}">{{foods[i]}}</input>
+                    {% endfor %}
+
+                </div>
+            </div> -->
             <input type="submit" value="登録">
         </form>
+        <!-- <form action="/search_item" method="get">
+                朝食<input type="text" name="breakfast" id="breakfast">
+                昼食<input type="text" name="lunch" id="lunch">
+                間食<input type="text" name="snack" id="snack">
+                <input type="submit" value="検索">
+        </form> -->
+
     </div>
 
 </body>
