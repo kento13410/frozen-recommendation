@@ -1,0 +1,46 @@
+/* input.htmlのみに適用中(9/7現在),画面の配置を真ん中にするCSS */
+@charset "UTF-8";
+  body {
+    background: #eeeeee;
+    font-family: Meiryo;
+  }
+
+  .grid {
+    background: #ffffff;
+    width: 500px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #cccccc;
+    margin: 30px auto;
+  }
+  /* ここまで */
+
+  /* 以下はボタン用のCSS:まだ適用していない。 */
+ .button14 a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 1em 2em;
+    width: 300px;
+    color: #333;
+    font-size: 18px;
+    font-weight: 700;
+    background-image: linear-gradient(170deg, #659de6, #5abab8);
+    border-radius: 50vh;
+    transition: 0.3s;
+  }
+
+  .button14 a::after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-top: 3px solid #333333;
+    border-right: 3px solid #333333;
+    transform: rotate(45deg);
+  }
+
+  .button14 a:hover {
+    text-decoration: none;
+    background-image: linear-gradient(-170deg, #659de6, #5abab8);
+  }
