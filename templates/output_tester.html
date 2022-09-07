@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>"Webアプリの名前"</title>
+    </head>
+    <body>
+        <h1>冷凍食品提案画面</h1>
+        <h2>オススメの冷凍食品</h2>
+        <!-- 冷凍食品の画像にURLを埋め込む(データベースからURLを取り出すやり方が分からなかったので、不完全です) -->
+        <!-- {% block content%}
+        <a href="{{dict["url"]}}" alt="オススメの冷凍食品">
+                <img src="{{dict["画像"]}}">
+        </a>
+        {% endblock %} -->
+        <!-- 表形式で栄養成分や名前を表示する -->
+        {% if data|length != 0 %}
+        <table>
+            <thead>
+                    <th>食品名</th>
+                    <th>カロリー</th>
+                    <th>炭水化物</th>
+                    <th>タンパク質</th>
+                    <th>脂質</th>
+                    <th>炭水化物</th>
+                    <th>値段</th>
+            </thead>
+            <tbody>
+                {% for dict in data %}
+                <tr>
+                    <td> {{ dict["食品名"]}}</td>
+                    <td> {{ dict["カロリー"]}}</td>
+                    <td> {{ dict["タンパク質"]}}</td>
+                    <td> {{ dict["脂質"]}}</td>
+                    <td> {{ dict["炭水化物"]}}</td>
+                    <td> {{ dict["値段"]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <h1>今日は断食！おめぇが食う飯はねぇ！</h1>
+        {% endif %}
+    </body>
+</html>

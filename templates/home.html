@@ -27,13 +27,14 @@
     <!-- ここまで書き込み -->
         <main>
         <section class="z">
-            <form name="checkboxes">
+            <form action="/recommend" method="POST">
+                <input type="submit">おすすめレシピ</input>
                 <div>
-                    <input type="checkbox" id="chechbox1" name="お弁当肉系" checked>
+                    <input type="checkbox" id="chechbox1" name="fav" value="お弁当肉系">
                     <label for="button1">お弁当肉系</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="checkbox2" name="お弁当魚系">
+                    <input type="checkbox" id="checkbox2" name="fav" value="おべんとう 魚系">
                     <label for="button2">お弁当魚系</label>
                 </div>
             </form>

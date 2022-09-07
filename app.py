@@ -6,39 +6,15 @@ from cs50 import SQL
 # from selenium.webdriver.chrome.options import Options
 # from selenium.webdriver.chrome.service import Service
 # from webdriver_manager.chrome import ChromeDriverManager
-# import random
+import random
 
 app = Flask("__name__")
 db = SQL("sqlite:///foodname.db")
 
-
-
-# @app.route("/search_item")
-# def search_item():
-#     breakfast = request.form.get("breakfast")
-#     lunch = request.form.get("lunch")
-#     snack = request.form.get("snack")
-#     brName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", breakfast)
-#     luName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", lunch)
-#     snName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", snack)
-#     return render_template("select.html", breakfast=brName, lunch=luName, snack=snName)
-#     food_energy = db.execute("SELECT エネルギー FROM 食品成分 WHERE 食品名 like %?% OR 食品名 like %?% OR 食品名 like %?%", breakfast, lunch, snack)
-
-
-# @app.route("/recommend")
-# def recommend():
-#     foods = []
-#     categorys = db.execute("SELECT category FROM category WHERE user_id = ? AND is_liked = TRUE", session['user_id'])
-#     for category in categorys:
-#         foods += db.execute("SELECT food FROM foods WHERE category = ?", category['category'])
-#     foodsRecommend = random.sample(foods, 3)
-#     return render_template("recommend.html", foods = foodsRecommend)
-
-
 @app.route("/", methods=["GET","POST"])
 def index():
     if (request.method == "GET"):
-        return render_template("input.html")
+        return render_template("input_tester.html")
     else:
         # 一人当たりの必要摂取カロリー
         age = request.form.get("age")
@@ -135,7 +111,45 @@ def index():
         # return render_template("test.html", D=D)
         data = db.execute("SELECT * FROM foodnames WHERE カロリー < ?", D)
 
-        return render_template("output.html", data = data)
+        return render_template("output_tester.html", data = data)
+
+
+
+# -------------------------------------------------------上がテスター------------------------------------------------------------------
+
+
+# @app.route("/search_item")
+# def search_item():
+#     breakfast = request.form.get("breakfast")
+#     lunch = request.form.get("lunch")
+#     snack = request.form.get("snack")
+#     brName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", breakfast)
+#     luName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", lunch)
+#     snName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", snack)
+#     return render_template("select.html", breakfast=brName, lunch=luName, snack=snName)
+#     food_energy = db.execute("SELECT エネルギー FROM 食品成分 WHERE 食品名 like %?% OR 食品名 like %?% OR 食品名 like %?%", breakfast, lunch, snack)
+
+
+@app.route("/recommend", methods=["GET","POST"])
+def recommend():
+    foods = []
+    if (request.method == "POST"):
+        # favs : [value1, value2, value3, ・・・]
+        favs = request.form.getlist("fav")
+        for fav in favs:
+            foods += db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?", fav)
+        foodsRecommend = random.sample(foods, 3)
+        return render_tempalate("output.html", foods=foodsRecommend)
+
+#     foods = []
+#     categorys = db.execute("SELECT category FROM category WHERE user_id = ? AND is_liked = TRUE", session['user_id'])
+#     for category in categorys:
+#         foods += db.execute("SELECT food FROM foods WHERE category = ?", category['category'])
+#     foodsRecommend = random.sample(foods, 3)
+#     return render_template("recommend.html", foods = foodsRecommend)
+
+
+
 
 @app.route("/home",methods=["GET","POST"])
 def home():
