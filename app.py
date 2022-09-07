@@ -29,7 +29,7 @@ def search_item():
 #     foods = []
 #     categorys = db.execute("SELECT category FROM category WHERE user_id = ? AND is_liked = TRUE", session['user_id'])
 #     for category in categorys:
-#         foods += db.execute("SELECT food FROM foods WHERE category = ?", category)
+#         foods += db.execute("SELECT food FROM foods WHERE category = ?", category['category'])
 #     foodsRecommend = random.sample(foods, 3)
 #     return render_template("recommend.html", foods = foodsRecommend)
 
