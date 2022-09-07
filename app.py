@@ -11,6 +11,12 @@ import random
 app = Flask("__name__")
 db = SQL("sqlite:///foodname.db")
 
+@app.route("/search_item")
+def search_item():
+    breakfast = request.form.get("breakfast")
+    lunch = request.form.get("lunch")
+    
+
 
 # @app.route("/recommend")
 # def recommend():
@@ -125,42 +131,42 @@ def index():
         return render_template("output.html", data = data)
 
 
-@app.route("/search_item")
-def search_item():
-    options = Options()
-    options.binary_location = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
-    options.add_argument('--headless')
+# @app.route("/search_item")
+# def search_item():
+#     options = Options()
+#     options.binary_location = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
+#     options.add_argument('--headless')
 
-    browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+#     browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
-    try:
-        url = 'https://fooddb.mext.go.jp/freeword/fword_top.pl'
-        browser.get(url)
+#     try:
+#         url = 'https://fooddb.mext.go.jp/freeword/fword_top.pl'
+#         browser.get(url)
 
-        browser.switch_to.frame(browser.find_element_by_tag_name("iframe"))
+#         browser.switch_to.frame(browser.find_element_by_tag_name("iframe"))
 
-        keywordBox = browser.find_element_by_class_name('s-text')
-        search = browser.find_element_by_name('function1')
+#         keywordBox = browser.find_element_by_class_name('s-text')
+#         search = browser.find_element_by_name('function1')
 
-        keyword = request.form.get("breakfast")
+#         keyword = request.form.get("breakfast")
 
-        keywordBox.send_keys(keyword)
-        search.click()
+#         keywordBox.send_keys(keyword)
+#         search.click()
 
-        browser.find_element_by_class_name('result_button').click()
+#         browser.find_element_by_class_name('result_button').click()
 
-        foods = []
-        valueNames = browser.find_elements_by_css_selector('#result_table > tbody > tr')
-        for valueName in valueNames:
-            items = valueName.find_elements_by_css_selector('td')
-            for i in range(len(items)):
-                foods.append(items[0].text)
+#         foods = []
+#         valueNames = browser.find_elements_by_css_selector('#result_table > tbody > tr')
+#         for valueName in valueNames:
+#             items = valueName.find_elements_by_css_selector('td')
+#             for i in range(len(items)):
+#                 foods.append(items[0].text)
 
-            # print(f'{items[0].text}, エネルギー：{items[2].text}kcal, たんぱく質：{items[4].text}g, 脂質：{items[5].text}g,
-            # 炭水化物：{items[6].text}g （100g当たり）')
+#             # print(f'{items[0].text}, エネルギー：{items[2].text}kcal, たんぱく質：{items[4].text}g, 脂質：{items[5].text}g,
+#             # 炭水化物：{items[6].text}g （100g当たり）')
 
-    finally:
-        # プラウザを閉じる
-        browser.quit()
+#     finally:
+#         # プラウザを閉じる
+#         browser.quit()
 
-    return render_template("input.html", foods=foods)
+#     return render_template("input.html", foods=foods)
