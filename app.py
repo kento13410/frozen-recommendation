@@ -1,10 +1,38 @@
+from crypt import methods
 from flask import Flask, render_template, request
 from cs50 import SQL
+# from selenium import webdriver
+# from time import sleep
+# from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.chrome.service import Service
+# from webdriver_manager.chrome import ChromeDriverManager
+# import random
 
 app = Flask("__name__")
 db = SQL("sqlite:///foodname.db")
 
-# ---------------------------------------input route start----------------------------------------
+# @app.route("/search_item")
+# def search_item():
+#     breakfast = request.form.get("breakfast")
+#     lunch = request.form.get("lunch")
+#     snack = request.form.get("snack")
+#     brName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", breakfast)
+#     luName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", lunch)
+#     snName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", snack)
+#     return render_template("select.html", breakfast=brName, lunch=luName, snack=snName)
+#     food_energy = db.execute("SELECT エネルギー FROM 食品成分 WHERE 食品名 like %?% OR 食品名 like %?% OR 食品名 like %?%", breakfast, lunch, snack)
+
+
+# @app.route("/recommend")
+# def recommend():
+#     foods = []
+#     categorys = db.execute("SELECT category FROM category WHERE user_id = ? AND is_liked = TRUE", session['user_id'])
+#     for category in categorys:
+#         foods += db.execute("SELECT food FROM foods WHERE category = ?", category['category'])
+#     foodsRecommend = random.sample(foods, 3)
+#     return render_template("recommend.html", foods = foodsRecommend)
+
+
 @app.route("/", methods=["GET","POST"])
 def index():
     if (request.method == "GET"):
@@ -107,58 +135,49 @@ def index():
 
         return render_template("output.html", data = data)
 
+@app.route("/home",methods=["GET","POST"])
+def home():
+    if (request.method == "GET"):
+        return render_template("home.html")
+    else:
+        pass
 
+# @app.route("/search_item")
+# def search_item():
+#     options = Options()
+#     options.binary_location = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
+#     options.add_argument('--headless')
 
+#     browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
+#     try:
+#         url = 'https://fooddb.mext.go.jp/freeword/fword_top.pl'
+#         browser.get(url)
 
+#         browser.switch_to.frame(browser.find_element_by_tag_name("iframe"))
 
+#         keywordBox = browser.find_element_by_class_name('s-text')
+#         search = browser.find_element_by_name('function1')
 
+#         keyword = request.form.get("breakfast")
 
+#         keywordBox.send_keys(keyword)
+#         search.click()
 
+#         browser.find_element_by_class_name('result_button').click()
 
+#         foods = []
+#         valueNames = browser.find_elements_by_css_selector('#result_table > tbody > tr')
+#         for valueName in valueNames:
+#             items = valueName.find_elements_by_css_selector('td')
+#             for i in range(len(items)):
+#                 foods.append(items[0].text)
 
+#             # print(f'{items[0].text}, エネルギー：{items[2].text}kcal, たんぱく質：{items[4].text}g, 脂質：{items[5].text}g,
+#             # 炭水化物：{items[6].text}g （100g当たり）')
 
+#     finally:
+#         # プラウザを閉じる
+#         browser.quit()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#     return render_template("input.html", foods=foods)
