@@ -3,10 +3,10 @@ from cs50 import SQL
 from selenium import webdriver
 from time import sleep
 from selenium.webdriver.chrome.options import Options
-import re
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import random
+
 
 app = Flask("__name__")
 db = SQL("sqlite:///foodname.db")
@@ -127,10 +127,11 @@ def index():
 
 @app.route("/search_item")
 def search_item():
-    option = Options()
-    option.add_argument('--headless')
+    options = Options()
+    options.binary_location = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
+    options.add_argument('--headless')
 
-    browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=option)
+    browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     try:
         url = 'https://fooddb.mext.go.jp/freeword/fword_top.pl'
