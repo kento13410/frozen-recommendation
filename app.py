@@ -4,16 +4,22 @@ from selenium import webdriver
 from time import sleep
 from selenium.webdriver.chrome.options import Options
 import re
-import chromedriver_binary
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+import random
 
 app = Flask("__name__")
 db = SQL("sqlite:///foodname.db")
 
 
-@app.route("/recommend", methods=["GET","POST"])
-def recommend():
-    db.execute("SELECT ")
+# @app.route("/recommend")
+# def recommend():
+#     foods = []
+#     categorys = db.execute("SELECT category FROM category WHERE user_id = ? AND is_liked = TRUE", session['user_id'])
+#     for category in categorys:
+#         foods += db.execute("SELECT food FROM foods WHERE category = ?", category)
+#     foodsRecommend = random.sample(foods, 3)
+#     return render_template("recommend.html", foods = foodsRecommend)
 
 
 @app.route("/", methods=["GET","POST"])
@@ -124,7 +130,7 @@ def search_item():
     option = Options()
     option.add_argument('--headless')
 
-    browser = webdriver.Chrome('ChromeDriverManager().install()', options=option)
+    browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=option)
 
     try:
         url = 'https://fooddb.mext.go.jp/freeword/fword_top.pl'
