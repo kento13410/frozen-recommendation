@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="ando.css">
+    <link rel="stylesheet" href="../static/ando.css">
     <title>input 画面</title>
 </head>
 <body>
-
+    <a href="./home">HOME</a>
     <h1>必須情報の入力する画面</h1>
     <div class="grid">
         <form action="/" method="POST">
@@ -36,24 +35,22 @@
                     <input type="radio" name="activity" value="現状維持"> 現状維持
                 </h4>
             </div>
-            <div class="grid2">
-
+            <!-- <div class="grid2">
                 <div>
                     {% for i in range(foods| length) %}
                         <input type="radio" id="breakfast{{i}}">{{foods[i]}}</input>
                     {% endfor %}
 
                 </div>
-
-            </div>
+            </div> -->
             <input type="submit" value="登録">
         </form>
-        <form action="/search_item" method="get">
+        <!-- <form action="/search_item" method="get">
                 朝食<input type="text" name="breakfast" id="breakfast">
                 昼食<input type="text" name="lunch" id="lunch">
                 間食<input type="text" name="snack" id="snack">
                 <input type="submit" value="検索">
-        </form>
+        </form> -->
 
     </div>
 
