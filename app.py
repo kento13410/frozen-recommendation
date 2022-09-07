@@ -20,7 +20,7 @@ def search_item():
     option = Options()
     option.add_argument('--headless')
 
-    browser = webdriver.Chrome('ChromeDriverManager().install()')
+    browser = webdriver.Chrome('ChromeDriverManager().install()', options=option)
 
     try:
         url = 'https://fooddb.mext.go.jp/freeword/fword_top.pl'
