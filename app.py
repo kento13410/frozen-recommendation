@@ -1,27 +1,26 @@
+from crypt import methods
 from flask import Flask, render_template, request
 from cs50 import SQL
-from selenium import webdriver
-from time import sleep
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-import random
-
+# from selenium import webdriver
+# from time import sleep
+# from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.chrome.service import Service
+# from webdriver_manager.chrome import ChromeDriverManager
+# import random
 
 app = Flask("__name__")
 db = SQL("sqlite:///foodname.db")
 
-
-@app.route("/search_item")
-def search_item():
-    breakfast = request.form.get("breakfast")
-    lunch = request.form.get("lunch")
-    snack = request.form.get("snack")
-    brName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", breakfast)
-    luName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", lunch)
-    snName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", snack)
-    return render_template("select.html", breakfast=brName, lunch=luName, snack=snName)
-    # food_energy = db.execute("SELECT エネルギー FROM 食品成分 WHERE 食品名 like %?% OR 食品名 like %?% OR 食品名 like %?%", breakfast, lunch, snack)
+# @app.route("/search_item")
+# def search_item():
+#     breakfast = request.form.get("breakfast")
+#     lunch = request.form.get("lunch")
+#     snack = request.form.get("snack")
+#     brName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", breakfast)
+#     luName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", lunch)
+#     snName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", snack)
+#     return render_template("select.html", breakfast=brName, lunch=luName, snack=snName)
+#     food_energy = db.execute("SELECT エネルギー FROM 食品成分 WHERE 食品名 like %?% OR 食品名 like %?% OR 食品名 like %?%", breakfast, lunch, snack)
 
 
 # @app.route("/recommend")
@@ -135,6 +134,14 @@ def index():
         data = db.execute("SELECT * FROM foodnames WHERE カロリー < ?", D)
 
         return render_template("output.html", data = data)
+
+@app.route("/home",methods=["GET","POST"])
+def home():
+    if (request.method == "GET"):
+        return render_template("home.html")
+    else:
+        pass
+    
 
 
 # @app.route("/search_item")
