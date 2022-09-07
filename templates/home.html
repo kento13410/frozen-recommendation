@@ -1,42 +1,71 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="ja">
 
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, width=device-width">
-        <!-- ボタンにする -->
+        <link rel="stylesheet" href="../static/design.css">
         <title>お弁当肉系</title>
     </head>
     <body>
+    <!-- 書き込み(9/7) -->
+    <header>
+        <h4>
+            <a href="input.html">
+                <img src="../images/logo.png" alt="世界においしいしあわせを" class="logo">
+            </a>
+        </h4>
+        <nav>
+            <ul>
+                <li><a href="register.html">登録</a></li>
+                <li><a href="login.html">ログイン</a></li>
+                <li><a href="logout.html">ログアウト</a><li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ここまで書き込み -->
         <main>
         <section class="z">
-            <div tabindex="0" role="button" class="a">
-                <div class="a">
-                    <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165625196_1.png" alt="牛カルビマヨネーズ" style="height: 140px;">
+            <form name="checkboxes">
+                <div>
+                    <input type="checkbox" id="chechbox1" name="お弁当肉系" checked>
+                    <label for="button1">お弁当肉系</label>
                 </div>
-                <div class="a">牛カルビマヨネーズ</div>
-            </div>
-            <div tabindex="0" role="button" class="b">
-                <div class="b">
-                    <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165542677_1.png" alt="肉巻きポテト" style="height: 140px;">
+                <div>
+                    <input type="checkbox" id="checkbox2" name="お弁当魚系">
+                    <label for="button2">お弁当魚系</label>
                 </div>
-                <div class="b">肉巻きポテト</div>
-            </div>
-            <div tabindex="0" role="button" class="c">
-                <div class="c" >
-                    <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165647891_1.png" alt="肉巻きポテト5個" style="height: 140px;">
+            </form>
+            <div>
+                <div tabindex="0" role="button" class="a">
+                    <div class="a" style="height: 140px;">
+                        <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165625196_1.png" alt="牛カルビマヨネーズ" style="height: 140px;">
+                    </div>
+                    <div class="a">牛カルビマヨネーズ</div>
                 </div>
-                <div class="c">肉巻きポテト5個</div>
-            </div>
-            <div tabindex="0" role="button" class="d">
-                <div class="d">
-                    <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165623635_1.png" alt="ソースとんかつ" style="height: 140px;">
+                <div tabindex="0" role="button" class="b">
+                    <div class="b" style="height: 140px;">
+                        <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165542677_1.png" alt="肉巻きポテト" style="height: 140px;">
+                    </div>
+                    <div class="b">肉巻きポテト</div>
                 </div>
-                <div class="d">ソースとんかつ</div>
+                <div tabindex="0" role="button" class="c">
+                    <div class="c" style="height: 140px;">
+                        <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165647891_1.png" alt="肉巻きポテト5個" style="height: 140px;">
+                    </div>
+                    <div class="c">肉巻きポテト5個</div>
+                </div>
+                <div tabindex="0" role="button" class="d">
+                    <div class="d" style="height: 140px;">
+                        <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165623635_1.png" alt="ソースとんかつ" style="height: 140px;">
+                    </div>
+                    <div class="d">ソースとんかつ</div>
+                </div>
             </div>
         </section>
         </main>
     </body>
 
 </html>
+
