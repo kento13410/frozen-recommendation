@@ -13,7 +13,7 @@ db = SQL("sqlite:///foodname.db")
 
 @app.route("/recommend", methods=["GET","POST"])
 def recommend():
-    
+    db.execute("SELECT ")
 
 
 @app.route("/", methods=["GET","POST"])
