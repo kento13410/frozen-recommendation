@@ -124,7 +124,7 @@ def search_item():
     lunch = request.form.get("lunch")
     snack = request.form.get("snack")
     sql = "SELECT 食品名 FROM 食品成分 WHERE 食品名 like ?"
-    brName = db.execute(sql, breakfast)
+    brName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like ?", breakfast)
     luName = db.execute(sql, lunch)
     snName = db.execute(sql, snack)
     return render_template("select.html", breakfast=brName, lunch=luName, snack=snName)
