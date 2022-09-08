@@ -1,0 +1,64 @@
+/* input.htmlのみに適用中(9/7現在),画面の配置を真ん中にするCSS */
+@charset "UTF-8";
+body {
+  background: #eeeeee;
+  font-family: Meiryo;
+}
+
+.grid {
+  background: #ffffff;
+  width: 500px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #cccccc;
+  margin: 30px auto;
+}
+/* ここまで */
+
+/* home.htmlのheaderについて*/
+a,
+a:link {
+  color: #3585b7;
+}
+a:visited {
+  color: #6252B7;
+}
+a:hover {
+  text-decoration: none;
+  color: #555;
+}
+header {
+  display: flex;
+}
+header h4 {
+  margin: 25px 0 0 20px;
+}
+header nav {
+  margin: 0 0 0 auto;
+}
+
+header nav ul {
+  list-style-type: none;
+  margin: 20px 0;
+  padding: 0;
+  display: flex;
+}
+header nav ul li a,
+header nav ul li a:link,
+header nav ul li a:visited {
+  display: block;
+  padding: 10px 15px;
+  text-decoration:none;
+  color: #000;
+}
+header nav ul li a:hover {
+  color: #888;
+}
+
+/* logo配置についてのcss */
+.logo {
+  display:block;
+  margin: auto;
+  width: 45%;
+  height: 45%;
+}
