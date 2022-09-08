@@ -1,6 +1,8 @@
+
 /* input.htmlのみに適用中(9/7現在),画面の配置を真ん中にするCSS */
 @charset "UTF-8";
-body {
+
+/* body {
   background: #eeeeee;
   font-family: Meiryo;
 }
@@ -16,7 +18,8 @@ body {
 /* ここまで */
 
 /* home.htmlのheaderについて*/
-a,
+
+/* a,
 a:link {
   color: #3585b7;
 }
@@ -56,9 +59,79 @@ header nav ul li a:hover {
 }
 
 /* logo配置についてのcss */
+/*
 .logo {
   display:block;
   margin: auto;
   width: 45%;
   height: 45%;
+} */ */
+
+/* ここからajaxに適用するcssファイルです。 */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+
+main {
+  width: 100%;
+  max-width: 1000px;
+  margin: 50px auto;
+  background-color: #eee;
+  padding: 20px;
+}
+
+.tabs {
+  / 横並びにする /
+  display: flex;
+  / 均等に並べる /
+  justify-content: space-between;
+}
+
+.tabs li {
+  / タブの幅を24%にする /
+  width: 24%;
+}
+
+.tabs li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  background-color: #bbb;
+  / タブのボタンの上部分を丸っぽくする /
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  / ふわっと変化させる /
+  transition: 0.3px;
+}
+
+/ activeじゃないタブにhoverした時 /
+.tabs li a:not(.active):hover {
+  / hoverした時に透明になる /
+  opacity: 0.7;
+}
+
+.tabs li a.active {
+  background-color: #fff;
+}
+
+.contents li {
+  background-color: #fff;
+  padding: 20px;
+  display: none;
+}
+
+.contents li.active {
+  display: block;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0; /左にできる隙間を消す */
 }
