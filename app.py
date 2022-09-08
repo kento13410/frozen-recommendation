@@ -99,12 +99,16 @@ def index():
     # 朝で摂取したエネルギー + 昼で摂取したエネルギー
         # 男性:1800 (kcal)
         # 女性:1350 (kcal)
-        D = 0
+        total = 0
+        fDicts = request.form.getlist("select_food")
+        for fDict in fDicts:
+            total += int(fDict)
+
         if (sex == "男"):
-            D = act - 1800
+            D = act - total
 
         elif (sex == "女"):
-            D = act - 1350
+            D = act - total
 
 # --------------------------------------------------------------------
 
@@ -114,22 +118,43 @@ def index():
         return render_template("output_tester.html", data = data)
 
 
-
-# -------------------------------------------------------上がテスター------------------------------------------------------------------
-
-
 @app.route("/search_item", methods=["GET", "POST"])
 def search_item():
     if request.method == "POST":
         breakfast = request.form.get("breakfast")
         lunch = request.form.get("lunch")
         snack = request.form.get("snack")
-        sql = "SELECT 食品名 FROM 食品成分 WHERE 食品名 like ?"
-        brName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like ?", breakfast)
-        luName = db.execute(sql, lunch)
-        snName = db.execute(sql, snack)
-        return render_template("select.html", breakfast=brName, lunch=luName, snack=snName)
-    # food_energy = db.execute("SELECT エネルギー FROM 食品成分 WHERE 食品名 like %?% OR 食品名 like %?% OR 食品名 like %?%", breakfast, lunch, snack)
+        sql = "SELECT * FROM 食品成分 WHERE 食品名 like ?"
+        if len(breakfast) != 0:
+            brName = db.execute(sql, "%" + breakfast + "%")
+        else:
+            brName = ''
+        if len(lunch) != 0:
+            luName = db.execute(sql, "%" + lunch + "%")
+        else:
+            luName = ''
+        if len(snack) != 0:
+            snName = db.execute(sql, "%" + snack + "%")
+        else:
+            snName = ''
+        return render_template("input_tester.html", breakfast=brName, lunch=luName, snack=snName)
+
+
+@app.route("/select_item", methods=["GET", "POST"])
+def select_item():
+    if request.method == "POST":
+        total = 0
+        fDicts = request.form.getlist("select_food")
+        for fDict in fDicts:
+            total += fDict['エネルギー']
+        return render_template("input_tester.html")
+
+
+
+
+# -------------------------------------------------------上がテスター------------------------------------------------------------------
+
+
 
 
 @app.route("/recommend", methods=["GET","POST"])

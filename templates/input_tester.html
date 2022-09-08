@@ -11,44 +11,54 @@
 <body>
     <h1>必須情報の入力する画面</h1>
     <div class="grid">
-        <form action="/" method="POST">
+        <div>
             <div class="grid1">
                 <h2>一人当たりの必要摂取カロリー</h2>
-                <input type="number" name="age" placeholder="年齢">
-                <input type="number" name="weight" placeholder="体重[kg]">
-                <input type="number" name="height" placeholder="身長[cm]">
-                <input type="number" name="budget" placeholder="予算[円]">
+                <input type="number" name="age" placeholder="年齢" form="result">
+                <input type="number" name="weight" placeholder="体重[kg]" form="result">
+                <input type="number" name="height" placeholder="身長[cm]" form="result">
+                <input type="number" name="budget" placeholder="予算[円]" form="result">
 
                 <h4>性別<br>
-                    <input type="radio" name="sex" value="男"> 男
-                    <input type="radio" name="sex" value="女"> 女
+                    <input type="radio" name="sex" value="男" form="result"> 男
+                    <input type="radio" name="sex" value="女" form="result"> 女
                 </h4>
                 <h4>活動レベル<br>
-                    <input type="radio" name="level" value="one">座り仕事が多く、１日の運動は、階段の上り下りくらいだった。<br>
-                    <input type="radio" name="level" value="two">立ち仕事が多く、比較的一日中動き回った。<br>
-                    <input type="radio" name="level" value="three">立ち仕事が多く、加えてジムでトレーニングもした。<br>
+                    <input type="radio" name="level" value="one" form="result">座り仕事が多く、１日の運動は、階段の上り下りくらいだった。<br>
+                    <input type="radio" name="level" value="two" form="result">立ち仕事が多く、比較的一日中動き回った。<br>
+                    <input type="radio" name="level" value="three" form="result">立ち仕事が多く、加えてジムでトレーニングもした。<br>
                 </h4>
                 <h4>目的<br>
-                    <input type="radio" name="activity" value="増量"> 増量
-                    <input type="radio" name="activity" value="減量"> 減量
-                    <input type="radio" name="activity" value="現状維持"> 現状維持
+                    <input type="radio" name="activity" value="増量" form="result"> 増量
+                    <input type="radio" name="activity" value="減量" form="result"> 減量
+                    <input type="radio" name="activity" value="現状維持" form="result"> 現状維持
                 </h4>
             </div>
-            <!-- <div class="grid2">
-                <div>
-                    {% for i in range(foods| length) %}
-                        <input type="radio" id="breakfast{{i}}">{{foods[i]}}</input>
-                    {% endfor %}
-
-                </div>
-            </div> -->
-            <input type="submit" value="登録">
-        </form>
+        </div><br>
         <form action="/search_item" method="POST">
-            朝食<input type="text" name="breakfast" id="breakfast">
-            昼食<input type="text" name="lunch" id="lunch">
-            間食<input type="text" name="snack" id="snack">
+            朝食<input type="text" name="breakfast" id="breakfast"><br>
+            昼食<input type="text" name="lunch" id="lunch"><br>
+            間食<input type="text" name="snack" id="snack"><br>
             <input type="submit" value="検索">
+        </form>
+        <div>
+            {% if breakfast|length != 0 or lunch| length != 0 or snack| length != 0 %}
+                <h3>朝食</h3>
+                {% for i in range(breakfast| length) %}
+                    <input type="checkbox" value="{{breakfast[i]['エネルギー']}}" name="select_food" form="result">{{breakfast[i]['食品名']}}</input><br>
+                {% endfor %}
+                <h3>昼食</h3>
+                {% for i in range(lunch| length) %}
+                    <input type="checkbox" value="{{lunch[i]['エネルギー']}}" name="select_food" form="result">{{lunch[i]['食品名']}}</input><br>
+                {% endfor %}
+                <h3>間食</h3>
+                {% for i in range(snack| length) %}
+                    <input type="checkbox" value="{{snack[i]['エネルギー']}}" name="select_food" form="result">{{snack[i]['食品名']}}</input><br>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <form id="result" action="/" method="POST">
+            <input type="submit" value="計算">
         </form>
 
     </div>

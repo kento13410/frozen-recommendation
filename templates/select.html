@@ -9,14 +9,17 @@
 </head>
 <body>
     <form action="/input" method="GET">
+        <h1>朝食</h1>
         {% for i in range(breakfast| length) %}
-            <input type="radio" value="{{breakfast[i]}}">{{breakfast[i]}}</input>
+            <input type="radio" value="{{breakfast[i]}}" name="select_food">{{breakfast[i]['食品名']}}</input><br>
         {% endfor %}
+        <h1>昼食</h1>
         {% for i in range(lunch| length) %}
-            <input type="radio" value="{{lunch[i]}}">{{lunch[i]}}</input>
+            <input type="radio" value="{{lunch[i]}}" name="select_food">{{lunch[i]['食品名']}}</input><br>
         {% endfor %}
+        <h1>間食</h1>
         {% for i in range(snack| length) %}
-            <input type="radio" value="{{snack[i]}}">{{snack[i]}}</input>
+            <input type="radio" value="{{snack[i]}}" name="select_food">{{snack[i]['食品名']}}</input><br>
         {% endfor %}
         <input type="submit" value="登録">
     </form>
