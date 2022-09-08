@@ -118,16 +118,17 @@ def index():
 # -------------------------------------------------------上がテスター------------------------------------------------------------------
 
 
-@app.route("/search_item")
+@app.route("/search_item", methods=["GET", "POST"])
 def search_item():
-    breakfast = request.form.get("breakfast")
-    lunch = request.form.get("lunch")
-    snack = request.form.get("snack")
-    sql = "SELECT 食品名 FROM 食品成分 WHERE 食品名 like ?"
-    brName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like ?", breakfast)
-    luName = db.execute(sql, lunch)
-    snName = db.execute(sql, snack)
-    return render_template("select.html", breakfast=brName, lunch=luName, snack=snName)
+    if request.method == "POST":
+        breakfast = request.form.get("breakfast")
+        lunch = request.form.get("lunch")
+        snack = request.form.get("snack")
+        sql = "SELECT 食品名 FROM 食品成分 WHERE 食品名 like ?"
+        brName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like ?", breakfast)
+        luName = db.execute(sql, lunch)
+        snName = db.execute(sql, snack)
+        return render_template("select.html", breakfast=brName, lunch=luName, snack=snName)
     # food_energy = db.execute("SELECT エネルギー FROM 食品成分 WHERE 食品名 like %?% OR 食品名 like %?% OR 食品名 like %?%", breakfast, lunch, snack)
 
 
