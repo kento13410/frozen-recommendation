@@ -123,10 +123,10 @@ def search_item():
     breakfast = request.form.get("breakfast")
     lunch = request.form.get("lunch")
     snack = request.form.get("snack")
-    sql1 = "SELECT 食品名 FROM 食品成分 WHERE 食品名 like ?"
-    brName = db.execute(sql1, breakfast)
-    luName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", lunch)
-    snName = db.execute("SELECT 食品名 FROM 食品成分 WHERE 食品名 like %?%", snack)
+    sql = "SELECT 食品名 FROM 食品成分 WHERE 食品名 like ?"
+    brName = db.execute(sql, breakfast)
+    luName = db.execute(sql, lunch)
+    snName = db.execute(sql, snack)
     return render_template("select.html", breakfast=brName, lunch=luName, snack=snName)
     # food_energy = db.execute("SELECT エネルギー FROM 食品成分 WHERE 食品名 like %?% OR 食品名 like %?% OR 食品名 like %?%", breakfast, lunch, snack)
 
