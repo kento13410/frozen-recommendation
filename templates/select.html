@@ -8,15 +8,16 @@
     <title>input 画面</title>
 </head>
 <body>
-    <form action="/input" method="POST">
+    <form action="/input" method="GET">
         {% for i in range(breakfast| length) %}
-            <input type="radio" value="{{breakfast[i]}}"></input>
+            <input type="radio" value="{{breakfast[i]}}">{{breakfast[i]}}</input>
         {% endfor %}
         {% for i in range(lunch| length) %}
-            <input type="radio" value="{{lunch[i]}}"></input>
+            <input type="radio" value="{{lunch[i]}}">{{lunch[i]}}</input>
         {% endfor %}
         {% for i in range(snack| length) %}
-            <input type="radio" value="{{snack[i]}}"></input>
+            <input type="radio" value="{{snack[i]}}">{{snack[i]}}</input>
         {% endfor %}
+        <input type="submit" value="登録">
     </form>
 </body>
