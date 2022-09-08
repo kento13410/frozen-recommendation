@@ -13,7 +13,7 @@
         // 要素をコピー＆追加する関数
         function addExample() {
             let elements = document.getElementById("breakfast");
-            let copied = elements.lastElementChild.cloneNode(true);
+            let copied = elements.cloneNode(true);
             elements.appendChild(copied);
         }
 
