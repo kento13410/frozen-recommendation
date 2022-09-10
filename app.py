@@ -1,5 +1,6 @@
 from crypt import methods
 from flask import Flask, render_template, request, redirect, session, flash
+from flask_session import Session
 from cs50 import SQL
 import random
 import ast
