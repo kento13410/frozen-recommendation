@@ -1,5 +1,5 @@
 from crypt import methods
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, session, flash
 from cs50 import SQL
 import random
 import ast
@@ -203,10 +203,6 @@ def login():
 
         # Query database for username
         rows = db.execute("SELECT * FROM users WHERE username = ?", name)
-
-        # Ensure username exists and password is correct
-        if len(rows) != 1 or not check_password_hash(rows[0]["hash"], password):
-            return apology("invalid username and/or password", 403)
 
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
