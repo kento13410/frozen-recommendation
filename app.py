@@ -66,7 +66,7 @@ def index():
 
         D = act - total_energy
 
-        db.execute("SELECT * FROM foodnames WHERE 
+        # db.execute("SELECT * FROM foodnames WHERE
         data = db.execute("SELECT * FROM foodnames WHERE カロリー < ?", D)
 
         return render_template("output_tester.html", data = data)
