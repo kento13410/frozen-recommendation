@@ -1,12 +1,8 @@
 from crypt import methods
 from flask import Flask, render_template, request
 from cs50 import SQL
-# from selenium import webdriver
-# from time import sleep
-# from selenium.webdriver.chrome.options import Options
-# from selenium.webdriver.chrome.service import Service
-# from webdriver_manager.chrome import ChromeDriverManager
 import random
+import ast
 
 app = Flask("__name__")
 db = SQL("sqlite:///foodname.db")
@@ -32,11 +28,6 @@ def index():
         # 目的
         activity = request.form.get("activity")
 
-
-    #とりあえず、仮で決める。
-        # 朝で摂取したエネルギー + 昼で摂取したエネルギー
-        # 男性:1800 (kcal)
-        # 女性:1350 (kcal)
 
 # --------------------------------------------------------------------
 # 一人当たりの必要摂取カロリー
@@ -95,20 +86,33 @@ def index():
 # D = act - (朝で摂取したエネルギー + 昼で摂取したエネルギー) [kcal]
 # --------------------------------------------------------------------
 
-    #とりあえず、仮で決める。
-    # 朝で摂取したエネルギー + 昼で摂取したエネルギー
-        # 男性:1800 (kcal)
-        # 女性:1350 (kcal)
-        total = 0
+        total_energy = 0
+        total_protein = 0
+        total_lipid = 0
+        total_carbohydrate = 0
         fDicts = request.form.getlist("select_food")
         for fDict in fDicts:
-            total += int(fDict)
+            Dict = ast.literal_eval(fDict)
+            total_energy += int(Dict['エネルギー'])
+            total_protein += int(Dict['たんぱく質'])
+            total_lipid += int(Dict['脂質'])
+            total_carbohydrate += int(Dict['炭水化物'])
+
+        # 1日に必要な三大栄養素
+        P = 2 * intWeight
+        F = act * 0.25
+        CBH = act - P - F
+
+        # 夜に必要な三大栄養素
+        difP = P - total_protein
+        difF = F - total_lipid
+        difCBH = CBH - total_carbohydrate
 
         if (sex == "男"):
-            D = act - total
+            D = act - total_energy
 
         elif (sex == "女"):
-            D = act - total
+            D = act - total_energy
 
 # --------------------------------------------------------------------
 
@@ -121,22 +125,22 @@ def index():
 @app.route("/search_item", methods=["GET", "POST"])
 def search_item():
     if request.method == "POST":
-        breakfast = request.form.get("breakfast")
-        lunch = request.form.get("lunch")
-        snack = request.form.get("snack")
+        breakfasts = request.form.getlist("breakfast")
+        lunchs = request.form.getlist("lunch")
+        snacks = request.form.getlist("snack")
         sql = "SELECT * FROM 食品成分 WHERE 食品名 like ?"
-        if len(breakfast) != 0:
-            brName = db.execute(sql, "%" + breakfast + "%")
-        else:
-            brName = ''
-        if len(lunch) != 0:
-            luName = db.execute(sql, "%" + lunch + "%")
-        else:
-            luName = ''
-        if len(snack) != 0:
-            snName = db.execute(sql, "%" + snack + "%")
-        else:
-            snName = ''
+        brName = []
+        luName = []
+        snName = []
+        for breakfast in breakfasts:
+            if len(breakfast) != 0:
+                brName += db.execute(sql, "%" + breakfast + "%")
+        for lunch in lunchs:
+            if len(lunch) != 0:
+                luName += db.execute(sql, "%" + lunch + "%")
+        for snack in snacks:
+            if len(snack) != 0:
+                snName += db.execute(sql, "%" + snack + "%")
         return render_template("input_tester.html", breakfast=brName, lunch=luName, snack=snName)
 
 
@@ -148,6 +152,11 @@ def select_item():
         for fDict in fDicts:
             total += fDict['エネルギー']
         return render_template("input_tester.html")
+
+
+@app.route("/back")
+def back():
+    return render_template("input_tester.html")
 
 
 
@@ -168,14 +177,6 @@ def recommend():
         foodsRecommend = random.sample(foods, 3)
         return render_tempalate("output.html", foods=foodsRecommend)
 
-#     foods = []
-#     categorys = db.execute("SELECT category FROM category WHERE user_id = ? AND is_liked = TRUE", session['user_id'])
-#     for category in categorys:
-#         foods += db.execute("SELECT food FROM foods WHERE category = ?", category['category'])
-#     foodsRecommend = random.sample(foods, 3)
-#     return render_template("recommend.html", foods = foodsRecommend)
-
-
 
 
 @app.route("/home",methods=["GET","POST"])
@@ -187,42 +188,4 @@ def home():
 
 
 
-# @app.route("/search_item")
-# def search_item():
-#     options = Options()
-#     options.binary_location = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
-#     options.add_argument('--headless')
 
-#     browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-
-#     try:
-#         url = 'https://fooddb.mext.go.jp/freeword/fword_top.pl'
-#         browser.get(url)
-
-#         browser.switch_to.frame(browser.find_element_by_tag_name("iframe"))
-
-#         keywordBox = browser.find_element_by_class_name('s-text')
-#         search = browser.find_element_by_name('function1')
-
-#         keyword = request.form.get("breakfast")
-
-#         keywordBox.send_keys(keyword)
-#         search.click()
-
-#         browser.find_element_by_class_name('result_button').click()
-
-#         foods = []
-#         valueNames = browser.find_elements_by_css_selector('#result_table > tbody > tr')
-#         for valueName in valueNames:
-#             items = valueName.find_elements_by_css_selector('td')
-#             for i in range(len(items)):
-#                 foods.append(items[0].text)
-
-#             # print(f'{items[0].text}, エネルギー：{items[2].text}kcal, たんぱく質：{items[4].text}g, 脂質：{items[5].text}g,
-#             # 炭水化物：{items[6].text}g （100g当たり）')
-
-#     finally:
-#         # プラウザを閉じる
-#         browser.quit()
-
-#     return render_template("input.html", foods=foods)
