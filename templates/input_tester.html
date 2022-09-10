@@ -129,15 +129,15 @@
             {% if breakfast|length != 0 or lunch| length != 0 or snack| length != 0 %}
                 <h3>朝食</h3>
                 {% for i in range(breakfast| length) %}
-                    <input type="checkbox" value="{{breakfast[i]}}" name="select_food" form="result">{{breakfast[i]['食品名']}}</input><br>
+                    <input type="checkbox" value="{{breakfast[i]}}" name="select_food" form="result">{{breakfast[i]['食品名']}}<br>
                 {% endfor %}
                 <h3>昼食</h3>
                 {% for i in range(lunch| length) %}
-                    <input type="checkbox" value="{{lunch[i]}}" name="select_food" form="result">{{lunch[i]['食品名']}}</input><br>
+                    <input type="checkbox" value="{{lunch[i]}}" name="select_food" form="result">{{lunch[i]['食品名']}}<br>
                 {% endfor %}
                 <h3>間食</h3>
                 {% for i in range(snack| length) %}
-                    <input type="checkbox" value="{{snack[i]}}" name="select_food" form="result">{{snack[i]['食品名']}}</input><br>
+                    <input type="checkbox" value="{{snack[i]}}" name="select_food" form="result">{{snack[i]['食品名']}}<br>
                 {% endfor %}
             {% endif %}
         </div>

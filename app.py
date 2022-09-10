@@ -175,7 +175,7 @@ def recommend():
         for fav in favs:
             foods += db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?", fav)
         foodsRecommend = random.sample(foods, 3)
-        return render_tempalate("output.html", foods=foodsRecommend)
+        return render_template("output.html", foods=foodsRecommend)
 
 
 
@@ -185,6 +185,17 @@ def home():
         return render_template("home.html")
     else:
         pass
+
+
+# --------------------------------------登録画面(register)--------------------------------------------
+@app.route("/register",methods=["GET","POST"])
+def register():
+    if (request.method=="GET"):
+        return render_template("register.html")
+    else:
+        pass
+
+# -------------------------------------------------------------------------------------
 
 
 
