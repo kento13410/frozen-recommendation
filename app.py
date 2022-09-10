@@ -66,11 +66,13 @@ def index():
 
         D = act - total_energy
 
+        difData = {'カロリー': D, 'タンパク質': difP, '脂質': difF, '炭水化物': difCBH}
+
         # カロリー*0.7< act< カロリー*1.3
         data = db.execute("SELECT * FROM foodnames WHERE カロリー*0.8 < ? < カロリー*1.2 AND タンパク質*0.7 < ? < タンパク質*1.3 AND 脂質*0.7 < ? < 脂質*1.3 AND 炭水化物*0.7 < ? < 炭水化物*1.3", act, difP, difF, difCBH)
         # data = db.execute("SELECT * FROM foodnames WHERE カロリー < ?", D)
 
-        return render_template("output_tester.html", data = data)
+        return render_template("output_tester.html", data = data, difData=difData)
 
 
 @app.route("/search_item", methods=["GET", "POST"])
