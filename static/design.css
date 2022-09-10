@@ -1,9 +1,7 @@
-
 /* input.htmlのみに適用中(9/7現在),画面の配置を真ん中にするCSS */
 @charset "UTF-8";
-
-/* body {
-  background: #eeeeee;
+body {
+  background: #ffffff;
   font-family: Meiryo;
 }
 
@@ -18,8 +16,7 @@
 /* ここまで */
 
 /* home.htmlのheaderについて*/
-
-/* a,
+a,
 a:link {
   color: #3585b7;
 }
@@ -32,6 +29,10 @@ a:hover {
 }
 header {
   display: flex;
+  background-color: white;
+  outline: 1px solid black;
+  height: 100px;
+  margin: 20px;
 }
 header h4 {
   margin: 25px 0 0 20px;
@@ -53,85 +54,64 @@ header nav ul li a:visited {
   padding: 10px 15px;
   text-decoration:none;
   color: #000;
+  background-color: skyblue;
+  border-radius: 30px;
+  margin: 10px;
 }
 header nav ul li a:hover {
   color: #888;
 }
 
 /* logo配置についてのcss */
-/*
 .logo {
   display:block;
-  margin: auto;
-  width: 45%;
-  height: 45%;
-} */ */
-
-/* ここからajaxに適用するcssファイルです。 */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-a {
-  color: #333;
-  text-decoration: none;
-}
-
-
-main {
+  margin: 10px;
   width: 100%;
-  max-width: 1000px;
-  margin: 50px auto;
-  background-color: #eee;
-  padding: 20px;
+  height: 100%;
+  position: relative;
+  left: 500px;
+  bottom: 25px;
 }
 
-.tabs {
-  / 横並びにする /
+/* flexbox使用のためのcss */
+
+.flex-container {
   display: flex;
-  / 均等に並べる /
-  justify-content: space-between;
+  background-color: skyblue;
+  justify-content: space-around;
+  margin: 50px;
+
 }
 
-.tabs li {
-  / タブの幅を24%にする /
-  width: 24%;
+.food {
+  background-color: lightgreen;
+  margin: 10px;
+  border-radius: 30px;
+  border: 2px solid black;
 }
 
-.tabs li a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  background-color: #bbb;
-  / タブのボタンの上部分を丸っぽくする /
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  / ふわっと変化させる /
-  transition: 0.3px;
+.foodname {
+  background-color: coral;
+  margin: 10px;
+  text-align: center;
 }
 
-/ activeじゃないタブにhoverした時 /
-.tabs li a:not(.active):hover {
-  / hoverした時に透明になる /
-  opacity: 0.7;
+/* input.htmlのbodyについてのcss */
+h1{
+  text-align: center;
 }
 
-.tabs li a.active {
-  background-color: #fff;
+.relative{
+  position:relative;
+  left: 1180px;
+}
+.home{
+  position:relative;
+  left: 710px;
 }
 
-.contents li {
-  background-color: #fff;
-  padding: 20px;
-  display: none;
+/* 空間の間 */
+.space{
+  margin:12px;
 }
 
-.contents li.active {
-  display: block;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0; /左にできる隙間を消す */
-}

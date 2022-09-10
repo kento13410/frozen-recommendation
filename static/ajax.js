@@ -7,7 +7,6 @@ console.log(contents);
 
 for (let i = 0; i < tabs.length; i++) {
 // タブの0個めをクリックしたらコンテンツの0個めが追加される
-
 	tabs[i].addEventListener("click", function(e) {
 		// 起こるイベントを削除できる
 		e.preventDefault();
