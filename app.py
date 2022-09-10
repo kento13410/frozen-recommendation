@@ -1,5 +1,5 @@
 from crypt import methods
-from flask import Flask, render_template, request, redirect, session, flash
+from flask import Flask, render_template, request, redirect, session
 from flask_session import Session
 from cs50 import SQL
 import random
@@ -8,14 +8,116 @@ from helpers import login_required, act_calculate
 from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask("__name__")
-db = SQL("sqlite:///foodname.db")
 
-# Configure session to use filesystem (instead of signed cookies)
+#_________________________________Sessionのdictオブジェクトを作成__________________________________________
 app.config["SESSION_PERMANENT"] = False
+# セッションの保存期間を指定
 app.config["SESSION_TYPE"] = "filesystem"
+#　ファイルとしてflask_sessionというセッションデータベースを作成する。
 Session(app)
+# 作成したセッションファイルとアプリを接続
+#---------------------------------------------------------------------------------------------------------
 
-@app.route("/", methods=["GET","POST"])
+# sqliteをデータベースに接続する
+db = SQL("sqlite:///foodname.db")
+db1 =SQL("sqlite:///users.db")
+
+
+
+#------------------------------
+#     LOGIN機能の実装:
+#------------------------------
+
+#----------------------------------------ログイン画面(login)--------------------------------------------------
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    """Log user in"""
+
+    # sessionの情報を消す
+    session.clear()
+
+    # User reached route via POST (as by submitting a form via POST)
+    if (request.method == "POST"):
+
+        # Ensure username was submitted
+        username = request.form.get("username")
+        password = request.form.get("password")
+        if not username :
+            raise Exception('ユーザー名を入力してください！！！')
+        if not password :
+            raise Exception('パスワードを入力してください！！！')
+        
+        # Query database for username
+        rows = db1.execute("SELECT * FROM users WHERE username = ?", username)
+
+        if (check_password_hash(rows[0]["hash"], password)):
+
+            # Remember which user has logged in
+            session["user_id"] = rows[0]["id"]
+
+            # Redirect user to home page
+            return redirect("/")
+
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        return render_template("login.html")
+# ---------------------------------------------------------------------------------------------------------------
+
+# --------------------------------------登録画面(register)---------------------------------------------------
+@app.route("/register",methods=["GET","POST"])
+def register():
+    if (request.method=="GET"):
+        return render_template("register.html")
+    else:
+        username = request.form.get("username")
+        password = request.form.get("password")
+        confirmation = request.form.get("confirmation")
+        if not username :
+            raise Exception('ユーザー名を入力してください！！！')
+        if not password :
+            raise Exception('パスワードを入力してください！！！')
+        if not confirmation:
+            raise Exception('確認パスワードも入力してください！！！')
+
+        if password != confirmation:
+            raise Exception('パスワードが一致してないですね。。怪しいなー本人ですか？笑笑')
+
+        # データの登録
+        db1.execute("INSERT INTO users (username,hash) VALUES (?,?)",username,generate_password_hash(password))
+        
+        return redirect("/login")
+
+
+# ------------------------------------------------------------------------------------------------------------
+
+#______________________________________ログアウト画面(logout)__________________________________________________
+@app.route("/logout")
+@login_required
+def logout():
+    """Log user out"""
+
+    # Forget any user_id
+    session.clear()
+
+    # Redirect user to login form
+    return redirect("/")
+#______________________________________________________________________________________________
+
+
+
+# ------------------------------------ホーム画面(home)--------------------------------------------------------
+@app.route("/",methods=["GET","POST"])
+@login_required
+def home():
+    if (request.method == "GET"):
+        return render_template("home.html")
+    else:
+        pass
+# -------------------------------------------------------------------------------------------------------------
+
+
+# ------------------------------------------入力画面(input)----------------------------------------------------
+@app.route("/input", methods=["GET","POST"])
 def index():
     if (request.method == "GET"):
         return render_template("input_tester.html")
@@ -75,7 +177,7 @@ def index():
         # data = db.execute("SELECT * FROM foodnames WHERE カロリー < ?", D)
 
         return render_template("output_tester.html", data = data, difData=difData)
-
+# ----------------------------------------------------------------------------------------
 
 @app.route("/search_item", methods=["GET", "POST"])
 def search_item():
@@ -115,12 +217,6 @@ def back():
 
 
 
-
-# -------------------------------------------------------上がテスター------------------------------------------------------------------
-
-
-
-
 @app.route("/recommend", methods=["GET","POST"])
 def recommend():
     foods = []
@@ -134,59 +230,4 @@ def recommend():
 
 
 
-@app.route("/home",methods=["GET","POST"])
-def home():
-    if (request.method == "GET"):
-        return render_template("home.html")
-    else:
-        pass
-
-# --------------------------------------登録画面(register)--------------------------------------------
-@app.route("/register",methods=["GET","POST"])
-def register():
-    if (request.method=="GET"):
-        return render_template("register.html")
-    else:
-        username = request.form.get("username")
-        password = request.form.get("password")
-        confirmation = request.form.get("confirmation")
-        if password != confirmation:
-            raise Exception('Error!')
-        # データの登録
-        db.execute("INSERT INTO users (username,hash) VALUES (?,?)",username,generate_password_hash(password))
-        
-        return redirect("/login")
-
-
-
-# -------------------------------------------------------------------------------------
-
-
-
-@app.route("/login", methods=["GET", "POST"])
-def login():
-    """Log user in"""
-
-    # Forget any user_id
-    session.clear()
-
-    # User reached route via POST (as by submitting a form via POST)
-    if request.method == "POST":
-
-        # Ensure username was submitted
-        name = request.form.get("username")
-        password = request.form.get("password")
-
-        # Query database for username
-        rows = db.execute("SELECT * FROM users WHERE username = ?", name)
-
-        # Remember which user has logged in
-        session["user_id"] = rows[0]["id"]
-
-        # Redirect user to home page
-        return redirect("/home")
-
-    # User reached route via GET (as by clicking a link or via redirect)
-    else:
-        return render_template("login.html")
 
