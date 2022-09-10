@@ -35,7 +35,7 @@ def index():
         # 目的
         activity = request.form.get("activity")
 
-
+        # 必要摂取カロリーの計算
         act = act_calculate(sex, intWeight, intHeight, intAge, level, activity)
 
 # --------------------------------------------------------------------
@@ -64,11 +64,7 @@ def index():
         difF = F - total_lipid
         difCBH = CBH - total_carbohydrate
 
-        if (sex == "男"):
-            D = act - total_energy
-
-        elif (sex == "女"):
-            D = act - total_energy
+        D = act - total_energy
 
 # --------------------------------------------------------------------
 
