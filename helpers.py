@@ -19,6 +19,9 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+
+
+def act_calculate(sex, )
 # --------------------------------------------------------------------
 # 一人当たりの必要摂取カロリー
 # act = b * o * g [kcal]
