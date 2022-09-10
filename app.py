@@ -187,5 +187,5 @@ def home():
         pass
 
 
-
+@app.route("")
 
