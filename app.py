@@ -66,6 +66,7 @@ def index():
 
         D = act - total_energy
 
+        # -カロリー*0.3< カロリー - act< カロリー*0.3
         # db.execute("SELECT * FROM foodnames WHERE
         data = db.execute("SELECT * FROM foodnames WHERE カロリー < ?", D)
 
