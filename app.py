@@ -67,7 +67,7 @@ def index():
         D = act - total_energy
 
         # カロリー*0.7< act< カロリー*1.3
-        data = db.execute("SELECT * FROM foodnames WHERE カロリー*0.7 < ? < カロリー*1.3 AND たんぱく質*0.7 < ? < たんぱく質*1.3 AND 脂質*0.7 < ? < 脂質*1.3 AND 炭水化物*0.7 < ? < 炭水化物*1.3", act, difP, difF, difCBH)
+        data = db.execute("SELECT * FROM foodnames WHERE エネルギー*0.7 < ? < エネルギー*1.3 AND たんぱく質*0.7 < ? < たんぱく質*1.3 AND 脂質*0.7 < ? < 脂質*1.3 AND 炭水化物*0.7 < ? < 炭水化物*1.3", act, difP, difF, difCBH)
         # data = db.execute("SELECT * FROM foodnames WHERE カロリー < ?", D)
 
         return render_template("output_tester.html", data = data)
