@@ -1,11 +1,19 @@
 from crypt import methods
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, session, flash
+from flask_session import Session
 from cs50 import SQL
 import random
 import ast
+from helpers import login_required, act_calculate
+from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask("__name__")
 db = SQL("sqlite:///foodname.db")
+
+# Configure session to use filesystem (instead of signed cookies)
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 
 @app.route("/", methods=["GET","POST"])
 def index():
@@ -28,59 +36,8 @@ def index():
         # 目的
         activity = request.form.get("activity")
 
-
-# --------------------------------------------------------------------
-# 一人当たりの必要摂取カロリー
-# act = b * o * g [kcal]
-# --------------------------------------------------------------------
-        # 基礎代謝(B)の計算
-            # 男性： 10×体重kg＋6.25×身長cmー5×年齢＋5
-            # 女性： 10×体重kg+6.25×身長cmー５×年齢-16
-        b = 0
-        # 「活動量を入れた代謝量」を求めるために掛ける値
-        oDict = {"one":1.2,"two":1.55,"three":1.725}
-        # G(食事の目的)
-        gDict ={"増量":1.2,"現状維持":1.0,"減量":0.8}
-        # bo: b * o　のこと
-        bo = 0
-
-        if (sex == "男"):
-            b = 10 * intWeight + 6.25 * intHeight - 5 * intAge + 5
-            # boを計算する
-            if (level == "one"):
-                bo = b * oDict["one"]
-            elif (level == "two"):
-                bo = b * oDict["two"]
-            elif (level == "three"):
-                bo = b * oDict["three"]
-            # actを計算する。
-            if (activity == "増量"):
-                act = bo * gDict["増量"]
-            elif (activity == "現状維持"):
-                act = bo * gDict["現状維持"]
-            elif (activity == "減量"):
-                act = bo * gDict["減量"]
-
-
-        if (sex == "女"):
-            b = 10 * intWeight + 6.25 * intHeight - 5 * intAge - 16
-            # boを計算する
-            if (level == "one"):
-                bo = b * oDict["one"]
-            elif (level == "two"):
-                bo = b * oDict["two"]
-            elif (level == "three"):
-                bo = b * oDict["three"]
-            # actを計算する。
-            if (activity == "増量"):
-                act = bo * gDict["増量"]
-            elif (activity == "現状維持"):
-                act = bo * gDict["現状維持"]
-            elif (activity == "減量"):
-                act = bo * gDict["減量"]
-
-#---------------------------------------------------------------------
-
+        # 必要摂取カロリーの計算
+        act = act_calculate(sex, intWeight, intHeight, intAge, level, activity)
 
 # --------------------------------------------------------------------
 # D = act - (朝で摂取したエネルギー + 昼で摂取したエネルギー) [kcal]
@@ -108,15 +65,10 @@ def index():
         difF = F - total_lipid
         difCBH = CBH - total_carbohydrate
 
-        if (sex == "男"):
-            D = act - total_energy
+        D = act - total_energy
 
-        elif (sex == "女"):
-            D = act - total_energy
-
-# --------------------------------------------------------------------
-
-        # return render_template("test.html", D=D)
+        # -カロリー*0.3< カロリー - act< カロリー*0.3
+        # db.execute("SELECT * FROM foodnames WHERE
         data = db.execute("SELECT * FROM foodnames WHERE カロリー < ?", D)
 
         return render_template("output_tester.html", data = data)
@@ -126,7 +78,7 @@ def index():
 def search_item():
     if request.method == "POST":
         breakfasts = request.form.getlist("breakfast")
-        lunchs = request.form.getlist("lunch")
+        lunches = request.form.getlist("lunch")
         snacks = request.form.getlist("snack")
         sql = "SELECT * FROM 食品成分 WHERE 食品名 like ?"
         brName = []
@@ -135,7 +87,7 @@ def search_item():
         for breakfast in breakfasts:
             if len(breakfast) != 0:
                 brName += db.execute(sql, "%" + breakfast + "%")
-        for lunch in lunchs:
+        for lunch in lunches:
             if len(lunch) != 0:
                 luName += db.execute(sql, "%" + lunch + "%")
         for snack in snacks:
@@ -186,17 +138,52 @@ def home():
     else:
         pass
 
-
 # --------------------------------------登録画面(register)--------------------------------------------
 @app.route("/register",methods=["GET","POST"])
 def register():
     if (request.method=="GET"):
         return render_template("register.html")
     else:
-        pass
+        username = request.form.get("username")
+        password = request.form.get("password")
+        confirmation = request.form.get("confirmation")
+        if password != confirmation:
+            raise Exception('Error!')
+        # データの登録
+        db.execute("INSERT INTO users (username,hash) VALUES (?,?)",username,generate_password_hash(password))
+        
+        return redirect("/login")
+
+
 
 # -------------------------------------------------------------------------------------
 
 
 
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    """Log user in"""
+
+    # Forget any user_id
+    session.clear()
+
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+
+        # Ensure username was submitted
+        name = request.form.get("username")
+        password = request.form.get("password")
+
+        # Query database for username
+        rows = db.execute("SELECT * FROM users WHERE username = ?", name)
+
+        # Remember which user has logged in
+        session["user_id"] = rows[0]["id"]
+
+        # Redirect user to home page
+        return redirect("/home")
+
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        return render_template("login.html")
 
