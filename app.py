@@ -4,6 +4,7 @@ from flask_session import Session
 from cs50 import SQL
 import random
 import ast
+from helpers import login_required
 
 app = Flask("__name__")
 db = SQL("sqlite:///foodname.db")
