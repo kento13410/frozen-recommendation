@@ -7,6 +7,11 @@ import ast
 app = Flask("__name__")
 db = SQL("sqlite:///foodname.db")
 
+# Configure session to use filesystem (instead of signed cookies)
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
+
 @app.route("/", methods=["GET","POST"])
 def index():
     if (request.method == "GET"):
