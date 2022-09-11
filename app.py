@@ -80,7 +80,7 @@ def register():
             raise Exception('確認パスワードも入力してください！！！')
 
         if password != confirmation:
-            raise Exception('パスワードが一致してないですね。。怪しいなー本人ですか？笑')
+            raise Exception('パスワードが一致してないでよ！')
 
         # データの登録
         db1.execute("INSERT INTO users (username,hash) VALUES (?,?)",username,generate_password_hash(password))
