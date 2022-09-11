@@ -1,9 +1,9 @@
 from crypt import methods
 from flask import Flask, render_template, request, redirect, session
-from flask_session import Session
 from cs50 import SQL
 import random
 import ast
+from flask_session import Session
 from helpers import login_required, act_calculate
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -80,7 +80,7 @@ def register():
             raise Exception('確認パスワードも入力してください！！！')
 
         if password != confirmation:
-            raise Exception('パスワードが一致してないですね。。怪しいなー本人ですか？笑笑')
+            raise Exception('パスワードが一致してないですね。。怪しいなー本人ですか？笑')
 
         # データの登録
         db1.execute("INSERT INTO users (username,hash) VALUES (?,?)",username,generate_password_hash(password))
