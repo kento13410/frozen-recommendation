@@ -120,6 +120,8 @@ def home():
 @app.route("/input", methods=["GET","POST"])
 def index():
     if (request.method == "GET"):
+        if session['user_id']:
+            return render_template("input.html")
         return render_template("input_tester.html")
     else:
         # 一人当たりの必要摂取カロリー
