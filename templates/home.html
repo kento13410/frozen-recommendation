@@ -6,6 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, width=device-width">
         <link rel="stylesheet" href="../static/design.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
         <title>お弁当肉系</title>
     </head>
     <body>
@@ -25,15 +26,20 @@
         <main>
         <section>
             <form action="/recommend" method="POST">
-                <input type="submit">おすすめレシピ
+                <h1>
+                    おすすめレシピ
+                </h1>
                 <div>
-                    <input type="checkbox" id="chechbox1" name="fav" value="お弁当肉系">
-                    <label for="button1">お弁当肉系</label>
+                    <input type="checkbox" id="checkbox1" name="fav" value="お弁当肉系">
+                    <label for="button1">お弁当肉系：</label>
+                    <i class="fas fa-heart" role="button" style="color:aliceblue" id ="heart1"></i>
                 </div>
                 <div>
                     <input type="checkbox" id="checkbox2" name="fav" value="おべんとう 魚系">
-                    <label for="button2">お弁当魚系</label>
+                    <label for="button2">お弁当魚系：</label>
+                    <i class="fas fa-heart" role ="button" style="color:aliceblue" id = "heart2"></i>
                 </div>
+                <div><input type="submit" role="button"></div>
             </form>
             <div class="flex-container">
                 <div tabindex="0" role="button" class="food">
@@ -63,6 +69,7 @@
             </div>
         </section>
         </main>
+        <script src="../static/like.js"></script>
     </body>
 </html>
 
