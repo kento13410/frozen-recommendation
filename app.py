@@ -46,7 +46,7 @@ def login():
             raise Exception('ユーザー名を入力してください！！！')
         if not password :
             raise Exception('パスワードを入力してください！！！')
-        
+
         # Query database for username
         rows = db1.execute("SELECT * FROM users WHERE username = ?", username)
 
@@ -84,7 +84,7 @@ def register():
 
         # データの登録
         db1.execute("INSERT INTO users (username,hash) VALUES (?,?)",username,generate_password_hash(password))
-        
+
         return redirect("/login")
 
 
@@ -179,6 +179,9 @@ def index():
         return render_template("output_tester.html", data = data, difData=difData)
 # ----------------------------------------------------------------------------------------
 
+
+# --------------------------------------------入力と合致する食品の栄養情報を取得------------
+
 @app.route("/search_item", methods=["GET", "POST"])
 def search_item():
     if request.method == "POST":
@@ -200,6 +203,10 @@ def search_item():
                 snName += db.execute(sql, "%" + snack + "%")
         return render_template("input_tester.html", breakfast=brName, lunch=luName, snack=snName)
 
+# -------------------------------------------------------------------------------------------------------------
+
+
+# -------------------------------------------------------------------------------------------------------------
 
 @app.route("/select_item", methods=["GET", "POST"])
 def select_item():
@@ -209,6 +216,8 @@ def select_item():
         for fDict in fDicts:
             total += fDict['エネルギー']
         return render_template("input_tester.html")
+
+# -------------------------------------------------------------------------------------------------------------
 
 
 @app.route("/back")
