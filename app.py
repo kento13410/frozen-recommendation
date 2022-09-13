@@ -258,4 +258,4 @@ def personal_data():
         # 目的
         activity = request.form.get("activity")
 
-        
+        db1.execute(INSERT INTO personal_data )
