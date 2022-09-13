@@ -155,3 +155,88 @@ body{
 ::-moz-input-placeholder{
    color: rgba(255,255,255,0.6);
 }
+
+/* ここからregister1.html */
+.register {
+  position: absolute;
+  top: calc(50% - 127px);
+  left: calc(55% - 25px);
+  height: 150px;
+  width: 350px;
+  padding: 10px;
+  z-index: 2;
+}
+
+.register input[type=text]{
+  width: 300px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 2px;
+  color: #fff;
+  font-family: 'Exo', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 4px;
+  text-align:center;
+}
+
+.register input[type=password]{
+  width: 300px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 2px;
+  color: #fff;
+  font-family: 'Exo', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 4px;
+  margin-top: 12px;
+  text-align:center;
+}
+
+.register input[type=button]{
+  width: 310px;
+  height: 45px;
+  background: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+  border-radius: 2px;
+  color: #a18d6c;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 6px;
+  margin-top: 12px;
+}
+
+.register input[type=button]:hover{
+  opacity: 0.8;
+}
+
+.register input[type=button]:active{
+  opacity: 0.6;
+}
+
+.register input[type=text]:focus{
+  outline: none;
+  border: 1px solid rgba(255,255,255,0.9);
+}
+
+.register input[type=password]:focus{
+  outline: none;
+  border: 1px solid rgba(255,255,255,0.9);
+}
+
+.register input[type=button]:focus{
+  outline: none;
+}
+
+::-webkit-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
+
+::-moz-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
