@@ -125,7 +125,8 @@ def index():
         return render_template("input_tester.html")
     else:
         if session['user_id']:
-            personal_data = db.execute(SELECT * FROM personal_data WHERE user_id = session['user_id'])[0]
+            personal_data = db.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
+            act = act_calculate(personal_data['sex'], personal_data['weight'], personal_data['height'], personal_data['age'], personal_data['level'], personal_data['activity'])
 
         else:
             # 一人当たりの必要摂取カロリー
