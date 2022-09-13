@@ -122,7 +122,9 @@ def index():
     if (request.method == "GET"):
         if session['user_id']:
             return render_template("input.html")
-        return render_template("input_tester.html")
+        else:
+            return render_template("input_tester.html")
+
     else:
         if session['user_id']:
             personal_data = db.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
