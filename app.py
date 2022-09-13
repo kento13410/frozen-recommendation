@@ -247,7 +247,7 @@ def recommend():
 
 @app.route("personal_data", methods=['GET', 'POST'])
 def personal_data():
-    if request.method == 'GET':
+    if request.method == '':
         age = int(request.form.get("age"))
         weight = int(request.form.get("weight"))
         height = int(request.form.get("height"))
@@ -258,4 +258,6 @@ def personal_data():
         # 目的
         activity = request.form.get("activity")
 
-        db1.execute(INSERT INTO personal_data )
+        db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, budget, level, activity) VALUES (?, ?, ?, ?, ?, ?, ?)", session['user_id'], age, budget,  weight, height, level, activity)
+
+        return redirect("/")
