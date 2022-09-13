@@ -36,7 +36,7 @@
 
     <h1>必須情報の入力する画面</h1>
     <div class="grid">
-        <div class="grid1">
+        <form action="/personal_data" method="POST">
             <div class="space">
                 <h2>一人当たりの必要摂取カロリー</h2>
             </div>
@@ -69,9 +69,7 @@
                 <input type="radio" name="activity" value="現状維持" form="result"> 現状維持
             </div>
             </h4>
-        </div>
-        <form id="result" action="/personal_data" method="POST">
-            <input type="submit" value="登録">
+
         </form>
 
     </div>

@@ -245,7 +245,7 @@ def recommend():
 
 
 
-@app.route("personal_data", methods=['GET', 'POST'])
+@app.route("/personal_data", methods=['GET', 'POST'])
 def personal_data():
     if request.method == 'POST':
         age = int(request.form.get("age"))
