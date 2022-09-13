@@ -1,4 +1,4 @@
-/* input.htmlのみに適用中(9/7現在),画面の配置を真ん中にするCSS */
+/*画面の配置を真ん中にするCSS */
 @charset "UTF-8";
 body {
   background: #ffffff;
@@ -115,3 +115,8 @@ h1{
   margin:12px;
 }
 
+/* ここに画像のスライドショーを書く */
+
+/* .backgroundPhoto {
+
+} */
