@@ -245,4 +245,6 @@ def recommend():
 
 
 
-
+@app.route("personal_data", methods=['GET', 'POST'])
+def personal_data():
+    
