@@ -163,8 +163,11 @@ def index():
 
         # 1日に必要な三大栄養素
         P = 2 * weight
-        F = act * 0.25
-        CBH = act - P - F
+        P_cal = P * 4
+        F_cal = act * 0.25
+        F = F_cal / 9
+        CBH_cal = act - P_cal - F_cal
+        CBH = CBH_cal / 4
 
         # 夜に必要な三大栄養素
         difP = P - total_protein
