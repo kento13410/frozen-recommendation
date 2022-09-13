@@ -174,6 +174,7 @@ def index():
         difF = F - total_lipid
         difCBH = CBH - total_carbohydrate
 
+        # 三大栄養素の不足分
         X = difP/P + difF/F + difCBH/CBH
 
         D = act - total_energy
