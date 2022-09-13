@@ -124,24 +124,22 @@ def index():
             return render_template("input.html")
         return render_template("input_tester.html")
     else:
-        # 一人当たりの必要摂取カロリー
-        age = request.form.get("age")
-        intAge = int(age)
-        weight = request.form.get("weight")
-        intWeight = int(weight)
-        height = request.form.get("height")
-        intHeight = int(height)
-        budget = request.form.get("budget")
-        intBudget = int(budget)
-        # 性別
-        sex = request.form.get("sex")
-        # 活動レベル
-        level = request.form.get("level")
-        # 目的
-        activity = request.form.get("activity")
+        if session['user_id']:
+            personal_data = db.execute(SELECT * FROM personal_data WHERE user_id = session['user_id'])[0]
 
-        # 必要摂取カロリーの計算
-        act = act_calculate(sex, intWeight, intHeight, intAge, level, activity)
+        else:
+            # 一人当たりの必要摂取カロリー
+            age = int(request.form.get("age"))
+            weight = int(request.form.get("weight"))
+            height = int(request.form.get("height"))
+            budget = int(request.form.get("budget"))
+            sex = request.form.get("sex")
+            # 活動レベル
+            level = request.form.get("level")
+            # 目的
+            activity = request.form.get("activity")
+            # 必要摂取カロリーの計算
+            act = act_calculate(sex, weight, height, age, level, activity)
 
 # --------------------------------------------------------------------
 # D = act - (朝で摂取したエネルギー + 昼で摂取したエネルギー) [kcal]
