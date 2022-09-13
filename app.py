@@ -106,7 +106,7 @@ def logout():
 # ------------------------------------ホーム画面(home)--------------------------------------------------------
 @app.route("/",methods=["GET","POST"])
 def home():
-    if session['id']:
+    if session:
         if (request.method == "GET"):
             return render_template("home.html")
         else:
@@ -121,7 +121,7 @@ def home():
 @app.route("/input", methods=["GET","POST"])
 def index():
     if (request.method == "GET"):
-        if session['user_id']:
+        if session:
             return render_template("input.html")
         else:
             return render_template("input_tester.html")
@@ -207,7 +207,7 @@ def search_item():
         for snack in snacks:
             if len(snack) != 0:
                 snName += db.execute(sql, "%" + snack + "%")
-        if session['user_id']:
+        if session:
             return render_template("input.html", breakfast=brName, lunch=luName, snack=snName)
         return render_template("input_tester.html", breakfast=brName, lunch=luName, snack=snName)
 
