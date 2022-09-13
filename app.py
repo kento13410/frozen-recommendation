@@ -169,6 +169,8 @@ def index():
         difF = F - total_lipid
         difCBH = CBH - total_carbohydrate
 
+        X = difP/P + difF/F + difCBH/CBH
+
         D = act - total_energy
 
         difData = {'カロリー': D, 'タンパク質': difP, '脂質': difF, '炭水化物': difCBH}
