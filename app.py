@@ -105,12 +105,15 @@ def logout():
 
 # ------------------------------------ホーム画面(home)--------------------------------------------------------
 @app.route("/",methods=["GET","POST"])
-@login_required
 def home():
-    if (request.method == "GET"):
-        return render_template("home.html")
+    if session['id']:
+        if (request.method == "GET"):
+            return render_template("home.html")
+        else:
+            pass
+
     else:
-        pass
+        return render_template("input_tester.html")
 # -------------------------------------------------------------------------------------------------------------
 
 
