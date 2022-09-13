@@ -6,7 +6,7 @@ var p;
 function taisyou(){
   p = new Progress(0);
   for(var i = forms.length;i--;){
-    var inp = forms[i].querySelectorAll("input[type='username'], input[type='password'], select");
+    var inp = forms[i].querySelectorAll("input[name='username'], input[name='password'], select");
     allinp += inp.length; //プログレスバーの進捗の対象を数える
     for(var j = inp.length;j--;){
       inp[j].setAttribute("onChange","koushin(this)");
