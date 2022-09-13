@@ -22,8 +22,6 @@ Session(app)
 db = SQL("sqlite:///foodname.db")
 db1 =SQL("sqlite:///users.db")
 
-
-
 #------------------------------
 #     LOGIN機能の実装:
 #------------------------------
@@ -107,12 +105,15 @@ def logout():
 
 # ------------------------------------ホーム画面(home)--------------------------------------------------------
 @app.route("/",methods=["GET","POST"])
-@login_required
 def home():
-    if (request.method == "GET"):
-        return render_template("home.html")
+    if session:
+        if (request.method == "GET"):
+            return render_template("home.html")
+        else:
+            pass
+
     else:
-        pass
+        return render_template("input_tester.html")
 # -------------------------------------------------------------------------------------------------------------
 
 
@@ -120,11 +121,13 @@ def home():
 @app.route("/input", methods=["GET","POST"])
 def index():
     if (request.method == "GET"):
-        if session['user_id']:
+        if session:
             return render_template("input.html")
-        return render_template("input_tester.html")
+        else:
+            return render_template("input_tester.html")
+
     else:
-        if session['user_id']:
+        if session:
             personal_data = db.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
             act = act_calculate(personal_data['sex'], personal_data['weight'], personal_data['height'], personal_data['age'], personal_data['level'], personal_data['activity'])
 
@@ -159,15 +162,19 @@ def index():
             total_carbohydrate += int(Dict['炭水化物'])
 
         # 1日に必要な三大栄養素
-        P = 2 * intWeight
-        F = act * 0.25
-        CBH = act - P - F
+        P = 2 * weight
+        P_cal = P * 4
+        F_cal = act * 0.25
+        F = F_cal / 9
+        CBH_cal = act - P_cal - F_cal
+        CBH = CBH_cal / 4
 
         # 夜に必要な三大栄養素
         difP = P - total_protein
         difF = F - total_lipid
         difCBH = CBH - total_carbohydrate
 
+        # 三大栄養素の不足分
         X = difP/P + difF/F + difCBH/CBH
 
         D = act - total_energy
@@ -175,7 +182,7 @@ def index():
         difData = {'カロリー': D, 'タンパク質': difP, '脂質': difF, '炭水化物': difCBH}
 
         # カロリー*0.7< act< カロリー*1.3
-        data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?", X, P, F, CBH)
+        data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?)", X, P, F, CBH)
         # data = db.execute("SELECT * FROM foodnames WHERE カロリー*0.7 < ? AND ? < カロリー*1.3 AND タンパク質*0.7 < ? AND ? < タンパク質*1.3 AND 脂質*0.7 < ? AND ? < 脂質*1.3 AND 炭水化物*0.7 < ? AND ? < 炭水化物*1.3", abs(D), abs(D), abs(difP), abs(difP), abs(difF), abs(difF), abs(difCBH), abs(difCBH))
         # data = db.execute("SELECT * FROM foodnames WHERE カロリー < ?", D)
 
@@ -204,7 +211,7 @@ def search_item():
         for snack in snacks:
             if len(snack) != 0:
                 snName += db.execute(sql, "%" + snack + "%")
-        if session['user_id']:
+        if session:
             return render_template("input.html", breakfast=brName, lunch=luName, snack=snName)
         return render_template("input_tester.html", breakfast=brName, lunch=luName, snack=snName)
 
