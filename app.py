@@ -159,7 +159,7 @@ def index():
             total_carbohydrate += int(Dict['炭水化物'])
 
         # 1日に必要な三大栄養素
-        P = 2 * intWeight
+        P = 2 * weight
         F = act * 0.25
         CBH = act - P - F
 
