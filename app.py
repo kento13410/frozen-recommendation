@@ -124,24 +124,23 @@ def index():
             return render_template("input.html")
         return render_template("input_tester.html")
     else:
-        # 一人当たりの必要摂取カロリー
-        age = request.form.get("age")
-        intAge = int(age)
-        weight = request.form.get("weight")
-        intWeight = int(weight)
-        height = request.form.get("height")
-        intHeight = int(height)
-        budget = request.form.get("budget")
-        intBudget = int(budget)
-        # 性別
-        sex = request.form.get("sex")
-        # 活動レベル
-        level = request.form.get("level")
-        # 目的
-        activity = request.form.get("activity")
+        if session['user_id']:
+            personal_data = db.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
+            act = act_calculate(personal_data['sex'], personal_data['weight'], personal_data['height'], personal_data['age'], personal_data['level'], personal_data['activity'])
 
-        # 必要摂取カロリーの計算
-        act = act_calculate(sex, intWeight, intHeight, intAge, level, activity)
+        else:
+            # 一人当たりの必要摂取カロリー
+            age = int(request.form.get("age"))
+            weight = int(request.form.get("weight"))
+            height = int(request.form.get("height"))
+            budget = int(request.form.get("budget"))
+            sex = request.form.get("sex")
+            # 活動レベル
+            level = request.form.get("level")
+            # 目的
+            activity = request.form.get("activity")
+            # 必要摂取カロリーの計算
+            act = act_calculate(sex, weight, height, age, level, activity)
 
 # --------------------------------------------------------------------
 # D = act - (朝で摂取したエネルギー + 昼で摂取したエネルギー) [kcal]
@@ -169,13 +168,15 @@ def index():
         difF = F - total_lipid
         difCBH = CBH - total_carbohydrate
 
+        X = difP/P + difF/F + difCBH/CBH
+
         D = act - total_energy
 
         difData = {'カロリー': D, 'タンパク質': difP, '脂質': difF, '炭水化物': difCBH}
 
         # カロリー*0.7< act< カロリー*1.3
-        # |カロリー　- act|
-        data = db.execute("SELECT * FROM foodnames WHERE カロリー*0.7 < ? AND ? < カロリー*1.3 AND タンパク質*0.7 < ? AND ? < タンパク質*1.3 AND 脂質*0.7 < ? AND ? < 脂質*1.3 AND 炭水化物*0.7 < ? AND ? < 炭水化物*1.3", abs(D), abs(D), abs(difP), abs(difP), abs(difF), abs(difF), abs(difCBH), abs(difCBH))
+        data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?", X, P, F, CBH)
+        # data = db.execute("SELECT * FROM foodnames WHERE カロリー*0.7 < ? AND ? < カロリー*1.3 AND タンパク質*0.7 < ? AND ? < タンパク質*1.3 AND 脂質*0.7 < ? AND ? < 脂質*1.3 AND 炭水化物*0.7 < ? AND ? < 炭水化物*1.3", abs(D), abs(D), abs(difP), abs(difP), abs(difF), abs(difF), abs(difCBH), abs(difCBH))
         # data = db.execute("SELECT * FROM foodnames WHERE カロリー < ?", D)
 
         return render_template("output_tester.html", data = data, difData=difData)
@@ -243,4 +244,22 @@ def recommend():
 
 
 
+@app.route("/personal_data", methods=['GET', 'POST'])
+def personal_data():
+    if request.method == 'POST':
+        age = int(request.form.get("age"))
+        weight = int(request.form.get("weight"))
+        height = int(request.form.get("height"))
+        budget = int(request.form.get("budget"))
+        sex = request.form.get("sex")
+        # 活動レベル
+        level = request.form.get("level")
+        # 目的
+        activity = request.form.get("activity")
 
+        db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, budget, level, activity) VALUES (?, ?, ?, ?, ?, ?, ?)", session['user_id'], sex, age, budget, weight, height, level, activity)
+
+        return redirect("/")
+
+    else:
+        return render_template("personal_data.html")
