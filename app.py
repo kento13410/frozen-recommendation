@@ -22,8 +22,6 @@ Session(app)
 db = SQL("sqlite:///foodname.db")
 db1 =SQL("sqlite:///users.db")
 
-
-
 #------------------------------
 #     LOGIN機能の実装:
 #------------------------------
