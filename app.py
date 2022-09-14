@@ -156,10 +156,10 @@ def index():
         fDicts = request.form.getlist("select_food")
         for fDict in fDicts:
             Dict = ast.literal_eval(fDict)
-            total_energy += int(Dict['エネルギー'])
-            total_protein += int(Dict['たんぱく質'])
-            total_lipid += int(Dict['脂質'])
-            total_carbohydrate += int(Dict['炭水化物'])
+            total_energy += abs(int(Dict['エネルギー']))
+            total_protein += abs(int(Dict['たんぱく質']))
+            total_lipid += abs(int(Dict['脂質']))
+            total_carbohydrate += abs(int(Dict['炭水化物']))
 
         # 1日に必要な三大栄養素
         P = 2 * weight
@@ -182,7 +182,7 @@ def index():
         difData = {'カロリー': D, 'タンパク質': difP, '脂質': difF, '炭水化物': difCBH}
 
         # カロリー*0.7< act< カロリー*1.3
-        data = db.execute("SELECT * FROM foodnames ORDER BY ? - (abs(タンパク質)/? + abs(脂質)/? + abs(炭水化物)/?)", X, P, F, CBH)
+        data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?)", X, P, F, CBH)
         # data = db.execute("SELECT * FROM foodnames WHERE カロリー*0.7 < ? AND ? < カロリー*1.3 AND タンパク質*0.7 < ? AND ? < タンパク質*1.3 AND 脂質*0.7 < ? AND ? < 脂質*1.3 AND 炭水化物*0.7 < ? AND ? < 炭水化物*1.3", abs(D), abs(D), abs(difP), abs(difP), abs(difF), abs(difF), abs(difCBH), abs(difCBH))
         # data = db.execute("SELECT * FROM foodnames WHERE カロリー < ?", D)
 
