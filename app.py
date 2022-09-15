@@ -181,7 +181,7 @@ def index():
 
         difData = {'カロリー': D, 'タンパク質': difP, '脂質': difF, '炭水化物': difCBH}
 
-        data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?)", X, P, F, CBH)
+        data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 30", X, P, F, CBH)
 
         data2 = []
         for dat in data:
@@ -191,7 +191,7 @@ def index():
             X2 = difP2/P + difF2/F + difCBH2/CBH
             data2 = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 10", X2, P, F, CBH)
             for dat2 in data2:
-                
+
         # data = db.execute("SELECT * FROM foodnames WHERE カロリー*0.7 < ? AND ? < カロリー*1.3 AND タンパク質*0.7 < ? AND ? < タンパク質*1.3 AND 脂質*0.7 < ? AND ? < 脂質*1.3 AND 炭水化物*0.7 < ? AND ? < 炭水化物*1.3", abs(D), abs(D), abs(difP), abs(difP), abs(difF), abs(difF), abs(difCBH), abs(difCBH))
         # data = db.execute("SELECT * FROM foodnames WHERE カロリー < ?", D)
 
