@@ -81,7 +81,7 @@ def register():
             raise Exception('パスワードが一致してないでよ！')
 
         # データの登録
-        db1.execute("INSERT INTO users (username,hash) VALUES (?,?)",username,generate_password_hash(password))
+        db1.execute("INSERT INTO users (username,hash) VALUES (?,?)", username, generate_password_hash(password))
 
         return redirect("/login")
 
