@@ -276,7 +276,7 @@ def personal_data():
         # 目的
         activity = request.form.get("activity")
 
-        db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, budget, level, activity) VALUES (?, ?, ?, ?, ?, ?, ?)", session['user_id'], sex, age, budget, weight, height, level, activity)
+        db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, level, activity) VALUES (?, ?, ?, ?, ?, ?, ?)", session['user_id'], sex, age, weight, height, level, activity)
 
         return redirect("/")
 
