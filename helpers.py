@@ -11,6 +11,9 @@ def login_required(f):
     return decorated_function
 
 
+def 
+
+
 
 def act_calculate(sex, intWeight, intHeight, intAge, level, activity):
 # --------------------------------------------------------------------
