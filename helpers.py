@@ -11,7 +11,9 @@ def login_required(f):
     return decorated_function
 
 
-def 
+def loaded(f):
+    @wraps(f)
+    def 
 
 
 
