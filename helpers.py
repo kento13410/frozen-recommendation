@@ -11,10 +11,10 @@ def login_required(f):
     return decorated_function
 
 
-def loaded(f):
+def loaded_colorful(f):
     @wraps(f)
     def loaded_select(*args, **kwargs):
-        if 
+        
 
 
 
