@@ -4,7 +4,7 @@ from cs50 import SQL
 import random
 import ast
 from flask_session import Session
-from helpers import login_required, act_calculate
+from helpers import login_required, act_calculate, loading_black, loading_colorful
 from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask("__name__")
@@ -105,6 +105,7 @@ def logout():
 
 # ------------------------------------ホーム画面(home)--------------------------------------------------------
 @app.route("/",methods=["GET","POST"])
+@loading_black
 def home():
     if session:
         if (request.method == "GET"):
