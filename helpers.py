@@ -13,7 +13,8 @@ def login_required(f):
 
 def loaded(f):
     @wraps(f)
-    def 
+    def loaded_select(*args, **kwargs):
+        if 
 
 
 
