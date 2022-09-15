@@ -130,7 +130,13 @@ def index():
     else:
         if session:
             personal_data = db1.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
-            act = act_calculate(personal_data['sex'], personal_data['weight'], personal_data['height'], personal_data['age'], personal_data['level'], personal_data['activity'])
+            age = personal_data['age']
+            weight = personal_data['weight']
+            height = personal_data['height']
+            sex = personal_data['sex']
+            level = personal_data['level']
+            activity = personal_data['activity']
+            act = act_calculate(sex, weight, height, age, level, activity)
 
         else:
             # 一人当たりの必要摂取カロリー
