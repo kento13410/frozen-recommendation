@@ -255,7 +255,7 @@ def personal_data():
         weight = int(request.form.get("weight"))
         height = int(request.form.get("height"))
         sex = request.form.get("sex")
-        # 活動レベル
+        # 目標
         activity = request.form.get("activity")
 
         db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], sex, age, weight, height, activity)
@@ -269,4 +269,5 @@ def personal_data():
 
 @app.route("/favorite")
 def favorite():
+    db.execute("SELECT * FROM ")
     return render_template("favorite.html")
