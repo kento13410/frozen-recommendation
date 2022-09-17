@@ -251,3 +251,8 @@ def personal_data():
 
     else:
         return render_template("personal_data.html")
+
+
+@app.route("/favorite")
+def favorite():
+    return render_template("favorite.html")
