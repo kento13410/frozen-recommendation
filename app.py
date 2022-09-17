@@ -269,5 +269,6 @@ def personal_data():
 
 @app.route("/favorite")
 def favorite():
-    db.execute("SELECT * FROM foodnames ")
+    product_liked = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
+
     return render_template("favorite.html")
