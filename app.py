@@ -109,7 +109,8 @@ def logout():
 @login_required
 # @loading_black
 def home():
-    return render_template("main/home.html")
+    data = db.execute("SELECT * FROM foodnames")
+    return render_template("main/home.html", data=data)
 # -------------------------------------------------------------------------------------------------------------
 
 
