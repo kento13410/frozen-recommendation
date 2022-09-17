@@ -263,8 +263,8 @@ def personal_data():
         return redirect("/")
 
     else:
-
         return render_template("personal_data.html")
+
 
 
 @app.route("/favorite")
