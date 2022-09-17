@@ -277,7 +277,6 @@ def personal_data():
         age = int(request.form.get("age"))
         weight = int(request.form.get("weight"))
         height = int(request.form.get("height"))
-        budget = int(request.form.get("budget"))
         sex = request.form.get("sex")
         # 活動レベル
         level = request.form.get("level")
