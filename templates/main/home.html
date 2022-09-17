@@ -272,6 +272,7 @@
               </li>
               <li>
                 <section class="wrapper">
+                {%- set ns = namespace(cnt=0) -%}
                 {% for food in data %}
                 {% if food['カテゴリ'] == 'おべんとう 魚系'%}
                     <div tabindex="0" role="button" class="food-container">
@@ -280,9 +281,9 @@
                         </div>
                         <div class="foodname">{{food['食品名']}}</div>
                     </div>
-                    {%- set count = count + 1 -%}
-                    {% if count % 4 == 0 %}
-                    </section><section>
+                    {%- set ns.cnt = ns.cnt + 1 -%}
+                    {% if ns.cnt % 4 == 0 %}
+                    </section><section class="wrapper">
                     {% endif %}
                 {% endif %}
                 {% endfor %}
