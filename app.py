@@ -28,6 +28,7 @@ db1 =SQL("sqlite:///users.db")
 
 #----------------------------------------ログイン画面(login)--------------------------------------------------
 @app.route("/login", methods=["GET", "POST"])
+@login_required
 def login():
     """Log user in"""
 
@@ -109,7 +110,6 @@ def logout():
 # @loading_black
 def home():
     return render_template("home.html")
-
 # -------------------------------------------------------------------------------------------------------------
 
 
@@ -133,6 +133,16 @@ def index():
             activity = request.form.get("activity")
             # 必要摂取カロリーの計算
             act = act_calculate(sex, weight, height, age, level, activity)
+
+        personal_data = db1.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
+        age = personal_data['age']
+        weight = personal_data['weight']
+        height = personal_data['height']
+        sex = personal_data['sex']
+        level = personal_data['level']
+        activity = personal_data['activity']
+        act = act_calculate(sex, weight, height, age, level, activity)
+
 
 # --------------------------------------------------------------------
 # D = act - (朝で摂取したエネルギー + 昼で摂取したエネルギー) [kcal]
@@ -185,10 +195,8 @@ def index():
                 data2_set.append(data_element2[i])
                 data2.append(data2_set)
 
-        # data = db.execute("SELECT * FROM foodnames WHERE カロリー*0.7 < ? AND ? < カロリー*1.3 AND タンパク質*0.7 < ? AND ? < タンパク質*1.3 AND 脂質*0.7 < ? AND ? < 脂質*1.3 AND 炭水化物*0.7 < ? AND ? < 炭水化物*1.3", abs(D), abs(D), abs(difP), abs(difP), abs(difF), abs(difF), abs(difCBH), abs(difCBH))
-        # data = db.execute("SELECT * FROM foodnames WHERE カロリー < ?", D)
 
-        return render_template("output.html", data = data, data2 = data2, difData=difData)
+        return render_template("output_tester.html", data = data, data2 = data2, difData=difData)
 # ----------------------------------------------------------------------------------------
 
 
@@ -219,19 +227,6 @@ def search_item():
 # -------------------------------------------------------------------------------------------------------------
 
 
-# -------------------------------------------今は使ってない-----------------------------------------------------
-
-@app.route("/select_item", methods=["GET", "POST"])
-def select_item():
-    if request.method == "POST":
-        total = 0
-        fDicts = request.form.getlist("select_food")
-        for fDict in fDicts:
-            total += fDict['エネルギー']
-        return render_template("input_tester.html")
-
-# -------------------------------------------------------------------------------------------------------------
-
 
 @app.route("/back")
 def back():
@@ -257,11 +252,10 @@ def personal_data():
         age = int(request.form.get("age"))
         weight = int(request.form.get("weight"))
         height = int(request.form.get("height"))
-        budget = int(request.form.get("budget"))
         sex = request.form.get("sex")
-        # 活動レベル
-        level = request.form.get("level")
         # 目的
+        level = request.form.get("level")
+        # 活動レベル
         activity = request.form.get("activity")
 
         db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, level, activity) VALUES (?, ?, ?, ?, ?, ?, ?)", session['user_id'], sex, age, weight, height, level, activity)
