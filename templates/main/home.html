@@ -158,7 +158,7 @@
                 <section class="wrapper">
                   {%- set ns = namespace(cnt=0) -%}
                   {% for food in data %}
-                  {% if food['カテゴリ'] == 'おべんとう 魚系'%}
+                  {% if food['カテゴリ'] == 'お弁当肉系'%}
                       <div tabindex="0" role="button" class="food-container">
                           <div class="card-header" style="height: 140px;">
                               <img src={{food['画像']}} alt={{food['食品名']}} style="height: 140px;">
@@ -192,7 +192,9 @@
                 {% endfor %}
                 </section>
               </li>
-              <li>コンテンツ3</li>
+              <li>
+                
+              </li>
               <li>コンテンツ4</li>
             </ul>
           </main>
