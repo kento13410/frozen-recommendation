@@ -273,14 +273,16 @@
               <li>
                 <section class="wrapper">
                 {% for food in data %}
+                {% if food['カテゴリ'] == 'おべんとう 魚系'%}
                     <div tabindex="0" role="button" class="food-container">
                         <div class="card-header" style="height: 140px;">
-                            <img src=food['画像'] alt=food['食品名'] style="height: 140px;">
+                            <img src={{food['画像']}} alt={{food['食品名']}} style="height: 140px;">
                         </div>
-                        <div class="foodname">food['食品名']</div>
+                        <div class="foodname">{{food['食品名']}}</div>
                     </div>
-                </section>
+                {% endif %}
                 {% endfor %}
+                </section>
               </li>
               <li>コンテンツ3</li>
               <li>コンテンツ4</li>
