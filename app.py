@@ -277,7 +277,7 @@ def recommend():
         for i in range(5):
             index =random.randrange(len(selectedList))
             recommendList.append(selectedList[index])
-        return render_template("recommend",recommendList=recommendList)
+        return render_template("recommend.html",recommendList=recommendList)
 
 # ------------------------------------------------------------------------------------------------------------------
 
