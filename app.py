@@ -109,7 +109,9 @@ def logout():
 @login_required
 # @loading_black
 def home():
-    return render_template("home.html")
+    data = db.execute("SELECT * FROM foodnames")
+    count = 0
+    return render_template("main/home.html", data=data, count=count)
 # -------------------------------------------------------------------------------------------------------------
 
 
@@ -234,7 +236,9 @@ def search_item():
 def back():
     return render_template("input.html")
 
+
 # -------------------------recommend--------------------------------------------------------------------------------
+
 @app.route("/recommend", methods=["GET","POST"])
 def recommend():
     if (request.method == "POST"):
@@ -293,33 +297,6 @@ def recommend():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # foods = []
-    # if (request.method == "POST"):
-    #     # favs : [value1, value2, value3, ・・・]
-    #     favs = request.form.getlist("fav")
-    #     for fav in favs:
-    #         foods += db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?", fav)
-    #     foodsRecommend = random.sample(foods, 3)
-    #     return render_template("output.html", foods=foodsRecommend)
-
-
-
 @app.route("/personal_data", methods=['GET', 'POST'])
 def personal_data():
     if request.method == 'POST':
@@ -327,7 +304,7 @@ def personal_data():
         weight = int(request.form.get("weight"))
         height = int(request.form.get("height"))
         sex = request.form.get("sex")
-        # 活動レベル
+        # 目標
         activity = request.form.get("activity")
 
         db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], sex, age, weight, height, activity)
@@ -335,13 +312,14 @@ def personal_data():
         return redirect("/")
 
     else:
-
         return render_template("personal_data.html")
+
 
 
 @app.route("/favorite")
 def favorite():
-    return render_template("favorite.html")
-
-
+    product_liked_s = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
+    for product_liked in product_liked_s:
+        data = db.execute("SELECT * FROM foodnames WEHRE 食品名 = ?", product_liked['product'])
+    return render_template("favorite.html", data = data)
 

@@ -1,0 +1,73 @@
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: white;
+    animation: animateBg 1s linear infinite,
+    animateBg 2s linear infinite,
+    animateBg 4s linear infinite,
+    animateBg 6s linear infinite,
+    animateBg 8s linear infinite,
+    animateBg 10s linear infinite;
+}
+
+@keyframes animateBg {
+    0% {
+        filter: hue-rotate(0deg)
+    }
+    100% {
+        filter: hue-rotate(360deg)
+    }
+}
+
+.loader {
+    position: relative;
+    width: 220px;
+    height: 220px;
+}
+
+section .loader span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(calc(18deg * var(--i)));
+}
+
+section .loader span::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #00ff0a;
+    box-shadow: 0 0 10px #00ff0a;
+    animation: animate 2s linear infinite;
+    animation-delay: calc(0.1s * var(--i));
+
+}
+
+@keyframes animate {
+    0% {
+        transform: scale(1);
+    }
+    80%, 100% {
+        transform: scale(0);
+    }
+}
+
+/* loading-containerの配置についてのcss */
+
+.loading-container {
+    display: flex;
+}
+
+h2 {
+     font-size: 70px;
+     font-family: fantasy;
+     margin-right: 80px;
+}
