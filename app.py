@@ -270,4 +270,3 @@ def personal_data():
 @app.route("/favorite")
 def favorite():
     return render_template("favorite.html")
-
