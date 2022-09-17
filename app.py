@@ -284,12 +284,12 @@ def recommend():
             selectedList.append(element)
 
         # recommnedで表示する冷凍食品リストを
-        recomendList = []
+        recommendList = []
         # ５つの商品をランダムにとってくる。
         for i in range(5):
             index =random.randrange(len(selectedList))
-            recomendList.append(selectedList[index])
-        return render_template("recommend",recomendList=recomendList)
+            recommendList.append(selectedList[index])
+        return render_template("recommend",recommendList=recommendList)
 
 # ------------------------------------------------------------------------------------------------------------------
 
