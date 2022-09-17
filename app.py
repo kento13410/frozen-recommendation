@@ -107,14 +107,11 @@ def logout():
 @app.route("/",methods=["GET","POST"])
 @loading_black
 def home():
-    if session:
-        if (request.method == "GET"):
-            return render_template("home.html")
-        else:
-            pass
-
+    if (request.method == "GET"):
+        return render_template("home.html")
     else:
-        return render_template("input_tester.html")
+        pass
+
 # -------------------------------------------------------------------------------------------------------------
 
 
@@ -122,35 +119,17 @@ def home():
 @app.route("/input", methods=["GET","POST"])
 def index():
     if (request.method == "GET"):
-        if session:
-            return render_template("input.html")
-        else:
-            return render_template("input_tester.html")
+        return render_template("input.html")
 
     else:
-        if session:
-            personal_data = db1.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
-            age = personal_data['age']
-            weight = personal_data['weight']
-            height = personal_data['height']
-            sex = personal_data['sex']
-            level = personal_data['level']
-            activity = personal_data['activity']
-            act = act_calculate(sex, weight, height, age, level, activity)
-
-        else:
-            # 一人当たりの必要摂取カロリー
-            age = int(request.form.get("age"))
-            weight = int(request.form.get("weight"))
-            height = int(request.form.get("height"))
-            budget = int(request.form.get("budget"))
-            sex = request.form.get("sex")
-            # 活動レベル
-            level = request.form.get("level")
-            # 目的
-            activity = request.form.get("activity")
-            # 必要摂取カロリーの計算
-            act = act_calculate(sex, weight, height, age, level, activity)
+        personal_data = db1.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
+        age = personal_data['age']
+        weight = personal_data['weight']
+        height = personal_data['height']
+        sex = personal_data['sex']
+        level = personal_data['level']
+        activity = personal_data['activity']
+        act = act_calculate(sex, weight, height, age, level, activity)
 
 # --------------------------------------------------------------------
 # D = act - (朝で摂取したエネルギー + 昼で摂取したエネルギー) [kcal]
