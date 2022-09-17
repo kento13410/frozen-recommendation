@@ -271,5 +271,5 @@ def personal_data():
 def favorite():
     product_liked_s = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
     for product_liked in product_liked_s:
-        db.execute("SELECT * FROM foodnames WEHRE ")
-    return render_template("favorite.html")
+        data = db.execute("SELECT * FROM foodnames WEHRE 食品名 = ?", product_liked['product'])
+    return render_template("favorite.html", data = data)
