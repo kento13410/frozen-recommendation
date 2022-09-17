@@ -131,7 +131,7 @@ def index():
         activity = personal_data['activity']
 
         level = request.form.get("level")
-        bug
+        budget = request.form.get("budget")
         act = act_calculate(sex, weight, height, age, level, activity)
 
 # --------------------------------------------------------------------
