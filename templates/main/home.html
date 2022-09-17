@@ -280,9 +280,10 @@
                         </div>
                         <div class="foodname">{{food['食品名']}}</div>
                     </div>
-                    {% count = count + 1 %}
                     {% if count % 4 == 0 %}
                     </section><section>
+                    {% else %}
+                    {{ count = count + 1 %}}
                     {% endif %}
                 {% endif %}
                 {% endfor %}
