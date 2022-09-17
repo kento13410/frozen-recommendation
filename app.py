@@ -139,8 +139,10 @@ def index():
         weight = personal_data['weight']
         height = personal_data['height']
         sex = personal_data['sex']
-        level = personal_data['level']
         activity = personal_data['activity']
+
+        level = request.form.get("level")
+        budget = request.form.get("budget")
         act = act_calculate(sex, weight, height, age, level, activity)
 
 
@@ -253,12 +255,10 @@ def personal_data():
         weight = int(request.form.get("weight"))
         height = int(request.form.get("height"))
         sex = request.form.get("sex")
-        # 目的
-        level = request.form.get("level")
         # 活動レベル
         activity = request.form.get("activity")
 
-        db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, level, activity) VALUES (?, ?, ?, ?, ?, ?, ?)", session['user_id'], sex, age, weight, height, level, activity)
+        db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], sex, age, weight, height, activity)
 
         return redirect("/")
 
