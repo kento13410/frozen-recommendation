@@ -106,86 +106,99 @@ def logout():
 
 # ------------------------------------ホーム画面(home)--------------------------------------------------------
 @app.route("/",methods=["GET","POST"])
-@loading_black
+@login_required
+# @loading_black
 def home():
-    if (request.method == "GET"):
-        return render_template("home.html")
-    else:
-        pass
-
+    return render_template("home.html")
 # -------------------------------------------------------------------------------------------------------------
 
 
 # ------------------------------------------入力画面(input)----------------------------------------------------
 @app.route("/input", methods=["GET","POST"])
+@login_required
 def index():
     if (request.method == "GET"):
         return render_template("input.html")
 
     else:
-        personal_data = db1.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
-        age = personal_data['age']
-        weight = personal_data['weight']
-        height = personal_data['height']
-        sex = personal_data['sex']
-        activity = personal_data['activity']
-
+        # 一人当たりの必要摂取カロリー
+        age = int(request.form.get("age"))
+        weight = int(request.form.get("weight"))
+        height = int(request.form.get("height"))
+        budget = int(request.form.get("budget"))
+        sex = request.form.get("sex")
+        # 活動レベル
         level = request.form.get("level")
-        budget = request.form.get("budget")
+        # 目的
+        activity = request.form.get("activity")
+        # 必要摂取カロリーの計算
         act = act_calculate(sex, weight, height, age, level, activity)
+
+    personal_data = db1.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
+    age = personal_data['age']
+    weight = personal_data['weight']
+    height = personal_data['height']
+    sex = personal_data['sex']
+    activity = personal_data['activity']
+
+    level = request.form.get("level")
+    budget = request.form.get("budget")
+    act = act_calculate(sex, weight, height, age, level, activity)
+
 
 # --------------------------------------------------------------------
 # D = act - (朝で摂取したエネルギー + 昼で摂取したエネルギー) [kcal]
 # --------------------------------------------------------------------
 
-        total_energy = 0
-        total_protein = 0
-        total_lipid = 0
-        total_carbohydrate = 0
-        fDicts = request.form.getlist("select_food")
-        for fDict in fDicts:
-            Dict = ast.literal_eval(fDict)
-            total_energy += abs(int(Dict['エネルギー']))
-            total_protein += abs(int(Dict['たんぱく質']))
-            total_lipid += abs(int(Dict['脂質']))
-            total_carbohydrate += abs(int(Dict['炭水化物']))
+    total_energy = 0
+    total_protein = 0
+    total_lipid = 0
+    total_carbohydrate = 0
+    fDicts = request.form.getlist("select_food")
+    for fDict in fDicts:
+        Dict = ast.literal_eval(fDict)
+        total_energy += abs(int(Dict['エネルギー']))
+        total_protein += abs(int(Dict['たんぱく質']))
+        total_lipid += abs(int(Dict['脂質']))
+        total_carbohydrate += abs(int(Dict['炭水化物']))
 
-        # 1日に必要な三大栄養素
-        P = 2 * weight
-        P_cal = P * 4
-        F_cal = act * 0.25
-        F = F_cal / 9
-        CBH_cal = act - P_cal - F_cal
-        CBH = CBH_cal / 4
+    # 1日に必要な三大栄養素
+    P = 2 * weight
+    P_cal = P * 4
+    F_cal = act * 0.25
+    F = F_cal / 9
+    CBH_cal = act - P_cal - F_cal
+    CBH = CBH_cal / 4
 
-        # 夜に必要な三大栄養素
-        difP = P - total_protein
-        difF = F - total_lipid
-        difCBH = CBH - total_carbohydrate
+    # 夜に必要な三大栄養素
+    difP = P - total_protein
+    difF = F - total_lipid
+    difCBH = CBH - total_carbohydrate
 
-        # 三大栄養素の不足分
-        X = difP/P + difF/F + difCBH/CBH
+    # 三大栄養素の不足分
+    X = difP/P + difF/F + difCBH/CBH
 
-        D = act - total_energy
+    D = act - total_energy
 
-        difData = {'カロリー': D, 'タンパク質': difP, '脂質': difF, '炭水化物': difCBH}
+    difData = {'カロリー': D, 'タンパク質': difP, '脂質': difF, '炭水化物': difCBH}
 
-        data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 30", X, P, F, CBH)
+    data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 30", X, P, F, CBH)
 
-        data2 = []
-        for dat in data:
-            data2_set = []
-            data2_set.append(dat)
-            difP2 = difP - dat['タンパク質']
-            difF2 = difF - dat['脂質']
-            difCBH2 = difCBH - dat['炭水化物']
-            X2 = difP2/P + difF2/F + difCBH2/CBH
-            data_element2 = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 10", X2, P, F, CBH)
-            for i in range(len(data_element2)):
-                data2_set.append(data_element2[i])
-                data2.append(data2_set)
+    data2 = []
+    for dat in data:
+        data2_set = []
+        data2_set.append(dat)
+        difP2 = difP - dat['タンパク質']
+        difF2 = difF - dat['脂質']
+        difCBH2 = difCBH - dat['炭水化物']
+        X2 = difP2/P + difF2/F + difCBH2/CBH
+        data_element2 = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 10", X2, P, F, CBH)
+        for i in range(len(data_element2)):
+            data2_set.append(data_element2[i])
+            data2.append(data2_set)
 
-        return render_template("output_tester.html", data = data, data2 = data2, difData=difData)
+
+    return render_template("output_tester.html", data = data, data2 = data2, difData=difData)
 # ----------------------------------------------------------------------------------------
 
 
@@ -210,6 +223,7 @@ def search_item():
         for snack in snacks:
             if len(snack) != 0:
                 snName += db.execute(sql, "%" + snack + "%")
+
         return render_template("input.html", breakfast=brName, lunch=luName, snack=snName)
 
 # -------------------------------------------------------------------------------------------------------------
@@ -218,8 +232,7 @@ def search_item():
 
 @app.route("/back")
 def back():
-    return render_template("input_tester.html")
-
+    return render_template("input.html")
 
 
 @app.route("/recommend", methods=["GET","POST"])
@@ -250,9 +263,11 @@ def personal_data():
         return redirect("/")
 
     else:
+
         return render_template("personal_data.html")
 
 
 @app.route("/favorite")
 def favorite():
     return render_template("favorite.html")
+
