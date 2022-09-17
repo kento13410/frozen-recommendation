@@ -240,9 +240,9 @@ def personal_data():
         weight = int(request.form.get("weight"))
         height = int(request.form.get("height"))
         sex = request.form.get("sex")
-        # 活動レベル
-        level = request.form.get("level")
         # 目的
+        level = request.form.get("level")
+        # 活動レベル
         activity = request.form.get("activity")
 
         db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, level, activity) VALUES (?, ?, ?, ?, ?, ?, ?)", session['user_id'], sex, age, weight, height, level, activity)
