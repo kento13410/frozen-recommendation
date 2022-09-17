@@ -207,9 +207,7 @@ def search_item():
         for snack in snacks:
             if len(snack) != 0:
                 snName += db.execute(sql, "%" + snack + "%")
-        if session:
-            return render_template("input.html", breakfast=brName, lunch=luName, snack=snName)
-        return render_template("input_tester.html", breakfast=brName, lunch=luName, snack=snName)
+        return render_template("input.html", breakfast=brName, lunch=luName, snack=snName)
 
 # -------------------------------------------------------------------------------------------------------------
 
