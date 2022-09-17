@@ -163,7 +163,10 @@
                           <div class="card-header" style="height: 140px;">
                               <img src={{food['画像']}} alt={{food['食品名']}} style="height: 140px;">
                           </div>
-                          <div class="foodname">{{food['食品名']}}</div>
+                          <div class="card-body">
+                            <div class="foodname">{{food['食品名']}}</div>
+                            <button><span>商品情報はこちら！</span></button>
+                          </div>
                       </div>
                       {%- set ns.cnt = ns.cnt + 1 -%}
                       {% if ns.cnt % 4 == 0 %}
@@ -182,7 +185,10 @@
                         <div class="card-header" style="height: 140px;">
                             <img src={{food['画像']}} alt={{food['食品名']}} style="height: 140px;">
                         </div>
-                        <div class="foodname">{{food['食品名']}}</div>
+                        <div class="card-body">
+                          <div class="foodname">{{food['食品名']}}</div>
+                          <button><span>商品情報はこちら！</span></button>
+                        </div>
                     </div>
                     {%- set ns.cnt = ns.cnt + 1 -%}
                     {% if ns.cnt % 4 == 0 %}
@@ -201,7 +207,10 @@
                           <div class="card-header" style="height: 140px;">
                               <img src={{food['画像']}} alt={{food['食品名']}} style="height: 140px;">
                           </div>
-                          <div class="foodname">{{food['食品名']}}</div>
+                          <div class="card-body">
+                            <div class="foodname">{{food['食品名']}}</div>
+                            <button><span>商品情報はこちら！</span></button>
+                          </div>
                       </div>
                       {%- set ns.cnt = ns.cnt + 1 -%}
                       {% if ns.cnt % 4 == 0 %}
@@ -220,8 +229,10 @@
                           <div class="card-header" style="height: 140px;">
                               <img src={{food['画像']}} alt={{food['食品名']}} style="height: 140px;">
                           </div>
-                          <div class="foodname">{{food['食品名']}}</div>
-                          <button><span>商品情報はこちら！</span></button>
+                          <div class="card-body">
+                            <div class="foodname">{{food['食品名']}}</div>
+                            <button><span>商品情報はこちら！</span></button>
+                          </div>
                       </div>
                       {%- set ns.cnt = ns.cnt + 1 -%}
                       {% if ns.cnt % 4 == 0 %}
