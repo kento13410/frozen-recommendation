@@ -128,7 +128,7 @@ def index():
         weight = int(request.form.get("weight"))
         height = int(request.form.get("height"))
         budget = int(request.form.get("budget"))
-        sex = request.form.get("sex")
+        sex = request.form.get("choice")
         # 活動レベル
         level = request.form.get("level")
         # 目的
