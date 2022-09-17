@@ -1,7 +1,7 @@
 /* input.htmlのみに適用中(9/7現在),画面の配置を真ん中にするCSS */
 @charset "UTF-8";
 body {
-  background: #eeeeee;
+  background: #ffffff;
   font-family: Meiryo;
 }
 
@@ -29,6 +29,10 @@ a:hover {
 }
 header {
   display: flex;
+  background-color: white;
+  outline: 1px solid black;
+  height: 100px;
+  margin: 20px;
 }
 header h4 {
   margin: 25px 0 0 20px;
@@ -50,6 +54,9 @@ header nav ul li a:visited {
   padding: 10px 15px;
   text-decoration:none;
   color: #000;
+  background-color: skyblue;
+  border-radius: 30px;
+  margin: 10px;
 }
 header nav ul li a:hover {
   color: #888;
@@ -58,7 +65,53 @@ header nav ul li a:hover {
 /* logo配置についてのcss */
 .logo {
   display:block;
-  margin: auto;
-  width: 45%;
-  height: 45%;
+  margin: 10px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  left: 500px;
+  bottom: 25px;
 }
+
+/* flexbox使用のためのcss */
+
+.flex-container {
+  display: flex;
+  background-color: skyblue;
+  justify-content: space-around;
+  margin: 50px;
+
+}
+
+.food {
+  background-color: lightgreen;
+  margin: 10px;
+  border-radius: 30px;
+  border: 2px solid black;
+}
+
+.foodname {
+  background-color: coral;
+  margin: 10px;
+  text-align: center;
+}
+
+/* input.htmlのbodyについてのcss */
+h1{
+  text-align: center;
+}
+
+.relative{
+  position:relative;
+  left: 1180px;
+}
+.home{
+  position:relative;
+  left: 710px;
+}
+
+/* 空間の間 */
+.space{
+  margin:12px;
+}
+
