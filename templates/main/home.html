@@ -156,118 +156,21 @@
             <ul class="contents">
               <li class="active">
                 <section class="wrapper">
-                  <div tabindex="0" role="button" class="food-container">
-                      <div class="card-header" style="height: 140px;">
-                          <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165625196_1.png" alt="牛カルビマヨネーズ" style="height: 140px;">
+                  {%- set ns = namespace(cnt=0) -%}
+                  {% for food in data %}
+                  {% if food['カテゴリ'] == 'おべんとう 魚系'%}
+                      <div tabindex="0" role="button" class="food-container">
+                          <div class="card-header" style="height: 140px;">
+                              <img src={{food['画像']}} alt={{food['食品名']}} style="height: 140px;">
+                          </div>
+                          <div class="foodname">{{food['食品名']}}</div>
                       </div>
-                      <div class="card-body">
-                          <div class="foodname">牛カルビマヨネーズ</div>
-                          <button><span>商品情報はこちら！</span></button>
-                      </div>
-                  </div>
-                  <div tabindex="0" role="button" class="food-container">
-                      <div class="card-header" style="height: 140px;">
-                          <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165542677_1.png" alt="肉巻きポテト" style="height: 140px;">
-                      </div>
-                      <div class="card-body">
-                        <div class="foodname">肉巻きポテト</div>
-                        <button><span>商品情報はこちら！</span></button>
-                      </div>
-                  </div>
-                  <div tabindex="0" role="button" class="food-container">
-                      <div class="card-header" style="height: 140px;">
-                          <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165647891_1.png" alt="肉巻きポテト5個" style="height: 140px;">
-                      </div>
-                      <div class="card-body">
-                        <div class="foodname">肉巻きポテト5個</div>
-                        <button><span>商品情報はこちら！</span></button>
-                      </div>
-                  </div>
-                  <div tabindex="0" role="button" class="food-container">
-                      <div class="card-header" style="height: 140px;">
-                          <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165623635_1.png" alt="ソースとんかつ" style="height: 140px;">
-                      </div>
-                      <div class="card-body">
-                        <div class="foodname">ソースとんかつ</div>
-                        <button><span>商品情報はこちら！</span></button>
-                      </div>
-                  </div>
-                </section>
-                <section class="wrapper">
-                    <div tabindex="0" role="button" class="food-container">
-                        <div class="card-header" style="height: 140px;">
-                            <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165625196_1.png" alt="牛カルビマヨネーズ" style="height: 140px;">
-                        </div>
-                        <div class="card-body">
-                            <div class="foodname">牛カルビマヨネーズ</div>
-                            <button><span>商品情報はこちら！</span></button>
-                        </div>
-                    </div>
-                    <div tabindex="0" role="button" class="food-container">
-                        <div class="card-header" style="height: 140px;">
-                            <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165542677_1.png" alt="肉巻きポテト" style="height: 140px;">
-                        </div>
-                        <div class="card-body">
-                          <div class="foodname">肉巻きポテト</div>
-                          <button><span>商品情報はこちら！</span></button>
-                        </div>
-                    </div>
-                    <div tabindex="0" role="button" class="food-container">
-                        <div class="card-header" style="height: 140px;">
-                            <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165647891_1.png" alt="肉巻きポテト5個" style="height: 140px;">
-                        </div>
-                        <div class="card-body">
-                          <div class="foodname">肉巻きポテト5個</div>
-                          <button><span>商品情報はこちら！</span></button>
-                        </div>
-                    </div>
-                    <div tabindex="0" role="button" class="food-container">
-                        <div class="card-header" style="height: 140px;">
-                            <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165623635_1.png" alt="ソースとんかつ" style="height: 140px;">
-                        </div>
-                        <div class="card-body">
-                          <div class="foodname">ソースとんかつ</div>
-                          <button><span>商品情報はこちら！</span></button>
-                        </div>
-                    </div>
-                  </section>
-                  <section class="wrapper">
-                    <div tabindex="0" role="button" class="food-container">
-                        <div class="card-header" style="height: 140px;">
-                            <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165625196_1.png" alt="牛カルビマヨネーズ" style="height: 140px;">
-                        </div>
-                        <div class="card-body">
-                            <div class="foodname">牛カルビマヨネーズ</div>
-                            <button><span>商品情報はこちら！</span></button>
-                        </div>
-                    </div>
-                    <div tabindex="0" role="button" class="food-container">
-                        <div class="card-header" style="height: 140px;">
-                            <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165542677_1.png" alt="肉巻きポテト" style="height: 140px;">
-                        </div>
-                        <div class="card-body">
-                          <div class="foodname">肉巻きポテト</div>
-                          <button><span>商品情報はこちら！</span></button>
-                        </div>
-                    </div>
-                    <div tabindex="0" role="button" class="food-container">
-                        <div class="card-header" style="height: 140px;">
-                            <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165647891_1.png" alt="肉巻きポテト5個" style="height: 140px;">
-                        </div>
-                        <div class="card-body">
-                          <div class="foodname">肉巻きポテト5個</div>
-                          <button><span>商品情報はこちら！</span></button>
-                        </div>
-                    </div>
-                    <div tabindex="0" role="button" class="food-container">
-                        <div class="card-header" style="height: 140px;">
-                            <img src="https://www.maruha-nichiro.co.jp/products/photo/4902165623635_1.png" alt="ソースとんかつ" style="height: 140px;">
-                        </div>
-                        <div class="card-body">
-                          <div class="foodname">ソースとんかつ</div>
-                          <button><span>商品情報はこちら！</span></button>
-                        </div>
-                    </div>
+                      {%- set ns.cnt = ns.cnt + 1 -%}
+                      {% if ns.cnt % 4 == 0 %}
+                      </section><section class="wrapper">
+                      {% endif %}
+                  {% endif %}
+                  {% endfor %}
                   </section>
               </li>
               <li>
