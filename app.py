@@ -225,17 +225,63 @@ def back():
     return render_template("input.html")
 
 
+# -------------------------recommend--------------------------------------------------------------------------------
 
 @app.route("/recommend", methods=["GET","POST"])
 def recommend():
-    foods = []
     if (request.method == "POST"):
-        # favs : [value1, value2, value3, ・・・]
-        favs = request.form.getlist("fav")
-        for fav in favs:
-            foods += db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?", fav)
-        foodsRecommend = random.sample(foods, 3)
-        return render_template("output.html", foods=foodsRecommend)
+    # クリックされたカテゴリの取得
+
+        # お弁当肉系
+        beaf = request.form.get("beaf")
+        # お弁当魚系
+        fish = request.form.get("fish")
+        # 米飯系
+        rice = request.form.get("rice")
+        # 麺系
+        noodle = request.form.get("noodle")
+
+        if (beaf):
+            beafList = db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?",beaf)
+        else:
+            beafList = []
+        if (fish):
+            fishList = db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?",fish)
+        else:
+            fishList = []
+        if (rice):
+            riceList = db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?",rice)
+        else:
+            riceList = []
+        if (noodle):
+            noodleList = db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?",noodle)
+        else:
+            noodleList = []
+
+
+        #何かしらの条件に従ってこのリストに入れていく
+        selectedList = []
+        # リストの連結 [{1},{2},.......{n}]となる
+        for element in beafList:
+            selectedList.append(element)
+        for element in fishList:
+            selectedList.append(element)
+        for element in riceList:
+            selectedList.append(element)
+        for element in noodleList:
+            selectedList.append(element)
+
+        # recommnedで表示する冷凍食品リストを
+        recomendList = []
+        # ５つの商品をランダムにとってくる。
+        for i in range(5):
+            index =random.randrange(len(selectedList))
+            recomendList.append(selectedList[index])
+        return render_template("recommend",recomendList=recomendList)
+
+# ------------------------------------------------------------------------------------------------------------------
+
+
 
 
 
@@ -264,3 +310,4 @@ def favorite():
     for product_liked in product_liked_s:
         data = db.execute("SELECT * FROM foodnames WEHRE 食品名 = ?", product_liked['product'])
     return render_template("favorite.html", data = data)
+
