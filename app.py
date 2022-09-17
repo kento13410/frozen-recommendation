@@ -28,6 +28,7 @@ db1 =SQL("sqlite:///users.db")
 
 #----------------------------------------ログイン画面(login)--------------------------------------------------
 @app.route("/login", methods=["GET", "POST"])
+@login_required
 def login():
     """Log user in"""
 
@@ -211,19 +212,6 @@ def search_item():
 
 # -------------------------------------------------------------------------------------------------------------
 
-
-# -------------------------------------------今は使ってない-----------------------------------------------------
-
-@app.route("/select_item", methods=["GET", "POST"])
-def select_item():
-    if request.method == "POST":
-        total = 0
-        fDicts = request.form.getlist("select_food")
-        for fDict in fDicts:
-            total += fDict['エネルギー']
-        return render_template("input_tester.html")
-
-# -------------------------------------------------------------------------------------------------------------
 
 
 @app.route("/back")
