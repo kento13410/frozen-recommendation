@@ -165,7 +165,7 @@
                           </div>
                           <div class="card-body">
                             <div class="foodname">{{food['食品名']}}</div>
-                            <button type="button" onclick="windows.open({{food['url']}})"><span>商品情報はこちら！</span></button>
+                            <button type="button" class="url"><span>商品情報はこちら！</span></button>
                           </div>
                       </div>
                       {%- set ns.cnt = ns.cnt + 1 -%}
@@ -247,6 +247,10 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
   $(".likeButton").click(function() {
+    $(this).toggleClass("clicked");
+  });
+
+  $(".url").click(function() {
     $(this).toggleClass("clicked");
   });
 </script>
