@@ -1,0 +1,231 @@
+@charset "utf-8";
+.header {
+    background: white;
+}
+
+.header .container {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    max-width: none;
+    border-bottom: 3px solid black;
+}
+
+.area_logo_header {
+    display: flex;
+    align-items: center;
+}
+
+.area_logo_header .copy {
+    display: block;
+    padding-bottom: 7px;
+}
+
+.area_logo_header .logo {
+    display: block;
+    margin-left: 20px;
+}
+
+.area_logo_header .logo img {
+    margin-top: 6px;
+    margin-bottom: 10px;
+    height: 64px;
+    width: 64px;
+    filter: grayscale(100%) contrast(120%);
+}
+
+.area_logo_header .copy {
+    font: 300 12px/1em "fantasy", fantasy;
+    margin: 0 0 0 30px;
+    font-family: cursive;
+}
+
+.area_nav_header {
+    display: flex;
+    margin-left: auto;
+    flex: auto;
+    min-width: 10px;
+}
+
+/* ナビゲーションバー・アイコン */
+.list_nav_icon_header {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding-left: 20px;
+    margin-left: auto;
+    margin-right: 30px;
+    border-left: 1px solid black;
+
+}
+
+.list_nav_icon_header > li + li {
+    margin-left: 10px;
+}
+.list_nav_icon_header a {
+    display: block;
+    width:30px;
+    height: 30px;
+    background-size: contain;
+    background-position: center center;
+    background-position: no-repeat;
+}
+
+.list_nav_icon_header {
+    list-style: none;
+}
+
+.list_nav_icon_header .search a {
+    background: url(../static/cmn/img/ico/ico_search.svg);
+}
+
+.list_nav_icon_header .favorite a {
+    background: url(../static/cmn/img/ico/ico_heart.svg);
+}
+
+.list_nav_icon_header .home a {
+    background: url(../static/cmn/img/ico/ico_home.svg);
+}
+
+
+/* リストナビ */
+.list_nav_header {
+    padding-left: 90px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.list_nav_header a {
+    text-decoration: none;
+    color: black;
+    font-family: fantasy;
+    font-size: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+.list_nav_header  li {
+    list-style: none;
+
+}
+
+.list_nav_header a::after {
+    position: absolute;
+    left: 0;
+    content: '';
+    background: black;
+    transform: scale(0, 1);
+    transform-origin: center top; /*変形（アンダーラインの伸長）の原点がaタグ（各メニュー）の右端*/
+    transition: transform 0.3s;   /*変形の時間*/
+    width: 100%;
+    height: 1.5px;
+    bottom: -4px;
+    }
+
+.list_nav_header a:hover::after {
+    transform: scale(1, 1); /*ホバー後、x軸方向に1（相対値）伸長*/
+    }
+
+.list_nav_header > li + li {
+    margin-left: 40px;
+}
+
+/* header終了 */
+
+/* カード内容についてのcss */
+.wrapper {
+	display: flex;
+	/* background-color: skyblue; */
+	justify-content: center;
+    align-items: center;
+    height: 86vh;
+}
+
+.food-container {
+	margin: 10px;
+	border-radius: 20px;
+    width: 600px;
+    height: 600px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.submit_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    width: 65%;
+    height: 65%;
+    box-shadow: 3.5px 3.5px 3.5px 3.5px #F62355;
+    animation-delay: 0s;
+    animation: animateBg 5s linear infinite;
+    /* animateBg 3s linear infinite,
+    animateBg 5s linear infinite,
+    animateBg 7s linear infinite,
+    animateBg 9s linear infinite,
+    animateBg 11s linear infinite; */
+}
+
+.get_ready {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    height: 60%;
+    border-radius: 100%;
+    box-shadow: 2px 2px 2px 2px #F62355;
+    animation-delay: 0.2s;
+    animation: animateBg 5s linear infinite;
+    /* animateBg 3s linear infinite,
+    animateBg 5s linear infinite,
+    animateBg 7s linear infinite,
+    animateBg 9s linear infinite,
+    animateBg 11s linear infinite; */
+
+}
+
+@keyframes animateBg {
+    0% {
+        filter: hue-rotate(0deg)
+    }
+    100% {
+        filter: hue-rotate(360deg)
+    }
+}
+
+.get_ready p {
+    font-size: 45px;
+    font-family: fantasy;
+}
+
+.get_ready_clicked {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    height: 60%;
+    border-radius: 100%;
+    transform: scale(0.95, 0.95);
+	transition-duration: 0.7s;
+    box-shadow: 1px 1px 1px 1px #ededed;
+    /* box-shadow: 1px 1px 1px 1px #F2F2F2; */
+}
+
+
+
+.foodname {
+	margin: 10px;
+	text-align: center;
+}
+
+.card-body {
+    text-align: center;
+    font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+}

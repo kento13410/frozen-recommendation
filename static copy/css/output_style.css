@@ -1,0 +1,208 @@
+/* headerについてのcss */
+
+.header {
+    background: white;
+}
+
+.header .container {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    max-width: none;
+    border-bottom: 3px solid black;
+}
+
+.area_logo_header {
+    display: flex;
+    align-items: center;
+}
+
+.area_logo_header .copy {
+    display: block;
+    padding-bottom: 7px;
+}
+
+.area_logo_header .logo {
+    display: block;
+    margin-left: 20px;
+}
+
+.area_logo_header .logo img {
+    margin-top: 6px;
+    margin-bottom: 10px;
+    height: 64px;
+    width: 64px;
+    filter: grayscale(100%) contrast(120%);
+}
+
+.area_logo_header .copy {
+    font: 300 12px/1em "fantasy", fantasy;
+    margin: 0 0 0 30px;
+    font-family: cursive;
+}
+
+.area_nav_header {
+    display: flex;
+    margin-left: auto;
+    flex: auto;
+    min-width: 10px;
+}
+
+/* ナビゲーションバー・アイコン */
+.list_nav_icon_header {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding-left: 20px;
+    margin-left: auto;
+    margin-right: 30px;
+    border-left: 1px solid black;
+
+}
+
+.list_nav_icon_header > li + li {
+    margin-left: 10px;
+}
+.list_nav_icon_header a {
+    display: block;
+    width:30px;
+    height: 30px;
+    background-size: contain;
+    background-position: center center;
+    background-position: no-repeat;
+}
+
+.list_nav_icon_header {
+    list-style: none;
+}
+
+.list_nav_icon_header .search a {
+    background: url(cmn/img/ico/ico_search.svg);
+}
+
+.list_nav_icon_header .favorite a {
+    background: url(cmn/img/ico/ico_heart.svg);
+}
+
+.list_nav_icon_header .home a {
+    background: url(cmn/img/ico/ico_home.svg);
+}
+
+
+/* リストナビ */
+.list_nav_header {
+    padding-left: 90px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.list_nav_header a {
+    text-decoration: none;
+    color: black;
+    font-family: fantasy;
+    font-size: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+.list_nav_header  li {
+    list-style: none;
+
+}
+
+.list_nav_header a::after {
+    position: absolute;
+    left: 0;
+    content: '';
+    background: black;
+    transform: scale(0, 1);
+    transform-origin: center top; /*変形（アンダーラインの伸長）の原点がaタグ（各メニュー）の右端*/
+    transition: transform 0.3s;   /*変形の時間*/
+    width: 100%;
+    height: 1.5px;
+    bottom: -4px;
+    }
+
+.list_nav_header a:hover::after {
+    transform: scale(1, 1); /*ホバー後、x軸方向に1（相対値）伸長*/
+    }
+
+.list_nav_header > li + li {
+    margin-left: 40px;
+}
+
+/* header終了 */
+
+/* mainについてのcss */
+section {
+    margin: 0px 30px;
+}
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.card-container {
+    height: 300px;
+    width: 650px;
+    box-shadow: 0px 0px 28px 3px #ededed;
+    border-radius: 20px;
+    display: flex;
+    margin: 35px auto;
+}
+
+.card-container:hover {
+	border-radius: 20px;
+	transform: scale(1.05, 1.05);
+	transition-duration: 0.9s;
+}
+
+.card-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-left img {
+    margin: 10px;
+}
+
+.circle {
+    height: 46px;
+    border-radius: 100px;
+    box-shadow: 0px 0px 5px 0px #D8D8D8;
+}
+/* h1についてのcss */
+
+h1 {
+    font-family:  "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+p {
+    font-family:  "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+    margin: 12px;
+}
+
+/* snsリストについてのcss */
+.sns ul {
+    display: flex;
+    /* justify-content: center; */
+    list-style: none;
+    margin-top: 20px;
+}
+
+.sns ul li {
+    margin-left: 18px;
+    transition: all .5s;
+}
+
+.sns ul li img {
+    width: 100%;
+}
+
+.sns ul li:hover {
+    transform: translateY(-10px);
+}
