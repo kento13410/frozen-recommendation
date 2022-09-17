@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+        <title>冷凍食品</title>
+        <link rel="stylesheet" href="../../static/css/input_style.css">
+        <!-- <script src="../static/test.js" defer></script> -->
+        <script src="https://code.jquery.com/jquery.min.js"></script>
+    </head>
+        <body>
+         <!-- startヘッダー -->
+         <header class="header">
+            <div class="container">
+              <!-- ロゴエリア -->
+              <div class="area_logo_header">
+                <a class="logo" href="#">
+                  <img src="../../static/img/logo/logo.svg">
+                </a>
+                <p class="copy">For your busy time...</p>
+              </div>
+              <nav class="area_nav_header">
+                <ul class="list_nav_header">
+                  <li>
+                      <a href="#">SEARCH</a>
+                  </li>
+                  <li>
+                      <a href="#">CATEGORY</a>
+                  </li>
+                  <li>
+                      <a href="#">FAVORITES</a>
+                  </li>
+                  <li>
+                      <a href="#">TOPICS</a>
+                  </li>
+                </ul>
+                <ul class="list_nav_icon_header">
+                  <li class="search">
+                      <a href="#"></a>
+                  </li>
+                  <li class="favorite">
+                      <a href="#"></a>
+                  </li>
+                  <li class="home">
+                      <a href="#"></a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+         </header>
+         <!-- endヘッダー -->
+         <!-- 個人情報カード -->
+         <section class="wrapper">
+            <div class="food-container" style="display: none">
+                <div class="sentence">
+                    <p class="question1">質問１：パーソナルデータを入力して</p>
+                </div>
+                <div class="column1">
+                    <div class="sex">
+                        <h1 id="sex">性別</h1>
+                        <div class="choice">
+                        <div class="male">
+                            <img src="../../static/img/sex/male.png" alt="男">
+                        </div>
+                        <div class="female">
+                            <img src="../../static/img/sex/female.png" alt="女">
+                        </div>
+                    </div>
+                    </div>
+                    <div class="age">
+                        <h1>年齢</h1>
+                        <div class="age0">
+                            <div class="age1">
+                                <p id="age">18</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column2">
+                    <div class="height">
+                        <h1>身長</h1>
+                        <div class="height0">
+                        <div class="height1">
+                            <p>170</p>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="weight">
+                        <h1>体重</h1>
+                        <div class="weight0">
+                        <div class="weight1">
+                            <p>65</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end個人情報カード -->
+        <script src="https://code.jquery.com/jquery.min.js"></script>
+        <script>
+        $(function() {
+            $(".male").click(function() {
+                $(".sex").toggleClass("clickMale") ;
+            });
+        });
+        </script>
+        <script>
+        $(function() {
+            $(".male").click(function() {
+                $(".sex").removeClass("clickFemale") ;
+            });
+        });
+        </script>
+        <script>
+        $(function() {
+            $(".female").click(function() {
+                $(".sex").toggleClass("clickFemale");
+            });
+        });
+        </script>
+        <script>
+        $(function() {
+            $(".female").click(function() {
+                $(".sex").removeClass("clickMale") ;
+            });
+        });
+        </script>
+        <script>
+        $(function() {
+            $(".age0").click(function() {
+                $(".age").toggleClass("clickAge0") ;
+            });
+        });
+        </script>
+        <script>
+        var regexp = /[\s\u{3000}]/ug;
+        var text = $age.text();
+        if(text.replace(regexp, '') == ''){
+            $age.removeClass("clickAge0");
+        }
+        </script>
+        <script>
+        $(function() {
+            $(".height0").click(function() {
+                $(".height").toggleClass("clickHeight0") ;
+            });
+        });
+        </script>
+        <script>
+        $(function() {
+            $(".weight0").click(function() {
+                $(".weight").toggleClass("clickWeight0") ;
+            });
+        });
+        </script>
+        <script>
+          $(document).ready(function(){
+            $(".food-container").fadeIn(3500);
+        });
+        </script>
+        </body>
+    </html>
