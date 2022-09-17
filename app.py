@@ -109,7 +109,7 @@ def logout():
 @login_required
 # @loading_black
 def home():
-    return render_template("home.html")
+    return render_template("main/home.html")
 # -------------------------------------------------------------------------------------------------------------
 
 
