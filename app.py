@@ -269,5 +269,5 @@ def personal_data():
 
 @app.route("/favorite")
 def favorite():
-    db.execute("SELECT * FROM ")
+    db.execute("SELECT * FROM foodnames ")
     return render_template("favorite.html")
