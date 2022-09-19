@@ -742,15 +742,15 @@ img {
 }
 
 .btn span{
-  font-family: fantasy;
-  font-size: 30px;
-  background: #000000;
-  /* background: -moz-linear-gradient(left,  rgba(255,130,130,1) 0%, rgba(225,120,237,1) 100%); */
-  /* background: -webkit-linear-gradient(left,  rgba(255,130,130,1) 0%,rgba(225,120,237,1) 100%); */
-  /* background: linear-gradient(to right,  rgba(255,130,130,1) 0%,rgba(225,120,237,1) 100%); */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8282', endColorstr='#e178ed',GradientType=1 );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    font-family: fantasy;
+    font-size: 30px;
+    background: #000000;
+    /* background: -moz-linear-gradient(left,  rgba(255,130,130,1) 0%, rgba(225,120,237,1) 100%); */
+    /* background: -webkit-linear-gradient(left,  rgba(255,130,130,1) 0%,rgba(225,120,237,1) 100%); */
+    /* background: linear-gradient(to right,  rgba(255,130,130,1) 0%,rgba(225,120,237,1) 100%); */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8282', endColorstr='#e178ed',GradientType=1 );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .btn:hover svg rect {
