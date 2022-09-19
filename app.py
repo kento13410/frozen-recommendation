@@ -292,8 +292,15 @@ def personal_data():
         weight = int(request.form.get("weight2"))
         height = int(request.form.get("height2"))
         sex = request.form.get("sex")
-        # 目標
-        activity = request.form.get("activity")
+        try:
+            # 目標
+            activity = request.form.get("activity")
+        except:
+            session['age'] = age
+            session['weight'] = weight
+            session['height'] = height
+            session['sex'] = sex
+            return render_template("main/purpose.html")
 
         db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], sex, age, weight, height, activity)
 
