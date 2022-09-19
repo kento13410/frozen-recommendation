@@ -120,7 +120,7 @@ def home():
 @login_required
 def index():
     if (request.method == "GET"):
-        return render_template("input.html")
+        return render_template("main/input.html")
 
     else:
         # 一人当たりの必要摂取カロリー
