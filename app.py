@@ -292,10 +292,14 @@ def personal_data():
         weight = int(request.form.get("weight"))
         height = int(request.form.get("height"))
         sex = request.form.get("sex")
-        try:
+        if request.form.get("activity"):
             # 目標
             activity = request.form.get("activity")
-        except:
+            age = session['age']
+            weight = session['weight']
+            height = session['height']
+            sex = session['sex']
+        else:
             session['age'] = age
             session['weight'] = weight
             session['height'] = height
