@@ -288,9 +288,9 @@ def recommend():
 @app.route("/personal_data", methods=['GET', 'POST'])
 def personal_data():
     if request.method == 'POST':
-        age = int(request.form.get("age2"))
-        weight = int(request.form.get("weight2"))
-        height = int(request.form.get("height2"))
+        age = int(request.form.get("age"))
+        weight = int(request.form.get("weight"))
+        height = int(request.form.get("height"))
         sex = request.form.get("sex")
         try:
             # 目標
