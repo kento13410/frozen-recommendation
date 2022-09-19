@@ -4,7 +4,7 @@ from cs50 import SQL
 import random
 import ast
 from flask_session import Session
-from helpers import login_required, act_calculate, loading_black, loading_colorful
+from helpers import login_required, act_calculate,makeRandomList,loading_black, loading_colorful
 from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask("__name__")
@@ -28,7 +28,6 @@ db1 =SQL("sqlite:///users.db")
 
 #----------------------------------------ログイン画面(login)--------------------------------------------------
 @app.route("/login", methods=["GET", "POST"])
-@login_required
 def login():
     """Log user in"""
 
@@ -59,14 +58,14 @@ def login():
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
-        return render_template("login.html")
+        return render_template("main/login.html")
 # ---------------------------------------------------------------------------------------------------------------
 
 # --------------------------------------登録画面(register)---------------------------------------------------
 @app.route("/register",methods=["GET","POST"])
 def register():
     if (request.method=="GET"):
-        return render_template("register.html")
+        return render_template("main/register.html")
     else:
         username = request.form.get("username")
         password = request.form.get("password")
@@ -120,7 +119,7 @@ def home():
 @login_required
 def index():
     if (request.method == "GET"):
-        return render_template("main/input.html")
+        return render_template("main/meal.html")
 
     else:
         # 一人当たりの必要摂取カロリー
@@ -188,7 +187,7 @@ def index():
                 data2.append(data2_set)
 
 
-        return render_template("output_tester.html", data = data, data2 = data2, difData=difData)
+        return render_template("main/output.html", data = data, data2 = data2, difData=difData)
 # ----------------------------------------------------------------------------------------
 
 
@@ -218,22 +217,16 @@ def search_item():
 
 # -------------------------------------------------------------------------------------------------------------
 
-
-
 @app.route("/back")
 def back():
     return render_template("input.html")
 
 
 # -------------------------recommend--------------------------------------------------------------------------------
-
 @app.route("/recommend", methods=["GET","POST"])
 def recommend():
     if (request.method == "POST"):
-    # クリックされたカテゴリの取得
-
-        # お弁当肉系
-        beaf = request.form.get("beaf")
+        beef = request.form.get("beef")
         # お弁当魚系
         fish = request.form.get("fish")
         # 米飯系
@@ -241,28 +234,28 @@ def recommend():
         # 麺系
         noodle = request.form.get("noodle")
 
-        if (beaf):
-            beafList = db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?",beaf)
+        if (beef):
+            beefList = db.execute("SELECT * from foodnames WHERE カテゴリ = ?",beef)
         else:
-            beafList = []
+            beefList = []
         if (fish):
-            fishList = db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?",fish)
+            # fishList = db.execute("SELECT * from foodnames WHERE カテゴリ = ?",fish)
+            fishList = db.execute('SELECT * from foodnames WHERE カテゴリ = "おべんとう 魚系" ')
         else:
             fishList = []
         if (rice):
-            riceList = db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?",rice)
+            riceList = db.execute("SELECT * from foodnames WHERE カテゴリ = ?",rice)
         else:
             riceList = []
         if (noodle):
-            noodleList = db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?",noodle)
+            noodleList = db.execute("SELECT * from foodnames WHERE カテゴリ = ?",noodle)
         else:
             noodleList = []
-
 
         #何かしらの条件に従ってこのリストに入れていく
         selectedList = []
         # リストの連結 [{1},{2},.......{n}]となる
-        for element in beafList:
+        for element in beefList:
             selectedList.append(element)
         for element in fishList:
             selectedList.append(element)
@@ -271,13 +264,18 @@ def recommend():
         for element in noodleList:
             selectedList.append(element)
 
-        # recommnedで表示する冷凍食品リストを
-        recommendList = []
-        # ５つの商品をランダムにとってくる。
-        for i in range(5):
-            index = random.randrange(len(selectedList))
-            recommendList.append(selectedList[index])
-        return render_template("recommend.html",recommendList=recommendList)
+
+        if(len(selectedList) != 0):
+            indexList = makeRandomList(len(selectedList))
+            recommendList = []
+            for index in indexList:
+                recommendList.append(selectedList[index])
+            return render_template("MAIN/recommend.html",recommendList=recommendList)
+        else:
+            return redirect("/")
+            # print("categoryが一つもチェックされていない")
+
+
 
 # ------------------------------------------------------------------------------------------------------------------
 
@@ -311,7 +309,7 @@ def personal_data():
         return redirect("/")
 
     else:
-        return render_template("main/input.html")
+        return render_template("main/personal_data.html")
 
 
 

@@ -1,4 +1,9 @@
 @charset "utf-8";
+
+html {
+    overflow: scroll;
+}
+
 .header {
     background: white;
 }
@@ -56,7 +61,6 @@
     margin-left: auto;
     margin-right: 30px;
     border-left: 1px solid black;
-
 }
 
 .list_nav_icon_header > li + li {

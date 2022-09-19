@@ -134,6 +134,24 @@
 /* header終了 */
 
 /* カード内容についてのcss */
+/* backボタン配置についてのcss */
+.back {
+    width: 20px;
+    height: 10px;
+    position: relative;
+    top: -62px;
+    left: -150px;
+}
+
+/* nextボタン配置についてのcss */
+.next {
+    width: 20px;
+    height: 10px;
+    position: relative;
+    top: -62px;
+    right: -67px;
+}
+
 .wrapper {
 	display: flex;
 	/* background-color: skyblue; */
@@ -142,9 +160,16 @@
     height: 86vh;
 }
 
-.food-container {
+.food-containerActive {
 	/* background-color: lightgreen; */
 	margin: 20px;
+	border-radius: 20px;
+    width: 600px;
+    height: 600px;
+}
+.food-containerPurpose {
+    margin-left: 70px;
+    margin-right: 5px;
 	border-radius: 20px;
     width: 600px;
     height: 600px;
@@ -189,6 +214,18 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+<<<<<<< HEAD
+.column_Button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 550px;
+    margin-left: 22px;
+=======
+input[type=radio] {
+    display: none; /* ラジオボタンを非表示にする */
+>>>>>>> 6c6b27c2e74d3b3f0d965d368ab0246aa6b529e2
 }
 .sex {
     border-radius: 20px;
@@ -416,28 +453,32 @@ img {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     width: 100%;
-    height: 200px;
+    height: 160px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 25px;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .columnActive2 {
     width: 100%;
-    height: 200px;
+    height: 160px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .columnActive3 {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     width: 100%;
-    height: 200px;
+    height: 160px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
 }
 .activeLevel {
     font-size: 30px;
@@ -447,7 +488,8 @@ img {
     border-radius: 20px;
     width: 90%;
     height: 170px;
-    margin: 50px;
+    margin-top: 40px;
+    margin-bottom: 70px;
     box-shadow: 0px 0px 28px 3px #ededed;
     text-align: center;
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
@@ -458,14 +500,15 @@ img {
 	transition-duration: 0.7s;
 }
 .clickAnswer1 {
-    box-shadow: 3.5px 3.5px 3.5px 3.5px #C2DFFF;
+    box-shadow: 2.5px 2.5px 2.5px 2.5px #292929;
 }
 
 .answer2 {
     border-radius: 20px;
     width: 90%;
     height: 170px;
-    margin: 50px;
+    margin-top: 70px;
+    margin-bottom: 70px;
     box-shadow: 0px 0px 28px 3px #ededed;
     text-align: center;
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
@@ -476,14 +519,14 @@ img {
 	transition-duration: 0.7s;
 }
 .clickAnswer2 {
-    box-shadow: 3.5px 3.5px 3.5px 3.5px #3BB9FF;
+    box-shadow: 2.5px 2.5px 2.5px 2.5px #292929;
 }
 
 .answer3 {
     border-radius: 20px;
     width: 90%;
     height: 170px;
-    margin: 50px;
+    margin-top: 30px;
     box-shadow: 0px 0px 28px 3px #ededed;
     text-align: center;
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
@@ -494,7 +537,7 @@ img {
 	transition-duration: 0.7s;
 }
 .clickAnswer3 {
-    box-shadow: 3.5px 3.5px 3.5px 3.5px #0020C2;
+    box-shadow: 2.5px 2.5px 2.5px 2.5px #292929;
 }
 /* end活動量カード */
 
@@ -502,6 +545,7 @@ img {
 .question3 {
     font-size: 25px;
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+    text-align: center;
     font-weight: bold;
 }
 
@@ -509,11 +553,12 @@ img {
     border-radius: 20px;
     width: 90%;
     height: 160px;
-    margin: 50px;
+    margin-top: 40px;
+    margin-bottom: 20px;
     box-shadow: 0px 0px 28px 3px #ededed;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }
@@ -523,18 +568,19 @@ img {
 	transition-duration: 0.7s;
 }
 .clickDecrease {
-    box-shadow: 3.5px 3.5px 3.5px 3.5px #dda0dd;
+    box-shadow: 2.5px 2.5px 2.5px 2.5px #292929;
 }
 
 .maintain {
     border-radius: 20px;
     width: 90%;
     height: 160px;
-    margin: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     box-shadow: 0px 0px 28px 3px #ededed;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }
@@ -544,14 +590,14 @@ img {
 	transition-duration: 0.7s;
 }
 .clickMaintain {
-    box-shadow: 3.5px 3.5px 3.5px 3.5px #ff00ff;
+    box-shadow: 2.5px 2.5px 2.5px 2.5px #292929;
 }
 
 .increase {
     border-radius: 20px;
     width: 90%;
     height: 160px;
-    margin: 50px;
+    margin-top: 20px;
     box-shadow: 0px 0px 28px 3px #ededed;
     display: flex;
     justify-content: center;
@@ -565,7 +611,7 @@ img {
 	transition-duration: 0.7s;
 }
 .clickIncrease {
-    box-shadow: 3.5px 3.5px 3.5px 3.5px #8b008b;
+    box-shadow: 2.5px 2.5px 2.5px 2.5px #292929;
 }
 .activePurpose {
     display: flex;
@@ -574,4 +620,170 @@ img {
     justify-content: center;
     font-size: 30px;
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体"
+}
+
+.search_Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    margin-top: 20px;
+}
+
+.button span {
+    font-family: fantasy;
+    color: black;
+    position: relative;
+    z-index: 1;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    Letter-spacing: 1px;
+    transition: 0.3s;
+}
+.backNextButton span {
+    font-family: fantasy;
+    color: black;
+    position: relative;
+    z-index: 1;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    Letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 20px;
+    width: 105px;
+    height: 55px;
+    box-shadow: 0px 0px 28px 3px #ededed;
+    transition: 1s;
+    box-shadow: 0 0 3px var(--clr),
+    0 0 15px var(--clr);
+    overflow: hidden;
+    position: relative;
+}
+
+.button:hover {
+    background: var(--clr);
+}
+
+.button:hover::before {
+    width: 120%;
+
+
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 400px;
+    background: var(--clr);
+    transition: 1s;
+    animation: animate 2s linear infinite;
+    animation-delay: calc(0.33s * var(--i));
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.button::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background: white;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.button:hover::after {
+    background: var(--clr);
+}
+
+/* ここからbackNextButton */
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.backNextButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 100%;
+    width: 105px;
+    height: 105px;
+    box-shadow: 0px 0px 28px 3px #ededed;
+    transition: 1s;
+    box-shadow: 0 0 3px var(--clr),
+    0 0 15px var(--clr);
+    overflow: hidden;
+    position: relative;
+}
+
+.backNextButton:hover {
+    background: var(--clr);
+}
+
+.backNextButton:hover::before {
+    width: 120%;
+
+
+}
+
+.backNextButton::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 400px;
+    background: var(--clr);
+    transition: 1s;
+    animation: animate 2s linear infinite;
+    animation-delay: calc(0.33s * var(--i));
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.backNextButton::after {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    background: white;
+    border-radius: 100%;
+    transition: 0.5s;
+}
+
+.backNextButton:hover::after {
+    background: var(--clr);
 }
