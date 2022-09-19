@@ -1,4 +1,4 @@
-from flask import redirect,session
+from flask import redirect,session, render_template
 from functools import wraps
 
 
@@ -9,6 +9,22 @@ def login_required(f):
             return redirect("/login")
         return f(*args, **kwargs)
     return decorated_function
+
+
+def loading_black(f):
+    @wraps(f)
+    def black(*args, **kwargs):
+        render_template("loading_black.html")
+        return f(*args, **kwargs)
+    return black
+
+
+def loading_colorful(f):
+    @wraps(f)
+    def colorful(*args, **kwargs):
+        render_template("loading_colorful.html")
+        return f(*args, **kwargs)
+    return colorful
 
 
 

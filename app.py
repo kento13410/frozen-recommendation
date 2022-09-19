@@ -4,7 +4,7 @@ from cs50 import SQL
 import random
 import ast
 from flask_session import Session
-from helpers import login_required, act_calculate
+from helpers import login_required, act_calculate, loading_black, loading_colorful
 from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask("__name__")
@@ -28,6 +28,7 @@ db1 =SQL("sqlite:///users.db")
 
 #----------------------------------------ログイン画面(login)--------------------------------------------------
 @app.route("/login", methods=["GET", "POST"])
+@login_required
 def login():
     """Log user in"""
 
@@ -81,7 +82,7 @@ def register():
             raise Exception('パスワードが一致してないでよ！')
 
         # データの登録
-        db1.execute("INSERT INTO users (username,hash) VALUES (?,?)",username,generate_password_hash(password))
+        db1.execute("INSERT INTO users (username,hash) VALUES (?,?)", username, generate_password_hash(password))
 
         return redirect("/login")
 
@@ -105,45 +106,35 @@ def logout():
 
 # ------------------------------------ホーム画面(home)--------------------------------------------------------
 @app.route("/",methods=["GET","POST"])
+@login_required
+# @loading_black
 def home():
-    if session:
-        if (request.method == "GET"):
-            return render_template("home.html")
-        else:
-            pass
-
-    else:
-        return render_template("input_tester.html")
+    data = db.execute("SELECT * FROM foodnames")
+    count = 0
+    return render_template("main/home.html", data=data, count=count)
 # -------------------------------------------------------------------------------------------------------------
 
 
 # ------------------------------------------入力画面(input)----------------------------------------------------
 @app.route("/input", methods=["GET","POST"])
+@login_required
 def index():
     if (request.method == "GET"):
-        if session:
-            return render_template("input.html")
-        else:
-            return render_template("input_tester.html")
+        return render_template("main/input.html")
 
     else:
-        if session:
-            personal_data = db.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
-            act = act_calculate(personal_data['sex'], personal_data['weight'], personal_data['height'], personal_data['age'], personal_data['level'], personal_data['activity'])
+        # 一人当たりの必要摂取カロリー
+        personal_data = db1.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
+        age = personal_data['age']
+        weight = personal_data['weight']
+        height = personal_data['height']
+        sex = personal_data['choice']
+        activity = personal_data['activity']
 
-        else:
-            # 一人当たりの必要摂取カロリー
-            age = int(request.form.get("age"))
-            weight = int(request.form.get("weight"))
-            height = int(request.form.get("height"))
-            budget = int(request.form.get("budget"))
-            sex = request.form.get("sex")
-            # 活動レベル
-            level = request.form.get("level")
-            # 目的
-            activity = request.form.get("activity")
-            # 必要摂取カロリーの計算
-            act = act_calculate(sex, weight, height, age, level, activity)
+        level = request.form.get("level")
+        budget = request.form.get("budget")
+        act = act_calculate(sex, weight, height, age, level, activity)
+
 
 # --------------------------------------------------------------------
 # D = act - (朝で摂取したエネルギー + 昼で摂取したエネルギー) [kcal]
@@ -156,10 +147,10 @@ def index():
         fDicts = request.form.getlist("select_food")
         for fDict in fDicts:
             Dict = ast.literal_eval(fDict)
-            total_energy += int(Dict['エネルギー'])
-            total_protein += int(Dict['たんぱく質'])
-            total_lipid += int(Dict['脂質'])
-            total_carbohydrate += int(Dict['炭水化物'])
+            total_energy += abs(int(Dict['エネルギー']))
+            total_protein += abs(int(Dict['たんぱく質']))
+            total_lipid += abs(int(Dict['脂質']))
+            total_carbohydrate += abs(int(Dict['炭水化物']))
 
         # 1日に必要な三大栄養素
         P = 2 * weight
@@ -181,16 +172,27 @@ def index():
 
         difData = {'カロリー': D, 'タンパク質': difP, '脂質': difF, '炭水化物': difCBH}
 
-        # カロリー*0.7< act< カロリー*1.3
-        data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?)", X, P, F, CBH)
-        # data = db.execute("SELECT * FROM foodnames WHERE カロリー*0.7 < ? AND ? < カロリー*1.3 AND タンパク質*0.7 < ? AND ? < タンパク質*1.3 AND 脂質*0.7 < ? AND ? < 脂質*1.3 AND 炭水化物*0.7 < ? AND ? < 炭水化物*1.3", abs(D), abs(D), abs(difP), abs(difP), abs(difF), abs(difF), abs(difCBH), abs(difCBH))
-        # data = db.execute("SELECT * FROM foodnames WHERE カロリー < ?", D)
+        data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 30", X, P, F, CBH)
 
-        return render_template("output_tester.html", data = data, difData=difData)
+        data2 = []
+        for dat in data:
+            data2_set = []
+            data2_set.append(dat)
+            difP2 = difP - dat['タンパク質']
+            difF2 = difF - dat['脂質']
+            difCBH2 = difCBH - dat['炭水化物']
+            X2 = difP2/P + difF2/F + difCBH2/CBH
+            data_element2 = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 10", X2, P, F, CBH)
+            for i in range(len(data_element2)):
+                data2_set.append(data_element2[i])
+                data2.append(data2_set)
+
+
+        return render_template("output_tester.html", data = data, data2 = data2, difData=difData)
 # ----------------------------------------------------------------------------------------
 
 
-# --------------------------------------------入力と合致する食品の栄養情報を取得------------
+# -----------------------------入力と合致する食品の栄養情報を取得---------------------------
 
 @app.route("/search_item", methods=["GET", "POST"])
 def search_item():
@@ -211,62 +213,112 @@ def search_item():
         for snack in snacks:
             if len(snack) != 0:
                 snName += db.execute(sql, "%" + snack + "%")
-        if session:
-            return render_template("input.html", breakfast=brName, lunch=luName, snack=snName)
-        return render_template("input_tester.html", breakfast=brName, lunch=luName, snack=snName)
+
+        return render_template("input.html", breakfast=brName, lunch=luName, snack=snName)
 
 # -------------------------------------------------------------------------------------------------------------
 
-
-# -----------------------------今は使ってない-------------------------------------------------------------------
-
-@app.route("/select_item", methods=["GET", "POST"])
-def select_item():
-    if request.method == "POST":
-        total = 0
-        fDicts = request.form.getlist("select_food")
-        for fDict in fDicts:
-            total += fDict['エネルギー']
-        return render_template("input_tester.html")
-
-# -------------------------------------------------------------------------------------------------------------
 
 
 @app.route("/back")
 def back():
-    return render_template("input_tester.html")
+    return render_template("input.html")
 
 
+# -------------------------recommend--------------------------------------------------------------------------------
 
 @app.route("/recommend", methods=["GET","POST"])
 def recommend():
-    foods = []
     if (request.method == "POST"):
-        # favs : [value1, value2, value3, ・・・]
-        favs = request.form.getlist("fav")
-        for fav in favs:
-            foods += db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?", fav)
-        foodsRecommend = random.sample(foods, 3)
-        return render_template("output.html", foods=foodsRecommend)
+    # クリックされたカテゴリの取得
+
+        # お弁当肉系
+        beaf = request.form.get("beaf")
+        # お弁当魚系
+        fish = request.form.get("fish")
+        # 米飯系
+        rice = request.form.get("rice")
+        # 麺系
+        noodle = request.form.get("noodle")
+
+        if (beaf):
+            beafList = db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?",beaf)
+        else:
+            beafList = []
+        if (fish):
+            fishList = db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?",fish)
+        else:
+            fishList = []
+        if (rice):
+            riceList = db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?",rice)
+        else:
+            riceList = []
+        if (noodle):
+            noodleList = db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?",noodle)
+        else:
+            noodleList = []
+
+
+        #何かしらの条件に従ってこのリストに入れていく
+        selectedList = []
+        # リストの連結 [{1},{2},.......{n}]となる
+        for element in beafList:
+            selectedList.append(element)
+        for element in fishList:
+            selectedList.append(element)
+        for element in riceList:
+            selectedList.append(element)
+        for element in noodleList:
+            selectedList.append(element)
+
+        # recommnedで表示する冷凍食品リストを
+        recommendList = []
+        # ５つの商品をランダムにとってくる。
+        for i in range(5):
+            index = random.randrange(len(selectedList))
+            recommendList.append(selectedList[index])
+        return render_template("recommend.html",recommendList=recommendList)
+
+# ------------------------------------------------------------------------------------------------------------------
+
+
 
 
 
 @app.route("/personal_data", methods=['GET', 'POST'])
 def personal_data():
     if request.method == 'POST':
-        age = int(request.form.get("age"))
-        weight = int(request.form.get("weight"))
-        height = int(request.form.get("height"))
-        budget = int(request.form.get("budget"))
-        sex = request.form.get("sex")
-        # 活動レベル
-        level = request.form.get("level")
-        # 目的
-        activity = request.form.get("activity")
+        try:
+            session['age'] = int(request.form.get("age"))
+            session['weight'] = int(request.form.get("weight"))
+            session['height'] = int(request.form.get("height"))
+            session['sex'] = request.form.get("sex")
+        except:
+            pass
 
-        db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, budget, level, activity) VALUES (?, ?, ?, ?, ?, ?, ?)", session['user_id'], sex, age, budget, weight, height, level, activity)
+        if request.form.get("activity") == None:
+            return render_template("main/purpose.html")
+        else:
+            # 目標
+            activity = request.form.get("activity")
+
+
+        try:
+            db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], session['sex'], session['age'], session['weight'], session['heightj'], activity)
+        except:
+            db1.execute("UPDATE personal_data SET sex=?, age=?, weight=?, height=?, activity=? WHERE user_id=?", session['sex'], session['age'], session['weight'], session['height'], activity, session['user_id'])
 
         return redirect("/")
 
     else:
-        return render_template("personal_data.html")
+        return render_template("main/input.html")
+
+
+
+@app.route("/favorite")
+def favorite():
+    product_liked_s = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
+    for product_liked in product_liked_s:
+        data = db.execute("SELECT * FROM foodnames WEHRE 食品名 = ?", product_liked['product'])
+    return render_template("favorite.html", data = data)
+
