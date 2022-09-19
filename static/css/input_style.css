@@ -278,6 +278,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     box-shadow: 0px 0px 28px 3px #ededed;
 }
 
