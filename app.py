@@ -66,7 +66,7 @@ def login():
 @app.route("/register",methods=["GET","POST"])
 def register():
     if (request.method=="GET"):
-        return render_template("register.html")
+        return render_template("main/register.html")
     else:
         username = request.form.get("username")
         password = request.form.get("password")
