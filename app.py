@@ -296,7 +296,7 @@ def personal_data():
         except:
             pass
 
-        if request.form.get("activity") == '':
+        if request.form.get("activity") == NULL:
             return render_template("main/purpose.html")
         else:
             # 目標
