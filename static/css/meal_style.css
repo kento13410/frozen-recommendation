@@ -684,7 +684,13 @@ img {
     font-weight: bold;
 }
 
-
+.mealName1 {
+    font-size: inherit;
+    font-family: inherit;
+    margin-top: 5px;
+    text-align: center;
+    font-weight: bold;
+}
 
 /* コメント */
 .deployButton {
