@@ -28,7 +28,6 @@ db1 =SQL("sqlite:///users.db")
 
 #----------------------------------------ログイン画面(login)--------------------------------------------------
 @app.route("/login", methods=["GET", "POST"])
-@login_required
 def login():
     """Log user in"""
 
