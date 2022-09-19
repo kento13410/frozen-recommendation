@@ -188,7 +188,7 @@ def index():
                 data2.append(data2_set)
 
 
-        return render_template("output_tester.html", data = data, data2 = data2, difData=difData)
+        return render_template("main/output.html", data = data, data2 = data2, difData=difData)
 # ----------------------------------------------------------------------------------------
 
 
