@@ -7,16 +7,21 @@
     <title>Recommend</title>
 </head>
 <body>
+    <div>
+        <h1>おすすめ５選！！！</h1>
+    </div>
+    <a href="/">気になるカテゴリをチェックする</a>
     {% for dict in recommendList %}
         <div>
             <p>---------------------------------------</p>
-            <img src = 'dict["画像"]' width="150px">
-            <p>dict["食品名"]</p>
-            <p>dict["値段"]</p>
-            <a href='dict["url"]'>詳しく見る</a>
+            <img src = "{{dict['画像']}}" width="150px">
+            <p>{{dict["食品名"]}}</p>
+            <p>{{dict["値段"]}}円</p>
+            <a href="{{dict['url']}}">詳しく見る</a>
             <p>----------------------------------------</p>
         </div>
     {% endfor%}
+    <a href="/">気になるカテゴリをチェックする</a>
 
 </body>
 </html>
