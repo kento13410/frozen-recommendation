@@ -302,7 +302,10 @@ def personal_data():
             session['sex'] = sex
             return render_template("main/purpose.html")
 
-        db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], sex, age, weight, height, activity)
+        try:
+            db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], sex, age, weight, height, activity)
+        except:
+            db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], sex, age, weight, height, activity)
 
         return redirect("/")
 
