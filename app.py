@@ -300,7 +300,7 @@ def personal_data():
         return redirect("/")
 
     else:
-        return render_template("personal_data.html")
+        return render_template("main/input.html")
 
 
 
