@@ -187,6 +187,11 @@
     justify-content: space-between;
     align-items: center;
 }
+
+input[type=radio] {
+    display: none; /* ラジオボタンを非表示にする */
+}
+
 .sex {
     border-radius: 20px;
     width: 230px;
