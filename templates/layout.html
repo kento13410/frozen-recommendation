@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../../static/css/input_style.css">
+        <title>冷凍食品:  {% block title %}{% endblock %}</title>
+        <!-- <script src="../static/test.js" defer></script> -->
+        <script src="https://code.jquery.com/jquery.min.js"></script>
+    </head>
+    <body>
+        <!-- startヘッダー -->
+        <div class="container">
+            <!-- ロゴエリア -->
+            <div class="area_logo_header">
+                <a class="logo" href="#">
+                    <img src="../../../static/img/logo/logo.svg">
+                </a>
+                <p class="copy">For your busy time...</p>
+            </div>
+            <nav class="area_nav_header">
+                <ul class="list_nav_header">
+                    <li>
+                        <a href="#" href="/search">SEARCH</a>
+                    </li>
+                    <li>
+                        <a href="#" href="/category">CATEGORY</a>
+                    </li>
+                    <li>
+                        <a href="#" href="/topics">TOPICS</a>
+                    </li>
+                </ul>
+                {% if session["user_id"] %}
+                    <ul class="list_nav_header">
+                        <li>
+                            <a href="#" href="/favorite">FAVORITES</a>
+                        </li>
+                    </ul>
+                    <ul class="list_nav_icon_header">
+                        <li class="search">
+                            <a href="#"></a>
+                        </li>
+                        <li class="favorite">
+                            <a href="#"></a>
+                        </li>
+                        <li class="home">
+                            <a href="#"></a>
+                        </li>
+                    </ul>
+                {% else %}
+                    <ul class="navbar-nav ms-auto mt-2">
+                        <li class="register"><a href="/register">Register</a></li>
+                        <li class="login"><a href="/login">Log In</a></li>
+                    </ul>
+                {% endif %}
+            </nav>
+        </div>
+        <!-- endヘッダー -->
+        {% if get_flashed_messages() %}
+            <header class="header">
+                <div class="alert alert-primary mb-0 text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+        <main class="container-fluid py-5 text-center">
+            {% block main %}{% endblock %}
+        </main>
+    </body>
+</html>
