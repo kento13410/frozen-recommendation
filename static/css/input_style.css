@@ -201,6 +201,17 @@
 	transform: scale(1.05, 1.05);
 	transition-duration: 0.7s;
 }
+.sex1 {
+    font-size: inherit;
+    font-family: inherit;
+    text-align: center;
+    border-radius: 100%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .age {
     border-radius: 20px;
     width: 230px;
