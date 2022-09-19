@@ -267,7 +267,6 @@ button, input, select, textarea {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
     /* text-align: bottom; */
 }
 
