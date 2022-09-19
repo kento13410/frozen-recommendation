@@ -691,6 +691,7 @@ img {
     text-align: center;
     font-weight: bold;
     outline: none;
+    border: none;
 }
 
 /* コメント */
