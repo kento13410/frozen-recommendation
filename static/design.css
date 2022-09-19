@@ -1,6 +1,9 @@
 /*画面の配置を真ん中にするCSS */
 @charset "UTF-8";
-
+html,body {
+  height:100%;
+  margin:0;
+}
 body {
   background: #ffffff;
   font-family: Meiryo;
@@ -17,6 +20,11 @@ body {
 
 }
 /* ここまで */
+.arrangement {
+  position: absolute;
+  left: 10px;
+  display: flex;
+}
 
 /* home.htmlのheaderについて*/
 a,
@@ -42,6 +50,8 @@ header h4 {
 }
 header nav {
   margin: 0 0 0 auto;
+  width: 100%;
+  height: 100vh;
 }
 
 header nav ul {
@@ -82,7 +92,7 @@ header nav ul li a:hover {
   display: flex;
   background-color: skyblue;
   justify-content: space-around;
-  margin: 50px;
+  margin: 0;
 
 }
 
@@ -141,7 +151,7 @@ h2{
   z-index: 10;
   opacity: 0;
   width: 100%;
-  height: 700px;
+  height: 100vh;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -208,7 +218,7 @@ h2{
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-250px * 3));
+    transform: translateX(-100%);
   }
 }
 .slider {
@@ -224,23 +234,26 @@ h2{
   overflow:hidden;
   position: relative;
   border:1px solid #e5e5e5;
+  margin-left: auto;
 }
 .slider-wrap {
     animation: scroll 10s linear infinite;
     display: flex;
-    width: calc(250px * 6);
+    width: 100%;
     height:100%;
-    margin:0 auto;
+    margin-left: auto;
+    background-color: #000000;
   }
 .slide-image{
   width:80%;
   height:100%;
   object-fit:cover;
+  margin-left: auto;
 }
 .slide{
   width:250px;
   height:100%;
-  margin:0 auto;
+  margin-left: auto;
 }
 
 スライドする商品ボタンに関するCSS
