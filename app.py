@@ -295,23 +295,20 @@ def personal_data():
             sex = request.form.get("sex")
         except:
             pass
-        
-        if request.form.get("activity"):
-            # 目標
-            activity = request.form.get("activity")
-            age = session['age']
-            weight = session['weight']
-            height = session['height']
-            sex = session['sex']
-        else:
+
+        if not request.form.get("activity"):
             session['age'] = age
             session['weight'] = weight
             session['height'] = height
             session['sex'] = sex
             return render_template("main/purpose.html")
+        else:
+            # 目標
+            activity = request.form.get("activity")
+
 
         try:
-            db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], sex, age, weight, height, activity)
+            db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], session['sex'], session['age'], session['weight'], session['heightj'], activity)
         except:
             db1.execute("UPDATE personal_data SET sex=?, age=?, weight=?, height=?, activity=? WHERE user_id=?", sex, age, weight, height, activity, session['user_id'])
 
