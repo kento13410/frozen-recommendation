@@ -3,6 +3,10 @@
     background: white;
 }
 
+* {
+    
+}
+
 .header .container {
     height: 80px;
     display: flex;
