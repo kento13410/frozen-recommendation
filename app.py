@@ -311,7 +311,7 @@ def personal_data():
         return redirect("/")
 
     else:
-        return render_template("main/input.html")
+        return render_template("main/personal_data.html")
 
 
 
