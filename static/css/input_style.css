@@ -405,7 +405,7 @@ img {
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }
 
-input {
+.input {
     -webkit-appearance: none;
     -moz-appearance: none;
 }
