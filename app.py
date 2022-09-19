@@ -59,14 +59,14 @@ def login():
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
-        return render_template("login.html")
+        return render_template("main/login.html")
 # ---------------------------------------------------------------------------------------------------------------
 
 # --------------------------------------登録画面(register)---------------------------------------------------
 @app.route("/register",methods=["GET","POST"])
 def register():
     if (request.method=="GET"):
-        return render_template("register.html")
+        return render_template("main/register.html")
     else:
         username = request.form.get("username")
         password = request.form.get("password")
@@ -120,7 +120,7 @@ def home():
 @login_required
 def index():
     if (request.method == "GET"):
-        return render_template("main/input.html")
+        return render_template("main/meal.html")
 
     else:
         # 一人当たりの必要摂取カロリー
@@ -188,7 +188,7 @@ def index():
                 data2.append(data2_set)
 
 
-        return render_template("output_tester.html", data = data, data2 = data2, difData=difData)
+        return render_template("main/output.html", data = data, data2 = data2, difData=difData)
 # ----------------------------------------------------------------------------------------
 
 
@@ -310,7 +310,7 @@ def personal_data():
         return redirect("/")
 
     else:
-        return render_template("main/input.html")
+        return render_template("main/personal_data.html")
 
 
 

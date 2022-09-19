@@ -187,6 +187,7 @@
     justify-content: space-between;
     align-items: center;
 }
+<<<<<<< HEAD
 .column_Button {
     display: flex;
     justify-content: space-between;
@@ -194,6 +195,13 @@
     width: 550px;
     margin-left: 22px;
 }
+=======
+
+input[type=radio] {
+    display: none; /* ラジオボタンを非表示にする */
+}
+
+>>>>>>> fead56a4e023a51f852ccd50e9c0e92dbe0126a5
 .sex {
     border-radius: 20px;
     width: 230px;
