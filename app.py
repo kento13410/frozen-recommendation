@@ -289,18 +289,14 @@ def recommend():
 def personal_data():
     if request.method == 'POST':
         try:
-            age = int(request.form.get("age"))
-            weight = int(request.form.get("weight"))
-            height = int(request.form.get("height"))
-            sex = request.form.get("sex")
+            session['age'] = int(request.form.get("age"))
+            session['weight'] = int(request.form.get("weight"))
+            session['height'] = int(request.form.get("height"))
+            session['sex'] = request.form.get("sex")
         except:
             pass
 
-        if not request.form.get("activity"):
-            session['age'] = age
-            session['weight'] = weight
-            session['height'] = height
-            session['sex'] = sex
+        if request.form.get("activity") == None:
             return render_template("main/purpose.html")
         else:
             # 目標
@@ -310,7 +306,7 @@ def personal_data():
         try:
             db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], session['sex'], session['age'], session['weight'], session['heightj'], activity)
         except:
-            db1.execute("UPDATE personal_data SET sex=?, age=?, weight=?, height=?, activity=? WHERE user_id=?", sex, age, weight, height, activity, session['user_id'])
+            db1.execute("UPDATE personal_data SET sex=?, age=?, weight=?, height=?, activity=? WHERE user_id=?", session['sex'], session['age'], session['weight'], session['heightj'], session['user_id'])
 
         return redirect("/")
 
