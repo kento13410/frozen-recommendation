@@ -712,8 +712,26 @@ img {
     font-weight: bold;
 }
 /* 検索ボタンについての css */
-
 .search_Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    margin-top: 20px;
+}
+.mealName1 {
+    font-size: inherit;
+    font-family: inherit;
+    margin-top: 5px;
+    text-align: center;
+    font-weight: bold;
+    outline: none;
+    border: none;
+}
+
+/* コメント */
+.deployButton {
+    height: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -761,6 +779,17 @@ img {
     0 0 15px var(--clr);
     overflow: hidden;
     position: relative;
+}
+.btn span{
+    font-family: fantasy;
+    font-size: 30px;
+    background: #000000;
+    /* background: -moz-linear-gradient(left,  rgba(255,130,130,1) 0%, rgba(225,120,237,1) 100%); */
+    /* background: -webkit-linear-gradient(left,  rgba(255,130,130,1) 0%,rgba(225,120,237,1) 100%); */
+    /* background: linear-gradient(to right,  rgba(255,130,130,1) 0%,rgba(225,120,237,1) 100%); */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8282', endColorstr='#e178ed',GradientType=1 );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .button:hover {
