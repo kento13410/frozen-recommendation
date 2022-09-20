@@ -12,40 +12,40 @@
         <!-- startヘッダー -->
         <header class="header">
             <div class="container">
-                <!-- ロゴエリア -->
-                <div class="area_logo_header">
+              <!-- ロゴエリア -->
+              <div class="area_logo_header">
                 <a class="logo" href="#">
-                    <img src="../../static/img/logo/logo.svg">
+                  <img src="../../static/img/logo/logo.svg">
                 </a>
-                <p class="copy">For your busy time...</p>
-            </div>
-            <nav class="area_nav_header">
+                <p class="copy"><a href="/">For your busy time...</a></p>
+              </div>
+              <nav class="area_nav_header">
                 <ul class="list_nav_header">
-                    <li>
-                        <a href="#">SEARCH</a>
-                    </li>
-                    <li>
-                        <a href="#">CATEGORY</a>
-                    </li>
-                    <li>
-                        <a href="#">FAVORITES</a>
-                    </li>
-                    <li>
-                        <a href="#">TOPICS</a>
-                    </li>
+                  <li>
+                      <a href="/input">CALCULATE</a>
+                  </li>
+                  <li>
+                      <a href="/recommend">RECOMMEND</a>
+                  </li>
+                  <li>
+                      <a href="#">FAVORITES</a>
+                  </li>
+                  <li>
+                      <a href="/personal_data">PERSONAL</a>
+                  </li>
                 </ul>
                 <ul class="list_nav_icon_header">
-                    <li class="search">
-                        <a href="#"></a>
-                    </li>
-                    <li class="favorite">
-                        <a href="#"></a>
-                    </li>
-                    <li class="home">
-                        <a href="#"></a>
-                    </li>
+                  <li class="search">
+                      <a href="#"></a>
+                  </li>
+                  <li class="favorite">
+                      <a href="#"></a>
+                  </li>
+                  <li>
+                      <a href="/logout"></a>
+                  </li>
                 </ul>
-            </nav>
+              </nav>
             </div>
         </header>
         <!-- endヘッダー -->
@@ -61,12 +61,12 @@
                             <h1 id="sex">性別</h1>
                             <div class="choice">
                                 <div class="male">
-                                    <input type="image" src="../../static/img/sex/male.png" alt="男" value="男" class="male">
+                                    <input type="radio" src="../../static/img/sex/male.png" alt="男" value="男" class="male" name="sex">
                                 </div>
                                 <div class="female">
-                                    <input type="image" src="../../static/img/sex/female.png" alt="女" value="女" class="female">
+                                    <input type="radio" src="../../static/img/sex/female.png" alt="女" value="女" class="female" name="sex">
+                                </div>
                             </div>
-                        </div>
                         </div>
                         <div class="age">
                             <h1>年齢</h1>

@@ -215,12 +215,17 @@ p {
     justify-content: space-between;
     align-items: center;
 }
+<<<<<<< HEAD
 .column_Button {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 550px;
     margin-left: 22px;
+=======
+input[type=radio] {
+    display: none; /* ラジオボタンを非表示にする */
+>>>>>>> 49a0ff25775bf986103032e63cec3e16dba778d7
 }
 .sex {
     border-radius: 20px;
