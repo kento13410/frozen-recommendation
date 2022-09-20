@@ -51,25 +51,35 @@
          <!-- endヘッダー -->
          <!-- 活動量カード -->
          <section class="wrapper">
+            <div class="back">
+                <button type="submit" class="backNextButton" style="--clr: #00ccff;--i:0;">
+                    <span>Back</span>
+                </button>
+            </div>
             <div class="food-container" style="display:none">
                 <div class="sentence">
                     <p class="question2">質問２：日々の活動量を選んでください</p>
                 </div>
                 <div class="columnActive1">
                     <div class="answer1">
-                        <p class="activeLevel">座り仕事が多く、１日の運動は、<br>階段の上り下りくらいだった。</p>
+                        <input type="radio" name="level" value="座り仕事が多く、１日の運動は、<br>階段の上り下りくらいだった。"><label for ="座り仕事が多く、<br>１日の運動は、階段の上り下りくらいだった。" class="activeLevel">座り仕事が多く、１日の運動は、<br>階段の上り下りくらいだった。</label>
                     </div>
                 </div>
                 <div class="columnActive2">
                     <div class="answer2">
-                        <p class="activeLevel">立ち仕事が多く、<br>比較的一日中動き回った。</p>
+                        <input type="radio" name="level" value="立ち仕事が多く、<br>比較的一日中動き回った。"><label for ="立ち仕事が多く、<br>比較的一日中動き回った。" class="activeLevel">立ち仕事が多く、<br>比較的一日中動き回った。</label>
                     </div>
                 </div>
                 <div class="columnActive3">
                     <div class="answer3">
-                        <p class="activeLevel">立ち仕事が多く、加えてジムで<br>トレーニングもした。</p>
+                        <input type="radio" name="level" value="立ち仕事が多く、加えてジムで<br>トレーニングもした。"><label for ="立ち仕事が多く、加えてジムで<br>トレーニングもした。" class="activeLevel">立ち仕事が多く、加えてジムで<br>トレーニングもした。</label>
                     </div>
                 </div>
+            </div>
+            <div class="next">
+                <button type="submit" class="backNextButton" style="--clr: #ff22bb;--i:0;">
+                    <span>Next</span>
+                </button>
             </div>
            </section>
            <!-- end活動量カード -->

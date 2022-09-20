@@ -631,7 +631,7 @@ img {
     align-items: center;
     margin-top: 10px;
 }
-.column_Button {
+.deployButton {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -712,7 +712,7 @@ img {
     font-weight: bold;
 }
 /* 検索ボタンについての css */
-.search_Button {
+.searchButton {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -72,7 +72,9 @@
                             <h1>年齢</h1>
                             <div class="age0">
                                 <div class="age1">
-                                    <p id="age"><input name="age" type="number" class="age2"></p>
+                                    <form>
+                                        <input type="number" placeholder="才" name="age" min="0" max="120" class="ageInput"><br>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -82,7 +84,9 @@
                             <h1>身長</h1>
                             <div class="height0">
                                 <div class="height1">
-                                    <p><input name="height" type="number" class="height2"></p>
+                                    <form>
+                                        <input type="number" placeholder="cm" name="height" min="50" max="220" class="heightInput"><br>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -90,12 +94,18 @@
                             <h1>体重</h1>
                             <div class="weight0">
                                 <div class="weight1">
-                                    <p><input name="weight" type="number" class="weight2"></p>
+                                    <form>
+                                        <input type="number" placeholder="kg" name="weight" min="3" class="weightInput"><br>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <input type="submit" value="次へ">
+                    <div class="next">
+                        <button type="submit" class="backNextButton" style="--clr: #ff22bb;--i:0;">
+                            <span>Next</span>
+                        </button>
+                    </div>
                 </div>
             </section>
         </form>
