@@ -127,7 +127,7 @@ def index():
         sex = personal_data['sex']
         activity = personal_data['activity']
 
-        level = request.form.get("level")
+        session['level'] = request.form.get("level")
         budget = request.form.get("budget")
         act = act_calculate(sex, weight, height, age, level, activity)
 
