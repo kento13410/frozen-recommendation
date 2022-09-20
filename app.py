@@ -1,10 +1,8 @@
-from crypt import methods
 from flask import Flask, render_template, request, redirect, session
 from cs50 import SQL
-import random
 import ast
 from flask_session import Session
-from helpers import login_required, act_calculate,makeRandomList,loading_black, loading_colorful
+from helpers import login_required, act_calculate,makeRandomList
 from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask("__name__")
@@ -106,7 +104,6 @@ def logout():
 # ------------------------------------ホーム画面(home)--------------------------------------------------------
 @app.route("/",methods=["GET","POST"])
 @login_required
-# @loading_black
 def home():
     data = db.execute("SELECT * FROM foodnames")
     count = 0
@@ -278,8 +275,6 @@ def recommend():
 
 
 # ------------------------------------------------------------------------------------------------------------------
-
-
 
 
 

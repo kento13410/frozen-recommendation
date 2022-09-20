@@ -225,7 +225,11 @@ p {
 =======
 input[type=radio] {
     display: none; /* ラジオボタンを非表示にする */
+<<<<<<< HEAD
 >>>>>>> 49a0ff25775bf986103032e63cec3e16dba778d7
+=======
+>>>>>>> 6c6b27c2e74d3b3f0d965d368ab0246aa6b529e2
+>>>>>>> 1129abebca2bbec389259e18a980fd567873f90d
 }
 .sex {
     border-radius: 20px;
