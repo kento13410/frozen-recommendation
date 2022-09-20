@@ -36,7 +36,12 @@
                       <a href="/input">CALCULATE</a>
                   </li>
                   <li>
-                      <a href="/recommend">RECOMMEND</a>
+                      <!-- <a href="/recommend">RECOMMEND</a> -->
+                      <form action ="/recommend" method="post" id="check">
+                        <div>
+                          <input type="submit" value="RECOMMEND">
+                        </div>
+                      </form>
                   </li>
                   <li>
                       <a href="/favorite">FAVORITES</a>
@@ -63,12 +68,11 @@
         <main>
 
         <!-- レコメンド機能 -->
-        <form action ="/recommend" method="post">
             <ul class="tabs">
               <!-- カテゴリ1 -->
               <li>
                 <div>
-                  <input type="checkbox" id="beef" name="beef" checked>
+                  <input type="checkbox" id="beef" name="beef" checked form="check" >
                 </div>
                 <a href="" class="active">
                   <svg class="likeButton clicked" width="50px" height="50px" viewBox="0 0 500 500">
@@ -97,7 +101,7 @@
               <!-- カテゴリ2 -->
               <li>
                 <div>
-                  <input type="checkbox" id="fish" name="fish" checked>
+                  <input type="checkbox" id="fish" name="fish" checked form="check">
                 </div>
                 <a href="" class="active">
                   <svg class="likeButton clicked" width="50px" height="50px" viewBox="0 0 500 500">
@@ -126,7 +130,7 @@
               <!-- カテゴリ3 -->
               <li>
                 <div>
-                  <input type="checkbox" id="rice" name="rice" checked>
+                  <input type="checkbox" id="rice" name="rice" checked form="check">
                 </div>
                 <a href="" class="active">
                   <svg class="likeButton clicked" width="50px" height="50px" viewBox="0 0 500 500">
@@ -155,7 +159,7 @@
               <!-- カテゴリ4 -->
               <li>
                 <div>
-                  <input type="checkbox" id="noodle" name="noodle" checked>
+                  <input type="checkbox" id="noodle" name="noodle" checked form="check">
                 </div>
                 <a href="" class="active">
                   <svg class="likeButton clicked" width="50px" height="50px" viewBox="0 0 500 500">
@@ -182,10 +186,6 @@
                 </a>
               </li>
             </ul>
-            <div style="text-align:right">
-              <input type="submit" value="オススメをcheck!!">
-            </div>
-        </form>
 
             <ul class="contents">
               <li class="active">

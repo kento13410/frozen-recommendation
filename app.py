@@ -268,10 +268,11 @@ def recommend():
             recommendList = []
             for index in indexList:
                 recommendList.append(selectedList[index])
-            return render_template("MAIN/recommend.html",recommendList=recommendList)
+            return render_template("main/recommend.html",recommendList=recommendList)
         else:
             return redirect("/")
             # print("categoryが一つもチェックされていない")
+
 
 
 
@@ -313,11 +314,89 @@ def personal_data():
 @app.route("/favorite")
 def favorite():
     if(request.method== "GET"):
-        pass
+        return render_template("main/favorite.html")
     else:
+        # output画面からデータを受け取って、foodnamesからデータを取ってくる。
+        # one~sixまでが毎回異なっていれば最高
+        # one~sixの候補(その賞品を表す固有のものがいい。候補：url,id)←商品名も考えたが、ユニークでないものがあった。lx：牛カルビマヨネーズ
+        one = request.form.get("one")
+        two = request.form.get("two")
+        three = request.form.get("three")
+        four = request.form.get("four")
+        five = request.form.get("five")
+        six = request.form.get("six")
+
+        if(one):
+            one_name = db.execute("SELECT * FROM foodnames WHERE id = ?",one) # 候補：url,id
+        else:
+            one_name = [{"食品名":"sample"}]
+        if(two):
+            two_name = db.execute("SELECT * FROM foodnames WHERE id = ?",two)
+        else:
+            two_name = [{"食品名":"sample"}]
+        if(three):
+            three_name = db.execute("SELECT * FROM foodnames WHERE id = ?",three)
+        else:
+            three_name = [{"食品名":"sample"}]
+        if(four):
+            four_name = db.execute("SELECT * FROM foodnames WHERE id = ?",four)
+        else:
+            four_name = [{"食品名":"sample"}]
+        if(five):
+            five_name = db.execute("SELECT * FROM foodnames WHERE id = ?",five)
+        else:
+            five_name = [{"食品名":"sample"}]
+        if(six):
+            six_name = db.execute("SELECT * FROM foodnames WHERE id = ?",six)
+        else:
+            six_name = [{"食品名":"sample"}]
+
+        # product_likedにまだ保存されていない商品ならという条件が必要
+        identifyList = db.execute("SELECT * FROM product_liked WHERE user_id = ?", session['user_id'])
+        name_list=[]
+        # 初めてお気に入りを使う場合は、全てを登録する。
+        if(len(identifyList)==0):
+            name_list = [one_name,two_name,three_name,four_name,five_name,six_name]
+            add_list = []
+            for name in name_list:
+                if (name[0]["食品名"] != "sample"):
+                    add_list.append(name[0]["食品名"])
+            for name in add_list:
+                db.execute("INSERT INTO product_liked(user_id,product) VALUES(?,?)",session['user_id'],name)
+        else:
+            for itemDict in identifyList:
+                if(one_name[0]["食品名"] != itemDict["product"]and one_name[0]["食品名"] != "sample"):
+                    name_list.append(one_name[0]["食品名"])
+            for itemDict in identifyList:
+                if(two_name[0]["食品名"] != itemDict["product"]and two_name[0]["食品名"] != "sample"):
+                    name_list.append(two_name[0]["食品名"])
+            for itemDict in identifyList:
+                if(three_name[0]["食品名"] != itemDict["product"]and three_name[0]["食品名"] != "sample"):
+                    name_list.append(three_name[0]["食品名"])
+            for itemDict in identifyList:
+                if(four_name[0]["食品名"] != itemDict["product"]and four_name[0]["食品名"] != "sample"):
+                    name_list.append(four_name[0]["食品名"])
+            for itemDict in identifyList:
+                if(five_name[0]["食品名"] != itemDict["product"]and five_name[0]["食品名"] != "sample"):
+                    name_list.append(five_name[0]["食品名"])
+            for itemDict in identifyList:
+                if(six_name[0]["食品名"] != itemDict["product"]and six_name[0]["食品名"] != "sample"):
+                    name_list.append(six_name[0]["食品名"])
+
+            # product_likedにデータを保存する。
+            if (len(name_list)!=0):
+                for name in name_list:
+                    db.execute("INSERT INTO product_liked(user_id,product) VALUES(?,?)",session['user_id'],name)
+            else:
+                # one~sixまで全てデータベースに保存されているので追加の必要がない
+                pass
+
+        # 入力されたデータを取り出してfavorite画面に送る
         product_liked_s = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
+        submitList = []
         for product_liked in product_liked_s:
-            data = db.execute("SELECT * FROM foodnames WEHRE 食品名 = ?", product_liked['product'])
-        return render_template("favorite.html", data = data)
+            data = db.execute("SELECT * FROM foodnames WEHRE 食品名 = ?", product_liked['product'])[0]
+            submitList.append(data)
+        return render_template("main/favorite.html", submitList =submitList)
 
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
