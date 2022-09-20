@@ -5,25 +5,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/design.css">
+    <link rel="stylesheet" href="../static/login.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>login</title>
+    <title>ログイン</title>
 </head>
-<body>
-    <h1><strong>login画面</strong></h1>
+<body onload="taisyou()">
+    <div class="body"></div>
+    <div class="grad"></div>
+    <div class="header">
+        <div>アプリ名<br>ログイン</div>
+    </div>
+    <br>
 
+    <div class="app">
+        <div id="prog-bar" class="progress">
+          <div class="progress-bar"></div>
+        </div>
+    </div>
+
+    <div class="login">
     <form action="/login" method="post">
         <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
+            <input autocomplete="off" autofocus class="form-control" id="username" name="username" placeholder="username" type="text"><br>
         </div>
         <div class="mb-3">
-            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password">
+            <input class="form-control" id="password" name="password" placeholder="password" type="password"><br>
         </div>
-        <button class="btn btn-primary" type="submit">Log In</button>
+        <button class="btn btn-primary" type="submit">ログイン</button>
     </form>
-    <div>
+    <div class="toRegister">
         まだ登録されていない方は、
         <a href="/register" role="button"><strong>こちらへ</strong></a>
     </div>
+</div>
 </body>
+<script src="../static/login.js"></script>
 </html>

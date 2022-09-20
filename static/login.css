@@ -1,33 +1,25 @@
-@charset "utf-8";
-@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
-
-/* スクロールできないようにする */
-html {
-    overflow: hidden
-}
-
+@charset "UTF-8";
 body{
-  margin: 0;
-  padding: 0;
-  background: #fff;
+    margin: 0;
+    padding: 0;
+    background: #fff;
 
-  color: #fff;
-  font-family: Arial;
-  font-size: 12px;
+    color: #fff;
+    font-family: Arial;
+    font-size: 12px;
 }
 
 .body{
   position: absolute;
-  top: -60px;
+  top: -20px;
   left: -20px;
   right: -40px;
-  bottom: -40px;
+  bottom: -20px;
   width: auto;
   height: auto;
-  background-image: url(https://st3.depositphotos.com/1558912/19009/i/950/depositphotos_190093122-stock-photo-italian-food-background-pasta-herbs.jpg);
+  background-image: url(http://ginva.com/wp-content/uploads/2012/07/city-skyline-wallpapers-008.jpg);
   background-size: cover;
-  /* -webkit-filter:blur(5px); */
+  margin-top: 55px;
   z-index: 0;
 }
 
@@ -44,38 +36,30 @@ body{
   opacity: 0.7;
 }
 
-.exceptPhoto {
-    margin:  0 auto;
-}
-
 .header{
   position: absolute;
   top: calc(50% - 35px);
-  left: calc(40% - 190px);
+  left: calc(50% - 255px);
   z-index: 2;
-  padding-bottom: 50px;
-  position: relative;
-  top: 330px;
-
-  /* margin: 50px; */
 }
 
 .header div{
   float: left;
-  color: #000;
-  font-family: fantasy;
-  font-size: 58.5px;
+  color: #fff;
+  font-family: 'Exo', sans-serif;
+  font-size: 35px;
   font-weight: 200;
 }
 
 .header div span{
-  color: #fff;
+  color: #5379fa !important;
 }
 
+/* ここからlogin.html */
 .login{
   position: absolute;
   top: calc(50% - 75px);
-  left: calc(55% - 25px);
+  left: calc(50% - 50px);
   height: 150px;
   width: 350px;
   padding: 10px;
@@ -83,37 +67,35 @@ body{
 }
 
 .login input[type=text]{
-  width: 300px;
-  height: 40px;
+  width: 250px;
+  height: 30px;
   background: transparent;
   border: 1px solid rgba(255,255,255,0.6);
   border-radius: 2px;
   color: #fff;
   font-family: 'Exo', sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   padding: 4px;
-  text-align:center;
 }
 
 .login input[type=password]{
-  width: 300px;
-  height: 40px;
+  width: 250px;
+  height: 30px;
   background: transparent;
   border: 1px solid rgba(255,255,255,0.6);
   border-radius: 2px;
   color: #fff;
   font-family: 'Exo', sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   padding: 4px;
-  margin-top: 12px;
-  text-align:center;
+  margin-top: 10px;
 }
 
-.login button[type=submit]{
-  width: 310px;
-  height: 45px;
+.login input[type=button]{
+  width: 260px;
+  height: 35px;
   background: #fff;
   border: 1px solid #fff;
   cursor: pointer;
@@ -123,15 +105,15 @@ body{
   font-size: 16px;
   font-weight: 400;
   padding: 6px;
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
-.login button[type=submit]:hover{
+.login input[type=button]:hover{
   opacity: 0.8;
 }
 
-.login button[type=submit]:active{
-  opacity: 0.6;
+.login input[type=button]:active{
+    opacity: 0.6;
 }
 
 .login input[type=text]:focus{
@@ -144,23 +126,30 @@ body{
   border: 1px solid rgba(255,255,255,0.9);
 }
 
-.login button[type=submit]:focus{
+.login input[type=button]:focus{
   outline: none;
 }
 
-::-webkit-input-placeholder{
-   color: rgba(255,255,255,0.6);
+#username {
+  color: black;
+  background-color: #F7F7F7;
 }
 
-::-moz-input-placeholder{
-   color: rgba(255,255,255,0.6);
+#password {
+  color: black;
+  background-color: #F7F7F7;
 }
 
-/* ここからregister1.html */
-.register {
+.toRegister {
+  color: #F7F7F7;
+}
+/* ここまでlogin.html */
+
+/* ここからregister.html */
+.register{
   position: absolute;
-  top: calc(50% - 127px);
-  left: calc(55% - 25px);
+  top: calc(50% - 75px);
+  left: calc(50% - 50px);
   height: 150px;
   width: 350px;
   padding: 10px;
@@ -168,37 +157,35 @@ body{
 }
 
 .register input[type=text]{
-  width: 300px;
-  height: 40px;
+  width: 250px;
+  height: 30px;
   background: transparent;
   border: 1px solid rgba(255,255,255,0.6);
   border-radius: 2px;
   color: #fff;
   font-family: 'Exo', sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   padding: 4px;
-  text-align:center;
 }
 
 .register input[type=password]{
-  width: 300px;
-  height: 40px;
+  width: 250px;
+  height: 30px;
   background: transparent;
   border: 1px solid rgba(255,255,255,0.6);
   border-radius: 2px;
   color: #fff;
   font-family: 'Exo', sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   padding: 4px;
-  margin-top: 12px;
-  text-align:center;
+  margin-top: 10px;
 }
 
-.register input[type=button]{
-  width: 310px;
-  height: 45px;
+.register input[type=submit]{
+  width: 260px;
+  height: 35px;
   background: #fff;
   border: 1px solid #fff;
   cursor: pointer;
@@ -208,15 +195,15 @@ body{
   font-size: 16px;
   font-weight: 400;
   padding: 6px;
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
-.register input[type=button]:hover{
+.register input[type=submit]:hover{
   opacity: 0.8;
 }
 
-.register input[type=button]:active{
-  opacity: 0.6;
+.register input[type=submit]:active{
+    opacity: 0.6;
 }
 
 .register input[type=text]:focus{
@@ -229,18 +216,39 @@ body{
   border: 1px solid rgba(255,255,255,0.9);
 }
 
-.register input[type=button]:focus{
+.register input[type=submit]:focus{
   outline: none;
 }
 
-::-webkit-input-placeholder{
-   color: rgba(255,255,255,0.6);
+#confirmation {
+  color: black;
+  background-color: #F7F7F7;
 }
 
-::-moz-input-placeholder{
-   color: rgba(255,255,255,0.6);
+.toLogin {
+  color: #F7F7F7;
 }
+/* ここまでregister.html */
 
-#None {
+
+/* progressbar部分-------------------------------*/
+body {
+  margin: 0px;
+}
+.app {
+  width: 100%;
+  padding: 0px;
   background-color: white;
+}
+.progress {
+  width: 100%;
+  height: 10px;
+  background-color: #F5F5F5;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+.progress-bar {
+  transition: width 0.5s linear;
+  height: 100%;
+  background-color: #337AB7;
 }

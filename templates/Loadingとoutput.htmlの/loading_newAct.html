@@ -1,55 +1,84 @@
 <!DOCTYPE html>
-<html="ja">
+<html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
-        <title>冷凍食品</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Document</title>
+        <link rel="stylesheet" href="../../static/css/loading_new_style.css">
+        <link rel="stylesheet" href="../../static/css/loading-connection_style.css"> <!--ここにhomeのcssとjsを読み込む -->
         <link href="../../static/css/output_style.css" rel="stylesheet">
         <link rel="stylesheet" href="../../static/css/heart_transition.css">
+        <script src="../../static/js/loading-connection_style.js" defer></script>
     </head>
-        <body >
-        <!-- startヘッダー -->
+    <body>
+        <div id="loading" class="loading active">
+            <section class="loaderSection">
+                <div class="loader">
+                  <span style="--i:1;"></span>
+                  <span style="--i:2;"></span>
+                  <span style="--i:3;"></span>
+                  <span style="--i:4;"></span>
+                  <span style="--i:5;"></span>
+                  <span style="--i:6;"></span>
+                  <span style="--i:7;"></span>
+                  <span style="--i:8;"></span>
+                  <span style="--i:9;"></span>
+                  <span style="--i:10;"></span>
+                  <span style="--i:11;"></span>
+                  <span style="--i:12;"></span>
+                  <span style="--i:13;"></span>
+                  <span style="--i:14;"></span>
+                  <span style="--i:15;"></span>
+                  <span style="--i:16;"></span>
+                  <span style="--i:17;"></span>
+                  <span style="--i:18;"></span>
+                  <span style="--i:19;"></span>
+                  <span style="--i:20;"></span>
+                </div>
+            </section>
+        </div>
+        <!-- ローディング後の画面 -->
         <header class="header">
-          <div class="container">
-            <!-- ロゴエリア -->
-            <div class="area_logo_header">
-              <a class="logo" href="#">
-                <img src="../../static/img/logo/logo.svg">
-              </a>
-              <p class="copy"><a href="/">For your busy time...</a></p>
+            <div class="container">
+              <!-- ロゴエリア -->
+              <div class="area_logo_header">
+                <a class="logo" href="#">
+                  <img src="../../static/img/logo/logo.svg">
+                </a>
+                <p class="copy">for your busy time...</p>
+              </div>
+              <nav class="area_nav_header">
+                <ul class="list_nav_header">
+                  <li>
+                      <a href="#">SEARCH</a>
+                  </li>
+                  <li>
+                      <a href="#">CATEGORY</a>
+                  </li>
+                  <li>
+                      <a href="#">FAVORITES</a>
+                  </li>
+                  <li>
+                      <a href="#">TOPICS</a>
+                  </li>
+                </ul>
+                <ul class="list_nav_icon_header">
+                  <li class="search">
+                      <a href="#"></a>
+                  </li>
+                  <li class="favorite">
+                      <a href="#"></a>
+                  </li>
+                  <li class="home">
+                      <a href="#"></a>
+                  </li>
+                </ul>
+              </nav>
             </div>
-            <nav class="area_nav_header">
-              <ul class="list_nav_header">
-                <li>
-                    <a href="/input">CALCULATE</a>
-                </li>
-                <li>
-                    <a href="/recommend">RECOMMEND</a>
-                </li>
-                <li>
-                    <a href="#">FAVORITES</a>
-                </li>
-                <li>
-                    <a href="/personal_data">PERSONAL</a>
-                </li>
-              </ul>
-              <ul class="list_nav_icon_header">
-                <li class="search">
-                    <a href="#"></a>
-                </li>
-                <li class="favorite">
-                    <a href="#"></a>
-                </li>
-                <li>
-                    <a href="/logout"></a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-      </header>
-        <!-- endヘッダー -->
-        <!-- start メイン -->
-        <main>
+         </header>
+         <!-- endヘッダー -->
+         <!-- start メイン -->
+         <main>
             <section class="wrapper">
                 <div class="card-container">
                   <div class="card-left">
@@ -59,7 +88,7 @@
                     <h1>牛カルビマヨネーズ</h1>
                       <p>お肉でマヨソースを包み、焼肉のタレをかけました。お肉は過熱水蒸気焼き製法により外はこんがり、中はふっくらとジューシーに焼き上げました。粗びき肉を使用し食べごたえのある一品です。しっかりとした味付けなのでお弁当にぴったりで、ごはんがすすむおかずです。</p>
                     <div class="sns">
-                      <ul>
+                       <ul>
                         <li class="circle">
                           <svg class="likeButton clicked" width="47px" height="47px" viewBox="0 0 500 500">
                             <circle class="explosion" r="150" cx="250" cy="250"></circle>
@@ -114,7 +143,7 @@
                     <h1>牛カルビマヨネーズ</h1>
                       <p>お肉でマヨソースを包み、焼肉のタレをかけました。お肉は過熱水蒸気焼き製法により外はこんがり、中はふっくらとジューシーに焼き上げました。粗びき肉を使用し食べごたえのある一品です。しっかりとした味付けなのでお弁当にぴったりで、ごはんがすすむおかずです。</p>
                     <div class="sns">
-                      <ul class="sns1">
+                       <ul class="sns1">
                         <li class="circle">
                           <svg class="likeButton clicked" width="47px" height="47px" viewBox="0 0 500 500">
                             <circle class="explosion" r="150" cx="250" cy="250"></circle>
@@ -172,7 +201,7 @@
                   <h1>肉巻きポテト</h1>
                     <p>お肉でマヨソースを包み、焼肉のタレをかけました。お肉は過熱水蒸気焼き製法により外はこんがり、中はふっくらとジューシーに焼き上げました。粗びき肉を使用し食べごたえのある一品です。しっかりとした味付けなのでお弁当にぴったりで、ごはんがすすむおかずです。</p>
                   <div class="sns">
-                    <ul>
+                     <ul>
                       <li class="circle">
                         <svg class="likeButton clicked" width="47px" height="47px" viewBox="0 0 500 500">
                           <circle class="explosion" r="150" cx="250" cy="250"></circle>
@@ -227,7 +256,7 @@
                   <h1>ソースとんかつ</h1>
                     <p>お肉でマヨソースを包み、焼肉のタレをかけました。お肉は過熱水蒸気焼き製法により外はこんがり、中はふっくらとジューシーに焼き上げました。粗びき肉を使用し食べごたえのある一品です。しっかりとした味付けなのでお弁当にぴったりで、ごはんがすすむおかずです。</p>
                   <div class="sns">
-                    <ul class="sns1">
+                     <ul class="sns1">
                       <li class="circle">
                         <svg class="likeButton clicked" width="47px" height="47px" viewBox="0 0 500 500">
                           <circle class="explosion" r="150" cx="250" cy="250"></circle>
@@ -285,7 +314,7 @@
                 <h1>どて味噌カツ</h1>
                   <p>お肉でマヨソースを包み、焼肉のタレをかけました。お肉は過熱水蒸気焼き製法により外はこんがり、中はふっくらとジューシーに焼き上げました。粗びき肉を使用し食べごたえのある一品です。しっかりとした味付けなのでお弁当にぴったりで、ごはんがすすむおかずです。</p>
                 <div class="sns">
-                  <ul>
+                   <ul>
                     <li class="circle">
                       <svg class="likeButton clicked" width="47px" height="47px" viewBox="0 0 500 500">
                         <circle class="explosion" r="150" cx="250" cy="250"></circle>
@@ -340,7 +369,7 @@
                 <h1>れんこん鶏竜田黒酢あん</h1>
                   <p>お肉でマヨソースを包み、焼肉のタレをかけました。お肉は過熱水蒸気焼き製法により外はこんがり、中はふっくらとジューシーに焼き上げました。粗びき肉を使用し食べごたえのある一品です。しっかりとした味付けなのでお弁当にぴったりで、ごはんがすすむおかずです。</p>
                 <div class="sns">
-                  <ul class="sns1">
+                   <ul class="sns1">
                     <li class="circle">
                       <svg class="likeButton clicked" width="47px" height="47px" viewBox="0 0 500 500">
                         <circle class="explosion" r="150" cx="250" cy="250"></circle>
@@ -389,8 +418,8 @@
             </div>
 
         </section>
-        </main>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+         </main>
+         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
   $(".likeButton").click(function() {
     $(this).toggleClass("clicked");
