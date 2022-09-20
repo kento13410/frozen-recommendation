@@ -119,6 +119,7 @@ def index():
         return render_template("main/activeLevel.html")
 
     else:
+        if 
         # 一人当たりの必要摂取カロリー
         personal_data = db1.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
         age = personal_data['age']
