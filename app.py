@@ -303,9 +303,9 @@ def personal_data():
             purpose = request.form.get("purpose")
 
 
-        try:
+        try: #dbが格納されていない場合
             db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], session['sex'], session['age'], session['weight'], session['heightj'], purpose)
-        except:
+        except: #格納されている場合（そのときはtryでエラーでる
             db1.execute("UPDATE personal_data SET sex=?, age=?, weight=?, height=?, activity=? WHERE user_id=?", session['sex'], session['age'], session['weight'], session['height'], purpose, session['user_id'])
 
         return redirect("/")
