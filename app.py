@@ -124,7 +124,7 @@ def index():
         age = personal_data['age']
         weight = personal_data['weight']
         height = personal_data['height']
-        sex = personal_data['choice']
+        sex = personal_data['sex']
         activity = personal_data['activity']
 
         level = request.form.get("level")
