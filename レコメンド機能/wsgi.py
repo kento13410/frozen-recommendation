@@ -3,7 +3,7 @@
 
 # db = SQL("sqlite:///foodname.db")
 # #　おべんとう 魚系
-# beef = "お弁当肉系"
+# beef = False
 # # お弁当魚系
 # fish = "おべんとう 魚系"
 # # 米飯系
@@ -40,6 +40,8 @@
 #     selectedList.append(element)
 # for element in noodleList:
 #     selectedList.append(element)
+
+# print(len(selectedList))
 
 # if(len(selectedList) != 0):
 #     indexList = makeRandomList(len(selectedList))
@@ -85,7 +87,8 @@ def recommend():
         else:
             beefList = []
         if (fish):
-            fishList = db.execute("SELECT * from foodnames WHERE カテゴリ = ?",fish)
+            # fishList = db.execute("SELECT * from foodnames WHERE カテゴリ = ?",fish)
+            fishList = db.execute('SELECT * from foodnames WHERE カテゴリ = "おべんとう 魚系" ')
         else:
             fishList = []
         if (rice):
@@ -96,7 +99,6 @@ def recommend():
             noodleList = db.execute("SELECT * from foodnames WHERE カテゴリ = ?",noodle)
         else:
             noodleList = []
-
 
         #何かしらの条件に従ってこのリストに入れていく
         selectedList = []
@@ -109,6 +111,7 @@ def recommend():
             selectedList.append(element)
         for element in noodleList:
             selectedList.append(element)
+
 
         if(len(selectedList) != 0):
             indexList = makeRandomList(len(selectedList))

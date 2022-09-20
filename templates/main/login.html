@@ -17,11 +17,15 @@
     <br>
     <form action="/login" method="POST">
         <div class="login">
-            <input type="text" placeholder="username" name="username"><br>
-            <input type="password" placeholder="password" name="password"><br>
+            <input type="text" placeholder="username" name="username" required><br>
+            <input type="password" placeholder="password" name="password" required><br>
             <button type="submit" value="Login">Log In</button>
         </div>
     </form>
+    <div >
+        <p> まだ登録されていない方は、</p>
+        <a href="/register" role="button"><strong>こちらへ</strong></a>
+    </div>
 </div>
 </body>
 </html>

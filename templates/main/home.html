@@ -4,11 +4,22 @@
         <meta charset="UTF-8">
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
         <title>冷凍食品</title>
+        <link rel="stylesheet" href="../../static/css/loading_style.css">
+        <link rel="stylesheet" href="../../static/css/loading-connection_style.css"> <!--ここにhomeのcssとjsを読み込む -->
         <link href="../../static/css/home_style.css" rel="stylesheet">
         <link rel="stylesheet" href="../../static/css/heart_transition.css">
         <script src="../../static/js/home_style.js" defer></script>
+        <script src="../../static/js/loading-connection_style.js" defer></script>
     </head>
         <body>
+          <div id="loading" class="loading active">
+            <div class="loading-container">
+                <h2>Now Loading...</h2>
+                <div class="spinner">
+                  <div class="circle"></div>
+                </div>
+            </div>
+         </div>
         <!-- startヘッダー -->
         <header class="header">
             <div class="container">
@@ -42,7 +53,7 @@
                       <a href="#"></a>
                   </li>
                   <li>
-                      <a href="/logout"></a>
+                      <a href="/logout" role="button">ログアウト</a>
                   </li>
                 </ul>
               </nav>
@@ -50,8 +61,15 @@
         </header>
         <!-- endヘッダー -->
         <main>
+
+        <!-- レコメンド機能 -->
+        <form action ="/recommend" method="post">
             <ul class="tabs">
+              <!-- カテゴリ1 -->
               <li>
+                <div>
+                  <input type="checkbox" id="beef" name="beef" checked>
+                </div>
                 <a href="" class="active">
                   <svg class="likeButton clicked" width="50px" height="50px" viewBox="0 0 500 500">
                     <circle class="explosion" r="150" cx="250" cy="250"></circle>
@@ -76,7 +94,11 @@
                   <span>お弁当肉系</span>
                 </a>
               </li>
+              <!-- カテゴリ2 -->
               <li>
+                <div>
+                  <input type="checkbox" id="fish" name="fish" checked>
+                </div>
                 <a href="" class="active">
                   <svg class="likeButton clicked" width="50px" height="50px" viewBox="0 0 500 500">
                     <circle class="explosion" r="150" cx="250" cy="250"></circle>
@@ -101,7 +123,11 @@
                   <span>お弁当魚系</span>
                 </a>
               </li>
+              <!-- カテゴリ3 -->
               <li>
+                <div>
+                  <input type="checkbox" id="rice" name="rice" checked>
+                </div>
                 <a href="" class="active">
                   <svg class="likeButton clicked" width="50px" height="50px" viewBox="0 0 500 500">
                     <circle class="explosion" r="150" cx="250" cy="250"></circle>
@@ -123,10 +149,14 @@
                       </g>
                       <path class="heart" d="M250,187.4c-31.8-47.8-95.5-19.8-95.5,32.2c0,35.2,31.8,60.3,55.7,79.2c24.9,19.7,31.8,23.9,39.8,31.8 c7.9-7.9,14.6-12.6,39.8-31.8c24.3-18.5,55.7-44.4,55.7-79.6C345.5,167.6,281.8,139.7,250,187.4z"></path>
                   </svg>
-                  <span>お弁当コロッケ</span>
+                  <span>米飯系</span>
                 </a>
               </li>
+              <!-- カテゴリ4 -->
               <li>
+                <div>
+                  <input type="checkbox" id="noodle" name="noodle" checked>
+                </div>
                 <a href="" class="active">
                   <svg class="likeButton clicked" width="50px" height="50px" viewBox="0 0 500 500">
                     <circle class="explosion" r="150" cx="250" cy="250"></circle>
@@ -148,11 +178,15 @@
                       </g>
                       <path class="heart" d="M250,187.4c-31.8-47.8-95.5-19.8-95.5,32.2c0,35.2,31.8,60.3,55.7,79.2c24.9,19.7,31.8,23.9,39.8,31.8 c7.9-7.9,14.6-12.6,39.8-31.8c24.3-18.5,55.7-44.4,55.7-79.6C345.5,167.6,281.8,139.7,250,187.4z"></path>
                   </svg>
-                  <span>お弁当カップ</span>
+                  <span>麺系</span>
                 </a>
               </li>
-
             </ul>
+            <div style="text-align:right">
+              <input type="submit" value="オススメをcheck!!">
+            </div>
+        </form>
+
             <ul class="contents">
               <li class="active">
                 <section class="wrapper">
@@ -161,7 +195,7 @@
                   {% if food['カテゴリ'] == 'お弁当肉系'%}
                       <div tabindex="0" role="button" class="food-container">
                           <div class="card-header" style="height: 140px;">
-                              <img src={{food['画像']}} alt={{food['食品名']}} style="height: 140px;">
+                              <img src="{{food['画像']}}" alt="{{food['食品名']}}" style="height: 140px;">
                           </div>
                           <div class="card-body">
                             <div class="foodname">{{food['食品名']}}</div>
@@ -176,6 +210,7 @@
                   {% endfor %}
                   </section>
               </li>
+
               <li>
                 <section class="wrapper">
                 {%- set ns = namespace(cnt=0) -%}
@@ -183,7 +218,7 @@
                 {% if food['カテゴリ'] == 'おべんとう 魚系'%}
                     <div tabindex="0" role="button" class="food-container">
                         <div class="card-header" style="height: 140px;">
-                            <img src={{food['画像']}} alt={{food['食品名']}} style="height: 140px;">
+                            <img src="{{food['画像']}}" alt="{{food['食品名']}}" style="height: 140px;">
                         </div>
                         <div class="card-body">
                           <div class="foodname">{{food['食品名']}}</div>
@@ -205,7 +240,7 @@
                   {% if food['カテゴリ'] == 'ごはん系'%}
                       <div tabindex="0" role="button" class="food-container">
                           <div class="card-header" style="height: 140px;">
-                              <img src={{food['画像']}} alt={{food['食品名']}} style="height: 140px;">
+                              <img src="{{food['画像']}}" alt="{{food['食品名']}}" style="height: 140px;">
                           </div>
                           <div class="card-body">
                             <div class="foodname">{{food['食品名']}}</div>
@@ -227,7 +262,7 @@
                   {% if food['カテゴリ'] == '麺系'%}
                       <div tabindex="0" role="button" class="food-container">
                           <div class="card-header" style="height: 140px;">
-                              <img src={{food['画像']}} alt={{food['食品名']}} style="height: 140px;">
+                              <img src="{{food['画像']}}" alt="{{food['食品名']}}" style="height: 140px;">
                           </div>
                           <div class="card-body">
                             <div class="foodname">{{food['食品名']}}</div>
@@ -244,11 +279,11 @@
               </li>
             </ul>
           </main>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
-  $(".likeButton").click(function() {
-    $(this).toggleClass("clicked");
-  });
-</script>
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+            <script>
+              $(".likeButton").click(function() {
+                $(this).toggleClass("clicked");
+              });
+            </script>
         </body>
     </html>

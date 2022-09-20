@@ -134,6 +134,23 @@
 /* header終了 */
 
 /* カード内容についてのcss */
+/* backボタンについてのcss */
+.back {
+    width: 20px;
+    height: 10px;
+    position: relative;
+    top: -62px;
+    left: -150px;
+}
+/* nextボタンについてのcss */
+.next {
+    width: 20px;
+    height: 10px;
+    position: relative;
+    top: -62px;
+    right: -67px;
+}
+
 .wrapper {
 	display: flex;
 	/* background-color: skyblue; */
@@ -614,6 +631,13 @@ img {
     align-items: center;
     margin-top: 10px;
 }
+.column_Button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 550px;
+    margin-left: 22px;
+}
 
 .meal1 {
     border-radius: 20px;
@@ -630,7 +654,7 @@ img {
 	transition-duration: 0.7s;
 }
 .clickMeal1 {
-    box-shadow: 3.5px 3.5px 3.5px 3.5px #C2DFFF;
+    box-shadow: 2.5px 2.5px 2.5px 2.5px #292929;
 }
 
 .meal2 {
@@ -648,7 +672,7 @@ img {
 	transition-duration: 0.7s;
 }
 .clickMeal2 {
-    box-shadow: 3.5px 3.5px 3.5px 3.5px #3BB9FF;
+    box-shadow: 2.5px 2.5px 2.5px 2.5px #292929;
 }
 
 .meal3 {
@@ -666,7 +690,7 @@ img {
 	transition-duration: 0.7s;
 }
 .clickMeal3 {
-    box-shadow: 3.5px 3.5px 3.5px 3.5px #0020C2;
+    box-shadow: 2.5px 2.5px 2.5px 2.5px #292929;
 }
 
 .mealType {
@@ -676,14 +700,25 @@ img {
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
     font-weight: bold;
 }
-.mealName {
+
+.mealInput {
+    border-radius: 20px;
+    border: none;
+    width : 200px;
     margin-top: 5px;
     text-align: center;
     font-size: 25px;
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
     font-weight: bold;
 }
-
+/* 検索ボタンについての css */
+.search_Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    margin-top: 20px;
+}
 .mealName1 {
     font-size: inherit;
     font-family: inherit;
@@ -698,57 +733,53 @@ img {
 .deployButton {
     height: 10px;
     display: flex;
+    align-items: center;
     justify-content: center;
-    text-align: center;
+    border-radius: 100%;
+    margin-top: 20px;
 }
 
-.serchbutton1{
-    height:10px;
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    justify-content: center;
+/* 通常時ボタンエフェクト */
+/* .button {
     display: flex;
+    align-items: center;
+    justify-content: center;
 
-}
 
-.btn {
-    margin-top: 15px;
-    position: relative;
-    display: inline-block;
-    width: 277px;
-    height: 10px;
-    font-size: 1em;
-    font-weight: bold;
-    line-height: 60px;
-    text-align: center;
-    text-transform: uppercase;
-    background-color: transparent;
-    cursor: pointer;
-    text-decoration:none;
-    font-family: 'Roboto', sans-serif;
-    font-weight:900;
-    font-size:17px;
-    letter-spacing: 0.045em;
-}
-
-.btn svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.btn svg rect {
-    /* stroke: #000000; */
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 20px;
+    width: 150px;
+    height: 80px;
     box-shadow: 0px 0px 28px 3px #ededed;
-    stroke-dasharray: 100, 500;
-    stroke-dashoffset: 0;
-    -webkit-transition: all 600ms ease;
-    transition: all 600ms ease;
-    Stroke-Opacity: 0.7;
 }
 
+.button span {
+    font-family: fantasy;
+    color: black;
+    font-size: 1.6em;
+    Letter-spacing: 1px;
+} */
+
+/* ボタンがクリックされた時のcss */
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 20px;
+    width: 300px;
+    height: 300px;
+    box-shadow: 0px 0px 28px 3px #ededed;
+    transition: 1s;
+    box-shadow: 0 0 3px var(--clr),
+    0 0 15px var(--clr);
+    overflow: hidden;
+    position: relative;
+}
 .btn span{
     font-family: fantasy;
     font-size: 30px;
@@ -761,9 +792,270 @@ img {
     -webkit-text-fill-color: transparent;
 }
 
-.btn:hover svg rect {
-    stroke-width: 4;
-    stroke-dasharray: 196, 543;
-    stroke-dashoffset: 437;
+.button:hover {
+    background: var(--clr);
 }
 
+.button:hover::before {
+    width: 120%;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 400px;
+    background: var(--clr);
+    transition: 1s;
+    animation: animate 2s linear infinite;
+    animation-delay: calc(0.33s * var(--i));
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.button::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background: white;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.button:hover::after {
+    background: var(--clr);
+}
+
+.button span {
+    font-family: fantasy;
+    color: black;
+    position: relative;
+    z-index: 1;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    Letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+/* / ボタンがクリックされた時のcss / */
+.button_clicked {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 20px;
+    width: 150px;
+    height: 80px;
+    box-shadow: 0px 0px 28px 3px #ededed;
+    transition: 1s;
+    box-shadow: 0 0 3px var(--clr),
+    0 0 15px var(--clr);
+    overflow: hidden;
+    position: relative;
+}
+
+.button_clicked:hover {
+    background: var(--clr);
+}
+
+.button_clicked:hover::before {
+    width: 120%;
+}
+
+.button_clicked::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 400px;
+    background: var(--clr);
+    transition: 1s;
+    animation: animate 2s linear infinite;
+    animation-delay: calc(0.33s var(--i));
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.button_clicked::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background: white;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.button_clicked:hover::after {
+    background: var(--clr);
+}
+
+.button_clicked span {
+    font-family: fantasy;
+    color: black;
+    position: relative;
+    z-index: 1;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    Letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+/* ここからbackNextButton */
+.backNextButton span {
+    font-family: fantasy;
+    color: black;
+    position: relative;
+    z-index: 1;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    Letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 20px;
+    width: 140px;
+    height: 70px;
+    box-shadow: 0px 0px 28px 3px #ededed;
+    transition: 1s;
+    box-shadow: 0 0 3px var(--clr),
+    0 0 15px var(--clr);
+    overflow: hidden;
+    position: relative;
+}
+
+.button:hover {
+    background: var(--clr);
+}
+
+.button:hover::before {
+    width: 120%;
+
+
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 400px;
+    background: var(--clr);
+    transition: 1s;
+    animation: animate 2s linear infinite;
+    animation-delay: calc(0.33s * var(--i));
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.button::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background: white;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.button:hover::after {
+    background: var(--clr);
+}
+
+/* ここからbackNextButton */
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.backNextButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 100%;
+    width: 105px;
+    height: 105px;
+    box-shadow: 0px 0px 28px 3px #ededed;
+    transition: 1s;
+    box-shadow: 0 0 3px var(--clr),
+    0 0 15px var(--clr);
+    overflow: hidden;
+    position: relative;
+}
+
+.backNextButton:hover {
+    background: var(--clr);
+}
+
+.backNextButton:hover::before {
+    width: 120%;
+}
+
+.backNextButton::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 400px;
+    background: var(--clr);
+    transition: 1s;
+    animation: animate 2s linear infinite;
+    animation-delay: calc(0.33s * var(--i));
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.backNextButton::after {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    background: white;
+    border-radius: 100%;
+    transition: 0.5s;
+}
+
+.backNextButton:hover::after {
+    background: var(--clr);
+}

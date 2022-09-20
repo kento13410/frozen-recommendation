@@ -1,10 +1,8 @@
-from crypt import methods
 from flask import Flask, render_template, request, redirect, session
 from cs50 import SQL
-import random
 import ast
 from flask_session import Session
-from helpers import login_required, act_calculate, loading_black, loading_colorful
+from helpers import login_required, act_calculate,makeRandomList
 from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask("__name__")
@@ -106,7 +104,6 @@ def logout():
 # ------------------------------------ホーム画面(home)--------------------------------------------------------
 @app.route("/",methods=["GET","POST"])
 @login_required
-# @loading_black
 def home():
     data = db.execute("SELECT * FROM foodnames")
     count = 0
@@ -217,22 +214,16 @@ def search_item():
 
 # -------------------------------------------------------------------------------------------------------------
 
-
-
 @app.route("/back")
 def back():
     return render_template("input.html")
 
 
 # -------------------------recommend--------------------------------------------------------------------------------
-
 @app.route("/recommend", methods=["GET","POST"])
 def recommend():
     if (request.method == "POST"):
-    # クリックされたカテゴリの取得
-
-        # お弁当肉系
-        beaf = request.form.get("beaf")
+        beef = request.form.get("beef")
         # お弁当魚系
         fish = request.form.get("fish")
         # 米飯系
@@ -240,28 +231,28 @@ def recommend():
         # 麺系
         noodle = request.form.get("noodle")
 
-        if (beaf):
-            beafList = db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?",beaf)
+        if (beef):
+            beefList = db.execute("SELECT * from foodnames WHERE カテゴリ = ?",beef)
         else:
-            beafList = []
+            beefList = []
         if (fish):
-            fishList = db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?",fish)
+            # fishList = db.execute("SELECT * from foodnames WHERE カテゴリ = ?",fish)
+            fishList = db.execute('SELECT * from foodnames WHERE カテゴリ = "おべんとう 魚系" ')
         else:
             fishList = []
         if (rice):
-            riceList = db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?",rice)
+            riceList = db.execute("SELECT * from foodnames WHERE カテゴリ = ?",rice)
         else:
             riceList = []
         if (noodle):
-            noodleList = db.execute("SELECT * FROM foodnames WHERE カテゴリ = ?",noodle)
+            noodleList = db.execute("SELECT * from foodnames WHERE カテゴリ = ?",noodle)
         else:
             noodleList = []
-
 
         #何かしらの条件に従ってこのリストに入れていく
         selectedList = []
         # リストの連結 [{1},{2},.......{n}]となる
-        for element in beafList:
+        for element in beefList:
             selectedList.append(element)
         for element in fishList:
             selectedList.append(element)
@@ -270,17 +261,20 @@ def recommend():
         for element in noodleList:
             selectedList.append(element)
 
-        # recommnedで表示する冷凍食品リストを
-        recommendList = []
-        # ５つの商品をランダムにとってくる。
-        for i in range(5):
-            index = random.randrange(len(selectedList))
-            recommendList.append(selectedList[index])
-        return render_template("recommend.html",recommendList=recommendList)
+
+        if(len(selectedList) != 0):
+            indexList = makeRandomList(len(selectedList))
+            recommendList = []
+            for index in indexList:
+                recommendList.append(selectedList[index])
+            return render_template("MAIN/recommend.html",recommendList=recommendList)
+        else:
+            return redirect("/")
+            # print("categoryが一つもチェックされていない")
+
+
 
 # ------------------------------------------------------------------------------------------------------------------
-
-
 
 
 

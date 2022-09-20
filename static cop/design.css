@@ -1,5 +1,9 @@
-/* input.htmlのみに適用中(9/7現在),画面の配置を真ん中にするCSS */
+/*画面の配置を真ん中にするCSS */
 @charset "UTF-8";
+html,body {
+  height:100%;
+  margin:0;
+}
 body {
   background: #ffffff;
   font-family: Meiryo;
@@ -11,9 +15,16 @@ body {
   padding: 10px;
   text-align: center;
   border: 1px solid #cccccc;
-  margin: 30px auto;
+  /* margin: 30px auto; */
+  margin:0 auto;
+
 }
 /* ここまで */
+.arrangement {
+  position: absolute;
+  left: 10px;
+  display: flex;
+}
 
 /* home.htmlのheaderについて*/
 a,
@@ -39,6 +50,8 @@ header h4 {
 }
 header nav {
   margin: 0 0 0 auto;
+  width: 100%;
+  height: 100vh;
 }
 
 header nav ul {
@@ -79,7 +92,7 @@ header nav ul li a:hover {
   display: flex;
   background-color: skyblue;
   justify-content: space-around;
-  margin: 50px;
+  margin: 0;
 
 }
 
@@ -97,7 +110,7 @@ header nav ul li a:hover {
 }
 
 /* input.htmlのbodyについてのcss */
-h1{
+h2{
   text-align: center;
 }
 
@@ -115,3 +128,204 @@ h1{
   margin:12px;
 }
 
+/* ここに画像のスライドショーを書く */
+
+.backgroundPhoto {
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+}
+
+.execpBackgroundPhoto {
+  z-index: 11;
+  position: absolute;
+  top: 0%;
+  left: 40%;
+  height: 30px;
+  margin: 0 auto;
+  transform: translate(-50%,-50%);
+  transform: scale(1, 0.8);
+}
+
+.item2 {
+  z-index: 10;
+  opacity: 0;
+  width: 100%;
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-animation: anime 30s 0s infinite;
+  animation: anime 30s 0s infinite;
+
+}
+
+.item2:nth-of-type(2) {
+  -webkit-animation-delay: 10s;
+  animation-delay: 10s;
+}
+
+.item2:nth-of-type(3) {
+  -webkit-animation-delay: 20s;
+  animation-delay: 20s;
+}
+
+/* ふわっとアニメーション */
+@keyframes anime {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    z-index: 9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes anime {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    z-index: 9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scroll{
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.slider {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background:#050505;
+  width: 100%;
+  background: white;
+  height: 200px;
+  margin: auto;
+  overflow:hidden;
+  position: relative;
+  border:1px solid #e5e5e5;
+  margin-left: auto;
+}
+.slider-wrap {
+    animation: scroll 10s linear infinite;
+    display: flex;
+    width: 100%;
+    height:100%;
+    margin-left: auto;
+    background-color: #000000;
+  }
+.slide-image{
+  width:80%;
+  height:100%;
+  object-fit:cover;
+  margin-left: auto;
+}
+.slide{
+  width:250px;
+  height:100%;
+  margin-left: auto;
+}
+
+スライドする商品ボタンに関するCSS
+/* カード内容についてのcss */
+.wrapper {
+	display: flex;
+	/* background-color: skyblue; */
+	justify-content: space-between;
+}
+
+.food-container {
+	/* background-color: lightgreen; */
+	margin: 10px;
+	border-radius: 20px;
+    width: 200px;
+    height: 240px;
+    box-shadow: 0px 0px 28px 3px #ededed;
+}
+
+.food-container:hover {
+	margin: 10px;
+	border-radius: 20px;
+	transform: scale(1.05, 1.05);
+	transition-duration: 0.7s;
+}
+
+.card-header {
+    text-align: center;
+}
+
+.foodname {
+	margin: 10px;
+	text-align: center;
+}
+
+.card-body {
+    text-align: center;
+    font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+}
+
+button {
+    display: inline-block;
+    width: 140px;
+    background: rgb(55, 55, 55);
+    box-shadow: 0px 0px 28px 3px #e0e0e0;
+    font-size: 12px;
+    transform: skew(-21deg);
+    color: #FCFCF5;
+    position: relative;
+}
+
+button span {
+    display: inline-block;
+    transform: skew(21deg);
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    left: 0;
+    background: coral;
+    transition: all .7s;
+}
+
+button:hover {
+    color: #FCFCF5;
+    box-shadow: 0px 0px 28px 3px rgb(0 0 0 / 20%);
+}
+
+button:hover::before {
+    right: 0;
+}
