@@ -119,7 +119,11 @@ def index():
         return render_template("main/activeLevel.html")
 
     else:
-        if 
+        if 'level' not in session:
+            session['level'] = request.form.get("level")
+        else:
+            return render_template("main/meal.html")
+
         # 一人当たりの必要摂取カロリー
         personal_data = db1.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
         age = personal_data['age']
@@ -128,9 +132,9 @@ def index():
         sex = personal_data['sex']
         activity = personal_data['activity']
 
-        session['level'] = request.form.get("level")
+
         budget = request.form.get("budget")
-        act = act_calculate(sex, weight, height, age, level, activity)
+        act = act_calculate(sex, weight, height, age, session['level'], activity)
 
 
 # --------------------------------------------------------------------
