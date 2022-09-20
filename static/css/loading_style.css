@@ -1,5 +1,9 @@
 /* loading containerの配置についてのcss */
 
+html {
+    overflow: scroll;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -14,7 +18,7 @@ body {
 
 body {
     background-color: white;
-    height: 100vh;
+    height: 100%;
     display: flex;
     overflow: hidden;
 }
