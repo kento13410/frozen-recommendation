@@ -295,17 +295,16 @@ def personal_data():
         except:
             pass
 
-        if request.form.get("activity") == None:
+        if request.form.get("purpose") == None:
             return render_template("main/purpose.html")
         else:
-            # 目標
-            activity = request.form.get("activity")
+            purpose = request.form.get("purpose")
 
 
         try:
-            db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], session['sex'], session['age'], session['weight'], session['heightj'], activity)
+            db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], session['sex'], session['age'], session['weight'], session['heightj'], purpose)
         except:
-            db1.execute("UPDATE personal_data SET sex=?, age=?, weight=?, height=?, activity=? WHERE user_id=?", session['sex'], session['age'], session['weight'], session['height'], activity, session['user_id'])
+            db1.execute("UPDATE personal_data SET sex=?, age=?, weight=?, height=?, activity=? WHERE user_id=?", session['sex'], session['age'], session['weight'], session['height'], purpose, session['user_id'])
 
         return redirect("/")
 
