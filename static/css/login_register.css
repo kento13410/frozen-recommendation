@@ -111,7 +111,7 @@ body{
   text-align:center;
 }
 
-.login input[type=button]{
+.login button[type=submit]{
   width: 310px;
   height: 45px;
   background: #fff;
@@ -126,11 +126,11 @@ body{
   margin-top: 12px;
 }
 
-.login input[type=button]:hover{
+.login button[type=submit]:hover{
   opacity: 0.8;
 }
 
-.login input[type=button]:active{
+.login button[type=submit]:active{
   opacity: 0.6;
 }
 
@@ -144,7 +144,7 @@ body{
   border: 1px solid rgba(255,255,255,0.9);
 }
 
-.login input[type=button]:focus{
+.login button[type=submit]:focus{
   outline: none;
 }
 
