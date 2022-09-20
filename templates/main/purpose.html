@@ -51,28 +51,39 @@
          <!-- endヘッダー -->
          <!-- 活動目的カード -->
         <form action="/personal_data" method="POST">
-            <section class="wrapper">
-                <div class="food-container" style="display:none">
+            <section class="wrapper" style="display:none">
+                <div class="back">
+                    <button type="submit" class="backNextButton" style="--clr: #00ccff;--i:0;">
+                        <span>Back</span>
+                    </button>
+                </div>
+                <div class="food-container">
                     <div class="sentence">
                         <p class="question3">質問３：食事の目的を選んでください</p>
                     </div>
                     <div class="columActive1">
                         <div class="decrease">
-                            <p class="activePurpose"><input type="radio" name="purpose" value="増量"><label for="増量" class="activePurpose">増量</label></p>
+                            <input type="radio" name="purpose" value="増量"><label for="増量" class="activePurpose">増量</label>
                         </div>
                     </div>
                     <div class="culumActive2">
                         <div class="maintain">
-                            <p class="activePurpose"><input type="radio" name="purpose" value="維持"><label for="維持" class="activePurpose">維持</label></p>
+                            <input type="radio" name="purpose" value="維持"><label for="維持" class="activePurpose">維持</label>
                         </div>
                     </div>
                     <div class="culumActive3">
                         <div class="increase">
-                            <p class="activePurpose"><input type="radio" name="purpose" value="減量"><label for="減量" class="activePurpose">減量</label></p>
+                            <input type="radio" name="purpose" value="減量"><label for="減量" class="activePurpose">減量</label>
                         </div>
                     </div>
                 </div>
-                <input type="submit">
+                <form action="">
+                    <div class="next">
+                        <button type="submit" class="backNextButton" style="--clr: #ff22bb;--i:0;">
+                            <span>Next</span>
+                        </button>
+                    </div>
+                </form>
             </section>
         </form>
            <!-- end活動目的カード -->
@@ -100,7 +111,7 @@
             </script>
             <script>
                 $(document).ready(function(){
-                  $(".food-container").fadeIn(3500);
+                $(".wrapper").fadeIn(3500);
             });
             </script>
         </body>

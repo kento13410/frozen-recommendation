@@ -47,10 +47,15 @@
                 </ul>
               </nav>
             </div>
-        </header>ｃ
+        </header>
          <!-- endヘッダー -->
          <!-- 食事検索カード -->
          <section class="wrapper">
+            <div class="back">
+                <button type="submit" class="backNextButton" style="--clr: #00ccff;--i:0;">
+                    <span>Back</span>
+                </button>
+            </div>
             <div class="food-container">
                 <div class="sentence">
                     <p class="question4">質問４：食べたものを入力して</p>
@@ -58,38 +63,36 @@
                 <div class="columnMeal1">
                     <div class="meal1">
                         <p class="mealType">朝食</p>
-                        <p class="mealName"><input type="text" name="breakfast" class="mealName1"></p>
+                        <!-- <p class="mealName"> -->
+                            <form class="mealName">
+                                <input type="text" name="breakfast" class="mealName1" form="result">
+                            </form>
                     </div>
                 </div>
                 <div class="columnMeal2">
                     <div class="meal2">
                         <p class="mealType">昼食</p>
-                        <p class="mealName"><input type="text" name="lunch" class="mealName1"></p>
+                        <form class="mealName">
+                            <input type="text" name="lunch" class="mealName1" form="result">
+                        </form>
                     </div>
                 </div>
                 <div class="columnMeal3">
                     <div class="meal3">
                         <p class="mealType">間食</p>
-                        <p class="mealName"><input type="text" name="snack" class="mealName1"></p>
+                        <form class="mealName">
+                            <input type="text" name="snack" class="mealName1" form="result">
+                        </form>
                     </div>
                 </div>
-                <div class="deployButton">
-                    <div class="serchButton">
-                        <a href="http://google.com" class="btn">
-                            <!-- ボタンの表示面積 -->
-                            <svg width="277" height="63">
-                                <defs>
-                                    <linearGradient id="grad1">
-                                        <stop offset="0%" stop-color="#000000"/>
-                                        <stop offset="100%" stop-color="#000000" />
-                                    </linearGradient>
-                                </defs>
-                                <!-- ボタンの大きさ -->
-                                <rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
-                            </svg>
-                            <span>Search</span>
-                        </a>
-                    </div>
+                <div class="columnButton">
+                    <form action="/search_item" method="POST" id="result">
+                        <div class="searchButton">
+                            <button type="submit" id="result" class="button" style="--clr: #22e622;--i:0;">
+                                <span>SEARCH</span>
+                            </button>
+                        </div>
+                    </form>
                 </div>
                 <!-- <input type="submit" value="検索"> -->
             </div>
@@ -122,7 +125,7 @@
             </script>
             <script>
                 $(document).ready(function(){
-                  $(".food-container").fadeIn(3500);
+                  $(".wrapper").fadeIn(3500);
             });
             </script>
         </body>

@@ -631,7 +631,7 @@ img {
     align-items: center;
     margin-top: 10px;
 }
-.column_Button {
+.columnButton {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -713,12 +713,16 @@ img {
 }
 /* 検索ボタンについての css */
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 .search_Button {
 =======
 =======
 .search_Button {
+=======
+.searchButton {
+>>>>>>> 3fc7abcd998a3b76d4686ffe4f3297588117a7fb
     display: flex;
     align-items: center;
     justify-content: center;
@@ -798,8 +802,12 @@ img {
 =======
 =======
 }
+<<<<<<< HEAD
 >>>>>>> 1129abebca2bbec389259e18a980fd567873f90d
 .btn span{
+=======
+.button span{
+>>>>>>> 3fc7abcd998a3b76d4686ffe4f3297588117a7fb
     font-family: fantasy;
     font-size: 30px;
     background: #000000;
