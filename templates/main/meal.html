@@ -85,22 +85,11 @@
                         </form>
                     </div>
                 </div>
-                <div class="deployButton">
-                    <form action="/search_item" method="POST" id="result">
-                        <div class="serchButton">
-                            <a href="/personal_data" class="btn">
-                                <!-- ボタンの表示面積 -->
-                                <svg width="277" height="63">
-                                    <defs>
-                                        <linearGradient id="grad1">
-                                            <stop offset="0%" stop-color="#000000"/>
-                                            <stop offset="100%" stop-color="#000000" />
-                                        </linearGradient>
-                                    </defs>
-                                    <!-- ボタンの大きさ -->
-                                    <rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
-                                </svg>
-                                <span>Search</span>
+                <div class="columnButton">
+                    <form>
+                        <div class="searchButton">
+                            <a href="/personal_data" method="POST" id="result" class="button" style="--clr: #22e622;--i:0;">
+                                <span>SEARCH</span>
                             </a>
                         </div>
                     </form>

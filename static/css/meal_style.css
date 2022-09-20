@@ -631,7 +631,7 @@ img {
     align-items: center;
     margin-top: 10px;
 }
-.deployButton {
+.columnButton {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -780,7 +780,7 @@ img {
     overflow: hidden;
     position: relative;
 }
-.btn span{
+.button span{
     font-family: fantasy;
     font-size: 30px;
     background: #000000;
