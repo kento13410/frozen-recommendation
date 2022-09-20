@@ -223,6 +223,7 @@ def back():
 @app.route("/recommend", methods=["GET","POST"])
 def recommend():
     if (request.method == "POST"):
+        # お弁当肉系
         beef = request.form.get("beef")
         # お弁当魚系
         fish = request.form.get("fish")
@@ -232,7 +233,7 @@ def recommend():
         noodle = request.form.get("noodle")
 
         if (beef):
-            beefList = db.execute("SELECT * from foodnames WHERE カテゴリ = ?",beef)
+            beefList = db.execute('SELECT * from foodnames WHERE カテゴリ = "お弁当肉系" ')
         else:
             beefList = []
         if (fish):

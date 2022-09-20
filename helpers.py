@@ -1,4 +1,4 @@
-from flask import redirect,session, render_template
+from flask import redirect,session
 from functools import wraps
 import random
 
@@ -12,20 +12,20 @@ def login_required(f):
     return decorated_function
 
 
-def loading_black(f):
-    @wraps(f)
-    def black(*args, **kwargs):
-        render_template("loading_black.html")
-        return f(*args, **kwargs)
-    return black
+# def loading_black(f):
+#     @wraps(f)
+#     def black(*args, **kwargs):
+#         render_template("loading_black.html")
+#         return f(*args, **kwargs)
+#     return black
 
 
-def loading_colorful(f):
-    @wraps(f)
-    def colorful(*args, **kwargs):
-        render_template("loading_colorful.html")
-        return f(*args, **kwargs)
-    return colorful
+# def loading_colorful(f):
+#     @wraps(f)
+#     def colorful(*args, **kwargs):
+#         render_template("loading_colorful.html")
+#         return f(*args, **kwargs)
+#     return colorful
 
 
 
@@ -83,7 +83,7 @@ def act_calculate(sex, intWeight, intHeight, intAge, level, activity):
     return act
 
 
-# ランダムな異なる５つの要素を持つリストを表示する　→[11,4,7,2,3]
+# ランダムな異なる５つの要素を持つリストを表示する　→lx：[11,4,7,2,3]
 def makeRandomList(maxNumber):
     indexList = []
     if (maxNumber >= 5):
