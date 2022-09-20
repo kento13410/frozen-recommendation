@@ -123,7 +123,7 @@ def index():
             session['level'] = request.form.get("level")
             return render_template("main/meal.html")
         else:
-            pass
+            return render_template("main/meal.html")
 
         # 一人当たりの必要摂取カロリー
         personal_data = db1.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
