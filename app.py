@@ -123,6 +123,8 @@ def index():
             session['level'] = request.form.get("level")
             return render_template("main/meal.html")
         else:
+            level = session['level']
+            session.pop("level", None)
             pass
 
         # 一人当たりの必要摂取カロリー
@@ -135,8 +137,8 @@ def index():
 
 
         budget = request.form.get("budget")
-        act = act_calculate(sex, weight, height, age, session['level'], activity)
-        session.pop("level", None)
+        act = act_calculate(sex, weight, height, age, level, activity)
+
 
 
 # --------------------------------------------------------------------
