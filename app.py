@@ -121,7 +121,6 @@ def index():
     else:
         if 'level' not in session:
             session['level'] = request.form.get("level")
-            return render_template("main/meal.html")
         else:
             return render_template("main/meal.html")
 
