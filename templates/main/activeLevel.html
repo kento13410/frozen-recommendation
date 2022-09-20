@@ -62,25 +62,27 @@
                 </div>
                 <div class="columnActive1">
                     <div class="answer1">
-                        <input type="radio" name="level" value="座り仕事が多く、１日の運動は、<br>階段の上り下りくらいだった。"><label for ="座り仕事が多く、<br>１日の運動は、階段の上り下りくらいだった。" class="activeLevel">座り仕事が多く、１日の運動は、<br>階段の上り下りくらいだった。</label>
+                        <input type="radio" name="level" form="result" value="座り仕事が多く、１日の運動は、<br>階段の上り下りくらいだった。"><label for ="座り仕事が多く、<br>１日の運動は、階段の上り下りくらいだった。" class="activeLevel">座り仕事が多く、１日の運動は、<br>階段の上り下りくらいだった。</label>
                     </div>
                 </div>
                 <div class="columnActive2">
                     <div class="answer2">
-                        <input type="radio" name="level" value="立ち仕事が多く、<br>比較的一日中動き回った。"><label for ="立ち仕事が多く、<br>比較的一日中動き回った。" class="activeLevel">立ち仕事が多く、<br>比較的一日中動き回った。</label>
+                        <input type="radio" name="level" form="result" value="立ち仕事が多く、<br>比較的一日中動き回った。"><label for ="立ち仕事が多く、<br>比較的一日中動き回った。" class="activeLevel">立ち仕事が多く、<br>比較的一日中動き回った。</label>
                     </div>
                 </div>
                 <div class="columnActive3">
                     <div class="answer3">
-                        <input type="radio" name="level" value="立ち仕事が多く、加えてジムで<br>トレーニングもした。"><label for ="立ち仕事が多く、加えてジムで<br>トレーニングもした。" class="activeLevel">立ち仕事が多く、加えてジムで<br>トレーニングもした。</label>
+                        <input type="radio" name="level" form="result" value="立ち仕事が多く、加えてジムで<br>トレーニングもした。"><label for ="立ち仕事が多く、加えてジムで<br>トレーニングもした。" class="activeLevel">立ち仕事が多く、加えてジムで<br>トレーニングもした。</label>
                     </div>
                 </div>
             </div>
-            <div class="next">
-                <button type="submit" class="backNextButton" style="--clr: #ff22bb;--i:0;">
-                    <span>Next</span>
-                </button>
-            </div>
+            <form action="/input" method="POST" id="result">
+                <div class="next">
+                    <button type="submit" class="backNextButton" style="--clr: #ff22bb;--i:0;">
+                        <span>Next</span>
+                    </button>
+                </div>
+            </form>
            </section>
            <!-- end活動量カード -->
            <script src="https://code.jquery.com/jquery.min.js"></script>

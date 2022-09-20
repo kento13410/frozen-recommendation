@@ -1,13 +1,14 @@
 /* loading containerの配置についてのcss */
 
-html {
+/* html {
     overflow: scroll;
-}
+} */
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 60vh;
 }
 
 .loading-container {
@@ -20,7 +21,7 @@ body {
     background-color: white;
     height: 100%;
     display: flex;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .spinner {
@@ -43,7 +44,8 @@ body {
 }
 
 @keyframes spinner {
-    100% { transform: rotate(360deg);
+    100% {
+        transform: rotate(360deg);
 
     }
 }

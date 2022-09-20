@@ -116,20 +116,29 @@ def home():
 @login_required
 def index():
     if (request.method == "GET"):
-        return render_template("main/meal.html")
+        return render_template("main/activeLevel.html")
 
     else:
+        if 'level' not in session:
+            session['level'] = request.form.get("level")
+            return render_template("main/meal.html")
+        else:
+            level = session['level']
+            session.pop("level", None)
+            pass
+
         # 一人当たりの必要摂取カロリー
         personal_data = db1.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
         age = personal_data['age']
         weight = personal_data['weight']
         height = personal_data['height']
-        sex = personal_data['choice']
+        sex = personal_data['sex']
         activity = personal_data['activity']
 
-        level = request.form.get("level")
+
         budget = request.form.get("budget")
         act = act_calculate(sex, weight, height, age, level, activity)
+
 
 
 # --------------------------------------------------------------------
@@ -297,9 +306,9 @@ def personal_data():
             purpose = request.form.get("purpose")
 
 
-        try:
+        try: #dbが格納されていない場合
             db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], session['sex'], session['age'], session['weight'], session['heightj'], purpose)
-        except:
+        except: #格納されている場合（そのときはtryでエラーでる
             db1.execute("UPDATE personal_data SET sex=?, age=?, weight=?, height=?, activity=? WHERE user_id=?", session['sex'], session['age'], session['weight'], session['height'], purpose, session['user_id'])
 
         return redirect("/")

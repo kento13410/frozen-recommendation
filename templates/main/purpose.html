@@ -51,8 +51,13 @@
          <!-- endヘッダー -->
          <!-- 活動目的カード -->
         <form action="/personal_data" method="POST">
-            <section class="wrapper">
-                <div class="food-container" style="display:none">
+            <section class="wrapper" style="display:none">
+                <div class="back">
+                    <button type="submit" class="backNextButton" style="--clr: #00ccff;--i:0;">
+                        <span>Back</span>
+                    </button>
+                </div>
+                <div class="food-container">
                     <div class="sentence">
                         <p class="question3">質問３：食事の目的を選んでください</p>
                     </div>
@@ -72,11 +77,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="next">
-                    <button type="submit" class="backNextButton" style="--clr: #ff22bb;--i:0;">
-                        <span>Next</span>
-                    </button>
-                </div>
+                <form action="">
+                    <div class="next">
+                        <button type="submit" class="backNextButton" style="--clr: #ff22bb;--i:0;">
+                            <span>Next</span>
+                        </button>
+                    </div>
+                </form>
             </section>
         </form>
            <!-- end活動目的カード -->
@@ -104,7 +111,7 @@
             </script>
             <script>
                 $(document).ready(function(){
-                $(".food-container").fadeIn(3500);
+                $(".wrapper").fadeIn(3500);
             });
             </script>
         </body>

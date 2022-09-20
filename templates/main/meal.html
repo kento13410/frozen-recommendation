@@ -51,6 +51,11 @@
          <!-- endヘッダー -->
          <!-- 食事検索カード -->
          <section class="wrapper">
+            <div class="back">
+                <button type="submit" class="backNextButton" style="--clr: #00ccff;--i:0;">
+                    <span>Back</span>
+                </button>
+            </div>
             <div class="food-container">
                 <div class="sentence">
                     <p class="question4">質問４：食べたものを入力して</p>
@@ -80,23 +85,14 @@
                         </form>
                     </div>
                 </div>
-                <div class="deployButton">
-                    <div class="serchButton">
-                        <a href="/personal_data" method="POST" id="result" class="btn">
-                            <!-- ボタンの表示面積 -->
-                            <svg width="277" height="63">
-                                <defs>
-                                    <linearGradient id="grad1">
-                                        <stop offset="0%" stop-color="#000000"/>
-                                        <stop offset="100%" stop-color="#000000" />
-                                    </linearGradient>
-                                </defs>
-                                <!-- ボタンの大きさ -->
-                                <rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
-                            </svg>
-                            <span>Search</span>
-                        </a>
-                    </div>
+                <div class="columnButton">
+                    <form action="/search_item" method="POST" id="result">
+                        <div class="searchButton">
+                            <button type="submit" id="result" class="button" style="--clr: #22e622;--i:0;">
+                                <span>SEARCH</span>
+                            </button>
+                        </div>
+                    </form>
                 </div>
                 <!-- <input type="submit" value="検索"> -->
             </div>
@@ -129,7 +125,7 @@
             </script>
             <script>
                 $(document).ready(function(){
-                  $(".food-container").fadeIn(3500);
+                  $(".wrapper").fadeIn(3500);
             });
             </script>
         </body>

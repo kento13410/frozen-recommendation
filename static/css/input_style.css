@@ -187,13 +187,27 @@
     justify-content: space-between;
     align-items: center;
 }
+<<<<<<< HEAD
+/* .column_Button {
+=======
 .column_Button {
+>>>>>>> 3fc7abcd998a3b76d4686ffe4f3297588117a7fb
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 550px;
     margin-left: 22px;
+<<<<<<< HEAD
+} */
+
+
+input[type=radio] {
+    display: none; /* ラジオボタンを非表示にする */
 }
+
+=======
+}
+>>>>>>> 3fc7abcd998a3b76d4686ffe4f3297588117a7fb
 .sex {
     border-radius: 20px;
     width: 230px;
@@ -239,8 +253,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0px 0px 28px 3px #ededed;
+    box-shadow: 0px 0px 28px 3px #ededed
+
+.age2 {
+    font-size: inherit;
+    font-family: fantasy;
+    text-align: center;
+    border-radius: 100%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
 }
+
 p {
     font-size: 30px;
     font-family: fantasy;
@@ -460,6 +487,7 @@ img {
     border-radius: 100%;
     margin-top: 20px;
 }
+
 
 .button span {
     font-family: fantasy;
