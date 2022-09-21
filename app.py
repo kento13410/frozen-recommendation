@@ -139,8 +139,6 @@ def index():
 
         act = act_calculate(sex, weight, height, age, session['level'], activity)
 
-
-
 # --------------------------------------------------------------------
 # D = act - (朝で摂取したエネルギー + 昼で摂取したエネルギー) [kcal]
 # --------------------------------------------------------------------
@@ -177,23 +175,23 @@ def index():
 
         difData = {'カロリー': D, 'タンパク質': difP, '脂質': difF, '炭水化物': difCBH}
 
-        data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 30", X, P, F, CBH)
+        data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?)", X, P, F, CBH)
 
-        data2 = []
-        for dat in data:
-            data2_set = []
-            data2_set.append(dat)
-            difP2 = difP - dat['タンパク質']
-            difF2 = difF - dat['脂質']
-            difCBH2 = difCBH - dat['炭水化物']
-            X2 = difP2/P + difF2/F + difCBH2/CBH
-            data_element2 = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 10", X2, P, F, CBH)
-            for i in range(len(data_element2)):
-                data2_set.append(data_element2[i])
-                data2.append(data2_set)
+        # data2 = []
+        # for dat in data:
+        #     data2_set = []
+        #     data2_set.append(dat)
+        #     difP2 = difP - dat['タンパク質']
+        #     difF2 = difF - dat['脂質']
+        #     difCBH2 = difCBH - dat['炭水化物']
+        #     X2 = difP2/P + difF2/F + difCBH2/CBH
+        #     data_element2 = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 10", X2, P, F, CBH)
+        #     for i in range(len(data_element2)):
+        #         data2_set.append(data_element2[i])
+        #         data2.append(data2_set)
 
 
-        return render_template("main/output.html", data = data, data2 = data2, difData=difData)
+        return render_template("main/output.html", data = data, difData=difData)
 # -------------------------------------------------------------------------------------------------------------
 
 
