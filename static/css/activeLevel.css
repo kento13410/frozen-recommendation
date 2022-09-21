@@ -221,8 +221,9 @@ p {
     align-items: center;
     width: 550px;
     margin-left: 22px;
+}
 
-input[type="radio"] {
+.activeLevel input[type=radio] {
     display: none;
 }
 
