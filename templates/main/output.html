@@ -109,7 +109,7 @@
                 </div>
               </div>
               {%- set ns.cnt = ns.cnt + 1 -%}
-              {% if ns.cnt % 4 == 0 %}
+              {% if ns.cnt % 2 == 0 %}
               </section><section class="wrapper">
               {% endif %}
             {% endfor %}
