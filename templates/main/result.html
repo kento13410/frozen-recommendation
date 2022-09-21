@@ -167,25 +167,17 @@
                 {% endfor %}
               </li>
               <li>
+                {% for lu in lunch %}
                 <section class="wrapper">
                   <label>
-                    <input type="checkbox">
+                    <input type="checkbox" name="select_food" value="{{lu}}" form="result">
                     <span>
                       <i></i>
                     </span>
                   </label>
-                  <p>＜チョコレート類＞　アーモンドチョコレート</p>
+                  <p>{{lu['食品名']}}</p>
                 </section>
-                <section class="wrapper">
-                  <label>
-                    <input type="checkbox">
-                    <span>
-                      <i></i>
-                    </span>
-                  </label>
-                  <p>＜チョコレート類＞　カバーリングチョコレート</p>
-                </section>
-
+                {% endfor %}
               </li>
               <li>コンテンツ4</li>
             </ul>
