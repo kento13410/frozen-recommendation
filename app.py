@@ -116,10 +116,14 @@ def home():
 @login_required
 def index():
     if (request.method == "GET"):
+        try:
+            session.pop("level", None)
+        except:
+            pass
         return render_template("main/activeLevel.html")
 
     else:
-        if request.referrer == 'main/activeLevel.html':
+        if 'level' not in session:
             session['level'] = request.form.get("level")
             return render_template("main/meal.html")
         else:
