@@ -50,68 +50,66 @@
         </header>
         <!-- endヘッダー -->
         <!-- 個人情報カード -->
-        <form action="/personal_data" method="POST">
-            <section class="wrapper">
-                <div class="food-container" style="display: none">
-                    <div class="sentence">
-                        <p class="question1">質問１：パーソナルデータを入力してください</p>
-                    </div>
-                    <div class="column1">
-                        <div class="sex">
-                            <h1 id="sex">性別</h1>
-                            <div class="choice">
-                                <div class="male">
-                                    <input type="radio" src="../../static/img/sex/male.png" alt="男" value="男" class="male" name="sex">
-                                </div>
-                                <div class="female">
-                                    <input type="radio" src="../../static/img/sex/female.png" alt="女" value="女" class="female" name="sex">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="age">
-                            <h1>年齢</h1>
-                            <div class="age0">
-                                <div class="age1">
-                                    <form>
-                                        <input type="number" placeholder="才" name="age" min="0" max="120" class="ageInput"><br>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column2">
-                        <div class="height">
-                            <h1>身長</h1>
-                            <div class="height0">
-                                <div class="height1">
-                                    <form>
-                                        <input type="number" placeholder="cm" name="height" min="50" max="220" class="heightInput"><br>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="weight">
-                            <h1>体重</h1>
-                            <div class="weight0">
-                                <div class="weight1">
-                                    <form>
-                                        <input type="number" placeholder="kg" name="weight" min="3" class="weightInput"><br>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <input type="submit" value="次へ"> -->
+        <section class="wrapper">
+            <div class="food-container" style="display: none">
+                <div class="sentence">
+                    <p class="question1">質問１：パーソナルデータを入力してください</p>
                 </div>
-                <form action="/personal_data" method="POST">
-                    <div class="next">
-                        <button type="submit" class="backNextButton" style="--clr: #ff22bb;--i:0;">
-                            <span>Next</span>
-                         </button>
+                <div class="column1">
+                    <div class="sex">
+                        <h1 id="sex">性別</h1>
+                        <div class="choice">
+                            <div class="male">
+                                <input type="radio" src="../../static/img/sex/male.png" alt="男" value="男" class="male" name="sex" form="personal">
+                            </div>
+                            <div class="female">
+                                <input type="radio" src="../../static/img/sex/female.png" alt="女" value="女" class="female" name="sex" form="personal">
+                            </div>
+                        </div>
                     </div>
-                </form>
-            </section>
-        </form>
+                    <div class="age">
+                        <h1>年齢</h1>
+                        <div class="age0">
+                            <div class="age1">
+                                <form>
+                                    <input type="number" placeholder="才" name="age" min="0" max="120" class="ageInput" form="personal"><br>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column2">
+                    <div class="height">
+                        <h1>身長</h1>
+                        <div class="height0">
+                            <div class="height1">
+                                <form>
+                                    <input type="number" placeholder="cm" name="height" min="50" max="220" class="heightInput" form="personal"><br>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weight">
+                        <h1>体重</h1>
+                        <div class="weight0">
+                            <div class="weight1">
+                                <form>
+                                    <input type="number" placeholder="kg" name="weight" min="3" class="weightInput" form="personal"><br>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <input type="submit" value="次へ"> -->
+            </div>
+            <form action="/personal_data" method="POST" id="personal">
+                <div class="next">
+                    <button type="submit" class="backNextButton" style="--clr: #ff22bb;--i:0;">
+                        <span>Next</span>
+                        </button>
+                </div>
+            </form>
+        </section>
         <!-- end個人情報カード -->
         <script src="https://code.jquery.com/jquery.min.js"></script>
         <script>
