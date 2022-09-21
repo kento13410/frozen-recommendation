@@ -713,15 +713,14 @@ img {
 }
 /* 検索ボタンについての css */
 
-.search_Button {
-.search_Button {
+
 .searchButton {
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 100%;
     margin-top: 20px;
-}}}
+}
 
 .mealName1 {
     font-size: inherit;
@@ -791,8 +790,7 @@ img {
 
 }
 
-.btn span{
-=======
+
 .button span{
     font-family: fantasy;
     font-size: 30px;
@@ -803,10 +801,6 @@ img {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8282', endColorstr='#e178ed',GradientType=1 );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-<<<<<<< HEAD
->>>>>>> 49a0ff25775bf986103032e63cec3e16dba778d7
-=======
->>>>>>> 1129abebca2bbec389259e18a980fd567873f90d
 }
 
 .button:hover {
