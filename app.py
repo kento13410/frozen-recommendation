@@ -230,6 +230,7 @@ def back():
 # -------------------------recommend--------------------------------------------------------------------------------
 @app.route("/recommend", methods=["GET","POST"])
 def recommend():
+
     if (request.method == "POST"):
         # お弁当肉系
         beef = request.form.get("beef")
@@ -280,6 +281,9 @@ def recommend():
         else:
             return redirect("/")
             # print("categoryが一つもチェックされていない")
+    else:
+        return render_template("main/recommend.html")
+
 
 
 
