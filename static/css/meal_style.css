@@ -712,24 +712,17 @@ img {
     font-weight: bold;
 }
 /* 検索ボタンについての css */
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-<<<<<<< HEAD
 .search_Button {
-=======
-=======
 .search_Button {
-=======
 .searchButton {
->>>>>>> 3fc7abcd998a3b76d4686ffe4f3297588117a7fb
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 100%;
     margin-top: 20px;
-}
->>>>>>> 1129abebca2bbec389259e18a980fd567873f90d
+}}}
+
 .mealName1 {
     font-size: inherit;
     font-family: inherit;
@@ -743,10 +736,7 @@ img {
 /* コメント */
 .deployButton {
     height: 10px;
-<<<<<<< HEAD
->>>>>>> 49a0ff25775bf986103032e63cec3e16dba778d7
-=======
->>>>>>> 1129abebca2bbec389259e18a980fd567873f90d
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -798,16 +788,12 @@ img {
     0 0 15px var(--clr);
     overflow: hidden;
     position: relative;
-<<<<<<< HEAD
-=======
-=======
+
 }
-<<<<<<< HEAD
->>>>>>> 1129abebca2bbec389259e18a980fd567873f90d
+
 .btn span{
 =======
 .button span{
->>>>>>> 3fc7abcd998a3b76d4686ffe4f3297588117a7fb
     font-family: fantasy;
     font-size: 30px;
     background: #000000;
