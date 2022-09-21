@@ -177,6 +177,7 @@ def index():
 
         data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?)", X, P, F, CBH)
 
+        # 残しておいてください谷口
         # data2 = []
         # for dat in data:
         #     data2_set = []
