@@ -225,6 +225,7 @@ p {
 input[type=radio] {
     display: none; /* ラジオボタンを非表示にする */
 }
+
 .sex {
     border-radius: 20px;
     width: 230px;
