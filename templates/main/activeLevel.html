@@ -50,29 +50,29 @@
         </header>
          <!-- endヘッダー -->
          <!-- 活動量カード -->
-         <section class="wrapper">
+         <section class="wrapper" style="display:none">
             <div class="back">
                 <button type="submit" class="backNextButton" style="--clr: #00ccff;--i:0;">
                     <span>Back</span>
                 </button>
             </div>
-            <div class="food-container" style="display:none">
+            <div class="food-containerActive">
                 <div class="sentence">
                     <p class="question2">質問２：日々の活動量を選んでください</p>
                 </div>
                 <div class="columnActive1">
                     <div class="answer1">
-                        <input type="radio" name="level" form="result" value="座り仕事が多く、１日の運動は、<br>階段の上り下りくらいだった。"><label for ="座り仕事が多く、<br>１日の運動は、階段の上り下りくらいだった。" class="activeLevel">座り仕事が多く、１日の運動は、<br>階段の上り下りくらいだった。</label>
+                        <input type="radio" name="level" form="result" value="one" class="activeLevel"><label for ="座り仕事が多く、<br>１日の運動は、階段の上り下りくらいだった。" class="activeLevel">座り仕事が多く、１日の運動は、<br>階段の上り下りくらいだった。</label>
                     </div>
                 </div>
                 <div class="columnActive2">
                     <div class="answer2">
-                        <input type="radio" name="level" form="result" value="立ち仕事が多く、<br>比較的一日中動き回った。"><label for ="立ち仕事が多く、<br>比較的一日中動き回った。" class="activeLevel">立ち仕事が多く、<br>比較的一日中動き回った。</label>
+                        <input type="radio" name="level" form="result" value="two" class="activeLevel"><label for ="立ち仕事が多く、<br>比較的一日中動き回った。" class="activeLevel">立ち仕事が多く、<br>比較的一日中動き回った。</label>
                     </div>
                 </div>
                 <div class="columnActive3">
                     <div class="answer3">
-                        <input type="radio" name="level" form="result" value="立ち仕事が多く、加えてジムで<br>トレーニングもした。"><label for ="立ち仕事が多く、加えてジムで<br>トレーニングもした。" class="activeLevel">立ち仕事が多く、加えてジムで<br>トレーニングもした。</label>
+                        <input type="radio" name="level" form="result" value="three" class="activeLevel"><label for ="立ち仕事が多く、加えてジムで<br>トレーニングもした。" class="activeLevel">立ち仕事が多く、加えてジムで<br>トレーニングもした。</label>
                     </div>
                 </div>
             </div>
@@ -109,7 +109,7 @@
             </script>
             <script>
                 $(document).ready(function(){
-                  $(".food-container").fadeIn(3500);
+                  $(".wrapper").fadeIn(3500);
             });
             </script>
         </body>

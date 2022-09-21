@@ -116,6 +116,10 @@ def home():
 @login_required
 def index():
     if (request.method == "GET"):
+        try:
+            session.pop("level", None)
+        except:
+            pass
         return render_template("main/activeLevel.html")
 
     else:
@@ -123,8 +127,6 @@ def index():
             session['level'] = request.form.get("level")
             return render_template("main/meal.html")
         else:
-            level = session['level']
-            session.pop("level", None)
             pass
 
         # 一人当たりの必要摂取カロリー
@@ -135,11 +137,7 @@ def index():
         sex = personal_data['sex']
         activity = personal_data['activity']
 
-
-        budget = request.form.get("budget")
-        act = act_calculate(sex, weight, height, age, level, activity)
-
-
+        act = act_calculate(sex, weight, height, age, session['level'], activity)
 
 # --------------------------------------------------------------------
 # D = act - (朝で摂取したエネルギー + 昼で摂取したエネルギー) [kcal]
@@ -177,23 +175,24 @@ def index():
 
         difData = {'カロリー': D, 'タンパク質': difP, '脂質': difF, '炭水化物': difCBH}
 
-        data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 30", X, P, F, CBH)
+        data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?)", X, P, F, CBH)
 
-        data2 = []
-        for dat in data:
-            data2_set = []
-            data2_set.append(dat)
-            difP2 = difP - dat['タンパク質']
-            difF2 = difF - dat['脂質']
-            difCBH2 = difCBH - dat['炭水化物']
-            X2 = difP2/P + difF2/F + difCBH2/CBH
-            data_element2 = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 10", X2, P, F, CBH)
-            for i in range(len(data_element2)):
-                data2_set.append(data_element2[i])
-                data2.append(data2_set)
+        # 残しておいてください谷口
+        # data2 = []
+        # for dat in data:
+        #     data2_set = []
+        #     data2_set.append(dat)
+        #     difP2 = difP - dat['タンパク質']
+        #     difF2 = difF - dat['脂質']
+        #     difCBH2 = difCBH - dat['炭水化物']
+        #     X2 = difP2/P + difF2/F + difCBH2/CBH
+        #     data_element2 = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 10", X2, P, F, CBH)
+        #     for i in range(len(data_element2)):
+        #         data2_set.append(data_element2[i])
+        #         data2.append(data2_set)
 
 
-        return render_template("main/output.html", data = data, data2 = data2, difData=difData)
+        return render_template("main/output.html", data = data, difData=difData)
 # -------------------------------------------------------------------------------------------------------------
 
 
@@ -219,7 +218,7 @@ def search_item():
             if len(snack) != 0:
                 snName += db.execute(sql, "%" + snack + "%")
 
-        return render_template("MAIN/input.html", breakfast=brName, lunch=luName, snack=snName)
+        return render_template("main/result.html", breakfast=brName, lunch=luName, snack=snName)
 
 # -----------------------------------------------------------------------------------------------------------------
 
