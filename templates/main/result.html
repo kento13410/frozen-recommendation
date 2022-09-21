@@ -49,7 +49,14 @@
             </div>
          </header>
          <!-- endヘッダー -->
-         <main>
+         <section class="global">
+          <div class="back">
+            <button type="submit" class="backNextButton" style="--clr: #00ccff;--i:0;">
+                <span>Back</span>
+            </button>
+          </div>
+          <div class="food-container">
+          <main>
             <ul class="tabs">
               <li>
                 <a href="" class="active">
@@ -193,19 +200,22 @@
                 {% endfor %}
               </li>
             </ul>
-            <form action="/input" method="POST" id="result">
-              <div class="next">
-                <button type="submit" class="backNextButton" style="--clr: #ff22bb;--i:0;">
-                    <span>Next</span>
-                </button>
-              </div>
-            </form>
+            <!-- calucurateボタン作成 -->
           </main>
+          </div>
+          <form action="/input" method="POST" id="result">
+            <div class="next">
+              <button type="submit" class="backNextButton" style="--clr: #ff22bb;--i:0;">
+                  <span>Next</span>
+              </button>
+            </div>
+          </form>
+        </section>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
   $(".likeButton").click(function() {
     $(this).toggleClass("clicked");
   });
 </script>
-        </body>
-    </html>
+</body>
+</html>

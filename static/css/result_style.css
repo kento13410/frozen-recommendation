@@ -47,6 +47,14 @@
     min-width: 10px;
 }
 
+.global {
+    display: flex;
+	/* background-color: skyblue; */
+	justify-content: center;
+    align-items: center;
+    height: 86vh;
+}
+
 /* ナビゲーションバー・アイコン */
 .list_nav_icon_header {
     display: flex;
