@@ -137,8 +137,6 @@ def index():
         sex = personal_data['sex']
         activity = personal_data['activity']
 
-
-        budget = request.form.get("budget")
         act = act_calculate(sex, weight, height, age, session['level'], activity)
 
 
@@ -221,7 +219,7 @@ def search_item():
             if len(snack) != 0:
                 snName += db.execute(sql, "%" + snack + "%")
 
-        return render_template("MAIN/input.html", breakfast=brName, lunch=luName, snack=snName)
+        return render_template("main/result.html", breakfast=brName, lunch=luName, snack=snName)
 
 # -----------------------------------------------------------------------------------------------------------------
 
