@@ -154,6 +154,7 @@
             </ul>
             <ul class="contents">
               <li class="active">
+                {% for br in brName %}
                 <section class="wrapper">
                   <label>
                     <input type="checkbox">
@@ -161,35 +162,9 @@
                       <i></i>
                     </span>
                   </label>
-                  <p>洋風料理　ハンバーグステーキ類　チキンハンバーグ</p>
+                  <p>{{br['食品名']}}</p>
                 </section>
-                <section class="wrapper">
-                  <label>
-                    <input type="checkbox">
-                    <span>
-                      <i></i>
-                    </span>
-                  </label>
-                  <p>洋風料理　ハンバーグステーキ類　煮込みバーグ</p>
-                </section>
-                <section class="wrapper">
-                  <label>
-                    <input type="checkbox">
-                    <span>
-                      <i></i>
-                    </span>
-                  </label>
-                  <p>洋風料理　ハンバーグステーキ類　チーズ牛丼</p>
-                </section>
-                <section class="wrapper">
-                  <label>
-                    <input type="checkbox">
-                    <span>
-                      <i></i>
-                    </span>
-                  </label>
-                  <p>洋風料理　ハンバーグステーキ類　イタリア風</p>
-                </section>
+                {% endfor %}
               </li>
               <li>
                 <section class="wrapper">
