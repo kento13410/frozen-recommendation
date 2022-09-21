@@ -119,7 +119,7 @@ def index():
         return render_template("main/activeLevel.html")
 
     else:
-        if 'level' not in session:
+        if request.referrer == 'main/activeLevel.html':
             session['level'] = request.form.get("level")
             return render_template("main/meal.html")
         else:
