@@ -55,6 +55,26 @@
     height: 86vh;
 }
 
+/* backボタン配置についてのcss */
+.back {
+    width: 20px;
+    height: 10px;
+    position: relative;
+    top: -62px;
+    left: -150px;
+}
+
+/* nextボタン配置についてのcss */
+.next {
+    width: 20px;
+    height: 10px;
+    position: relative;
+    top: -62px;
+    right: -67px;
+}
+
+
+
 /* ナビゲーションバー・アイコン */
 .list_nav_icon_header {
     display: flex;
@@ -300,3 +320,251 @@ p {
     font-size: 22px;
     margin-right: 160px;
 }
+
+/* calucurateボタンについて */
+.columnButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 550px;
+    margin-left: 22px;
+}
+
+.calculateButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    margin-top: 20px;
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 20px;
+    width: 300px;
+    height: 300px;
+    box-shadow: 0px 0px 28px 3px #ededed;
+    transition: 1s;
+    box-shadow: 0 0 3px var(--clr),
+    0 0 15px var(--clr);
+    overflow: hidden;
+    position: relative;
+
+}
+
+
+.button span{
+    font-family: fantasy;
+    font-size: 30px;
+    background: #000000;
+    /* background: -moz-linear-gradient(left,  rgba(255,130,130,1) 0%, rgba(225,120,237,1) 100%); */
+    /* background: -webkit-linear-gradient(left,  rgba(255,130,130,1) 0%,rgba(225,120,237,1) 100%); */
+    /* background: linear-gradient(to right,  rgba(255,130,130,1) 0%,rgba(225,120,237,1) 100%); */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8282', endColorstr='#e178ed',GradientType=1 );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.button:hover {
+    background: var(--clr);
+}
+
+.button:hover::before {
+    width: 120%;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 400px;
+    background: var(--clr);
+    transition: 1s;
+    animation: animate 2s linear infinite;
+    animation-delay: calc(0.33s * var(--i));
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.button::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background: white;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.button:hover::after {
+    background: var(--clr);
+}
+
+.button span {
+    font-family: fantasy;
+    color: black;
+    position: relative;
+    z-index: 1;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    Letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 20px;
+    width: 140px;
+    height: 70px;
+    box-shadow: 0px 0px 28px 3px #ededed;
+    transition: 1s;
+    box-shadow: 0 0 3px var(--clr),
+    0 0 15px var(--clr);
+    overflow: hidden;
+    position: relative;
+}
+
+.button:hover {
+    background: var(--clr);
+}
+
+.button:hover::before {
+    width: 120%;
+
+
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 400px;
+    background: var(--clr);
+    transition: 1s;
+    animation: animate 2s linear infinite;
+    animation-delay: calc(0.33s * var(--i));
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.button::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background: white;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.button:hover::after {
+    background: var(--clr);
+}
+
+/* backNextボタンについて */
+.backNextButton span {
+    font-family: fantasy;
+    color: black;
+    position: relative;
+    z-index: 1;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    Letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.backNextButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 100%;
+    width: 105px;
+    height: 105px;
+    box-shadow: 0px 0px 28px 3px #ededed;
+    transition: 1s;
+    box-shadow: 0 0 3px var(--clr),
+    0 0 15px var(--clr);
+    overflow: hidden;
+    position: relative;
+}
+
+.backNextButton:hover {
+    background: var(--clr);
+}
+
+.backNextButton:hover::before {
+    width: 120%;
+
+
+}
+
+.backNextButton::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 400px;
+    background: var(--clr);
+    transition: 1s;
+    animation: animate 2s linear infinite;
+    animation-delay: calc(0.33s * var(--i));
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.backNextButton::after {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    background: white;
+    border-radius: 100%;
+    transition: 0.5s;
+}
+
+.backNextButton:hover::after {
+    background: var(--clr);
+}
+
