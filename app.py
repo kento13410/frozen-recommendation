@@ -451,3 +451,16 @@ def favorite():
             submitList.append(data)
         return render_template("main/favorite.html", submitList =submitList)
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# ------------------------------------------Delete favorite--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@app.route("/delete",methods=["POST"])
+def delete():
+    name = request.form.get("name")
+    db.execute("DELETE FROM product_liked WHERE product = ? AND user_id = ?",name,session['user_id'])
+    product_liked_s = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
+    submitList = []
+    for product_liked in product_liked_s:
+        data = db.execute("SELECT * FROM foodnames WHERE 食品名 = ? ", product_liked['product'])[0]
+        submitList.append(data)
+    return render_template("main/favorite.html", submitList =submitList)
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
