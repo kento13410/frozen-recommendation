@@ -27,7 +27,7 @@
                     <a href="/recommend">RECOMMEND</a>
                 </li>
                 <li>
-                    <a href="#">FAVORITES</a>
+                    <a href="/favorite">FAVORITES</a>
                 </li>
                 <li>
                     <a href="/personal_data">PERSONAL</a>
@@ -38,7 +38,7 @@
                     <a href="#"></a>
                 </li>
                 <li class="favorite">
-                    <a href="#"></a>
+                    <a href="/favorite"></a>
                 </li>
                 <li>
                     <a href="/logout"></a>
@@ -48,12 +48,22 @@
           </div>
       </header>
         <!-- endヘッダー -->
+
+      <!-- お気に入りに登録 -->
+      <form action="/favorite" method ="POST" id="heart">
+        <button type="submit" >お気に入りに登録</button>
+      </form>
+
         <!-- start メイン -->
         <main>
             <section class="wrapper">
               {%- set ns = namespace(cnt=0) -%}
+
               {% for item in data %}
               <div class="card-container">
+                <!-- uniqueな情報を組み込む -->
+                <div class ="hiden">id:{{item['id']}}</div>
+
                 <div class="card-left">
                   <img src="{{item['画像']}}" alt="{{item['食品名']}}" height="162px" width="180px">
                 </div>
@@ -62,6 +72,11 @@
                     <p>説明文</p>
                   <div class="sns">
                     <ul>
+                      <!-- チェックボックス(後にハートで、できるようにしたい。) -->
+                      <li>
+                        <input type="checkbox" name="id" form="heart" value="{{item['id']}}" checked>
+                      </li>
+                      <!-- ハート start-->
                       <li class="circle">
                         <svg class="likeButton clicked" width="47px" height="47px" viewBox="0 0 500 500">
                           <circle class="explosion" r="150" cx="250" cy="250"></circle>
