@@ -15,7 +15,7 @@ html {
     max-width: none;
     border-bottom: 3px solid black;
 }
-f
+
 .area_logo_header {
     display: flex;
     align-items: center;
@@ -23,7 +23,7 @@ f
 
 .area_logo_header .copy {
     display: block;
-    padding-bottom: 7px;
+    /* padding-bottom: 7px; */
 }
 
 .area_logo_header .logo {
@@ -100,7 +100,7 @@ f
     margin: 0 auto;
 }
 
-.list_nav_header a {
+.list_nav_header a , .list_nav_header input[type="submit"] {
     text-decoration: none;
     color: black;
     font-family: fantasy;
@@ -111,8 +111,10 @@ f
 
 .list_nav_header  li {
     list-style: none;
-
 }
+
+/* レコメンドボタンの枠や背景を消す */
+
 
 .list_nav_header a::after {
     position: absolute;
@@ -357,3 +359,14 @@ label span {
 label input:checked + span  {
     background: white;
 }
+
+/* checkbox上の星についてのcss */
+.star{
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    white-space: nowrap;
+    color: #CCCCCC; /* グレーカラー 自由に設定化 */
+    /*font-size: 30px; フォントサイズ 自由に設定化 */
+}
+

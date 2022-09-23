@@ -63,7 +63,7 @@ def login():
 @app.route("/register",methods=["GET","POST"])
 def register():
     if (request.method=="GET"):
-        return render_template("main/register.html")
+        return render_template("LOGIN/register.html")
     else:
         username = request.form.get("username")
         password = request.form.get("password")
@@ -221,10 +221,6 @@ def search_item():
         return render_template("main/result.html", breakfast=brName, lunch=luName, snack=snName)
 
 # -----------------------------------------------------------------------------------------------------------------
-
-@app.route("/back")
-def back():
-    return render_template("input.html")
 
 
 # -------------------------recommend--------------------------------------------------------------------------------
