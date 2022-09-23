@@ -357,3 +357,14 @@ label span {
 label input:checked + span  {
     background: white;
 }
+
+/* checkbox上の星についてのcss */
+.star{
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    white-space: nowrap;
+    color: #CCCCCC; /* グレーカラー 自由に設定化 */
+    /*font-size: 30px; フォントサイズ 自由に設定化 */
+}
+
