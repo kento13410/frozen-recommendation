@@ -364,7 +364,7 @@ def favorite():
             six_name = [{"食品名":"sample"}]
 
         # product_likedにまだ保存されていない商品ならという条件が必要
-        identifyList = db.execute("SELECT * FROM product_liked WHERE user_id = ?", session['user_id'])
+        identifyList = db1.execute("SELECT * FROM product_liked WHERE user_id = ?", session['user_id'])
         name_list=[]
         # 初めてお気に入りを使う場合は、全てを登録する。
         if(len(identifyList)==0):
@@ -374,7 +374,7 @@ def favorite():
                 if (name[0]["食品名"] != "sample"):
                     add_list.append(name[0]["食品名"])
             for name in add_list:
-                db.execute("INSERT INTO product_liked(user_id,product) VALUES(?,?)",session['user_id'],name)
+                db1.execute("INSERT INTO product_liked(user_id,product) VALUES(?,?)",session['user_id'],name)
         else:
             for itemDict in identifyList:
                 if(one_name[0]["食品名"] != itemDict["product"]and one_name[0]["食品名"] != "sample"):
@@ -398,13 +398,13 @@ def favorite():
             # product_likedにデータを保存する。
             if (len(name_list)!=0):
                 for name in name_list:
-                    db.execute("INSERT INTO product_liked(user_id,product) VALUES(?,?)",session['user_id'],name)
+                    db1.execute("INSERT INTO product_liked(user_id,product) VALUES(?,?)",session['user_id'],name)
             else:
                 # one~sixまで全てデータベースに保存されているので追加の必要がない
                 pass
 
         # 入力されたデータを取り出してfavorite画面に送る
-        product_liked_s = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
+        product_liked_s = db1.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
         submitList = []
         for product_liked in product_liked_s:
             data = db.execute("SELECT * FROM foodnames WEHRE 食品名 = ?", product_liked['product'])[0]
