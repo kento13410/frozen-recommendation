@@ -15,7 +15,7 @@ html {
     max-width: none;
     border-bottom: 3px solid black;
 }
-
+f
 .area_logo_header {
     display: flex;
     align-items: center;
@@ -201,8 +201,41 @@ main {
 }
 
 .tabs li {
-    font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }
+
+/* おすすめをcheck!!のボタンのCSS */
+.osusumeButton input[type=submit]{
+    display: inline-block;
+    position: relative;
+    width: 140px;
+    padding: 0.8em;
+    text-align: center;
+    text-decoration: none;
+    color: #1B1B1B;
+    background: #ffffff;
+    border-radius: 30px;
+    border: 1px solid #1B1B1B;
+    transition: .3s;
+}
+
+.osusumeButton input[type=submit]:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.osusumeButton input[type=submit] span {
+    display: inline-block;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.osusumeButton input[type=submit]:hover span {
+    cursor: pointer;
+    text-decoration: none;
+    transform: translateY(-4px);
+}
+/* ここまで */
 
 .contents li {
 	padding: 20px;

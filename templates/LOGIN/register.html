@@ -15,14 +15,19 @@
     </div>
     </div>
     <br>
-    <div class="register">
-        <form action="/register" method="POST">
+    <form action="/register" method="POST">
+        <div class="register">
             <input type="text" placeholder="username" name="username" required><br>
             <input type="password" placeholder="password" name="password" required><br>
             <input type="password" placeholder="confirmation" name="password" required><br>
-            <input type="submit" value="Register">
-        </form>
+            <button type="submit" value="Register">Register</button>
+        </div>
+    </form>
+    <div class="toLogin">
+        <p></p>
+        ログインする方は、
+        <a href="/login" role="button"><strong class="color">こちらへ</strong></a>
     </div>
-</div>
+    </div>
 </body>
 </html>
