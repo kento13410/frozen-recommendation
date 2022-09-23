@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="../../static/css/heart_transition.css">
         <script src="../../static/js/home_style.js" defer></script>
         <script src="../../static/js/loading-connection_style.js" defer></script>
+
     </head>
         <body>
           <div id="loading" class="loading active">
@@ -30,24 +31,25 @@
                 </a>
                 <p class="copy"><a href="/">For your busy time...</a></p>
               </div>
+
               <nav class="area_nav_header">
                 <ul class="list_nav_header">
                   <li>
-                      <a href="/input">CALCULATE</a>
+                      <a href="/input" role="button">CALCULATE</a>
                   </li>
                   <li>
                       <!-- <a href="/recommend">RECOMMEND</a> -->
                       <form action ="/recommend" method="post" id="check">
                         <div>
-                            <input type="submit" value="RECOMMEND">
+                            <input type="submit" value="RECOMMEND" >
                         </div>
                       </form>
                   </li>
                   <li>
-                      <a href="/favorite">FAVORITES</a>
+                      <a href="/favorite" role="button">FAVORITES</a>
                   </li>
                   <li>
-                      <a href="/personal_data">PERSONAL</a>
+                      <a href="/personal_data" role="button">PERSONAL</a>
                   </li>
                   <li>
                     <a href="/logout" role="button">LogOut</a>
