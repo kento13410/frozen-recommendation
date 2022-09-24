@@ -7,17 +7,19 @@
     <title>favorite</title>
 </head>
 <body>
-    <h1>お気に入り機能は、まだできてないよ！</h1>
+    <h1>お気に入り画面！！</h1>
     <a href="/">ホームに戻る</a>
     <!--　下に表示する -->
-    {% for dict in submitList%}
+    <form action="/delete" method="POST" id="delete"></form>
+    {% for dict in submitList %}
     <div>
-        <p>---------------------------------------</p>
+        <p>id:[{{dict["id"]}}]</p>
         <img src = "{{dict['画像']}}" width="150px">
         <p>{{dict["食品名"]}}</p>
         <p>{{dict["値段"]}}円</p>
         <a href="{{dict['url']}}">詳しく見る</a>
-        <p>----------------------------------------</p>
+        <br>
+        <button type="submit" name="name" value="{{dict['食品名']}}" form="delete">お気に入り解除</buttton>
     </div>
     {% endfor %}
 

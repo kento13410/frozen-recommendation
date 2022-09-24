@@ -63,7 +63,7 @@ def login():
 @app.route("/register",methods=["GET","POST"])
 def register():
     if (request.method=="GET"):
-        return render_template("main/register.html")
+        return render_template("LOGIN/register.html")
     else:
         username = request.form.get("username")
         password = request.form.get("password")
@@ -221,10 +221,6 @@ def search_item():
         return render_template("main/result.html", breakfast=brName, lunch=luName, snack=snName)
 
 # -----------------------------------------------------------------------------------------------------------------
-
-@app.route("/back")
-def back():
-    return render_template("input.html")
 
 
 # -------------------------recommend--------------------------------------------------------------------------------
@@ -450,4 +446,17 @@ def favorite():
             data = db.execute("SELECT * FROM foodnames WHERE 食品名 = ? ", product_liked['product'])[0]
             submitList.append(data)
         return render_template("main/favorite.html", submitList =submitList)
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# ------------------------------------------Delete favorite--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@app.route("/delete",methods=["POST"])
+def delete():
+    name = request.form.get("name")
+    db.execute("DELETE FROM product_liked WHERE product = ? AND user_id = ?",name,session['user_id'])
+    product_liked_s = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
+    submitList = []
+    for product_liked in product_liked_s:
+        data = db.execute("SELECT * FROM foodnames WHERE 食品名 = ? ", product_liked['product'])[0]
+        submitList.append(data)
+    return render_template("main/favorite.html", submitList =submitList)
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

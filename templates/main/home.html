@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="../../static/css/heart_transition.css">
         <script src="../../static/js/home_style.js" defer></script>
         <script src="../../static/js/loading-connection_style.js" defer></script>
+
     </head>
         <body>
           <div id="loading" class="loading active">
@@ -19,7 +20,7 @@
                   <div class="circle"></div>
                 </div>
             </div>
-         </div>
+          </div>
         <!-- startヘッダー -->
         <header class="header">
             <div class="container">
@@ -30,25 +31,33 @@
                 </a>
                 <p class="copy"><a href="/">For your busy time...</a></p>
               </div>
+
               <nav class="area_nav_header">
                 <ul class="list_nav_header">
                   <li>
-                      <a href="/input">CALCULATE</a>
+                      <a href="/input" role="button">CALCULATE</a>
                   </li>
                   <li>
-                      <!-- <a href="/recommend">RECOMMEND</a> -->
                       <form action ="/recommend" method="post" id="check">
-                        <div>
-                          <input type="submit" value="RECOMMEND">
+                        <!-- 消さないでください安東::divタグ案 -->
+                        <div class="recommend_wrap">
+                            <input type="submit" value="RECOMMEND">
                         </div>
+                        <!-- end::divタグ案 -->
+                        <!-- 消さないでください安東::aタグ案 -->
+                        <!-- <a href="/recommend" role="button">RECOMMEND</a> -->
+                        <!-- end::aタグ案 -->
                       </form>
                   </li>
                   <li>
-                      <a href="/favorite">FAVORITES</a>
+                      <a href="/favorite" role="button">FAVORITES</a>
                   </li>
                   <li>
-                      <a href="/personal_data">PERSONAL</a>
+                      <a href="/personal_data" role="button">PERSONAL</a>
                   </li>
+                  <li>
+                    <a href="/logout" role="button">LOGOUT</a>
+                </li>
                 </ul>
                 <ul class="list_nav_icon_header">
                   <li class="search">
@@ -56,9 +65,6 @@
                   </li>
                   <li class="favorite">
                       <a href="#"></a>
-                  </li>
-                  <li>
-                      <a href="/logout" role="button">ログアウト</a>
                   </li>
                 </ul>
               </nav>
@@ -72,7 +78,7 @@
               <!-- カテゴリ1 -->
               <li>
                 <div>
-                  <input type="checkbox" id="beef" name="beef" checked form="check" >
+                  <input type="checkbox" id="beef" name="beef" checked form="check">
                 </div>
                 <a href="" class="active">
                   <svg class="likeButton clicked" width="50px" height="50px" viewBox="0 0 500 500">
@@ -186,8 +192,9 @@
                 </a>
               </li>
             </ul>
+            <!-- おすすめ画面に遷移するボタン -->
             <div style="text-align:right" class="osusumeButton">
-              <input type="submit" value="おすすめをcheck!!"><span>おすすめをcheck!!</span>
+              <input type="submit" value="おすすめをcheck!!">
             </div>
         </form>
 
