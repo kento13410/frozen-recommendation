@@ -623,6 +623,10 @@ img {
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体"
 }
 
+/* 選択肢のラジオボタンを消す */
+input[type="radio"] {
+    display: none;
+}
 .search_Button {
     display: flex;
     align-items: center;
