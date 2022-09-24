@@ -72,6 +72,7 @@ body{
   color: #fff;
 }
 
+/* ここからlogin.html */
 .login{
   position: absolute;
   top: calc(50% - 75px);
@@ -156,7 +157,31 @@ body{
    color: rgba(255,255,255,0.6);
 }
 
-/* ここからregister1.html */
+.toRegister{
+  position: absolute;
+  top: calc(50% + 100px);
+  left: calc(55% - 25px);
+  height: 150px;
+  width: 350px;
+  padding: 10px;
+  font-size: 17px;
+  z-index: 2;
+}
+
+/* aタグにデフォルトでついているCSSを無効化 */
+a{
+  color:inherit;
+  text-decoration: none;
+}
+
+/* 「こちらへ」の色CSS */
+.color {
+  color: #000000;
+  /* border-bottom: 2px solid #ffffff; */
+}
+
+
+/* ここからregister.html */
 .register {
   position: absolute;
   top: calc(50% - 127px);
@@ -196,7 +221,7 @@ body{
   text-align:center;
 }
 
-.register input[type=button]{
+.register button[type=submit]{
   width: 310px;
   height: 45px;
   background: #fff;
@@ -211,11 +236,11 @@ body{
   margin-top: 12px;
 }
 
-.register input[type=button]:hover{
+.register button[type=submit]:hover{
   opacity: 0.8;
 }
 
-.register input[type=button]:active{
+.register button[type=submit]:active{
   opacity: 0.6;
 }
 
@@ -229,7 +254,7 @@ body{
   border: 1px solid rgba(255,255,255,0.9);
 }
 
-.register input[type=button]:focus{
+.register button[type=submit]:focus{
   outline: none;
 }
 
@@ -243,4 +268,16 @@ body{
 
 #None {
   background-color: white;
+}
+
+/* 「こちらへ」の親要素のcss */
+.toLogin {
+  position: absolute;
+  top: calc(50% + 100px);
+  left: calc(55% - 25px);
+  height: 150px;
+  width: 350px;
+  padding: 10px;
+  font-size: 17px;
+  z-index: 2;
 }

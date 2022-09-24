@@ -12,22 +12,6 @@ def login_required(f):
     return decorated_function
 
 
-# def loading_black(f):
-#     @wraps(f)
-#     def black(*args, **kwargs):
-#         render_template("loading_black.html")
-#         return f(*args, **kwargs)
-#     return black
-
-
-# def loading_colorful(f):
-#     @wraps(f)
-#     def colorful(*args, **kwargs):
-#         render_template("loading_colorful.html")
-#         return f(*args, **kwargs)
-#     return colorful
-
-
 
 def act_calculate(sex, intWeight, intHeight, intAge, level, activity):
 # --------------------------------------------------------------------

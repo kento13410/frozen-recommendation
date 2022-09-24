@@ -1,50 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html="ja">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新規登録</title>
-    <link rel="stylesheet" href="../static/login.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/css/login_register.css">
 </head>
-<body onload="taisyou()">
+<body>
     <div class="body"></div>
     <div class="grad"></div>
+    <div class="exceptPhoto">
     <div class="header">
-        <div>アプリ名<br>ログイン</div>
+    <div>For your<br>
+        <span>busy time...</span>
+    </div>
     </div>
     <br>
-
-    <div class="app">
-        <div id="prog-bar" class="progress">
-          <div class="progress-bar"></div>
+    <form action="/register" method="POST">
+        <div class="register">
+            <input type="text" placeholder="username" name="username" required><br>
+            <input type="password" placeholder="password" name="password" required><br>
+            <input type="password" placeholder="confirmation" name="confirmation" required><br>
+            <button type="submit" value="Register">Register</button>
         </div>
+    </form>
+    <div class="toLogin">
+        <p></p>
+        ログインする方は、
+        <a href="/login" role="button"><strong class="color">こちらへ</strong></a>
     </div>
-
-
-    <div class="register">
-        <form action="/register" method="POST">
-            <div class="usergrid">
-                <div class ="necessary-grid" style="margin-top:3rem">
-                    <div class="mb-3">
-                        <input class="form-control" id="username" type="text" name="username" placeholder="username" autofocus><br>
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-control" id="password" type="password" name = "password" placeholder="password"><br>
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-control" id="confirmation" type="password" name = "confirmation" placeholder="confirmation"><br>
-                    </div>
-                </div>
-                <input class="btn btn-primary" type="submit" value="register">
-            </div>
-        </form>
-        <div style="margin-top:3rem" class="toLogin">
-            <a href="/login">ログイン画面へ</a>
-        </div>
     </div>
-
 </body>
-<script src="../static/login.js"></script>
 </html>

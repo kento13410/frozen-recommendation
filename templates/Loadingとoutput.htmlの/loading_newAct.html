@@ -77,8 +77,17 @@
             </div>
          </header>
          <!-- endヘッダー -->
-         <!-- start メイン -->
+
+
+         <!-- お気に入りに登録 -->
+         <form action="/favorite" method ="POST" id="heart">
+            <button type="submit" >お気に入りに登録</button>
+         </form>
+
+         <!-- start main -->
          <main>
+          <!-- 全部で三行ある中身をfor文で回して出力する -->
+          <!-- 1行目 -->
             <section class="wrapper">
                 <div class="card-container">
                   <div class="card-left">
@@ -89,6 +98,11 @@
                       <p>お肉でマヨソースを包み、焼肉のタレをかけました。お肉は過熱水蒸気焼き製法により外はこんがり、中はふっくらとジューシーに焼き上げました。粗びき肉を使用し食べごたえのある一品です。しっかりとした味付けなのでお弁当にぴったりで、ごはんがすすむおかずです。</p>
                     <div class="sns">
                        <ul>
+                        <!-- チェックボックス(後にハートで、できるようにしたい。) -->
+                        <li>
+                          <input type="checkbox" name="one" form="heart" checked>
+                        </li>
+                        <!-- ハート start-->
                         <li class="circle">
                           <svg class="likeButton clicked" width="47px" height="47px" viewBox="0 0 500 500">
                             <circle class="explosion" r="150" cx="250" cy="250"></circle>
@@ -111,6 +125,7 @@
                               <path class="heart" d="M250,187.4c-31.8-47.8-95.5-19.8-95.5,32.2c0,35.2,31.8,60.3,55.7,79.2c24.9,19.7,31.8,23.9,39.8,31.8 c7.9-7.9,14.6-12.6,39.8-31.8c24.3-18.5,55.7-44.4,55.7-79.6C345.5,167.6,281.8,139.7,250,187.4z"></path>
                           </svg>
                         </li>
+                        <!-- ハート　end -->
                         <li>
                             <a href="#">
                                 <img src="../../static/img/ico/twitter.svg" alt="twitter" height="40px" width="40px">
@@ -144,6 +159,10 @@
                       <p>お肉でマヨソースを包み、焼肉のタレをかけました。お肉は過熱水蒸気焼き製法により外はこんがり、中はふっくらとジューシーに焼き上げました。粗びき肉を使用し食べごたえのある一品です。しっかりとした味付けなのでお弁当にぴったりで、ごはんがすすむおかずです。</p>
                     <div class="sns">
                        <ul class="sns1">
+                        <!-- チェックボックス(後にハートで、できるようにしたい。) -->
+                        <li>
+                          <input type="checkbox" name="two" form="heart" checked>
+                        </li>
                         <li class="circle">
                           <svg class="likeButton clicked" width="47px" height="47px" viewBox="0 0 500 500">
                             <circle class="explosion" r="150" cx="250" cy="250"></circle>
@@ -190,8 +209,9 @@
                     </div>
                   </div>
                 </div>
-
             </section>
+
+            <!-- ２行目 -->
             <section class="wrapper">
               <div class="card-container">
                 <div class="card-left">
@@ -202,6 +222,10 @@
                     <p>お肉でマヨソースを包み、焼肉のタレをかけました。お肉は過熱水蒸気焼き製法により外はこんがり、中はふっくらとジューシーに焼き上げました。粗びき肉を使用し食べごたえのある一品です。しっかりとした味付けなのでお弁当にぴったりで、ごはんがすすむおかずです。</p>
                   <div class="sns">
                      <ul>
+                      <!-- チェックボックス(後にハートで、できるようにしたい。) -->
+                      <li>
+                        <input type="checkbox" name="three" form="heart" checked>
+                      </li>
                       <li class="circle">
                         <svg class="likeButton clicked" width="47px" height="47px" viewBox="0 0 500 500">
                           <circle class="explosion" r="150" cx="250" cy="250"></circle>
@@ -257,6 +281,10 @@
                     <p>お肉でマヨソースを包み、焼肉のタレをかけました。お肉は過熱水蒸気焼き製法により外はこんがり、中はふっくらとジューシーに焼き上げました。粗びき肉を使用し食べごたえのある一品です。しっかりとした味付けなのでお弁当にぴったりで、ごはんがすすむおかずです。</p>
                   <div class="sns">
                      <ul class="sns1">
+                      <!-- チェックボックス(後にハートで、できるようにしたい。) -->
+                      <li>
+                        <input type="checkbox" name="four" form="heart" checked>
+                      </li>
                       <li class="circle">
                         <svg class="likeButton clicked" width="47px" height="47px" viewBox="0 0 500 500">
                           <circle class="explosion" r="150" cx="250" cy="250"></circle>
@@ -303,8 +331,8 @@
                   </div>
                 </div>
               </div>
-
           </section>
+          <!-- ３行目-->
           <section class="wrapper">
             <div class="card-container">
               <div class="card-left">
@@ -315,6 +343,10 @@
                   <p>お肉でマヨソースを包み、焼肉のタレをかけました。お肉は過熱水蒸気焼き製法により外はこんがり、中はふっくらとジューシーに焼き上げました。粗びき肉を使用し食べごたえのある一品です。しっかりとした味付けなのでお弁当にぴったりで、ごはんがすすむおかずです。</p>
                 <div class="sns">
                    <ul>
+                    <!-- チェックボックス(後にハートで、できるようにしたい。) -->
+                    <li>
+                      <input type="checkbox" name="five" form="heart" checked>
+                    </li>
                     <li class="circle">
                       <svg class="likeButton clicked" width="47px" height="47px" viewBox="0 0 500 500">
                         <circle class="explosion" r="150" cx="250" cy="250"></circle>
@@ -370,6 +402,10 @@
                   <p>お肉でマヨソースを包み、焼肉のタレをかけました。お肉は過熱水蒸気焼き製法により外はこんがり、中はふっくらとジューシーに焼き上げました。粗びき肉を使用し食べごたえのある一品です。しっかりとした味付けなのでお弁当にぴったりで、ごはんがすすむおかずです。</p>
                 <div class="sns">
                    <ul class="sns1">
+                    <!-- チェックボックス(後にハートで、できるようにしたい。) -->
+                    <li>
+                      <input type="checkbox" name="six" form="heart" checked>
+                    </li>
                     <li class="circle">
                       <svg class="likeButton clicked" width="47px" height="47px" viewBox="0 0 500 500">
                         <circle class="explosion" r="150" cx="250" cy="250"></circle>
@@ -416,8 +452,9 @@
                 </div>
               </div>
             </div>
-
         </section>
+
+
          </main>
          <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>

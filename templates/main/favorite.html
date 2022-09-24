@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>favorite</title>
+</head>
+<body>
+    <h1>お気に入り画面！！</h1>
+    <a href="/">ホームに戻る</a>
+    <!--　下に表示する -->
+    <form action="/delete" method="POST" id="delete"></form>
+    {% for dict in submitList %}
+    <div>
+        <p>id:[{{dict["id"]}}]</p>
+        <img src = "{{dict['画像']}}" width="150px">
+        <p>{{dict["食品名"]}}</p>
+        <p>{{dict["値段"]}}円</p>
+        <a href="{{dict['url']}}">詳しく見る</a>
+        <br>
+        <button type="submit" name="name" value="{{dict['食品名']}}" form="delete">お気に入り解除</buttton>
+    </div>
+    {% endfor %}
+
+
+</body>
+</html>

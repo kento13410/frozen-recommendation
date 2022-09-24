@@ -56,14 +56,14 @@ def login():
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
-        return render_template("main/login.html")
+        return render_template("LOGIN/login.html")
 # ---------------------------------------------------------------------------------------------------------------
 
 # --------------------------------------登録画面(register)---------------------------------------------------
 @app.route("/register",methods=["GET","POST"])
 def register():
     if (request.method=="GET"):
-        return render_template("main/register.html")
+        return render_template("LOGIN/register.html")
     else:
         username = request.form.get("username")
         password = request.form.get("password")
@@ -116,6 +116,10 @@ def home():
 @login_required
 def index():
     if (request.method == "GET"):
+        try:
+            session.pop("level", None)
+        except:
+            pass
         return render_template("main/activeLevel.html")
 
     else:
@@ -123,8 +127,6 @@ def index():
             session['level'] = request.form.get("level")
             return render_template("main/meal.html")
         else:
-            level = session['level']
-            session.pop("level", None)
             pass
 
         # 一人当たりの必要摂取カロリー
@@ -135,11 +137,7 @@ def index():
         sex = personal_data['sex']
         activity = personal_data['activity']
 
-
-        budget = request.form.get("budget")
-        act = act_calculate(sex, weight, height, age, level, activity)
-
-
+        act = act_calculate(sex, weight, height, age, session['level'], activity)
 
 # --------------------------------------------------------------------
 # D = act - (朝で摂取したエネルギー + 昼で摂取したエネルギー) [kcal]
@@ -177,27 +175,28 @@ def index():
 
         difData = {'カロリー': D, 'タンパク質': difP, '脂質': difF, '炭水化物': difCBH}
 
-        data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 30", X, P, F, CBH)
+        data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 6", X, P, F, CBH)
 
-        data2 = []
-        for dat in data:
-            data2_set = []
-            data2_set.append(dat)
-            difP2 = difP - dat['タンパク質']
-            difF2 = difF - dat['脂質']
-            difCBH2 = difCBH - dat['炭水化物']
-            X2 = difP2/P + difF2/F + difCBH2/CBH
-            data_element2 = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 10", X2, P, F, CBH)
-            for i in range(len(data_element2)):
-                data2_set.append(data_element2[i])
-                data2.append(data2_set)
-
-
-        return render_template("main/output.html", data = data, data2 = data2, difData=difData)
-# ----------------------------------------------------------------------------------------
+        # 残しておいてください谷口
+        # data2 = []
+        # for dat in data:
+        #     data2_set = []
+        #     data2_set.append(dat)
+        #     difP2 = difP - dat['タンパク質']
+        #     difF2 = difF - dat['脂質']
+        #     difCBH2 = difCBH - dat['炭水化物']
+        #     X2 = difP2/P + difF2/F + difCBH2/CBH
+        #     data_element2 = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 10", X2, P, F, CBH)
+        #     for i in range(len(data_element2)):
+        #         data2_set.append(data_element2[i])
+        #         data2.append(data2_set)
 
 
-# -----------------------------入力と合致する食品の栄養情報を取得---------------------------
+        return render_template("main/output.html", data = data, difData=difData)
+# -------------------------------------------------------------------------------------------------------------
+
+
+# -----------------------------入力と合致する食品の栄養情報を取得------------------------------------------------------
 
 @app.route("/search_item", methods=["GET", "POST"])
 def search_item():
@@ -219,18 +218,15 @@ def search_item():
             if len(snack) != 0:
                 snName += db.execute(sql, "%" + snack + "%")
 
-        return render_template("MAIN/input.html", breakfast=brName, lunch=luName, snack=snName)
+        return render_template("main/result.html", breakfast=brName, lunch=luName, snack=snName)
 
-# -------------------------------------------------------------------------------------------------------------
-
-@app.route("/back")
-def back():
-    return render_template("input.html")
+# -----------------------------------------------------------------------------------------------------------------
 
 
 # -------------------------recommend--------------------------------------------------------------------------------
 @app.route("/recommend", methods=["GET","POST"])
 def recommend():
+
     if (request.method == "POST"):
         # お弁当肉系
         beef = request.form.get("beef")
@@ -277,17 +273,21 @@ def recommend():
             recommendList = []
             for index in indexList:
                 recommendList.append(selectedList[index])
-            return render_template("MAIN/recommend.html",recommendList=recommendList)
+            return render_template("main/recommend.html",recommendList=recommendList)
         else:
             return redirect("/")
             # print("categoryが一つもチェックされていない")
+    else:
+        return render_template("main/recommend.html")
+
+
 
 
 
 # ------------------------------------------------------------------------------------------------------------------
 
 
-
+# -----------------------------personal_data-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 @app.route("/personal_data", methods=['GET', 'POST'])
 def personal_data():
     if request.method == 'POST':
@@ -315,12 +315,148 @@ def personal_data():
     else:
         return render_template("main/personal_data.html")
 
+# ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-@app.route("/favorite")
+# -------------------------favorite------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@app.route("/favorite",methods=["GET","POST"])
 def favorite():
-    product_liked_s = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
-    for product_liked in product_liked_s:
-        data = db.execute("SELECT * FROM foodnames WEHRE 食品名 = ?", product_liked['product'])
-    return render_template("favorite.html", data = data)
+    if(request.method== "GET"):
+        product_liked_s = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
+        submitList = []
+        for product_liked in product_liked_s:
+            data = db.execute("SELECT * FROM foodnames WHERE 食品名 = ? ", product_liked['product'])[0]
+            submitList.append(data)
+        return render_template("main/favorite.html", submitList =submitList)
 
+    else:
+        # output画面からデータを受け取って、foodnamesからデータを取ってくる。
+        # one~sixまでが毎回異なっていれば最高
+        # one~sixの候補(その賞品を表す固有のものがいい。候補：url,id)←商品名も考えたが、ユニークでないものがあった。lx：牛カルビマヨネーズ
+        idList = request.form.getlist("id")
+        one = 0
+        two = 0
+        three = 0
+        four = 0
+        five =0
+        six = 0
+        if (len(idList) == 1):
+            one = idList[0]
+            two = False
+            three = False
+            four = False
+            five = False
+            six = False
+
+        elif (len(idList) == 2):
+            one = idList[0]
+            two = idList[1]
+            three = False
+            four = False
+            five = False
+            six = False
+        elif (len(idList) == 3):
+            one = idList[0]
+            two = idList[1]
+            three = idList[2]
+            four = False
+            five = False
+            six = False
+        elif (len(idList) == 4):
+            one = idList[0]
+            two = idList[1]
+            three = idList[2]
+            four = idList[3]
+            five = False
+            six = False
+        elif (len(idList) == 5):
+            one = idList[0]
+            two = idList[1]
+            three = idList[2]
+            four = idList[3]
+            five = idList[4]
+            six = False
+        else:
+            one = idList[0]
+            two = idList[1]
+            three = idList[2]
+            four = idList[3]
+            five = idList[4]
+            six = idList[5]
+
+
+        if(one):
+            one_name = db.execute("SELECT * FROM foodnames WHERE id = ?",int(one))
+        else:
+            one_name = [{"食品名":"sample"}]
+        if(two):
+            two_name = db.execute("SELECT * FROM foodnames WHERE id = ?",int(two))
+        else:
+            two_name = [{"食品名":"sample"}]
+        if(three):
+            three_name = db.execute("SELECT * FROM foodnames WHERE id = ?",int(three))
+        else:
+            three_name = [{"食品名":"sample"}]
+        if(four):
+            four_name = db.execute("SELECT * FROM foodnames WHERE id = ?",int(four))
+        else:
+            four_name = [{"食品名":"sample"}]
+        if(five):
+            five_name = db.execute("SELECT * FROM foodnames WHERE id = ?",int(five))
+        else:
+            five_name = [{"食品名":"sample"}]
+        if(six):
+            six_name = db.execute("SELECT * FROM foodnames WHERE id = ?",int(six))
+        else:
+            six_name = [{"食品名":"sample"}]
+
+        # product_likedにまだ保存されていない商品ならという条件が必要
+        identifyList = db.execute("SELECT * FROM product_liked WHERE user_id = ?", session['user_id'])
+        name_list = [one_name,two_name,three_name,four_name,five_name,six_name]
+        add_list = []
+
+        # 初めてお気に入りを使う場合は、全てを登録する。
+        if(len(identifyList)==0):
+            for name in name_list:
+                if (name[0]["食品名"] != "sample"):
+                    add_list.append(name[0]["食品名"])
+            for name in add_list:
+                db.execute("INSERT INTO product_liked(user_id,product) VALUES(?,?)",session['user_id'],name)
+
+        # productLikedに入っている全ての冷凍食品と一致しないなら、一回だけ追加
+        else:
+            length = len(identifyList)
+            for element in name_list:
+                for i in range(length):
+                    if (element[0]["食品名"] != identifyList[i]["product"] and element[0]["食品名"] != "sample"):
+                        if(i == length - 1):
+                            add_list.append(element[0]["食品名"])
+                    else:
+                        break
+
+            if(len(add_list)!= 0):
+                for name in add_list:
+                    db.execute("INSERT INTO product_liked(user_id,product) VALUES(?,?)",session['user_id'],name)
+
+        # 入力されたデータを取り出してfavorite画面に送る
+        # [{"product":},{"product":}..{"product":}]
+        product_liked_s = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
+        submitList = []
+        for product_liked in product_liked_s:
+            data = db.execute("SELECT * FROM foodnames WHERE 食品名 = ? ", product_liked['product'])[0]
+            submitList.append(data)
+        return render_template("main/favorite.html", submitList =submitList)
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# ------------------------------------------Delete favorite--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@app.route("/delete",methods=["POST"])
+def delete():
+    name = request.form.get("name")
+    db.execute("DELETE FROM product_liked WHERE product = ? AND user_id = ?",name,session['user_id'])
+    product_liked_s = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
+    submitList = []
+    for product_liked in product_liked_s:
+        data = db.execute("SELECT * FROM foodnames WHERE 食品名 = ? ", product_liked['product'])[0]
+        submitList.append(data)
+    return render_template("main/favorite.html", submitList =submitList)
+# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
