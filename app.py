@@ -102,7 +102,7 @@ def logout():
 
 
 # ------------------------------------ホーム画面(home)--------------------------------------------------------
-@app.route("/",methods=["GET","POST"])
+@app.route("/", methods=["GET","POST"])
 @login_required
 def home():
     data = db.execute("SELECT * FROM foodnames")
@@ -307,6 +307,7 @@ def personal_data():
 
         try: #dbが格納されていない場合
             db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], session['sex'], session['age'], session['weight'], session['height'], purpose)
+            return redirect("/input")
         except: #格納されている場合（そのときはtryでエラーでる
             db1.execute("UPDATE personal_data SET sex=?, age=?, weight=?, height=?, activity=? WHERE user_id=?", session['sex'], session['age'], session['weight'], session['height'], purpose, session['user_id'])
 
