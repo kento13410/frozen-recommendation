@@ -4,6 +4,7 @@ import ast
 from flask_session import Session
 from helpers import login_required, act_calculate,makeRandomList
 from werkzeug.security import check_password_hash, generate_password_hash
+from flask_paginate import Pagination, get_page_parameter
 
 app = Flask("__name__")
 
