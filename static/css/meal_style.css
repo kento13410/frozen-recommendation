@@ -787,6 +787,7 @@ img {
     0 0 15px var(--clr);
     overflow: hidden;
     position: relative;
+    border: none;
 
 }
 
@@ -1028,6 +1029,7 @@ img {
     0 0 15px var(--clr);
     overflow: hidden;
     position: relative;
+    border: none;
 }
 
 .backNextButton:hover {
