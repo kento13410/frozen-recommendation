@@ -4,6 +4,7 @@ html {
     overflow: scroll;
 }
 
+
 .header {
     background: white;
 }
@@ -23,7 +24,6 @@ html {
 
 .area_logo_header .copy {
     display: block;
-    /* padding-bottom: 7px; */
 }
 
 .area_logo_header .logo {
@@ -83,7 +83,7 @@ html {
     background: url(../static/cmn/img/ico/ico_search.svg);
 }
 
-.list_nav_icon_header .favorite a {
+.list_nav_icon_header .favorites a {
     background: url(../static/cmn/img/ico/ico_heart.svg);
 }
 
@@ -118,7 +118,10 @@ html {
 .list_nav_header div input[type="submit"] {
     border: none;
     background-color: transparent;
+    cursor: pointer;
+    transition: 0.3s;
 }
+/* ここまで */
 
 .list_nav_header a::after {
     position: absolute;
@@ -133,14 +136,14 @@ html {
     bottom: -4px;
 }
 
-.list_nav_header div .recommend_wrap::after {
+.list_nav_header .recommend_wrap::after {
     position: absolute;
     left: 0;
     content: '';
     background: black;
     transform: scale(0, 1);
     transform-origin: center top; /*変形（アンダーラインの伸長）の原点がaタグ（各メニュー）の右端*/
-    transition: transform 0.3s;   /*変形の時間*/
+    transition: 0.3s;   /*変形の時間*/
     width: 100%;
     height: 1.5px;
     bottom: -4px;
@@ -151,8 +154,8 @@ html {
 }
 
 /* RECOMMENDボタンのcss(after) */
-.list_nav_header div .recommend_wrap:hover::after {
-    transform:scale(1, 1);  /*ホバー後、x軸方向に1（相対値）伸長*/
+.list_nav_header .recommend_wrap:hover::after {
+    transform: scale(1, 1);  /*ホバー後、x軸方向に1（相対値）伸長*/
 }
 
 .list_nav_header > li + li {
@@ -175,7 +178,7 @@ a {
 main {
 	width: 100%;
 	max-width: 1000px;
-	margin: 30px auto;
+	margin: 15px auto;
 	padding: 20px;
 }
 
@@ -193,6 +196,7 @@ main {
     border-top-right-radius: 10px;
 	border-top-left-radius: 10px;
     font-weight: bolder;
+    height: 56px;
 }
 
 .tabs li a  {
@@ -221,7 +225,7 @@ main {
 }
 
 .tabs li a:hover::after {
-    transform: scale(0.7, 1); /*ホバー後、x軸方向に1（相対値）伸長*/
+    transform: scale(0.4, 1); /*ホバー後、x軸方向に1（相対値）伸長*/
 }
 
 .tabs li {
@@ -264,6 +268,7 @@ main {
 .contents li {
 	padding: 20px;
 	display: none;
+    height: 56px;
 }
 
 .contents li.active {
@@ -274,6 +279,7 @@ ul {
 	list-style-type: none;
 	padding: 0; /*左にできる隙間を消す */
 }
+
 /* tab終了 */
 
 /* カード内容についてのcss */
@@ -351,44 +357,56 @@ button:hover::before {
 
 /* checkboxについてのcss */
 
-* {
-    box-sizing: border-box;
-}
-
 label {
-    display: block;
     position: relative;
-    width: 55px;
-    height: 55px;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
 }
 
 label input {
     position: relative;
+    bottom: 50px;
     z-index: 1;
+    appearance: none;
+    height: 50px;
+    width: 50px;
 }
 
 label span {
     position: absolute;
-    top: 0;
+    bottom: 14px;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
+    width: 56px;
+    height: 56px;
+    background: #ededed;
     border-radius: 80px;
+    z-index: 1;
+    font-size: 30px;
+}
+
+label input:checked + span {
+    background: #fe0000;
+}
+
+label span i {
+    position: absolute;
+    top: 2.8px;
+    left: 2.8px;
+    width: 50.4px;
+    height: 50.4px;
+    background: #fff;
+    border-radius: 50%;
     transition: 0.5s;
 }
 
-label input:checked + span  {
-    background: white;
-}
-
-/* checkbox上の星についてのcss */
-.star{
+svg {
     position: relative;
-    z-index: 0;
-    display: inline-block;
-    white-space: nowrap;
-    color: #CCCCCC; /* グレーカラー 自由に設定化 */
-    /*font-size: 30px; フォントサイズ 自由に設定化 */
+    top: 1px;
+    z-index: 1;
 }
 
+.position {
+    position: relative;
+    bottom: 63px;
+}

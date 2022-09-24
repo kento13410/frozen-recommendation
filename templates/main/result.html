@@ -163,6 +163,8 @@
             </ul>
             <ul class="contents">
               <li class="active">
+                {{ b_pagination.info }}
+                {{ b_pagination.links }}
                 {% for br in breakfast %}
                 <section class="wrapper">
                   <label>
@@ -174,8 +176,11 @@
                   <p>{{br['食品名']}}</p>
                 </section>
                 {% endfor %}
+                {{ b_pagination.links }}
               </li>
               <li>
+                {{ l_pagination.info }}
+                {{ l_pagination.links }}
                 {% for lu in lunch %}
                 <section class="wrapper">
                   <label>
@@ -187,8 +192,11 @@
                   <p>{{lu['食品名']}}</p>
                 </section>
                 {% endfor %}
+                {{ l_pagination.links }}
               </li>
               <li>
+                {{ s_pagination.info }}
+                {{ s_pagination.links }}
                 {% for sn in snack %}
                 <section class="wrapper">
                   <label>
@@ -200,6 +208,7 @@
                   <p>{{sn['食品名']}}</p>
                 </section>
                 {% endfor %}
+                {{ s_pagination.links }}
               </li>
             </ul>
             <!-- calculateボタン作成 -->
