@@ -218,13 +218,13 @@
                   {% if food['カテゴリ'] == 'お弁当肉系'%}
                       <div tabindex="0" role="button" class="food-container">
                           <div class="card-header" style="height: 140px;">
-                            <a href="{{food['url']}}">
                               <img src="{{food['画像']}}" alt="{{food['食品名']}}" style="height: 140px;">
-                            </a>
                           </div>
                           <div class="card-body">
                             <div class="foodname">{{food['食品名']}}</div>
-                            <button type="submit" onclick="windows.open({{food['url']}})"><span>商品情報はこちら！</span></button>
+                            <a href="{{food['url']}}">
+                              <button type="submit" onclick="windows.open({{food['url']}})"><span>商品情報はこちら！</span></button>
+                            </a>
                           </div>
                       </div>
                       {%- set ns.cnt = ns.cnt + 1 -%}
@@ -243,13 +243,13 @@
                 {% if food['カテゴリ'] == 'おべんとう 魚系'%}
                     <div tabindex="0" role="button" class="food-container">
                         <div class="card-header" style="height: 140px;">
-                          <a href="{{food['url']}}">
                             <img src="{{food['画像']}}" alt="{{food['食品名']}}" style="height: 140px;">
-                          </a>
                         </div>
                         <div class="card-body">
                           <div class="foodname">{{food['食品名']}}</div>
-                          <button><span>商品情報はこちら！</span></button>
+                          <a href="{{food['url']}}">
+                            <button><span>商品情報はこちら！</span></button>
+                          </a>
                         </div>
                     </div>
                     {%- set ns.cnt = ns.cnt + 1 -%}
@@ -267,13 +267,13 @@
                   {% if food['カテゴリ'] == 'ごはん系'%}
                       <div tabindex="0" role="button" class="food-container">
                           <div class="card-header" style="height: 140px;">
-                            <a href="{{food['url']}}">
                               <img src="{{food['画像']}}" alt="{{food['食品名']}}" style="height: 140px;">
-                              </a>
                           </div>
                           <div class="card-body">
                             <div class="foodname">{{food['食品名']}}</div>
-                            <button><span>商品情報はこちら！</span></button>
+                            <a href="{{food['url']}}">
+                              <button><span>商品情報はこちら！</span></button>
+                            </a>
                           </div>
                       </div>
                       {%- set ns.cnt = ns.cnt + 1 -%}
@@ -291,13 +291,13 @@
                   {% if food['カテゴリ'] == '麺系'%}
                       <div tabindex="0" role="button" class="food-container">
                           <div class="card-header" style="height: 140px;">
-                            <a href="{{food['url']}}">
                               <img src="{{food['画像']}}" alt="{{food['食品名']}}" style="height: 140px;">
-                            </a>
                           </div>
                           <div class="card-body">
                             <div class="foodname">{{food['食品名']}}</div>
-                            <button><span>商品情報はこちら！</span></button>
+                            <a href="{{food['url']}}">
+                              <button><span>商品情報はこちら！</span></button>
+                            </a>
                           </div>
                       </div>
                       {%- set ns.cnt = ns.cnt + 1 -%}
