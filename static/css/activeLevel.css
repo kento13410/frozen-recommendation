@@ -162,7 +162,7 @@
 
 .food-containerActive {
 	/* background-color: lightgreen; */
-	margin: 20px;
+	margin: 10px;
 	border-radius: 20px;
     width: 600px;
     height: 600px;
@@ -494,6 +494,9 @@ img {
     box-shadow: 0px 0px 28px 3px #ededed;
     text-align: center;
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .answer1:hover {
 	border-radius: 20px;
@@ -513,6 +516,9 @@ img {
     box-shadow: 0px 0px 28px 3px #ededed;
     text-align: center;
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .answer2:hover {
 	border-radius: 20px;
@@ -531,6 +537,9 @@ img {
     box-shadow: 0px 0px 28px 3px #ededed;
     text-align: center;
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .answer3:hover {
 	border-radius: 20px;
@@ -633,6 +642,8 @@ input[type="radio"] {
     justify-content: center;
     border-radius: 100%;
     margin-top: 20px;
+    border: none;
+    outline: none;
 }
 
 .button span {
@@ -748,6 +759,7 @@ input[type="radio"] {
     0 0 15px var(--clr);
     overflow: hidden;
     position: relative;
+    border: none;
 }
 
 .backNextButton:hover {
