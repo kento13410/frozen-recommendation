@@ -4,9 +4,6 @@ html {
     overflow: scroll;
 }
 
-main {
-    margin-top: 15px;
-}
 
 .header {
     background: white;
@@ -181,7 +178,7 @@ a {
 main {
 	width: 100%;
 	max-width: 1000px;
-	margin: 30px auto;
+	margin: 15px auto;
 	padding: 20px;
 }
 
