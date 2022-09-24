@@ -35,12 +35,12 @@ body {
 }
 
 .circle {
-    width: 1.1em;
-    height: 1.1em;
+    width: 0.9em;
+    height: 0.9em;
     background-color: black;
     border-radius: 50%;
-    margin-left: 7.8em;
-    margin-top: 0.5em;
+    margin-left: 7.7em; /*margin-left: 8.0em;がちょうど接する*/
+    margin-top: 0.35em; /*margin-top:0.6em;が中心(接する)にくる*/
 }
 
 @keyframes spinner {
