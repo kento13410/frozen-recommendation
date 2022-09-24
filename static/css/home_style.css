@@ -133,7 +133,7 @@ html {
     bottom: -4px;
 }
 
-.list_nav_header .recommend_wrap::after {
+.list_nav_header div .recommend_wrap::after {
     position: absolute;
     left: 0;
     content: '';
@@ -151,7 +151,7 @@ html {
 }
 
 /* RECOMMENDボタンのcss(after) */
-.list_nav_header .recommend_wrap:hover::after {
+.list_nav_header div .recommend_wrap:hover::after {
     transform:scale(1, 1);  /*ホバー後、x軸方向に1（相対値）伸長*/
 }
 
