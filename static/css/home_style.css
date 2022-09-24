@@ -299,15 +299,19 @@ button:hover::before {
 }
 
 label {
-    display: block;
     position: relative;
-    width: 55px;
-    height: 55px;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
 }
 
 label input {
+    display: block;
+    width: 60px;
+    height: 60px;
     position: relative;
     z-index: 1;
+    appearance: none;
 }
 
 label span {
@@ -316,11 +320,27 @@ label span {
     left: 0;
     width: 100%;
     height: 100%;
-    background: white;
-    border-radius: 80px;
+    background: #ededed;
+    /* background: #fe0000; */
+    border-radius: 80px
+}
+
+label input:checked + span {
+    background: #fe0000;
+}
+
+label span i {
+    position: absolute;
+    top: 2.8px;
+    left: 2.8px;
+    width: 50.4px;
+    height: 50.4px;
+    background: #fff;
+    border-radius: 50%;
     transition: 0.5s;
 }
 
-label input:checked + span  {
-    background: white;
+svg {
+    position: relative;
+    top: 1px;
 }
