@@ -633,6 +633,8 @@ input[type="radio"] {
     justify-content: center;
     border-radius: 100%;
     margin-top: 20px;
+    border: none;
+    outline: none;
 }
 
 .button span {
@@ -748,6 +750,7 @@ input[type="radio"] {
     0 0 15px var(--clr);
     overflow: hidden;
     position: relative;
+    border: none;
 }
 
 .backNextButton:hover {
