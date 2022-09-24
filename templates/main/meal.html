@@ -65,23 +65,19 @@
                 <div class="columnMeal1">
                     <div class="meal1">
                         <p class="mealType">朝食</p>
-                        <input type="text" name="breakfast" class="mealName1" form="result">
-
+                        <input type="text" name="breakfast" class="mealName1" form="result" placeholder="朝食を入力してください">
                     </div>
                 </div>
                 <div class="columnMeal2">
                     <div class="meal2">
                         <p class="mealType">昼食</p>
-
-                        <input type="text" name="lunch" class="mealName1" form="result">
-
+                        <input type="text" name="lunch" class="mealName1" form="result" placeholder="昼食を入力してください">
                     </div>
                 </div>
                 <div class="columnMeal3">
                     <div class="meal3">
                         <p class="mealType">間食</p>
-                        <input type="text" name="snack" class="mealName1" form="result">
-
+                        <input type="text" name="snack" class="mealName1" form="result" placeholder="間食を入力してください">
                     </div>
                 </div>
                 <div class="columnButton">
@@ -93,40 +89,36 @@
                         </div>
                     </form>
                 </div>
-                <!-- <input type="submit" value="検索"> -->
             </div>
         </section>
-           <!-- コメント -->
-
-          <!-- endコメント -->
-           <!-- end食事検索カード -->
-           <script src="https://code.jquery.com/jquery.min.js"></script>
-           <script>
-           $(function() {
-                $(".meal1").click(function() {
-                    $(".meal1").toggleClass("clickMeal1") ;
-                });
+        <!-- end食事検索カード -->
+        <script src="https://code.jquery.com/jquery.min.js"></script>
+        <script>
+        $(function() {
+            $(".meal1").click(function() {
+                $(".meal1").toggleClass("clickMeal1") ;
             });
-            </script>
-            <script>
-            $(function() {
-                $(".meal2").click(function() {
-                    $(".meal2").toggleClass("clickMeal2") ;
-                });
+        });
+        </script>
+        <script>
+        $(function() {
+            $(".meal2").click(function() {
+                $(".meal2").toggleClass("clickMeal2") ;
             });
-            </script>
-            <script>
-            $(function() {
-                $(".meal3").click(function() {
-                    $(".meal3").toggleClass("clickMeal3") ;
-                });
+        });
+        </script>
+        <script>
+        $(function() {
+            $(".meal3").click(function() {
+                $(".meal3").toggleClass("clickMeal3") ;
             });
-            </script>
-            <script>
-                $(document).ready(function(){
-                  $(".wrapper").fadeIn(3500);
-            });
-            </script>
-        </body>
-    </html>
+        });
+        </script>
+        <script>
+        $(document).ready(function(){
+            $(".wrapper").fadeIn(3500);
+        });
+        </script>
+    </body>
+</html>
 
