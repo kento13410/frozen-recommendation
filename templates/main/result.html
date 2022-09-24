@@ -49,7 +49,7 @@
             </div>
           </header>
           <!-- endヘッダー -->
-          <form action="meal.html">
+          <form action="/meal_back" method="POST">
             <section class="global">
             <div class="back">
               <button type="submit" class="backNextButton" style="--clr: #00ccff;--i:0;">
@@ -176,6 +176,18 @@
                   <p>{{br['食品名']}}</p>
                 </section>
                 {% endfor %}
+                <!--(1)前のページ-->
+                {% if (CurPage - 1) > 0 %}
+                <a href="./search_item?page={{ CurPage - 1}}" class="btn btn-outline-secondary">{{ CurPage - 1}}</a>
+                {% endif %}
+
+                <!--(1)現在のページ-->
+                <a href="#" class="btn btn-secondary">{{ CurPage }}</a>
+
+                <!--(2)次のページ-->
+                {% if (CurPage + 1) <= b_Max %}
+                <a href="./search_item?page={{ CurPage + 1}}" class="btn btn-outline-secondary">{{ CurPage + 1}}</a>
+                {% endif %}
                 {{ b_pagination.links }}
               </li>
               <li>

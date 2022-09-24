@@ -111,6 +111,13 @@ def home():
     return render_template("main/home.html", data=data, count=count)
 # -------------------------------------------------------------------------------------------------------------
 
+# --------------------------------meal.htmlに戻るためだけのルート--------------------------------------------
+@app.route("/meal_back", methods=["GET","POST"])
+@login_required
+def meal_back():
+    if request.method == 'POST':
+        return render_template("main/meal.html")
+
 
 # ------------------------------------------入力画面(input)----------------------------------------------------
 @app.route("/input", methods=["GET","POST"])
@@ -230,7 +237,7 @@ def search_item():
         s_rows = snName[(page - 1)*6: page*6]
         s_pagination = Pagination(page=page, total=len(snName),  per_page=6, css_framework='bootstrap4')
         s_Max = (- len(snName) // 3) * -1
-        return render_template("main/result.html", breakfast=b_rows, lunch=l_rows, snack=s_rows, b_pagination=b_pagination, b_Max=b_Max, l_pagination=l_pagination, l_Max=l_Max, s_pagination=s_pagination, s_Max=s_Max)
+        return render_template("main/result.html", breakfast=b_rows, lunch=l_rows, snack=s_rows, CurPage=page, b_pagination=b_pagination, b_Max=b_Max, l_pagination=l_pagination, l_Max=l_Max, s_pagination=s_pagination, s_Max=s_Max)
 
 # -----------------------------------------------------------------------------------------------------------------
 
