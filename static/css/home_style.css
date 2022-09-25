@@ -1,10 +1,5 @@
 @charset "utf-8";
 
-html {
-    overflow: scroll;
-}
-
-
 .header {
     background: white;
 }
@@ -85,7 +80,7 @@ html {
     margin: 0 auto;
 }
 /* ヘッダーの各ボタンのcss */
-.list_nav_header a , .list_nav_header input[type="submit"] {
+.list_nav_header a {
     text-decoration: none;
     color: black;
     font-family: fantasy;
@@ -93,17 +88,22 @@ html {
     position: relative;
     display: inline-block;
 }
-.list_nav_header  li {
-    list-style: none;
-}
-/* RECOMMENDボタンの枠や背景を消す */
-.list_nav_header div input[type="submit"] {
+
+/* RECOMMENDボタンのCSS */
+input[type="submit"] {
+    font-size: 25px;
+    font-family: fantasy;
+    display: block;
     border: none;
     background-color: transparent;
+    text-decoration: none;
     cursor: pointer;
+    color: black;
+    background-color: transparent;
     transition: 0.3s;
 }
-/* ここまで */
+
+
 .list_nav_header a::after {
     position: absolute;
     left: 0;
@@ -116,7 +116,8 @@ html {
     height: 1.5px;
     bottom: -4px;
 }
-.list_nav_header .recommend_wrap::after {
+
+.recommend_wrap::after {
     position: absolute;
     left: 0;
     content: '';
@@ -128,16 +129,24 @@ html {
     height: 1.5px;
     bottom: -4px;
 }
+
 .list_nav_header a:hover::after {
     transform: scale(1, 1); /*ホバー後、x軸方向に1（相対値）伸長*/
 }
 /* RECOMMENDボタンのcss(after) */
-.list_nav_header .recommend_wrap:hover::after {
+.recommend_wrap:hover::after {
     transform: scale(1, 1);  /*ホバー後、x軸方向に1（相対値）伸長*/
 }
 .list_nav_header > li + li {
     margin-left: 40px;
 }
+
+/* ヘッダー(logoutのcss) */
+.logout {
+    font-size: 25px;
+    font-family: fantasy;
+}
+
 /* header終了 */
 /* tabについてのcss */
 *, *::before, *::after {
