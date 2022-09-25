@@ -1,46 +1,60 @@
 @charset "utf-8";
+
 input[type="submit"]{
     font-size: 1.0em;
+    /* インライン要素にwidthなどのcssが効くようになる */
+    /* 自身にmargin:auto;で中央寄せ */
     display: block;
     border: none;
+    /* outline: none;と意味は同じ */
     outline: 0;
+    /* カーソルをポインターにする */
     cursor: pointer;
     color: #fff;
     background: #555;
     font-weight: bold;
     height: 3.0em;
+    /* フォントサイズと上下の行間を合わせた高さを指定 */
     line-height: 3.0em;
     width: 100%;
+    /* コンテンツと境界の間隔を指定 */
+    /* 上 右 下 左 */
     padding: 0 2.5em 0 0.8em;
+    /* 0.3sで遷移するという意味 */
     transition: 0.3s;
   }
-  .button_wrap{
-    color: #fff;
-    position: relative;
-    line-height: 2.8em;
-    width: 130px;
-    transition: 0.5s;
-    margin:0 auto;
-  }
-  .button_wrap::after{
-    transition: 0.3s;
-    content: "";
-    width: .6em;
-    height: .6em;
-    border-top: 2px solid #fff;
-    border-right: 2px solid #fff;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 20px;
-    margin: auto;
-    -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
-  }
-  .button_wrap:hover::after{
-    right: 12px;
-  }
-  input[type="submit"]:hover {
-    background: #134767;
-  }
+
+.button_wrap{
+  color: #fff;
+  position: relative;
+  line-height: 2.8em;
+  width: 130px;
+  transition: 0.5s;
+  margin:0 auto;
+}
+
+.button_wrap::after{
+  transition: 0.3s;
+  content: "";
+  width: .6em;
+  height: .6em;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 20px;
+  margin: auto;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.button_wrap:hover::after{
+  right: 12px;
+}
+/*
+input[type="submit"]:hover {
+  background: #134767;
+}
+*/

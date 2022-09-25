@@ -4,7 +4,7 @@ import ast
 from flask_session import Session
 from helpers import login_required, act_calculate,makeRandomList
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask_paginate import Pagination, get_page_parameter
+# from flask_paginate import Pagination, get_page_parameter
 
 app = Flask("__name__")
 
@@ -302,10 +302,6 @@ def recommend():
     else:
         return render_template("main/recommend.html")
 
-
-
-
-
 # ------------------------------------------------------------------------------------------------------------------
 
 
@@ -330,7 +326,6 @@ def personal_data():
         try: #dbが格納されていない場合
             db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], session['sex'], session['age'], session['weight'], session['height'], purpose)
 
-            return redirect("/input")
         except: #格納されている場合（そのときはtryでエラーでる
             db1.execute("UPDATE personal_data SET sex=?, age=?, weight=?, height=?, activity=? WHERE user_id=?", session['sex'], session['age'], session['weight'], session['height'], purpose, session['user_id'])
 
@@ -483,4 +478,10 @@ def delete():
         data = db.execute("SELECT * FROM foodnames WHERE 食品名 = ? ", product_liked['product'])[0]
         submitList.append(data)
     return render_template("main/favorite.html", submitList =submitList)
-# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# ---------------------------------------------------------------tutorial ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@app.route("/tutorial")
+def video():
+    return render_template("main/tutorial.html")
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

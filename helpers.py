@@ -12,7 +12,6 @@ def login_required(f):
     return decorated_function
 
 
-
 def act_calculate(sex, intWeight, intHeight, intAge, level, activity):
 # --------------------------------------------------------------------
 # 一人当たりの必要摂取カロリー
