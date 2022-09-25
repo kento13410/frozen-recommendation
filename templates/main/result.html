@@ -6,6 +6,7 @@
         <title>冷凍食品</title>
         <link href="../../static/css/result_style.css" rel="stylesheet">
         <link href="../../static/css/transition.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
         <script src="../../static/js/result_style.js" defer></script>
     </head>
         <body>
@@ -163,8 +164,6 @@
             </ul>
             <ul class="contents">
               <li class="active">
-                {{ b_pagination.info }}
-                {{ b_pagination.links }}
                 {% for br in breakfast %}
                 <section class="wrapper">
                   <label>
@@ -178,7 +177,7 @@
                 {% endfor %}
                 <!--(1)前のページ-->
                 {% if (CurPage - 1) > 0 %}
-                <a href="./search_item?page={{ CurPage - 1}}" class="btn btn-outline-secondary">{{ CurPage - 1}}</a>
+                <a href="./search_item?page={{ CurPage - 1 }}" class="btn btn-outline-secondary">{{ CurPage - 1}}</a>
                 {% endif %}
 
                 <!--(1)現在のページ-->
@@ -188,11 +187,8 @@
                 {% if (CurPage + 1) <= b_Max %}
                 <a href="./search_item?page={{ CurPage + 1}}" class="btn btn-outline-secondary">{{ CurPage + 1}}</a>
                 {% endif %}
-                {{ b_pagination.links }}
               </li>
               <li>
-                {{ l_pagination.info }}
-                {{ l_pagination.links }}
                 {% for lu in lunch %}
                 <section class="wrapper">
                   <label>
@@ -204,11 +200,20 @@
                   <p>{{lu['食品名']}}</p>
                 </section>
                 {% endfor %}
-                {{ l_pagination.links }}
+                <!--(1)前のページ-->
+                {% if (CurPage - 1) > 0 %}
+                <a href="./search_item?page={{ CurPage - 1 }}" class="btn btn-outline-secondary">{{ CurPage - 1}}</a>
+                {% endif %}
+
+                <!--(1)現在のページ-->
+                <a href="#" class="btn btn-secondary">{{ CurPage }}</a>
+
+                <!--(2)次のページ-->
+                {% if (CurPage + 1) <= l_Max %}
+                <a href="./search_item?page={{ CurPage + 1}}" class="btn btn-outline-secondary">{{ CurPage + 1}}</a>
+                {% endif %}
               </li>
               <li>
-                {{ s_pagination.info }}
-                {{ s_pagination.links }}
                 {% for sn in snack %}
                 <section class="wrapper">
                   <label>
@@ -220,7 +225,18 @@
                   <p>{{sn['食品名']}}</p>
                 </section>
                 {% endfor %}
-                {{ s_pagination.links }}
+                <!--(1)前のページ-->
+                {% if (CurPage - 1) > 0 %}
+                <a href="./search_item?page={{ CurPage - 1 }}" class="btn btn-outline-secondary">{{ CurPage - 1}}</a>
+                {% endif %}
+
+                <!--(1)現在のページ-->
+                <a href="#" class="btn btn-secondary">{{ CurPage }}</a>
+
+                <!--(2)次のページ-->
+                {% if (CurPage + 1) <= s_Max %}
+                <a href="./search_item?page={{ CurPage + 1}}" class="btn btn-outline-secondary">{{ CurPage + 1}}</a>
+                {% endif %}
               </li>
             </ul>
             <!-- calculateボタン作成 -->

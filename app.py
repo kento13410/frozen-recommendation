@@ -208,34 +208,37 @@ def index():
 
 @app.route("/search_item", methods=["GET", "POST"])
 def search_item():
-    if request.method == "POST":
+    if request.method == "GET":
         page = request.args.get(get_page_parameter(), type=int, default=1)
-        breakfasts = request.form.getlist("breakfast")
-        lunchs = request.form.getlist("lunch")
-        snacks = request.form.getlist("snack")
+        if page == 1:
+            session['breakfasts'] = request.args.getlist("breakfast")
+            session['lunchs'] = request.args.getlist("lunch")
+            session['snacks'] = request.args.getlist("snack")
+        else:
+            pass
 
         sql = "SELECT * FROM 食品成分 WHERE 食品名 like ?"
         brName = []
         luName = []
         snName = []
-        for breakfast in breakfasts:
+        for breakfast in session['breakfasts']:
             if len(breakfast) != 0:
                 brName += db.execute(sql, "%" + breakfast + "%")
-        for lunch in lunchs:
+        for lunch in session['lunchs']:
             if len(lunch) != 0:
                 luName += db.execute(sql, "%" + lunch + "%")
-        for snack in snacks:
+        for snack in session['snacks']:
             if len(snack) != 0:
                 snName += db.execute(sql, "%" + snack + "%")
 
-        b_rows = brName[(page - 1)*6: page*6]
-        b_pagination = Pagination(page=page, total=len(brName),  per_page=6, css_framework='bootstrap4')
+        b_rows = brName[(page - 1)*5: page*5]
+        b_pagination = Pagination(page=page, total=len(brName),  per_page=5, css_framework='bootstrap4')
         b_Max = (- len(brName) // 3) * -1
-        l_rows = luName[(page - 1)*6: page*6]
-        l_pagination = Pagination(page=page, total=len(luName),  per_page=6, css_framework='bootstrap4')
+        l_rows = luName[(page - 1)*5: page*5]
+        l_pagination = Pagination(page=page, total=len(luName),  per_page=5, css_framework='bootstrap4')
         l_Max = (- len(luName) // 3) * -1
-        s_rows = snName[(page - 1)*6: page*6]
-        s_pagination = Pagination(page=page, total=len(snName),  per_page=6, css_framework='bootstrap4')
+        s_rows = snName[(page - 1)*5: page*5]
+        s_pagination = Pagination(page=page, total=len(snName),  per_page=5, css_framework='bootstrap4')
         s_Max = (- len(snName) // 3) * -1
         return render_template("main/result.html", breakfast=b_rows, lunch=l_rows, snack=s_rows, CurPage=page, b_pagination=b_pagination, b_Max=b_Max, l_pagination=l_pagination, l_Max=l_Max, s_pagination=s_pagination, s_Max=s_Max)
 
