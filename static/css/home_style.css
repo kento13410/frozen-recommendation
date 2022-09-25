@@ -1,10 +1,5 @@
 @charset "utf-8";
 
-html {
-    overflow: scroll;
-}
-
-
 .header {
     background: white;
 }
