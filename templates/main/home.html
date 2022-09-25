@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="../../static/css/heart_transition.css">
         <script src="../../static/js/home_style.js" defer></script>
         <script src="../../static/js/loading-connection_style.js" defer></script>
-
     </head>
         <body>
           <div id="loading" class="loading active">
@@ -31,7 +30,6 @@
                 </a>
                 <p class="copy">For your busy time...</p>
               </div>
-
               <nav class="area_nav_header">
                 <ul class="list_nav_header">
                   <li>
@@ -39,6 +37,7 @@
                   </li>
                   <li>
                       <form action ="/recommend" method="post" id="check">
+                        <!-- 消さないでください安東::divタグ案 -->
                         <div class="recommend_wrap">
                             <input type="submit" value="RECOMMEND">
                         </div>
@@ -205,10 +204,7 @@
                 </a>
               </li>
             </ul>
-
-
         </form>
-
             <ul class="contents">
               <li class="active">
                 <section class="wrapper">
@@ -234,7 +230,6 @@
                   {% endfor %}
                   </section>
               </li>
-
               <li>
                 <section class="wrapper">
                 {%- set ns = namespace(cnt=0) -%}
