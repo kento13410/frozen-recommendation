@@ -1,10 +1,5 @@
 @charset "utf-8";
 
-html {
-    overflow: scroll;
-}
-
-
 .header {
     background: white;
 }
@@ -83,7 +78,7 @@ html {
     background: url(../static/cmn/img/ico/ico_search.svg);
 }
 
-.list_nav_icon_header .favorite a {
+.list_nav_icon_header .favorites a {
     background: url(../static/cmn/img/ico/ico_heart.svg);
 }
 
