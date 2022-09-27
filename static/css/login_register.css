@@ -11,7 +11,6 @@ body{
   margin: 0;
   padding: 0;
   background: #fff;
-
   color: #fff;
   font-family: Arial;
   font-size: 12px;
@@ -25,7 +24,8 @@ body{
   bottom: -40px;
   width: auto;
   height: auto;
-  background-image: url(https://st3.depositphotos.com/1558912/19009/i/950/depositphotos_190093122-stock-photo-italian-food-background-pasta-herbs.jpg);
+  /* background-image: url(https://st3.depositphotos.com/1558912/19009/i/950/depositphotos_190093122-stock-photo-italian-food-background-pasta-herbs.jpg); */
+  background-image: url(../img/login_register/background_image.jpg);
   background-size: cover;
   /* -webkit-filter:blur(5px); */
   z-index: 0;
@@ -48,7 +48,7 @@ body{
     margin:  0 auto;
 }
 
-.header{
+.header {
   position: absolute;
   top: calc(50% - 35px);
   left: calc(40% - 190px);
@@ -75,7 +75,7 @@ body{
 /* ここからlogin.html */
 .login{
   position: absolute;
-  top: calc(50% - 75px);
+  top: calc(50% - 98px);
   left: calc(55% - 25px);
   height: 150px;
   width: 350px;
@@ -181,8 +181,7 @@ a{
 .color {
   color: white;
   font-weight: 700;
-
-
+}
 
 /* ここからregister.html */
 .register {
@@ -286,3 +285,4 @@ a{
   z-index: 2;
   text-align: center;
 }
+

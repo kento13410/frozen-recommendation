@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
-        <title>冷凍食品</title>
+        <title>食事目的選択|冷食クラブ</title>
         <link rel="stylesheet" href="../../static/css/activeLevel.css">
         <!-- <script src="../static/test.js" defer></script> -->
         <script src="https://code.jquery.com/jquery.min.js"></script>
@@ -62,18 +62,20 @@
                         <p class="question3">食事の目的を選んでください</p>
                     </div>
                     <div class="columActive1">
-                        <div class="decrease">
-                            <input type="radio" name="purpose" value="増量"><label for="増量" class="activePurpose">増量</label>
+                        <!-- idを付与；formをidと同じ値にした。 -->
+                        <!-- classをincreaseとdecreaseを入れ替えた。 -->
+                        <div class="increase">
+                            <input type="radio" id="decrease" name="purpose" value="増量" form="purpose"><label for="decrease" class="activePurpose">増量</label>
                         </div>
                     </div>
                     <div class="culumActive2">
                         <div class="maintain">
-                            <input type="radio" name="purpose" value="現状維持"><label for="現状維持" class="activePurpose">維持</label>
+                            <input type="radio" name="purpose" value="現状維持" form="purpose"><label for="現状維持" class="activePurpose">維持</label>
                         </div>
                     </div>
                     <div class="culumActive3">
-                        <div class="increase">
-                            <input type="radio" name="purpose" value="減量"><label for="減量" class="activePurpose">減量</label>
+                        <div class="decrease">
+                            <input type="radio" name="purpose" value="減量" form="purpose"><label for="減量" class="activePurpose">減量</label>
                         </div>
                     </div>
                 </div>
