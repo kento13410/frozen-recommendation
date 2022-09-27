@@ -224,9 +224,9 @@ p {
 }
 
 /* 選択肢のラジオボタンを消す */
-input[type=radio] {
+/* input[type="radio"] {
     display: none;
-}
+} */
 
 
 .sex {
