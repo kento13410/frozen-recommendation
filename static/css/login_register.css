@@ -176,7 +176,7 @@ body{
 .toRegister {
   position: absolute;
   top: calc(50% + 65px);
-  left: calc(55% - 25px);
+  left: calc(55% - 50px);
   height: 150px;
   width: 350px;
   padding: 10px;
@@ -202,7 +202,7 @@ a{
 .toLogin {
   position: absolute;
   top: calc(50% + 100px);
-  left: calc(55% - 25px);
+  left: calc(55% - 40px);
   height: 150px;
   width: 350px;
   padding: 10px;
