@@ -81,6 +81,8 @@ body{
   z-index: 2;
 }
 
+
+
 .register {
   position: absolute;
   top: calc(50% - 127px);
@@ -128,6 +130,7 @@ body{
   cursor: pointer;
   border-radius: 2px;
   color: #a18d6c;
+  background-color: white;
   font-family: 'Exo', sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -194,17 +197,6 @@ a{
 .color {
   color: white;
   font-weight: 700;
-}
-
-/* ここからregister.html */
-.register {
-  position: absolute;
-  top: calc(50% - 127px);
-  left: calc(55% - 25px);
-  height: 150px;
-  width: 350px;
-  padding: 10px;
-  z-index: 2;
 }
 
 .toLogin {
