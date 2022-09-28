@@ -75,7 +75,7 @@ body{
 /* ここからlogin.html */
 .login{
   position: absolute;
-  top: calc(50% - 75px);
+  top: calc(50% - 100px);
   left: calc(55% - 25px);
   height: 150px;
   width: 350px;
@@ -159,7 +159,7 @@ body{
 
 .toRegister{
   position: absolute;
-  top: calc(50% + 100px);
+  top: calc(50% + 65px);
   left: calc(55% - 25px);
   height: 150px;
   width: 350px;
