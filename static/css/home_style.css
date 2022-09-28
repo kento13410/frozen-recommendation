@@ -178,6 +178,8 @@ main {
 	display: flex;
 	/* 均等に並べる */
 	justify-content: space-between;
+    position: relative;
+    left: 40px;
 }
 .tabs li {
 	/* タブの幅を24%にする */
