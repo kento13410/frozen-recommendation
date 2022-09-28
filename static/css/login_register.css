@@ -170,7 +170,7 @@ body{
 }
 
 /* 「こちらへ」の親要素のcss */
-.toRegister, .toLogin {
+.toRegister {
   position: absolute;
   top: calc(50% + 65px);
   left: calc(55% - 25px);
@@ -205,4 +205,17 @@ a{
   width: 350px;
   padding: 10px;
   z-index: 2;
+}
+
+.toLogin {
+  position: absolute;
+  top: calc(50% + 100px);
+  left: calc(55% - 25px);
+  height: 150px;
+  width: 350px;
+  padding: 10px;
+  font-size: 12px;
+  font-family: 'Exo', sans-serif;
+  z-index: 2;
+  text-align: center;
 }
