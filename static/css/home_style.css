@@ -378,14 +378,28 @@ svg {
     align-items: center;
 }
 
+.submit_button_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 100px;
+    box-shadow: 2px 2px 2px 2px #292929;
+    border-radius: 90px;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
 .submit_button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 45%;
-    height: 60%;
-    box-shadow: 3.5px 3.5px 3.5px 3.5px #ededed;
-    border-radius: 20px;
+    width: 240px;
+    height: 70px;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px #292929;
+    border-radius: 70px;
+    padding: 20px;
     margin: 25px;
 }
 
@@ -394,13 +408,17 @@ svg {
     justify-content: center;
     align-items: center;
     text-align: center;
-    border-radius: 20px;
-    box-shadow: 2px 2px 2px 2px #ededed;
-    width: 80%;
-    height: 60%;
+    width: 40%;
 }
-.Recommend p {
-    font-size: 45px;
-    font-family: fantasy;
-    margin: 30px;
+
+.submit_button_clicked {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 240px;
+    height: 70px;
+    border-radius: 70px;
+    transform: scale(0.95, 0.95);
+	transition-duration: 0.7s;
+    box-shadow: 1px 1px 1px 1px #ededed;
 }
