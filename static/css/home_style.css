@@ -1,9 +1,10 @@
 @charset "utf-8";
 
+
+
 .header {
     background: white;
 }
-
 .header .container {
     height: 80px;
     display: flex;
@@ -11,21 +12,17 @@
     max-width: none;
     border-bottom: 3px solid black;
 }
-
 .area_logo_header {
     display: flex;
     align-items: center;
 }
-
 .area_logo_header .copy {
     display: block;
 }
-
 .area_logo_header .logo {
     display: block;
     margin-left: 20px;
 }
-
 .area_logo_header .logo img {
     margin-top: 6px;
     margin-bottom: 10px;
@@ -33,20 +30,17 @@
     width: 64px;
     filter: grayscale(100%) contrast(120%);
 }
-
 .area_logo_header .copy {
     font: 300 12px/1em "fantasy", fantasy;
     margin: 0 0 0 30px;
     font-family: cursive;
 }
-
 .area_nav_header {
     display: flex;
     margin-left: auto;
     flex: auto;
     min-width: 10px;
 }
-
 /* ナビゲーションバー・アイコン */
 .list_nav_icon_header {
     display: flex;
@@ -57,7 +51,6 @@
     margin-right: 30px;
     border-left: 1px solid black;
 }
-
 .list_nav_icon_header > li + li {
     margin-left: 10px;
 }
@@ -69,24 +62,18 @@
     background-position: center center;
     background-position: no-repeat;
 }
-
 .list_nav_icon_header {
     list-style: none;
 }
-
 .list_nav_icon_header .search a {
     background: url(../static/cmn/img/ico/ico_search.svg);
 }
-
 .list_nav_icon_header .favorites a {
     background: url(../static/cmn/img/ico/ico_heart.svg);
 }
-
 .list_nav_icon_header .home a {
     background: url(../static/cmn/img/ico/ico_home.svg);
 }
-
-
 /* リストナビ */
 .list_nav_header {
     padding-left: 90px;
@@ -94,7 +81,6 @@
     align-items: center;
     margin: 0 auto;
 }
-
 /* ヘッダーの各ボタンのcss */
 .list_nav_header a {
     text-decoration: none;
@@ -105,12 +91,13 @@
     display: inline-block;
 }
 
-/* RECOMMENDボタンのcss */
-.list_nav_header input[type="submit"] {
+/* RECOMMENDボタンのCSS */
+input[type="submit"] {
     font-size: 25px;
     font-family: fantasy;
     display: block;
     border: none;
+    background-color: transparent;
     text-decoration: none;
     cursor: pointer;
     color: black;
@@ -118,17 +105,6 @@
     transition: 0.3s;
 }
 
-.recommend_wrap {
-    color: white;
-    position: relative;
-    width: 130px;
-    transition: 0.3s;
-    margin:0 auto;
-}
-
-.list_nav_header  li {
-    list-style: none;
-}
 
 .list_nav_header a::after {
     position: absolute;
@@ -159,43 +135,41 @@
 .list_nav_header a:hover::after {
     transform: scale(1, 1); /*ホバー後、x軸方向に1（相対値）伸長*/
 }
-
 /* RECOMMENDボタンのcss(after) */
 .recommend_wrap:hover::after {
     transform: scale(1, 1);  /*ホバー後、x軸方向に1（相対値）伸長*/
 }
-
 .list_nav_header > li + li {
     margin-left: 40px;
 }
 
-/* header終了 */
+/* ヘッダー(logoutのcss) */
+.logout {
+    font-size: 25px;
+    font-family: fantasy;
+}
 
+/* header終了 */
 /* tabについてのcss */
 *, *::before, *::after {
 	box-sizing: border-box;
 }
-
 a {
 	color: #333;
 	text-decoration: none;
 }
-
-
 main {
 	width: 100%;
 	max-width: 1000px;
 	margin: 15px auto;
 	padding: 20px;
 }
-
 .tabs {
 	/* 横並びにする */
 	display: flex;
 	/* 均等に並べる */
 	justify-content: space-between;
 }
-
 .tabs li {
 	/* タブの幅を24%にする */
 	width: 24%;
@@ -205,7 +179,6 @@ main {
     font-weight: bolder;
     height: 56px;
 }
-
 .tabs li a  {
 	display: flex;
 	align-items: center;
@@ -217,7 +190,6 @@ main {
 	border-top-left-radius: 10px;
     position: relative;
 }
-
 .tabs li a::after {
     position: absolute;
     left: 0;
@@ -230,15 +202,12 @@ main {
     height: 1.5px;
     bottom: -4px;
 }
-
 .tabs li a:hover::after {
     transform: scale(0.4, 1); /*ホバー後、x軸方向に1（相対値）伸長*/
 }
-
 .tabs li {
   font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }
-
 /* おすすめをcheck!!のボタンのCSS */
 .osusumeButton input[type=submit]{
     display: inline-block;
@@ -253,49 +222,40 @@ main {
     border: 1px solid #1B1B1B;
     transition: .3s;
 }
-
 .osusumeButton input[type=submit]:hover {
     cursor: pointer;
     text-decoration: none;
 }
-
 .osusumeButton input[type=submit] span {
     display: inline-block;
     text-decoration: none;
     transition: .3s;
 }
-
 .osusumeButton input[type=submit]:hover span {
     cursor: pointer;
     text-decoration: none;
     transform: translateY(-4px);
 }
 /* ここまで */
-
 .contents li {
 	padding: 20px;
 	display: none;
     height: 56px;
 }
-
 .contents li.active {
 	display: block;
 }
-
 ul {
 	list-style-type: none;
 	padding: 0; /*左にできる隙間を消す */
 }
-
 /* tab終了 */
-
 /* カード内容についてのcss */
 .wrapper {
 	display: flex;
 	/* background-color: skyblue; */
 	justify-content: space-between;
 }
-
 .food-container {
 	/* background-color: lightgreen; */
 	margin: 10px;
@@ -304,28 +264,23 @@ ul {
     height: 240px;
     box-shadow: 0px 0px 28px 3px #ededed;
 }
-
 .food-container:hover {
 	margin: 10px;
 	border-radius: 20px;
 	transform: scale(1.05, 1.05);
 	transition-duration: 0.7s;
 }
-
 .card-header {
     text-align: center;
 }
-
 .foodname {
 	margin: 10px;
 	text-align: center;
 }
-
 .card-body {
     text-align: center;
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }
-
 button {
     display: inline-block;
     width: 140px;
@@ -336,12 +291,10 @@ button {
     color: #FCFCF5;
     position: relative;
 }
-
 button span {
     display: inline-block;
     transform: skew(21deg);
 }
-
 button::before {
     content: "";
     position: absolute;
@@ -352,25 +305,20 @@ button::before {
     background: coral;
     transition: all .7s;
 }
-
 button:hover {
     color: #FCFCF5;
     box-shadow: 0px 0px 28px 3px rgb(0 0 0 / 20%);
 }
-
 button:hover::before {
     right: 0;
 }
-
 /* checkboxについてのcss */
-
 label {
     position: relative;
     width: 56px;
     height: 56px;
     cursor: pointer;
 }
-
 label input {
     position: relative;
     bottom: 50px;
@@ -379,7 +327,6 @@ label input {
     height: 50px;
     width: 50px;
 }
-
 label span {
     position: absolute;
     bottom: 14px;
@@ -391,11 +338,9 @@ label span {
     z-index: 1;
     font-size: 30px;
 }
-
 label input:checked + span {
     background: #fe0000;
 }
-
 label span i {
     position: absolute;
     top: 2.8px;
@@ -406,13 +351,11 @@ label span i {
     border-radius: 50%;
     transition: 0.5s;
 }
-
 svg {
     position: relative;
     top: 1px;
     z-index: 1;
 }
-
 .position {
     position: relative;
     bottom: 63px;

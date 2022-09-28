@@ -11,7 +11,6 @@ body{
   margin: 0;
   padding: 0;
   background: #fff;
-
   color: #fff;
   font-family: Arial;
   font-size: 12px;
@@ -48,7 +47,7 @@ body{
     margin:  0 auto;
 }
 
-.header{
+.header {
   position: absolute;
   top: calc(50% - 35px);
   left: calc(40% - 190px);
@@ -56,7 +55,6 @@ body{
   padding-bottom: 50px;
   position: relative;
   top: 330px;
-
   /* margin: 50px; */
 }
 
@@ -72,7 +70,7 @@ body{
   color: #fff;
 }
 
-/* ここからlogin.html */
+
 .login{
   position: absolute;
   top: calc(50% - 100px);
@@ -83,7 +81,17 @@ body{
   z-index: 2;
 }
 
-.login input[type=text]{
+.register {
+  position: absolute;
+  top: calc(50% - 127px);
+  left: calc(55% - 25px);
+  height: 150px;
+  width: 350px;
+  padding: 10px;
+  z-index: 2;
+}
+
+.login input[type=text], .register input[type=text] {
   width: 300px;
   height: 40px;
   background: transparent;
@@ -97,7 +105,7 @@ body{
   text-align:center;
 }
 
-.login input[type=password]{
+.login input[type=password], .register input[type=password] {
   width: 300px;
   height: 40px;
   background: transparent;
@@ -112,7 +120,7 @@ body{
   text-align:center;
 }
 
-.login button[type=submit]{
+.login button[type=submit], .register button[type=submit] {
   width: 310px;
   height: 45px;
   background: #fff;
@@ -127,25 +135,25 @@ body{
   margin-top: 12px;
 }
 
-.login button[type=submit]:hover{
+.login button[type=submit], .register button[type=submit]:hover{
   opacity: 0.8;
 }
 
-.login button[type=submit]:active{
+.login button[type=submit], .register input[type=submit]:active{
   opacity: 0.6;
 }
 
-.login input[type=text]:focus{
+.login input[type=text], .register input[type=text]:focus{
   outline: none;
   border: 1px solid rgba(255,255,255,0.9);
 }
 
-.login input[type=password]:focus{
+.login input[type=password], .register input[type=password]:focus{
   outline: none;
   border: 1px solid rgba(255,255,255,0.9);
 }
 
-.login button[type=submit]:focus{
+.login button[type=submit], .register button[type=submit]:focus{
   outline: none;
 }
 
@@ -157,7 +165,12 @@ body{
    color: rgba(255,255,255,0.6);
 }
 
-.toRegister{
+#None {
+  background-color: white;
+}
+
+/* 「こちらへ」の親要素のcss */
+.toRegister, .toLogin {
   position: absolute;
   top: calc(50% + 65px);
   left: calc(55% - 25px);
@@ -192,96 +205,4 @@ a{
   width: 350px;
   padding: 10px;
   z-index: 2;
-}
-
-.register input[type=text]{
-  width: 300px;
-  height: 40px;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.6);
-  border-radius: 2px;
-  color: #fff;
-  font-family: 'Exo', sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  padding: 4px;
-  text-align:center;
-}
-
-.register input[type=password]{
-  width: 300px;
-  height: 40px;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.6);
-  border-radius: 2px;
-  color: #fff;
-  font-family: 'Exo', sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  padding: 4px;
-  margin-top: 12px;
-  text-align:center;
-}
-
-.register button[type=submit]{
-  width: 310px;
-  height: 45px;
-  background: #fff;
-  border: 1px solid #fff;
-  cursor: pointer;
-  border-radius: 2px;
-  color: #a18d6c;
-  font-family: 'Exo', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  padding: 6px;
-  margin-top: 12px;
-}
-
-.register button[type=submit]:hover{
-  opacity: 0.8;
-}
-
-.register button[type=submit]:active{
-  opacity: 0.6;
-}
-
-.register input[type=text]:focus{
-  outline: none;
-  border: 1px solid rgba(255,255,255,0.9);
-}
-
-.register input[type=password]:focus{
-  outline: none;
-  border: 1px solid rgba(255,255,255,0.9);
-}
-
-.register button[type=submit]:focus{
-  outline: none;
-}
-
-::-webkit-input-placeholder{
-   color: rgba(255,255,255,0.6);
-}
-
-::-moz-input-placeholder{
-   color: rgba(255,255,255,0.6);
-}
-
-#None {
-  background-color: white;
-}
-
-/* 「こちらへ」の親要素のcss */
-.toLogin {
-  position: absolute;
-  top: calc(50% + 100px);
-  left: calc(55% - 25px);
-  height: 150px;
-  width: 350px;
-  padding: 10px;
-  font-size: 12px;
-  font-family: 'Exo', sans-serif;
-  z-index: 2;
-  text-align: center;
 }

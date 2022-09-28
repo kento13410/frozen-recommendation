@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../../../workspaces/106922727"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"string": "c",
+			"stdbool.h": "c"
+		},
+		"gitdoc.enabled": true
+	}
+}

@@ -4,7 +4,7 @@ import ast
 from flask_session import Session
 from helpers import login_required, act_calculate,makeRandomList
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask_paginate import Pagination, get_page_parameter
+# from flask_paginate import Pagination, get_page_parameter
 
 app = Flask("__name__")
 
@@ -264,16 +264,15 @@ def recommend():
         else:
             beefList = []
         if (fish):
-            # fishList = db.execute("SELECT * from foodnames WHERE カテゴリ = ?",fish)
             fishList = db.execute('SELECT * from foodnames WHERE カテゴリ = "おべんとう 魚系" ')
         else:
             fishList = []
         if (rice):
-            riceList = db.execute("SELECT * from foodnames WHERE カテゴリ = ?",rice)
+            riceList = db.execute("SELECT * from foodnames WHERE カテゴリ = 'ごはん系' ")
         else:
             riceList = []
         if (noodle):
-            noodleList = db.execute("SELECT * from foodnames WHERE カテゴリ = ?",noodle)
+            noodleList = db.execute("SELECT * from foodnames WHERE カテゴリ = '麺系' ")
         else:
             noodleList = []
 

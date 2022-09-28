@@ -58,21 +58,23 @@
                 </div>
                 <div class="food-containerPurpose">
                     <div class="sentence">
-                        <p class="question3">食事の目的を選んでください</p>
+                        <p class="question3">質問：食事の目的を選んでください</p>
                     </div>
                     <div class="columActive1">
-                        <div class="decrease">
-                            <input type="radio" name="purpose" value="増量"><label for="増量" class="activePurpose">増量</label>
+                        <!-- idを付与；formをidと同じ値にした。 -->
+                        <!-- classをincreaseとdecreaseを入れ替えた。 -->
+                        <div class="increase">
+                            <input type="radio" id="decrease" name="purpose" value="増量" form="purpose"><label for="decrease" class="activePurpose">増量</label>
                         </div>
                     </div>
                     <div class="culumActive2">
                         <div class="maintain">
-                            <input type="radio" name="purpose" value="現状維持"><label for="現状維持" class="activePurpose">維持</label>
+                            <input type="radio" name="purpose" value="現状維持" form="purpose"><label for="現状維持" class="activePurpose">維持</label>
                         </div>
                     </div>
                     <div class="culumActive3">
-                        <div class="increase">
-                            <input type="radio" name="purpose" value="減量"><label for="減量" class="activePurpose">減量</label>
+                        <div class="decrease">
+                            <input type="radio" name="purpose" value="減量" form="purpose"><label for="減量" class="activePurpose">減量</label>
                         </div>
                     </div>
                 </div>
