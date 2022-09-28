@@ -1,6 +1,15 @@
 @charset "utf-8";
+.body {
+    width: 100%;
+}
 
+.tab {
+    margin:15px;
+}
 
+.tab a {
+    font-size: 30px;
+}
 
 .header {
     background: white;
@@ -48,7 +57,7 @@
     list-style: none;
     padding-left: 20px;
     margin-left: auto;
-    margin-right: 30px;
+    margin-right: 15px;
     border-left: 1px solid black;
 }
 .list_nav_icon_header > li + li {
@@ -359,4 +368,39 @@ svg {
 .position {
     position: relative;
     bottom: 63px;
+}
+
+/* Recommendボタンに関するcss */
+
+.wrapper {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    height: 60%;
+    box-shadow: 3.5px 3.5px 3.5px 3.5px #ededed;
+    border-radius: 20px;
+    margin: 25px;
+}
+
+.Recommend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 2px #ededed;
+    width: 80%;
+    height: 60%;
+}
+.Recommend p {
+    font-size: 45px;
+    font-family: fantasy;
+    margin: 30px;
 }
