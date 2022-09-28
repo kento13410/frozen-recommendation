@@ -186,6 +186,10 @@ p {
 }
 
 /* snsリストについてのcss */
+.sns {
+    margin-bottom: 10px;
+}
+
 .sns ul {
     display: flex;
     /* justify-content: center; */
