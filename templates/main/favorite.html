@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../../static/css/transition.css">
     <title>お気に入りの冷凍食品| 冷食クラブ</title>
 </head>
-<body>
     <body >
         <!-- startヘッダー -->
         <header class="header">
@@ -49,7 +48,8 @@
            </div>
         </header>
         <!-- endヘッダー -->
-        <!-- start メイン --><main>
+        <!-- start メイン -->
+        <main>
             <section class="wrapper">
               {%- set ns = namespace(cnt=0) -%}
 
@@ -65,7 +65,7 @@
                     <p>{{item['商品概要']}}</p>
                   <div class="sns">
                     <ul>
-                      <!-- ハート start
+                      <!-- ハート start -->
                       <li class="circle">
                         <svg class="likeButton clicked" width="47px" height="47px" viewBox="0 0 500 500">
                           <circle class="explosion" r="150" cx="250" cy="250"></circle>
@@ -87,7 +87,7 @@
                             </g>
                             <path class="heart" d="M250,187.4c-31.8-47.8-95.5-19.8-95.5,32.2c0,35.2,31.8,60.3,55.7,79.2c24.9,19.7,31.8,23.9,39.8,31.8 c7.9-7.9,14.6-12.6,39.8-31.8c24.3-18.5,55.7-44.4,55.7-79.6C345.5,167.6,281.8,139.7,250,187.4z"></path>
                         </svg>
-                      </li> -->
+                      </li>
                       <li>
                         <button type="submit" name="name" value="{{item['食品名']}}" form="delete">お気に入り解除</buttton>
                       </li>
