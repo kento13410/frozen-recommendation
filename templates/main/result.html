@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
-        <title>食事選択|冷食クラブ</title>
+        <title>おすすめの冷凍食品結果| 冷食クラブ</title>
         <link href="../../static/css/result_style.css" rel="stylesheet">
         <link href="../../static/css/transition.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -15,35 +15,34 @@
             <div class="container">
               <!-- ロゴエリア -->
               <div class="area_logo_header">
-                <a class="logo" href="#">
+                <div class="logo">
                   <img src="../../../static/img/logo/logo.svg">
-                </a>
+                </div>
                 <p class="copy">For your busy time...</p>
               </div>
               <nav class="area_nav_header">
                 <ul class="list_nav_header">
-                  <li>
-                      <a href="#">SEARCH</a>
-                  </li>
-                  <li>
-                      <a href="#">CATEGORY</a>
-                  </li>
-                  <li>
-                      <a href="#">FAVORITES</a>
-                  </li>
-                  <li>
-                      <a href="#">TOPICS</a>
-                  </li>
+                 <!-- 文字のボタン -->
+                 <li>
+                  <a href="/tutorial" role="button">TUTORIAL</a>
+                 </li>
+                 <li>
+                  <a href="/personal_data" role="button">PERSONAL</a>
+                 </li>
+                 <li>
+                  <a href="/input" role="button">CALCULATE</a>
+                 </li>
+                 <!-- end文字のボタン -->
                 </ul>
                 <ul class="list_nav_icon_header">
-                  <li class="search">
-                      <a href="#"><img src="../../static/img/ico/ico_search.svg" alt="search" width="30px" height="30px"></a>
+                  <li class="home">
+                    <a href="/home"><img src="../../static/img/ico/ico_home.svg" alt="home" height="30px" width="30px"></a>
                   </li>
                   <li class="favorites">
-                      <a href="#"><img src="../../static/img/ico/ico_heart.svg" alt="favorites" width="30px" height="30px"></a>
+                      <a href="/favorite"><img src="../../static/img/ico/ico_heart.svg" alt="favorites" height="30px" width="30px"></a>
                   </li>
-                  <li class="home">
-                      <a href="#"><img src="../../static/img/ico/ico_home.svg" alt="logout" width="30px" height="30px"></a>
+                  <li class="logout">
+                      <a href="/logout"><img src="../../static/img/ico/ico_logout.svg" alt="logout" height="30px" width="30px"></a>
                   </li>
                 </ul>
               </nav>

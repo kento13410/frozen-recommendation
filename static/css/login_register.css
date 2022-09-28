@@ -24,8 +24,7 @@ body{
   bottom: -40px;
   width: auto;
   height: auto;
-  /* background-image: url(https://st3.depositphotos.com/1558912/19009/i/950/depositphotos_190093122-stock-photo-italian-food-background-pasta-herbs.jpg); */
-  background-image: url(../img/login_register/background_image.jpg);
+  background-image: url("../img/img/background_image.jpg");
   background-size: cover;
   /* -webkit-filter:blur(5px); */
   z-index: 0;
@@ -74,7 +73,7 @@ body{
 
 .login{
   position: absolute;
-  top: calc(50% - 98px);
+  top: calc(50% - 100px);
   left: calc(55% - 25px);
   height: 150px;
   width: 350px;
@@ -173,7 +172,7 @@ body{
 /* 「こちらへ」の親要素のcss */
 .toRegister, .toLogin {
   position: absolute;
-  top: calc(50% + 100px);
+  top: calc(50% + 65px);
   left: calc(55% - 25px);
   height: 150px;
   width: 350px;
@@ -195,4 +194,15 @@ a{
 .color {
   color: white;
   font-weight: 700;
+}
+
+/* ここからregister.html */
+.register {
+  position: absolute;
+  top: calc(50% - 127px);
+  left: calc(55% - 25px);
+  height: 150px;
+  width: 350px;
+  padding: 10px;
+  z-index: 2;
 }

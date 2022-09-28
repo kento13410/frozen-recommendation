@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/css/favorite_style.css">
     <link rel="stylesheet" href="../../static/css/transition.css">
-    <title>お気に入り食品|冷食クラブ</title>
+    <title>お気に入りの冷凍食品| 冷食クラブ</title>
 </head>
 <body>
     <body >
@@ -15,37 +15,36 @@
            <div class="container">
              <!-- ロゴエリア -->
              <div class="area_logo_header">
-               <a class="logo" href="#">
+               <div class="logo">
                  <img src="../../static/img/logo/logo.svg">
-               </a>
+               </div>
                <p class="copy">for your busy time...</p>
              </div>
              <nav class="area_nav_header">
                <ul class="list_nav_header">
-                 <li>
-                     <a href="#">SEARCH</a>
-                 </li>
-                 <li>
-                     <a href="#">CATEGORY</a>
-                 </li>
-                 <li>
-                     <a href="#">FAVORITES</a>
-                 </li>
-                 <li>
-                     <a href="#">TOPICS</a>
-                 </li>
-               </ul>
-               <ul class="list_nav_icon_header">
-                 <li class="search">
-                     <a href="#"></a>
-                 </li>
-                 <li class="favorite">
-                     <a href="#"></a>
-                 </li>
-                 <li class="home">
-                     <a href="#"></a>
-                 </li>
-               </ul>
+                <!-- 文字のボタン -->
+                <li>
+                  <a href="/tutorial" role="button">TUTORIAL</a>
+                </li>
+                <li>
+                  <a href="/personal_data" role="button">PERSONAL</a>
+                </li>
+                <li>
+                  <a href="/input" role="button">CALCULATE</a>
+                </li>
+                 <!-- end文字のボタン -->
+              </ul>
+              <ul class="list_nav_icon_header">
+                <li class="home">
+                  <a href="/home"><img src="../../static/img/ico/ico_home.svg" alt="home" height="30px" width="30px"></a>
+                </li>
+                <li class="favorites">
+                    <a href="/favorite"><img src="../../static/img/ico/ico_heart.svg" alt="favorites" height="30px" width="30px"></a>
+                </li>
+                <li class="logout">
+                    <a href="/logout"><img src="../../static/img/ico/ico_logout.svg" alt="logout" height="30px" width="30px"></a>
+                </li>
+              </ul>
              </nav>
            </div>
         </header>
