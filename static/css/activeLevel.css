@@ -176,6 +176,7 @@
     height: 600px;
 }
 .food-containerPurpose {
+
     margin-left: 70px;
     margin-right: 5px;
 	border-radius: 20px;
@@ -460,6 +461,7 @@ img {
     margin-bottom: 25px;
 }
 .columnActive1 {
+
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     width: 100%;
