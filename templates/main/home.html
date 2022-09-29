@@ -240,11 +240,13 @@
                   {% endfor %}
                   </section>
                   <section class="wrapper">
-                      <div class="submit_button">
-                          <div class="Recommend">
-                              <p>Recommend!</p>
-                          </div>
-                      </div>
+                    <div class="submit_button_container">
+                      <form action ="/recommend" method="post" id="check" class="submit_button">
+                        <div class="Recommend">
+                            <input type="submit" value="Recommend">
+                        </div>
+                      </form>
+                    </div>
                   </section>
               </li>
               <li>
@@ -270,6 +272,15 @@
                 {% endif %}
                 {% endfor %}
                 </section>
+                <section class="wrapper">
+                  <div class="submit_button_container">
+                    <form action ="/recommend" method="post" id="check" class="submit_button">
+                      <div class="Recommend">
+                          <input type="submit" value="Recommend">
+                      </div>
+                    </form>
+                  </div>
+                </section>
               </li>
               <li>
                 <section class="wrapper">
@@ -293,6 +304,15 @@
                       {% endif %}
                   {% endif %}
                   {% endfor %}
+                  </section>
+                  <section class="wrapper">
+                    <div class="submit_button_container">
+                      <form action ="/recommend" method="post" id="check" class="submit_button">
+                        <div class="Recommend">
+                            <input type="submit" value="Recommend">
+                        </div>
+                      </form>
+                    </div>
                   </section>
               </li>
               <li>
@@ -318,6 +338,15 @@
                   {% endif %}
                   {% endfor %}
                   </section>
+                  <section class="wrapper">
+                    <div class="submit_button_container">
+                      <form action ="/recommend" method="post" id="check" class="submit_button">
+                        <div class="Recommend">
+                            <input type="submit" value="Recommend">
+                        </div>
+                      </form>
+                    </div>
+                  </section>
               </li>
             </ul>
           </main>
@@ -326,6 +355,13 @@
           $(".likeButton").click(function() {
             $(this).toggleClass("clicked");
           });
+        </script>
+        <script>
+         $(function() {
+            $(".submit_button").click(function() {
+                $(".submit_button").toggleClass("submit_button_clicked");
+            });
+        });
         </script>
     </body>
 </html>
