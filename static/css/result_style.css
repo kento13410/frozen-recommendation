@@ -124,6 +124,14 @@
     margin: 0 auto;
 }
 
+.tab {
+    margin:15px;
+}
+
+.tab a {
+    font-size: 30px;
+}
+
 .list_nav_header a {
     text-decoration: none;
     color: black;
