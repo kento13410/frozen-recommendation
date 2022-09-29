@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>おすすめ5選| 冷食クラブ</title>
+    </head>
+    <body>
+        <!-- startヘッダー -->
+            <header class="header">
+                <div class="container">
+                  <!-- ロゴエリア -->
+                  <div class="area_logo_header">
+                    <a href="/home" class="logo">
+                      <img src="../../static/img/logo/logo.svg">
+                    </a>
+                    <p class="copy">For your busy time...</p>
+                  </div>
+                  <nav class="area_nav_header">
+                    <ul class="list_nav_header">
+                      <!-- 文字のボタン -->
+                      <li class="tab">
+                         <a href="/tutorial" role="button">TUTORIAL</a>
+                      </li>
+                      <li class="tab">
+                        <a href="/personal_data" role="button">PERSONAL</a>
+                      </li>
+                      <li class="tab">
+                          <a href="/input" role="button">CALCULATE</a>
+                      </li>
+                      <li class="tab">
+                        <a href="/favorite" role="button">FAVORITES</a>
+                      </li>
+                      <!-- end文字のボタン -->
+
+                      <!-- ↓もし必要なら使ってください(後で消します)安東 -->
+                      <!-- <li>
+                          <form action ="/recommend" method="post" id="check">
+                            <div class="recommend_wrap">
+                                <input type="submit" value="RECOMMEND">
+                            </div>
+                          </form>
+                      </li> -->
+                    </ul>
+                    <ul class="list_nav_icon_header">
+                      <li class="tutorial">
+                        <a href="/tutorial"><img src="../../static/img/ico/tutorial.svg" alt="tutorial" height="30px" width="30px"></a>
+                      </li>
+                      <li class="personal">
+                        <a href="/personal"><img src="../../static/img/ico/personal.svg" alt="personal" height="30px" width="30px"></a>
+                      </li>
+                      <li class="calculate">
+                        <a href="/calculate"><img src="../../static/img/ico/calculate.svg" alt="calculate" height="30px" width="30px"></a>
+                      </li>
+                      <li class="favorites">
+                          <a href="/favorite"><img src="../../static/img/ico/ico_heart.svg" alt="favorites" height="30px" width="30px"></a>
+                      </li>
+                      <li class="logout">
+                          <a href="/logout"><img src="../../static/img/ico/ico_logout.svg" alt="logout" height="30px" width="30px"></a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+            </header>
+            <!-- endヘッダー -->
+
+            <div>
+                <h1>おすすめ５選！！！</h1>
+            </div>
+            <a href="/">気になるカテゴリをチェックする</a>
+            {% for dict in recommendList %}
+            <div>
+                <p>---------------------------------------</p>
+                <img src = "{{dict['画像']}}" width="150px">
+                <p>{{dict["食品名"]}}</p>
+                <p>{{dict["値段"]}}円</p>
+                <a href="{{dict['url']}}">詳しく見る</a>
+                <p>----------------------------------------</p>
+            </div>
+            {% endfor%}
+            <a href="/">気になるカテゴリをチェックする</a>
+    </body>
+</html>
