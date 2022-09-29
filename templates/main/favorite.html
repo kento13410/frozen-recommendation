@@ -59,7 +59,7 @@
         <!-- endヘッダー -->
         <!-- start メイン -->
         <main>
-            <section class="wrapper">
+            <section class="wrapper wrapper1">
               {%- set ns = namespace(cnt=0) -%}
 
               {% for item in submitList %}
@@ -127,7 +127,7 @@
               </div>
               {%- set ns.cnt = ns.cnt + 1 -%}
               {% if ns.cnt % 2 == 0 %}
-              </section><section class="wrapper">
+              </section><section class="wrapper wrapper1">
               {% endif %}
             {% endfor %}
             </section>

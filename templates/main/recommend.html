@@ -59,7 +59,17 @@
         <!-- endヘッダー -->
         <!-- start メイン -->
         <main>
-            <section class="wrapper">
+            <div  class="subtitle" style="text-align: center;">
+              <h2>～冷食クラブのオススメTOP5!!～</h2>
+            </div>
+            <section class="wrapper" id="wrapper">
+                <form action ="/home" method="post" id="check" class="submit_button">
+                  <div class="Recommend">
+                    <a href="/home.html">CHECK<br>CATEGORY!</a>
+                  </div>
+                </form>
+            </section>
+            <section class="wrapper" style="display: none;">
               {%- set ns = namespace(cnt=0) -%}
 
               {% for item in recommendList %}
@@ -71,7 +81,7 @@
                 </div>
                 <div class="card-right">
                   <h1>{{item['食品名']}}</h1>
-                    <p>{{item['商品概要']}}</p>
+                    <p style="height: 130px;">{{item['商品概要']}}</p>
                   <div class="sns">
                     <ul>
                       <!-- ハート start -->
@@ -123,7 +133,7 @@
               </div>
               {%- set ns.cnt = ns.cnt + 1 -%}
               {% if ns.cnt % 2 == 0 %}
-              </section><section class="wrapper">
+              </section><section class="wrapper" style="display: none;">
               {% endif %}
             {% endfor %}
             </section>
@@ -134,6 +144,11 @@
  $(".likeButton").click(function() {
    $(this).toggleClass("clicked");
  });
+</script>
+<script>
+  $(document).ready(function(){
+    $(".wrapper").fadeIn(3500);
+});
 </script>
 </body>
 </html>
