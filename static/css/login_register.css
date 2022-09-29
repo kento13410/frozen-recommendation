@@ -143,7 +143,7 @@ body{
 }
 
 .login button[type=submit], .register input[type=submit]:active{
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .login input[type=text], .register input[type=text]:focus{
