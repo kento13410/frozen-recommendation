@@ -3,6 +3,10 @@
     width: 100%;
 }
 
+html,body{
+    overflow: hidden
+}
+
 .tab {
     margin:15px;
 }
@@ -136,17 +140,78 @@ ul {
 /* カード内容についてのcss */
 .wrapper {
 	display: flex;
-	background-color: skyblue;
-	justify-content: space-between;
+	background-color: #ffffff;
+}
+
+.balloon {
+    position: relative;
+    top: 180px;
+    left: 150px;
+    display: inline-block;
+    margin: 1.5em 0;
+    padding: 7px 10px;
+    min-width: 100px;
+    max-width: 100%;
+    width: 220px;
+    height: 120px;
+    color: #000000;
+    font-size: 16px;
+    background: #ffffff;
+    border: 3px solid #000000;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.balloon:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -15px;
+    border: 15px solid transparent;
+    border-top: 15px solid #000000;
+}
+
+.btn {
+    position: absolute;
+    top: 80px;
+    height: 25px;
+    cursor: pointer;
+}
+
+
+
+.image {
+    position: relative;
+    top: 180px;
+    left: 170px;
+
 }
 .video {
-	background-color: lightgreen;
-	margin-left: 420px;
+	background-color: #ffffff;
+	margin-left: 200px;
     margin-right: 30px;
 /*  border-radius: 20px;
     width: 200px;
     height: 240px;
     box-shadow: 0px 0px 28px 3px #ededed; */
+}
+
+.headline {
+    /* font-family: fantasy; */
+    font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 30px;
+    text-decoration: none;
+    border-bottom: 3px solid #000;
+    text-align: center;
+}
+
+iframe {
+    margin-top: 30px;
+    box-shadow: 5px 5px 5px black;
 }
 
 .time-container {
@@ -155,7 +220,7 @@ ul {
     flex: 0 1 calc(100% / 4);
     padding: 10px;
     margin-left: 50px;
-    background-color: #00ff00;
+    background-color: #ffffff;
     /* width: 30px; */
     height: 90vh;
     /* position: relative;
@@ -170,7 +235,16 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 115px;
     margin-bottom: 40px;
-    background-color: white;
+    background-color: #ffffff;
+    border: 2px solid black;
+    position: relative;
+    box-shadow: 5px 5px 5px black;
+}
+
+.sentences {
+    position: absolute;
+    top: 7px;
+    left: 7px;
 }
