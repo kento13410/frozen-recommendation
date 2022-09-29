@@ -174,13 +174,13 @@ ul {
 }
 
 .btn {
-    position: absolute;
-    top: 80px;
+    position: relative;
+    top: 30px;
     height: 25px;
     cursor: pointer;
+    border: none;
+    background: transparent;
 }
-
-
 
 .image {
     position: relative;

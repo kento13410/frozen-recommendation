@@ -67,11 +67,11 @@
               </nav>
             </div>
         </header>
-        <section class="wrapper"> <!-- style="display:none" -->
+        <section class="wrapper">
           <div class="p.s">
             <div class="balloon">
               <div id="message_window"></div>
-              <button class="btn" onclick="message('動画を見ると、このWebアプリの使い方が分かるよ!'); disabled = true;">押してみて！</button>
+              <button class="btn" onclick="message('動画を見ると、このWebアプリの使い方が分かるよ!'); disabled = true;"><img src="../../static/img/logo/logo.svg" alt="押してね！" width="30" height="30"></button>
             </div>
             <div class="image">
               <img src="../../static/img/img/cookingman.png" alt="コック" width="180" height="180">
@@ -123,6 +123,11 @@
             msg_buff = msg_buff.slice(1);
             setTimeout('message_char()', 60);
           }
+        </script>
+        <script>
+          $(document).ready(function() {
+            $(".wrapper").fadeIn(3500);
+          });
         </script>
     </body>
 </html>
