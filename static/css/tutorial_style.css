@@ -1,0 +1,176 @@
+@charset "utf-8";
+.body {
+    width: 100%;
+}
+
+.tab {
+    margin:15px;
+}
+
+.tab a {
+    font-size: 30px;
+}
+
+.header {
+    background: white;
+}
+.header .container {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    max-width: none;
+    border-bottom: 3px solid black;
+}
+.area_logo_header {
+    display: flex;
+    align-items: center;
+}
+.area_logo_header .copy {
+    display: block;
+}
+.area_logo_header .logo {
+    display: block;
+    margin-left: 20px;
+}
+.area_logo_header .logo img {
+    margin-top: 6px;
+    margin-bottom: 10px;
+    height: 64px;
+    width: 64px;
+    filter: grayscale(100%) contrast(120%);
+}
+.area_logo_header .copy {
+    font: 300 12px/1em "fantasy", fantasy;
+    margin: 0 0 0 30px;
+    font-family: cursive;
+}
+.area_nav_header {
+    display: flex;
+    margin-left: auto;
+    flex: auto;
+    min-width: 10px;
+}
+/* ナビゲーションバー・アイコン */
+.list_nav_icon_header {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding-left: 20px;
+    margin-left: auto;
+    margin-right: 15px;
+    border-left: 1px solid black;
+}
+.list_nav_icon_header > li + li {
+    margin-left: 10px;
+}
+.list_nav_icon_header a {
+    display: block;
+    width:30px;
+    height: 30px;
+    background-size: contain;
+    background-position: center center;
+    background-position: no-repeat;
+}
+.list_nav_icon_header {
+    list-style: none;
+}
+.list_nav_icon_header .search a {
+    background: url(../static/cmn/img/ico/ico_search.svg);
+}
+.list_nav_icon_header .favorites a {
+    background: url(../static/cmn/img/ico/ico_heart.svg);
+}
+.list_nav_icon_header .home a {
+    background: url(../static/cmn/img/ico/ico_home.svg);
+}
+/* リストナビ */
+.list_nav_header {
+    padding-left: 90px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+/* ヘッダーの各ボタンのcss */
+.list_nav_header a {
+    text-decoration: none;
+    color: black;
+    font-family: fantasy;
+    font-size: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+.list_nav_header a::after {
+    position: absolute;
+    left: 0;
+    content: '';
+    background: black;
+    transform: scale(0, 1);
+    transform-origin: center top; /*変形（アンダーラインの伸長）の原点がaタグ（各メニュー）の右端*/
+    transition: transform 0.3s;   /*変形の時間*/
+    width: 100%;
+    height: 1.5px;
+    bottom: -4px;
+}
+
+.list_nav_header a:hover::after {
+    transform: scale(1, 1); /*ホバー後、x軸方向に1（相対値）伸長*/
+}
+
+.list_nav_header > li + li {
+    margin-left: 40px;
+}
+
+/* header終了 */
+
+a {
+	color: #333;
+	text-decoration: none;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0; /*左にできる隙間を消す */
+}
+/* tab終了 */
+/* カード内容についてのcss */
+.wrapper {
+	display: flex;
+	background-color: skyblue;
+	justify-content: space-between;
+}
+.video {
+	background-color: lightgreen;
+	margin-left: 420px;
+    margin-right: 30px;
+/*  border-radius: 20px;
+    width: 200px;
+    height: 240px;
+    box-shadow: 0px 0px 28px 3px #ededed; */
+}
+
+.time-container {
+    /* margin: 10px; */
+    box-sizing: border-box;
+    flex: 0 1 calc(100% / 4);
+    padding: 10px;
+    margin-left: 50px;
+    background-color: #00ff00;
+    /* width: 30px; */
+    height: 90vh;
+    /* position: relative;
+    top: -30px; */
+    /* right: 100px;  */
+}
+
+.column {
+    border-radius: 20px;
+    width: 80%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: white;
+}
