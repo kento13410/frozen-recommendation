@@ -214,6 +214,13 @@ p {
     transform: translateY(-10px);
 }
 
+.release {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border: none;
+}
+
 /* inputとheartを連動させるためのcss */
 
 label {
@@ -314,3 +321,4 @@ h2 {
     position: relative;
     bottom : 0;
 }
+
