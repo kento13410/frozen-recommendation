@@ -221,6 +221,11 @@ p {
     border: none;
 }
 
+.release img {
+    position: relative;
+    top: 2px;
+}
+
 /* inputとheartを連動させるためのcss */
 
 label {
