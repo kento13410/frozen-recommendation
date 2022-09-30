@@ -190,6 +190,10 @@ h1 {
     margin-top: 20px;
 }
 
+h2 {
+    font-size: 24px;
+    letter-spacing: 3px;
+}
 p {
     font-family:  "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
     margin: 12px;
@@ -266,4 +270,49 @@ label span i {
 svg {
     position: relative;
     top: 1px;
+}
+
+/* お気に入り追加 */
+.wrapper {
+    position: relative;
+    bottom: 75px;
+}
+
+#wrapper {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    position: relative;
+    bottom: 50px;
+}
+
+.submit_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 70px;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px #292929;
+    border-radius: 70px;
+    padding: 20px;
+    margin: 25px;
+}
+
+.Recommend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.Recommend button {
+    width: 180px;
+    height: 45px;
+    background: white;
+    border-radius: 20px;
+    text-decoration: none;
+    color: black;
+    font-family:  fantasy;
+    font-size: 30px;
+    border: none;
 }

@@ -227,6 +227,7 @@ main {
 	border-top-right-radius: 10px;
 	border-top-left-radius: 10px;
     position: relative;
+    text-decoration: none;
 }
 
 .tabs li a::after {
@@ -376,6 +377,7 @@ p {
     overflow: hidden;
     position: relative;
     border: none;
+    outline: none;
 }
 
 
@@ -426,10 +428,12 @@ p {
     background: white;
     border-radius: 20px;
     transition: 0.5s;
+
 }
 
 .button:hover::after {
     background: var(--clr);
+
 }
 
 .button span {
@@ -441,6 +445,7 @@ p {
     text-transform: uppercase;
     Letter-spacing: 1px;
     transition: 0.3s;
+    outline: none;
 }
 
 @keyframes animate {
@@ -505,6 +510,7 @@ p {
     background: white;
     border-radius: 20px;
     transition: 0.5s;
+    outline: none;
 }
 
 .button:hover::after {
