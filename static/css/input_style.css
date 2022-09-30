@@ -394,6 +394,10 @@ p {
 	transition-duration: 0.7s;
     box-shadow: 2px 2px 2px 2px #339CD1;
 }
+.maleRadio {
+    cursor: pointer;
+}
+
 .clickMale{
     box-shadow: 3.5px 3.5px 3.5px 3.5px #339CD1;
 }
@@ -408,6 +412,7 @@ p {
     justify-content: center;
     box-shadow: 0px 0px 28px 3px #ededed;
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+    cursor: pointer;
 }
 .female:hover {
 	border-radius: 100%;
@@ -415,6 +420,11 @@ p {
 	transition-duration: 0.7s;
     box-shadow: 2px 2px 2px 2px #C966A4;
 }
+
+.femaleRadio {
+    cursor: pointer;
+}
+
 .clickFemale{
     box-shadow: 3.5px 3.5px 3.5px 3.5px #C966A4;
 }
@@ -599,6 +609,7 @@ img {
     overflow: hidden;
     position: relative;
     border: none;
+    cursor: pointer;
 }
 
 .backNextButton:hover {

@@ -316,3 +316,7 @@ svg {
     font-size: 30px;
     border: none;
 }
+
+.favoriteButton {
+    cursor: pointer;
+}
