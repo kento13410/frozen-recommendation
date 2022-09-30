@@ -85,13 +85,20 @@
           </div>
       </header>
       <!-- endヘッダー -->
-      <!-- お気に入りに登録 -->
-      <form action="/favorite" method ="POST" id="heart">
-        <button type="submit" >お気に入りに登録</button>
-      </form>
         <!-- start メイン -->
         <main>
-            <section class="wrapper">
+            <div  class="subtitle" style="text-align: center; display: none;">
+              <h2>～今日の夜ご飯はこれで決まり！！～</h2>
+            </div>
+            <!-- お気に入りに登録 -->
+            <section class="wrapper" id="wrapper" style="display: none;">
+              <form action="/favorite" method ="POST" id="heart" style="text-align: right;" class="submit_button">
+                 <div class="Recommend">
+                    <button type="submit" >favorite</button>
+                 </div>
+              </form>
+            </section>
+            <section class="wrapper" style="display: none;">
               {%- set ns = namespace(cnt=0) -%}
 
               {% for item in data %}
@@ -165,7 +172,7 @@
               </div>
               {%- set ns.cnt = ns.cnt + 1 -%}
               {% if ns.cnt % 2 == 0 %}
-              </section><section class="wrapper">
+              </section><section class="wrapper" style="display: none;">
               {% endif %}
             {% endfor %}
             </section>
@@ -175,6 +182,16 @@
   $(".likeButton").click(function() {
     $(this).toggleClass("clicked");
   });
+</script>
+<script>
+  $(document).ready(function(){
+    $(".wrapper").fadeIn(3500);
+});
+</script>
+<script>
+  $(document).ready(function(){
+    $(".subtitle").fadeIn(3500);
+});
 </script>
 </body>
 </html>
