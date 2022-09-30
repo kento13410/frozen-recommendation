@@ -60,7 +60,6 @@
     margin-left: auto;
     margin-right: 30px;
     border-left: 1px solid black;
-
 }
 
 .list_nav_icon_header > li + li {
@@ -106,6 +105,8 @@
 
 .tab a {
     font-size: 30px;
+    color:inherit;
+    text-decoration: none;
 }
 
 .list_nav_header a {

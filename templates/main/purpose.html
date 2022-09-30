@@ -56,44 +56,47 @@
               </nav>
             </div>
         </header>
-         <!-- endヘッダー -->
-         <!-- 活動目的カード -->
-        <form action="/personal_data" method="POST">
-            <section class="wrapper" style="display:none">
-                <div class="back">
-                    <button type="submit" class="backNextButton" style="--clr: #00ccff;--i:0;">
-                        <span>Back</span>
-                    </button>
+        <!-- endヘッダー -->
+        <!-- 活動目的カード -->
+          <section class="wrapper" style="display:none">
+            <form action="/personal_data" method="GET">
+              <div class="back">
+                  <button type="submit" class="backNextButton" style="--clr: #00ccff;--i:0;">
+                      <span>Back</span>
+                  </button>
+              </div>
+            </form>
+            <div class="food-containerPurpose">
+                <div class="sentence">
+                    <p class="question3">質問：食事の目的を選んでください</p>
                 </div>
-                <div class="food-containerPurpose">
-                    <div class="sentence">
-                        <p class="question3">質問：食事の目的を選んでください</p>
-                    </div>
-                    <div class="columActive1" style="margin-top: 60px;">
-                        <!-- idを付与；formをidと同じ値にした。 -->
-                        <!-- classをincreaseとdecreaseを入れ替えた。 -->
-                        <div class="increase">
-                            <input type="radio" id="decrease" name="purpose" value="増量" form="purpose"><label for="decrease" class="activePurpose">増量</label>
-                        </div>
-                    </div>
-                    <div class="culumActive2" style="margin-top: 15px;">
-                        <div class="maintain">
-                            <input type="radio" name="purpose" value="現状維持" form="purpose"><label for="現状維持" class="activePurpose">維持</label>
-                        </div>
-                    </div>
-                    <div class="culumActive3">
-                        <div class="decrease" style="margin-top: 15px;">
-                            <input type="radio" name="purpose" value="減量" form="purpose"><label for="減量" class="activePurpose">減量</label>
-                        </div>
+                <div class="columActive1" style="margin-top: 60px;">
+                    <!-- idを付与；formをidと同じ値にした。 -->
+                    <!-- classをincreaseとdecreaseを入れ替えた。 -->
+                    <div class="increase">
+                        <input type="radio" id="decrease" name="purpose" value="増量" form="purpose"><label for="decrease" class="activePurpose">増量</label>
                     </div>
                 </div>
-                <div class="next">
-                    <button type="submit" class="backNextButton" style="--clr: #ff22bb;--i:0;">
-                        <span>Next</span>
-                    </button>
+                <div class="culumActive2" style="margin-top: 15px;">
+                    <div class="maintain">
+                        <input type="radio" name="purpose" value="現状維持" form="purpose"><label for="現状維持" class="activePurpose">維持</label>
+                    </div>
                 </div>
-            </section>
-        </form>
+                <div class="culumActive3">
+                    <div class="decrease" style="margin-top: 15px;">
+                        <input type="radio" name="purpose" value="減量" form="purpose"><label for="減量" class="activePurpose">減量</label>
+                    </div>
+                </div>
+            </div>
+            <form action="/personal_data" method="POST" id="purpose">
+              <div class="next">
+                  <button type="submit" class="backNextButton" style="--clr: #ff22bb;--i:0;">
+                      <span>Next</span>
+                  </button>
+              </div>
+            </form>
+          </section>
+
            <!-- end活動目的カード -->
            <script src="https://code.jquery.com/jquery.min.js"></script>
            <script>
