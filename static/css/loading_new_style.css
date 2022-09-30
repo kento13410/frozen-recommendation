@@ -4,12 +4,12 @@
     align-items: center;
     min-height: 100vh;
     background: white;
-    animation: animateBg 1s linear infinite,
-    animateBg 2s linear infinite,
-    animateBg 4s linear infinite,
-    animateBg 6s linear infinite,
-    animateBg 8s linear infinite,
-    animateBg 10s linear infinite;
+    animation: animateBg 0.5s linear infinite,
+    animateBg 1.0s linear infinite,
+    animateBg 1.5s linear infinite,
+    animateBg 2.0s linear infinite,
+    animateBg 2.5s linear infinite,
+    animateBg 3.0s linear infinite;
 }
 
 @keyframes animateBg {
