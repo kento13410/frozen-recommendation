@@ -355,8 +355,8 @@ p {
     justify-content: center;
     text-decoration: none;
     border-radius: 20px;
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 80px;
     box-shadow: 0px 0px 28px 3px #ededed;
     transition: 1s;
     box-shadow: 0 0 3px var(--clr),
@@ -410,7 +410,7 @@ p {
 .button::after {
     content: "";
     position: absolute;
-    inset: 4px;
+    inset: 5px;
     background: white;
     border-radius: 20px;
     transition: 0.5s;
@@ -489,7 +489,7 @@ p {
 .button::after {
     content: "";
     position: absolute;
-    inset: 4px;
+    inset: 5px;
     background: white;
     border-radius: 20px;
     transition: 0.5s;
