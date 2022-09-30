@@ -483,6 +483,7 @@ img {
 .activeLevel {
     font-size: 30px;
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+    cursor: pointer;
 }
 .answer1 {
     border-radius: 20px;
@@ -755,6 +756,7 @@ img {
     overflow: hidden;
     position: relative;
     border: none;
+    cursor: pointer;
 }
 
 .backNextButton:hover {
