@@ -213,7 +213,7 @@ ul {
 
 iframe {
     margin-top: 30px;
-    box-shadow: 5px 5px 5px black;
+    box-shadow: 4px 4px 4px black;
 }
 
 .time-container {
@@ -242,7 +242,7 @@ iframe {
     background-color: #ffffff;
     border: 2px solid black;
     position: relative;
-    box-shadow: 5px 5px 5px black;
+    box-shadow: 4px 4px 4px black;
 }
 
 .sentences {

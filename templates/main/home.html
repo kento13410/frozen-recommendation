@@ -62,10 +62,10 @@
                     <a href="/tutorial"><img src="../../static/img/ico/tutorial.svg" alt="tutorial" height="30px" width="30px"></a>
                   </li>
                   <li class="personal">
-                    <a href="/personal"><img src="../../static/img/ico/personal.svg" alt="personal" height="30px" width="30px"></a>
+                    <a href="/personal_data"><img src="../../static/img/ico/personal.svg" alt="personal" height="30px" width="30px"></a>
                   </li>
                   <li class="calculate">
-                    <a href="/calculate"><img src="../../static/img/ico/calculate.svg" alt="calculate" height="30px" width="30px"></a>
+                    <a href="/input"><img src="../../static/img/ico/calculate.svg" alt="calculate" height="30px" width="30px"></a>
                   </li>
                   <li class="favorites">
                       <a href="/favorite"><img src="../../static/img/ico/ico_heart.svg" alt="favorites" height="30px" width="30px"></a>
@@ -210,7 +210,7 @@
                   </span>
                 </label>
                 <a href="" class="active position">
-                  <span>麺系</span>
+                  <span>麺系＋ピザ</span>
                 </a>
               </li>
             </ul>
@@ -239,7 +239,7 @@
                   {% endif %}
                   {% endfor %}
                   </section>
-                  
+
               </li>
               <li>
                 <section class="wrapper">
@@ -309,12 +309,11 @@
                       </div>
                       {%- set ns.cnt = ns.cnt + 1 -%}
                       {% if ns.cnt % 4 == 0 %}
-                      </section><section class="wrapper">
+                      </section><section class="wrapper wrapper2">
                       {% endif %}
                   {% endif %}
                   {% endfor %}
                   </section>
-
               </li>
             </ul>
             <section class="wrapper">
