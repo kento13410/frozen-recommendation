@@ -454,7 +454,7 @@ p {
     }
 }
 
-.button{
+.button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -468,6 +468,8 @@ p {
     0 0 15px var(--clr);
     overflow: hidden;
     position: relative;
+    border: none;
+    outline: none;
 }
 
 .button:hover {
@@ -476,8 +478,6 @@ p {
 
 .button:hover::before {
     width: 120%;
-
-
 }
 
 .button::before {
