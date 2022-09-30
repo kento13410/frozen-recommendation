@@ -219,3 +219,51 @@ p {
 .sns ul li:hover {
     transform: translateY(-10px);
 }
+
+/* inputとheartを連動させるためのcss */
+
+label {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+}
+
+label input {
+    position: relative;
+    bottom: 50px;
+    z-index: 1;
+    appearance: none;
+    height: 50px;
+    width: 50px;
+}
+
+label span {
+    position: absolute;
+    bottom: 14px;
+    left: 0;
+    width: 56px;
+    height: 56px;
+    background: #ededed;
+    border-radius: 80px
+}
+
+label input:checked + span {
+    background: #fe0000;
+}
+
+label span i {
+    position: absolute;
+    top: 2.8px;
+    left: 2.8px;
+    width: 50.4px;
+    height: 50.4px;
+    background: #fff;
+    border-radius: 50%;
+    transition: 0.5s;
+}
+
+svg {
+    position: relative;
+    top: 1px;
+}
