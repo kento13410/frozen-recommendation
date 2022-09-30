@@ -177,7 +177,7 @@
                 {% endfor %}
                 <!--(1)前のページ-->
                 {% if (CurPage - 1) > 0 %}
-                <a href="./search_item?page={{ CurPage - 1 }}" class="btn btn-outline-secondary">{{ CurPage - 1}}</a>
+                <form action="./search_item?page={{ CurPage - 1 }}" id="result" class="btn btn-outline-secondary">{{ CurPage - 1}}</a>
                 {% endif %}
 
                 <!--(1)現在のページ-->
