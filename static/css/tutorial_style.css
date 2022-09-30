@@ -237,7 +237,7 @@ iframe {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 115px;
+    margin-top: 140px;
     margin-bottom: 40px;
     background-color: #ffffff;
     border: 2px solid black;
@@ -247,6 +247,6 @@ iframe {
 
 .sentences {
     position: absolute;
-    top: 7px;
-    left: 7px;
+    top: 35px;
+    left: 25px;
 }
