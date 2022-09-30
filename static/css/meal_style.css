@@ -75,19 +75,6 @@
     list-style: none;
 }
 
-.list_nav_icon_header .search a {
-    background: url(../static/cmn/img/ico/ico_search.svg);
-}
-
-.list_nav_icon_header .favorite a {
-    background: url(../static/cmn/img/ico/ico_heart.svg);
-}
-
-.list_nav_icon_header .home a {
-    background: url(../static/cmn/img/ico/ico_home.svg);
-}
-
-
 /* リストナビ */
 .list_nav_header {
     padding-left: 90px;
@@ -752,35 +739,6 @@ img {
     margin-top: 20px;
 }
 
-/* 通常時ボタンエフェクト */
-/* .button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-
-.button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    border-radius: 20px;
-    width: 150px;
-    height: 80px;
-    box-shadow: 0px 0px 28px 3px #ededed;
-}
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 1129abebca2bbec389259e18a980fd567873f90d
-.button span {
-    font-family: fantasy;
-    color: black;
-    font-size: 1.6em;
-    Letter-spacing: 1px;
-} */
-
 /* ボタンがクリックされた時のcss */
 .button{
     display: flex;
@@ -797,6 +755,7 @@ img {
     overflow: hidden;
     position: relative;
     border: none;
+    cursor: pointer;
 }
 
 
@@ -804,9 +763,6 @@ img {
     font-family: fantasy;
     font-size: 30px;
     background: #000000;
-    /* background: -moz-linear-gradient(left,  rgba(255,130,130,1) 0%, rgba(225,120,237,1) 100%); */
-    /* background: -webkit-linear-gradient(left,  rgba(255,130,130,1) 0%,rgba(225,120,237,1) 100%); */
-    /* background: linear-gradient(to right,  rgba(255,130,130,1) 0%,rgba(225,120,237,1) 100%); */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8282', endColorstr='#e178ed',GradientType=1 );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1038,6 +994,7 @@ img {
     overflow: hidden;
     position: relative;
     border: none;
+    cursor: pointer;
 }
 
 .backNextButton:hover {
