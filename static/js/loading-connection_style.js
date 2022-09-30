@@ -6,7 +6,7 @@ function loaded() {
 // 画面に対して読み込んだ後のイベントを追加する…
 window.addEventListener("load", function() {
     // ローディング画面の実行時間を設定(0.5s)
-    setTimeout(loaded, 2000)
+    setTimeout(loaded, 3000)
 })
 
 // 最大でも5秒後に消える
