@@ -186,6 +186,13 @@ a {
 	text-decoration: none;
 }
 
+a.active {
+    color: #000000;
+}
+
+a :hover {
+    color: #000000;
+}
 
 main {
 	width: 100%;
