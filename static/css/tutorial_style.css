@@ -13,6 +13,8 @@ html,body{
 
 .tab a {
     font-size: 30px;
+    color:inherit;
+    text-decoration: none;
 }
 
 .header {
