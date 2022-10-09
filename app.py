@@ -5,27 +5,32 @@ from flask_session import Session
 from helpers import login_required, act_calculate,makeRandomList
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_paginate import Pagination, get_page_parameter
+import sqlalchemy
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import sessionmaker
+
+engine_food = sqlalchemy.create_engine('sqlite:///foodname.db', echo=True)
+engine_user = sqlalchemy.create_engine('sqlite:///users.db', echo=True)
+
+Base = declarative_base()
 
 app = Flask("__name__")
 
-#_________________________________Sessionのdictオブジェクトを作成__________________________________________
+# Sessionのdictオブジェクトを作成
 app.config["SESSION_PERMANENT"] = False
 # セッションの保存期間を指定
 app.config["SESSION_TYPE"] = "filesystem"
 #　ファイルとしてflask_sessionというセッションデータベースを作成する。
 Session(app)
 # 作成したセッションファイルとアプリを接続
-#---------------------------------------------------------------------------------------------------------
+
 
 # sqliteをデータベースに接続する
 db = SQL("sqlite:///foodname.db")
 db1 =SQL("sqlite:///users.db")
 
-#------------------------------
-#     LOGIN機能の実装:
-#------------------------------
 
-#----------------------------------------ログイン画面(login)--------------------------------------------------
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """Log user in"""
@@ -40,12 +45,15 @@ def login():
         username = request.form.get("username")
         password = request.form.get("password")
         if not username :
-            raise Exception('ユーザー名を入力してください！！！')
+            raise Exception('ユーザー名を入力してください')
         if not password :
-            raise Exception('パスワードを入力してください！！！')
+            raise Exception('パスワードを入力してください')
 
         # Query database for username
-        rows = db1.execute("SELECT * FROM users WHERE username = ?", username)
+        # rows = db1.execute("SELECT * FROM users WHERE username = ?", username)
+        db_session = sessionmaker(bind=engine_food)()
+        db_session.query(Account).all()
+        db_session.close()
 
         if (check_password_hash(rows[0]["hash"], password)):
 
