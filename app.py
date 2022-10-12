@@ -2,18 +2,11 @@ from flask import Flask, render_template, request, redirect, session
 from cs50 import SQL
 import ast
 from flask_session import Session
-from helpers import login_required, act_calculate,makeRandomList
+from helpers import sqlalchemy
+from helpers.others import login_required, act_calculate,makeRandomList, Food, Base, engine_food
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_paginate import Pagination, get_page_parameter
-import sqlalchemy
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import sessionmaker
 
-engine_food = sqlalchemy.create_engine('sqlite:///foodname.db', echo=True)
-engine_user = sqlalchemy.create_engine('sqlite:///users.db', echo=True)
-
-Base = declarative_base()
 
 app = Flask("__name__")
 
@@ -66,9 +59,8 @@ def login():
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("LOGIN/login.html")
-# ---------------------------------------------------------------------------------------------------------------
 
-# --------------------------------------登録画面(register)---------------------------------------------------
+
 @app.route("/register",methods=["GET","POST"])
 def register():
     if (request.method=="GET"):
@@ -93,9 +85,6 @@ def register():
         return redirect("/login")
 
 
-# ------------------------------------------------------------------------------------------------------------
-
-#______________________________________ログアウト画面(logout)__________________________________________________
 @app.route("/logout")
 @login_required
 def logout():
@@ -106,20 +95,17 @@ def logout():
 
     # Redirect user to login form
     return redirect("/")
-#______________________________________________________________________________________________
 
 
-
-# ------------------------------------ホーム画面(home)--------------------------------------------------------
 @app.route("/", methods=["GET","POST"])
 @login_required
 def home():
     data = db.execute("SELECT * FROM foodnames")
     count = 0
     return render_template("main/home.html", data=data, count=count)
-# -------------------------------------------------------------------------------------------------------------
 
-# --------------------------------meal.htmlに戻るためだけのルート--------------------------------------------
+
+# meal.htmlに戻る
 @app.route("/meal_back", methods=["GET","POST"])
 @login_required
 def meal_back():
@@ -127,7 +113,7 @@ def meal_back():
         return render_template("main/meal.html")
 
 
-# ------------------------------------------入力画面(input)----------------------------------------------------
+# 計算
 @app.route("/input", methods=["GET","POST"])
 @login_required
 def index():
@@ -154,10 +140,6 @@ def index():
         activity = personal_data['activity']
 
         act = act_calculate(sex, weight, height, age, session['level'], activity)
-
-# --------------------------------------------------------------------
-# D = act - (朝で摂取したエネルギー + 昼で摂取したエネルギー) [kcal]
-# --------------------------------------------------------------------
 
         total_energy = 0
         total_protein = 0
@@ -209,11 +191,9 @@ def index():
 
 
         return render_template("main/output.html", data = data, difData=difData)
-# -------------------------------------------------------------------------------------------------------------
 
 
-# -----------------------------入力と合致する食品の栄養情報を取得------------------------------------------------------
-
+# 入力と合致する食品の栄養情報を取得
 @app.route("/search_item", methods=["GET", "POST"])
 def search_item():
     if request.method == "GET":
@@ -250,10 +230,7 @@ def search_item():
         s_Max = (- len(snName) // 3) * -1
         return render_template("main/result.html", breakfast=b_rows, lunch=l_rows, snack=s_rows, CurPage=page, b_pagination=b_pagination, b_Max=b_Max, l_pagination=l_pagination, l_Max=l_Max, s_pagination=s_pagination, s_Max=s_Max)
 
-# -----------------------------------------------------------------------------------------------------------------
 
-
-# -------------------------recommend--------------------------------------------------------------------------------
 @app.route("/recommend", methods=["GET","POST"])
 def recommend():
 
@@ -341,10 +318,7 @@ def personal_data():
     else:
         return render_template("main/personal_data.html")
 
-# ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-# -------------------------favorite------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 @app.route("/favorite",methods=["GET","POST"])
 def favorite():
     if(request.method== "GET"):
@@ -472,9 +446,9 @@ def favorite():
             data = db.execute("SELECT * FROM foodnames WHERE 食品名 = ? ", product_liked['product'])[0]
             submitList.append(data)
         return render_template("main/favorite.html", submitList =submitList)
-# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# ------------------------------------------Delete favorite--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Delete favorite
 @app.route("/delete",methods=["POST"])
 def delete():
     name = request.form.get("name")
@@ -485,10 +459,8 @@ def delete():
         data = db.execute("SELECT * FROM foodnames WHERE 食品名 = ? ", product_liked['product'])[0]
         submitList.append(data)
     return render_template("main/favorite.html", submitList =submitList)
-# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# ---------------------------------------------------------------tutorial ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 @app.route("/tutorial")
 def video():
     return render_template("main/tutorial.html")
-# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

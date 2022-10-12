@@ -3,6 +3,7 @@ from functools import wraps
 import random
 
 
+
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
