@@ -39,6 +39,7 @@ class Food(Base):
 class Product_liked(Base):
     __tablename__ = 'product_liked'
 
+    id = Column(Integer, primary_key=True)
     product = Column(String, unique=False)
     user_id = Column(Integer, unique=False)
 

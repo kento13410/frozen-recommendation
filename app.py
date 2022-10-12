@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 from cs50 import SQL
 import ast
 from flask_session import Session
-from helpers import sqlalchemy
+from helpers import sql
 from helpers.others import login_required, act_calculate,makeRandomList, Food, Base, engine_food
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_paginate import Pagination, get_page_parameter
@@ -41,12 +41,6 @@ def login():
             raise Exception('ユーザー名を入力してください')
         if not password :
             raise Exception('パスワードを入力してください')
-
-        # Query database for username
-        # rows = db1.execute("SELECT * FROM users WHERE username = ?", username)
-        db_session = sessionmaker(bind=engine_food)()
-        db_session.query(Account).all()
-        db_session.close()
 
         if (check_password_hash(rows[0]["hash"], password)):
 
