@@ -8,3 +8,4 @@ db = SQLAlchemy(app)  # 追加
 # インスタンス化され、db.~とすることでクラスSQLAlchemyのメソッドが使用できる
 from .models import sql
 
+import py.main

@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 from cs50 import SQL
 import ast
 from flask_session import Session
-from __init__ import db
+from py.__init__ import db
 from py.others import login_required, act_calculate,makeRandomList, Food, Base, engine_food
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_paginate import Pagination, get_page_parameter

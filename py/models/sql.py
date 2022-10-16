@@ -1,8 +1,8 @@
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Float
-from sqlalchemy.orm import sessionmaker, scoped_session
-from __init__ import db
+# from sqlalchemy import create_engine
+# from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy import Column, Integer, String, Float
+# from sqlalchemy.orm import sessionmaker, scoped_session
+from ..__init__ import db
 
 
 # engine_food = create_engine('sqlite:///foodname.sqlite3', echo=True)
