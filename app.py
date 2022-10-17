@@ -2,26 +2,23 @@ from flask import Flask, render_template, request, redirect, session
 from cs50 import SQL
 import ast
 from flask_session import Session
-from py.__init__ import db
-from py.others import login_required, act_calculate,makeRandomList, Food, Base, engine_food
+from folder.others import login_required, act_calculate,makeRandomList
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_paginate import Pagination, get_page_parameter
+from flask_sqlalchemy import SQLAlchemy
 
-
-app = Flask("__name__")
-
-# Sessionのdictオブジェクトを作成
-app.config["SESSION_PERMANENT"] = False
-# セッションの保存期間を指定
-app.config["SESSION_TYPE"] = "filesystem"
-#　ファイルとしてflask_sessionというセッションデータベースを作成する。
+app = Flask(__name__)
+app.config.from_object('folder.config')
 Session(app)
-# 作成したセッションファイルとアプリを接続
 
+db = SQLAlchemy(app)
 
-# sqliteをデータベースに接続する
-db = SQL("sqlite:///foodname.db")
-db1 =SQL("sqlite:///users.db")
+# 絶対dbの下に置くように！
+from folder.models.sql import user, personal_data, ingredient, product_liked, food
+
+@app.before_first_request
+def init():
+    db.create_all()
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -42,7 +39,10 @@ def login():
         if not password :
             raise Exception('パスワードを入力してください')
 
-        if (check_password_hash(rows[0]["hash"], password)):
+        # rows = db1.execute("SELECT * FROM users WHERE username = ?", username)
+        rows = user.query.filter(user.name==username)
+
+        if (check_password_hash(rows["hash"], password)):
 
             # Remember which user has logged in
             session["user_id"] = rows[0]["id"]
@@ -74,7 +74,13 @@ def register():
             raise Exception('パスワードが一致してないでよ！')
 
         # データの登録
-        db1.execute("INSERT INTO users (username,hash) VALUES (?,?)", username, generate_password_hash(password))
+        # db1.execute("INSERT INTO users (username,hash) VALUES (?,?)", username, generate_password_hash(password))
+        user_info = user(
+            name = username,
+            hash = generate_password_hash(password)
+        )
+        db.session.add(user_info)
+        db.session.commit()
 
         return redirect("/login")
 
@@ -126,14 +132,15 @@ def index():
             pass
 
         # 一人当たりの必要摂取カロリー
-        personal_data = db1.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
+        # personal_data = db1.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
+        personal_data = personal_data.query.filter(personal_data.user_id == session['user_id']).all()[0]
         age = personal_data['age']
         weight = personal_data['weight']
         height = personal_data['height']
         sex = personal_data['sex']
-        activity = personal_data['activity']
+        purpose = personal_data['purpose']
 
-        act = act_calculate(sex, weight, height, age, session['level'], activity)
+        act = act_calculate(sex, weight, height, age, session['level'], purpose)
 
         total_energy = 0
         total_protein = 0
@@ -167,7 +174,8 @@ def index():
 
         difData = {'カロリー': D, 'タンパク質': difP, '脂質': difF, '炭水化物': difCBH}
 
-        data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 6", X, P, F, CBH)
+        # data = db.execute("SELECT * FROM foodnames ORDER BY ? - (タンパク質/? + 脂質/? + 炭水化物/?) LIMIT 6", X, P, F, CBH)
+        data = food.query.order_by(X-(food.たんぱく質/P + food.脂質/F + food.炭水化物/CBH)).limit(6)
 
         # 残しておいてください谷口
         # data2 = []
@@ -239,19 +247,19 @@ def recommend():
         noodle = request.form.get("noodle")
 
         if (beef):
-            beefList = db.execute('SELECT * from foodnames WHERE カテゴリ = "お弁当肉系" ')
+            beefList = food.query.filter(food.カテゴリ=='お弁当肉系').all()
         else:
             beefList = []
         if (fish):
-            fishList = db.execute('SELECT * from foodnames WHERE カテゴリ = "おべんとう 魚系" ')
+            fishList = food.query.filter(food.カテゴリ=='おべんとう 魚系').all()
         else:
             fishList = []
         if (rice):
-            riceList = db.execute("SELECT * from foodnames WHERE カテゴリ = 'ごはん系' ")
+            riceList = food.query.filter(food.カテゴリ=='ごはん系').all()
         else:
             riceList = []
         if (noodle):
-            noodleList = db.execute("SELECT * from foodnames WHERE カテゴリ = '麺系' ")
+            noodleList = food.query.filter(food.カテゴリ=='麺系').all()
         else:
             noodleList = []
 
@@ -302,10 +310,27 @@ def personal_data():
 
 
         try: #dbが格納されていない場合
-            db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], session['sex'], session['age'], session['weight'], session['height'], purpose)
+            # db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], session['sex'], session['age'], session['weight'], session['height'], purpose)
+            data = personal_data(
+                user_id = session['user_id'],
+                sex = session['sex'],
+                age = session['age'],
+                weight = session['weight'],
+                height = session['height'],
+                purpose = purpose
+            )
+            db.session.add(data)
 
         except: #格納されている場合（そのときはtryでエラーでる
-            db1.execute("UPDATE personal_data SET sex=?, age=?, weight=?, height=?, activity=? WHERE user_id=?", session['sex'], session['age'], session['weight'], session['height'], purpose, session['user_id'])
+            # db1.execute("UPDATE personal_data SET sex=?, age=?, weight=?, height=?, activity=? WHERE user_id=?", session['sex'], session['age'], session['weight'], session['height'], purpose, session['user_id'])
+            personal_data.query.filter(personal_data.user_id==session['user_id']).first()
+            sex = session['sex'],
+            age = session['age'],
+            weight = session['weight'],
+            height = session['height'],
+            purpose = purpose
+
+        db.session.commit()
 
         return redirect("/")
 
@@ -316,10 +341,12 @@ def personal_data():
 @app.route("/favorite",methods=["GET","POST"])
 def favorite():
     if(request.method== "GET"):
-        product_liked_s = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
+        # product_liked_s = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
+        product_liked_s = product_liked.query.filter(product_liked.user_id==session['user_id']).all()
         submitList = []
         for product_liked in product_liked_s:
-            data = db.execute("SELECT * FROM foodnames WHERE 食品名 = ? ", product_liked['product'])[0]
+            # data = db.execute("SELECT * FROM foodnames WHERE 食品名 = ? ", product_liked['product'])[0]
+            data = food.query.filter(food.食品名==product_liked['product']).all()[0]
             submitList.append(data)
         return render_template("main/favorite.html", submitList =submitList)
 
@@ -405,7 +432,8 @@ def favorite():
             six_name = [{"食品名":"sample"}]
 
         # product_likedにまだ保存されていない商品ならという条件が必要
-        identifyList = db.execute("SELECT * FROM product_liked WHERE user_id = ?", session['user_id'])
+        # identifyList = db.execute("SELECT * FROM product_liked WHERE user_id = ?", session['user_id'])
+        identifyList = product_liked.query.filter(product_liked.user_id==session['user_id']).all()
         name_list = [one_name,two_name,three_name,four_name,five_name,six_name]
         add_list = []
 
@@ -415,7 +443,13 @@ def favorite():
                 if (name[0]["食品名"] != "sample"):
                     add_list.append(name[0]["食品名"])
             for name in add_list:
-                db.execute("INSERT INTO product_liked(user_id,product) VALUES(?,?)",session['user_id'],name)
+                # db.execute("INSERT INTO product_liked(user_id,product) VALUES(?,?)",session['user_id'],name)
+                liked = product_liked(
+                    user_id = session['user_id'],
+                    product = name
+                )
+                db.session.add(liked)
+                db.session.commit()
 
         # productLikedに入っている全ての冷凍食品と一致しないなら、一回だけ追加
         else:
@@ -430,14 +464,22 @@ def favorite():
 
             if(len(add_list)!= 0):
                 for name in add_list:
-                    db.execute("INSERT INTO product_liked(user_id,product) VALUES(?,?)",session['user_id'],name)
+                    # db.execute("INSERT INTO product_liked(user_id,product) VALUES(?,?)",session['user_id'],name)
+                    liked = product_liked(
+                        user_id = session['user_id'],
+                        product = name
+                    )
+                    db.session.add(liked)
+                    db.session.commit()
 
         # 入力されたデータを取り出してfavorite画面に送る
         # [{"product":},{"product":}..{"product":}]
-        product_liked_s = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
+        # product_liked_s = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
+        product_liked_s = product_liked.query.filter(food.user_id==session['user_id']).all()
         submitList = []
         for product_liked in product_liked_s:
-            data = db.execute("SELECT * FROM foodnames WHERE 食品名 = ? ", product_liked['product'])[0]
+            # data = db.execute("SELECT * FROM foodnames WHERE 食品名 = ? ", product_liked['product'])[0]
+            data = food.query.filter(food.user_id==session['user_id']).all()[0]
             submitList.append(data)
         return render_template("main/favorite.html", submitList =submitList)
 
@@ -446,11 +488,14 @@ def favorite():
 @app.route("/delete",methods=["POST"])
 def delete():
     name = request.form.get("name")
-    db.execute("DELETE FROM product_liked WHERE product = ? AND user_id = ?",name,session['user_id'])
-    product_liked_s = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
+    # db.execute("DELETE FROM product_liked WHERE product = ? AND user_id = ?",name,session['user_id'])
+    product_liked.query.filter(product_liked.product==name, product_liked.user_id==session['user_id']).delete()
+    # product_liked_s = db.execute("SELECT product FROM product_liked WHERE user_id = ?", session['user_id'])
+    product_liked_s = product_liked.query.filter(food.user_id==session['user_id']).all()
     submitList = []
     for product_liked in product_liked_s:
-        data = db.execute("SELECT * FROM foodnames WHERE 食品名 = ? ", product_liked['product'])[0]
+        # data = db.execute("SELECT * FROM foodnames WHERE 食品名 = ? ", product_liked['product'])[0]
+        data = food.query.filter(food.食品名==product_liked['product']).all()[0]
         submitList.append(data)
     return render_template("main/favorite.html", submitList =submitList)
 
