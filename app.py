@@ -316,7 +316,7 @@ def personal_data():
         # try: #dbが格納されていない場合
             # db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], session['sex'], session['age'], session['weight'], session['height'], purpose)
         data = personal_data(
-            user_id = session['user_id'],
+            # user_id = session['user_id'],
             sex = session['sex'],
             age = session['age'],
             weight = session['weight'],
