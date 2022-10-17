@@ -18,8 +18,8 @@ class food(db.Model):
     商品概要 = db.Column(db.String, unique=False)
 
 
-class product_liked(db.Model):
-    __tablename__ = 'product_liked'
+class food_liked(db.Model):
+    __tablename__ = 'food_liked'
 
     id = db.Column(db.Integer, primary_key=True)
     product = db.Column(db.String, unique=False)
