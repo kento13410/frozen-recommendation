@@ -36,8 +36,8 @@ class ingredient(db.Model):
     脂質 = db.Column(db.Float, unique=False)
     炭水化物 = db.Column(db.Float, unique=False)
 
-class personal_data(db.Model):
-    __tablename__ = 'personal_data'
+class person(db.Model):
+    __tablename__ = 'person'
 
     user_id = db.Column(db.Integer, primary_key=True)
     sex = db.Column(db.String, unique=False)

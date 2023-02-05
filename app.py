@@ -14,7 +14,7 @@ Session(app)
 db = SQLAlchemy(app)
 
 # 絶対dbの下に置くように！
-from folder.models.sql import user, personal_data, ingredient, food_liked, food
+from folder.models.sql import user, person, ingredient, food_liked, food
 
 @app.before_first_request
 def init():
@@ -133,13 +133,13 @@ def index():
             pass
 
         # 一人当たりの必要摂取カロリー
-        # personal_data = db1.execute("SELECT * FROM personal_data WHERE user_id = ?", session['user_id'])[0]
-        personal_data = personal_data.query.filter(personal_data.user_id == session['user_id']).all()[0]
-        age = personal_data.age
-        weight = personal_data.weight
-        height = personal_data.height
-        sex = personal_data.sex
-        purpose = personal_data.purpose
+        # person = db1.execute("SELECT * FROM person WHERE user_id = ?", session['user_id'])[0]
+        data = person.query.filter(person.user_id == session['user_id']).all()[0]
+        age = data.age
+        weight = data.weight
+        height = data.height
+        sex = data.sex
+        purpose = data.purpose
 
         act = act_calculate(sex, weight, height, age, session['level'], purpose)
 
@@ -292,10 +292,7 @@ def recommend():
     else:
         return render_template("main/recommend.html")
 
-# ------------------------------------------------------------------------------------------------------------------
 
-
-# -----------------------------personal_data-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 @app.route("/personal_data", methods=['GET', 'POST'])
 def personal_data():
     if request.method == 'POST':
@@ -313,27 +310,35 @@ def personal_data():
             purpose = request.form.get("purpose")
 
 
-        # try: #dbが格納されていない場合
-            # db1.execute("INSERT INTO personal_data (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], session['sex'], session['age'], session['weight'], session['height'], purpose)
-        data = personal_data(
-            # user_id = session['user_id'],
-            sex = session['sex'],
-            age = session['age'],
-            weight = session['weight'],
-            height = session['height'],
-            purpose = purpose
-        )
-        db.session.add(data)
+        try: #dbが格納されていない場合
+            # db1.execute("INSERT INTO persona (user_id, sex, age, weight, height, activity) VALUES (?, ?, ?, ?, ?, ?)", session['user_id'], session['sex'], session['age'], session['weight'], session['height'], purpose)
+            data = person(
+                # user_id = session['user_id'],
+                sex = session['sex'],
+                age = session['age'],
+                weight = session['weight'],
+                height = session['height'],
+                purpose = purpose
+            )
 
-        # except: #格納されている場合（そのときはtryでエラーでる
-        #     # db1.execute("UPDATE personal_data SET sex=?, age=?, weight=?, height=?, activity=? WHERE user_id=?", session['sex'], session['age'], session['weight'], session['height'], purpose, session['user_id'])
-        #     personal_data.query.filter(personal_data.user_id==session['user_id']).first()
+
+        except: #格納されている場合（そのときはtryでエラーでる
+            data = person.query.filter(person.user_id == session['user_id']).all()[0]
+            data.sex = session['sex']
+            data.age = session['age']
+            data.weight = session['weight']
+            data.height = session['height']
+            data.purpose = purpose
+
+        #     # db1.execute("UPDATE person SET sex=?, age=?, weight=?, height=?, activity=? WHERE user_id=?", session['sex'], session['age'], session['weight'], session['height'], purpose, session['user_id'])
+        #     persona.query.filter(person.user_id==session['user_id']).first()
         #     sex = session['sex'],
         #     age = session['age'],
         #     weight = session['weight'],
         #     height = session['height'],
         #     purpose = purpose
 
+        db.session.add(data)
         db.session.commit()
 
         return redirect("/")
@@ -483,7 +488,7 @@ def favorite():
         submitList = []
         for product_liked in product_liked_s:
             # data = db.execute("SELECT * FROM foodnames WHERE 食品名 = ? ", product_liked['product'])[0]
-            data = food.query.filter(food.user_id==session['user_id']).all()[0]
+            data = food.query.filter(food.食品名==product_liked['product']).all()[0]
             submitList.append(data)
         return render_template("main/favorite.html", submitList =submitList)
 
