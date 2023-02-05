@@ -304,6 +304,7 @@ button {
     color: #FCFCF5;
     position: relative;
 }
+
 button span {
     display: inline-block;
     transform: skew(21deg);
@@ -324,6 +325,10 @@ button:hover {
 }
 button:hover::before {
     right: 0;
+}
+
+.productInfo {
+    cursor: pointer;
 }
 /* checkboxについてのcss */
 label {
@@ -393,6 +398,8 @@ svg {
     padding: 20px;
     margin-top: 10px;
     margin-bottom: 30px;
+    position: relative;
+    top: 730px;
 }
 
 .submit_button {

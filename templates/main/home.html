@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
-        <title>冷食クラブ| おすすめの冷凍食品が簡単に見つかる</title>
+        <title>冷食倶楽部| おすすめの冷凍食品が簡単に見つかる</title>
         <link rel="stylesheet" href="../../static/css/loading_style.css">
         <link rel="stylesheet" href="../../static/css/loading-connection_style.css">
         <link href="../../static/css/home_style.css" rel="stylesheet">
@@ -210,7 +210,7 @@
                   </span>
                 </label>
                 <a href="" class="active position">
-                  <span>麺系</span>
+                  <span>麺系＋ピザ</span>
                 </a>
               </li>
             </ul>
@@ -228,7 +228,7 @@
                           <div class="card-body">
                             <div class="foodname">{{food['食品名']}}</div>
                             <a href="{{food['url']}}">
-                              <button type="submit" onclick="windows.open({{food['url']}})"><span>商品情報はこちら！</span></button>
+                              <button type="submit" class="productInfo" onclick="windows.open({{food['url']}})"><span>商品情報はこちら！</span></button>
                             </a>
                           </div>
                       </div>
@@ -309,12 +309,11 @@
                       </div>
                       {%- set ns.cnt = ns.cnt + 1 -%}
                       {% if ns.cnt % 4 == 0 %}
-                      </section><section class="wrapper">
+                      </section><section class="wrapper wrapper2">
                       {% endif %}
                   {% endif %}
                   {% endfor %}
                   </section>
-
               </li>
             </ul>
             <section class="wrapper">

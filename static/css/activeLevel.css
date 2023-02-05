@@ -75,19 +75,6 @@
     list-style: none;
 }
 
-.list_nav_icon_header .search a {
-    background: url(../static/cmn/img/ico/ico_search.svg);
-}
-
-.list_nav_icon_header .favorite a {
-    background: url(../static/cmn/img/ico/ico_heart.svg);
-}
-
-.list_nav_icon_header .home a {
-    background: url(../static/cmn/img/ico/ico_home.svg);
-}
-
-
 /* リストナビ */
 .list_nav_header {
     padding-left: 90px;
@@ -496,6 +483,7 @@ img {
 .activeLevel {
     font-size: 30px;
     font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+    cursor: pointer;
 }
 .answer1 {
     border-radius: 20px;
@@ -635,6 +623,10 @@ img {
 .clickIncrease {
     box-shadow: 2.5px 2.5px 2.5px 2.5px #292929;
 }
+
+.purpose {
+    cursor: pointer;
+}
 .activePurpose {
     display: flex;
     text-align: center;
@@ -768,6 +760,7 @@ img {
     overflow: hidden;
     position: relative;
     border: none;
+    cursor: pointer;
 }
 
 .backNextButton:hover {

@@ -1,6 +1,6 @@
 
-update foodnames set 商品概要= "いか、れんこん、にんじん、玉ねぎの4種の具材を、スケトウダラのすり身でつなぎ、彩りの良い磯辺揚げにしました。具材の食感とあおさの香りが嬉しい、和風のおかずです。" where id = 20;
+update foodnames set 食品名= "ミックスピザ2枚" where id = 45;
 
-INSERT INTO foodnames values(44, "辛味噌五目タンメン" , 480.0, 14.8, 17.9, 64.8, 560, "https://www.maruha-nichiro.co.jp/products/photo/4902165451863_1.png", "https://www.maruha-nichiro.co.jp/products/product?j=4902165451863", "麺系", 0, 0, "7種類の具材が楽しめる味噌テイストのタンメンです。合わせ味噌に焦がし野菜オイルとピリッと辛いラー油を配合したオリジナルスープです。麺はコシのある中太麺を使用。");
+INSERT INTO foodnames values(48, "耳までチーズ マルゲリータ" , 589.0, 21.5, 17.7, 86.0, 480, "https://www.maruha-nichiro.co.jp/products/photo/4902165450156_1.png", "https://www.maruha-nichiro.co.jp/products/product?j=4902165450156", "麺系", 0, 0, "クラストの耳(ふち)にチーズソースがたっぷり入った「最後の一口までおいしい」ナポリ生地風のマルゲリータです。");
 
 ALTER TABLE foodnames ADD COLUM９
