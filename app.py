@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, session
-from cs50 import SQL
 import ast
 from flask_session import Session
 from folder.others import login_required, act_calculate,makeRandomList
@@ -55,14 +54,14 @@ def register():
         password = request.form.get("password")
         confirmation = request.form.get("confirmation")
         if not username :
-            raise Exception('ユーザー名を入力してください！！！')
+            raise Exception('ユーザー名を入力してください。')
         if not password :
-            raise Exception('パスワードを入力してください！！！')
+            raise Exception('パスワードを入力してください。')
         if not confirmation:
-            raise Exception('確認パスワードも入力してください！！！')
+            raise Exception('確認パスワードも入力してください。')
 
         if password != confirmation:
-            raise Exception('パスワードが一致してないでよ！')
+            raise Exception('パスワードが一致しません。')
 
         # データの登録
         user_info = user(
