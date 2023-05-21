@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, session
 import ast
 from flask_session import Session
-from folder.others import login_required, act_calculate,makeRandomList
+from folder.others import login_required, act_calculate, makeRandomList
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_paginate import Pagination, get_page_parameter
 from flask_sqlalchemy import SQLAlchemy

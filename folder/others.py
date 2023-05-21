@@ -29,41 +29,25 @@ def act_calculate(sex, intWeight, intHeight, intAge, level, activity):
     # bo: b * o　のこと
     bo = 0
 
-    if (sex == "男"):
-        b = 10 * intWeight + 6.25 * intHeight - 5 * intAge + 5
-        # boを計算する
-        if (level == "one"):
-            bo = b * oDict["one"]
-        elif (level == "two"):
-            bo = b * oDict["two"]
-        elif (level == "three"):
-            bo = b * oDict["three"]
-        # actを計算する。
-        if (activity == "増量"):
-            act = bo * gDict["増量"]
-        elif (activity == "現状維持"):
-            act = bo * gDict["現状維持"]
-        elif (activity == "減量"):
-            act = bo * gDict["減量"]
-
-
+    # sex == "男"
+    b = 10 * intWeight + 6.25 * intHeight - 5 * intAge + 5
     if (sex == "女"):
-        b = 10 * intWeight + 6.25 * intHeight - 5 * intAge - 16
-        # boを計算する
-        if (level == "one"):
-            bo = b * oDict["one"]
-        elif (level == "two"):
-            bo = b * oDict["two"]
-        elif (level == "three"):
-            bo = b * oDict["three"]
-        # actを計算する。
-        if (activity == "増量"):
-            act = bo * gDict["増量"]
-        elif (activity == "現状維持"):
-            act = bo * gDict["現状維持"]
-        elif (activity == "減量"):
-            act = bo * gDict["減量"]
+        b -= 21
 
+    if (level == "one"):
+        bo = b * oDict["one"]
+    elif (level == "two"):
+        bo = b * oDict["two"]
+    elif (level == "three"):
+        bo = b * oDict["three"]
+    
+    if (activity == "増量"):
+        act = bo * gDict["増量"]
+    elif (activity == "現状維持"):
+        act = bo * gDict["現状維持"]
+    elif (activity == "減量"):
+        act = bo * gDict["減量"]
+    
     return act
 
 
@@ -71,40 +55,9 @@ def act_calculate(sex, intWeight, intHeight, intAge, level, activity):
 def makeRandomList(maxNumber):
     indexList = []
     if (maxNumber >= 5):
+        numList = [i for i in range(maxNumber)]
         for i in range(5):
-            if (len(indexList) == 0):
-                randomNumber = random.randrange(maxNumber)
-                indexList.append(randomNumber)
-
-            elif (len(indexList) == 1):
-                randomNumber = random.randrange(maxNumber)
-                while(indexList[0]== randomNumber):
-                    randomNumber = random.randrange(maxNumber)
-                indexList.append(randomNumber)
-
-            elif (len(indexList) == 2):
-                randomNumber = random.randrange(maxNumber)
-                while(indexList[0]== randomNumber or indexList[1]== randomNumber):
-                    randomNumber = random.randrange(maxNumber)
-                indexList.append(randomNumber)
-
-            elif (len(indexList) == 3):
-                randomNumber = random.randrange(maxNumber)
-                while(indexList[0]== randomNumber or indexList[1]== randomNumber or indexList[2]== randomNumber):
-                    randomNumber = random.randrange(maxNumber)
-                indexList.append(randomNumber)
-
-            elif (len(indexList) == 4):
-                randomNumber = random.randrange(maxNumber)
-                while(indexList[0]== randomNumber or indexList[1]== randomNumber or indexList[2]== randomNumber or indexList[3]== randomNumber):
-                    randomNumber = random.randrange(maxNumber)
-                indexList.append(randomNumber)
-
-            elif (len(indexList) == 5):
-                randomNumber = random.randrange(maxNumber)
-                while(indexList[0]== randomNumber or indexList[1]== randomNumber or indexList[2]== randomNumber or indexList[3]== randomNumber or indexList[4]== randomNumber):
-                    randomNumber = random.randrange(maxNumber)
-                indexList.append(randomNumber)
+            indexList.append(numList.pop(random.randrange(maxNumber-i)))
     else:
         indexList = [0,1,2,3,4]
 
